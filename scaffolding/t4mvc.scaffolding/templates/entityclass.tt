@@ -1,0 +1,25 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace <#= Settings.ApplicationName #>.core
+{
+	[Table(name: "<#= this.Entity.Name #>")]
+	public partial class <#= this.Entity.Name #>
+	{
+<# foreach(var field in this.Entity.Fields) {
+#><# if (field.IsKeyField){ /* use 4 spaces instead of tabs */
+#>        [Key]
+<#}#><# if (field.Identity){#>        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+<#}#><# if (!field.IsNullable) {#>        [Required]
+<#}#><# if (field.Name != field.Name.ToSchemaName()){#><#="        [Display(Description = \"" + field.Name + "\")]"#>
+<#}#>        public <#= field.DataType #> <#= field.Name.ToSchemaName() #> { get; set; }
+<# } #>
+	}
+}

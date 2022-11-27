@@ -1,0 +1,15 @@
+﻿Account
+	Name
+	Address?
+	Address2?
+	City?
+	State?
+	Zip?
+	Phone?
+	Fax?
+	Website?
+	ParentAccountId?(Guid?)
+	Lat?(double?)
+	Lng?(double?)
+	Description?
+	Active?(bool?)
