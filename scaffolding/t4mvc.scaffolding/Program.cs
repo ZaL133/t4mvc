@@ -19,7 +19,7 @@ static void ScaffoldModel(IEnumerable<Entity> entities)
     var directory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.core");
 
     // Scaffold the user 
-    var userFileName    = $"{Settings.ApplicationUserTypeName}.cs";
+    var userFileName    = $"{Settings.ApplicationUserTypeName}.CodeGen.cs";
     var fullUserFileName = Path.Combine(directory, userFileName);
     var userText        = new app_identityuser().TransformText();
     File.WriteAllText(fullUserFileName, userText);

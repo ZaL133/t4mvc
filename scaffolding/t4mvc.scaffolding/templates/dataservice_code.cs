@@ -9,11 +9,11 @@ namespace t4mvc.scaffolding.templates
 {
     public partial class dataservice
     {
-        protected readonly Entity entity;
+        public Entity Entity;
 
         public dataservice(Entity entity)
         {
-            this.entity = entity;
+            this.Entity = entity;
         }
     }
 }

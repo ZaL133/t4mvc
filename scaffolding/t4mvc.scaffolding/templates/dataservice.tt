@@ -6,3 +6,15 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+
+namespace <#= Settings.ApplicationName #>.Data.Services
+{
+    public partial interface I<#= this.Entity.Name #>Service
+    {
+        <#= this.Entity.Name #> Find(params object[] keyValues);
+        IQueryable<<#= this.Entity.Name #>> GetAll<#= this.Entity.PluralName.ToSchemaName() #>();
+        void Create<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>);
+        void Update<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>, IEnumerable<string> ignore);
+		void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>);
+    }
+}

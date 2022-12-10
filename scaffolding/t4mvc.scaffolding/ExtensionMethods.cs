@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace t4mvc.scaffolding.EntityDefinition
+namespace t4mvc.scaffolding
 {
-    internal static class EntityExtensions
+    internal static class ExtensionMethods
     {
-        public static string? ToSchemaName(this string src)
+        public static string ToSchemaName(this string src)
         {
             return src == null ? null : src.Trim().Replace(" ", "");
         }
 
-        public static string? ToCamelCase(this string src)
+        public static string ToCamelCase(this string src)
         {
             if (src == null) return null;
 
             return src.Substring(0, 1).ToLower() + src.Substring(1);
         }
 
-        public static string? ToLowerCase(this string src)
+        public static string ToLowerCase(this string src)
         {
             return src?.ToLower();
         }
