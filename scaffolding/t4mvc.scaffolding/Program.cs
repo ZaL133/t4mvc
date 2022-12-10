@@ -1,5 +1,6 @@
 ﻿using t4mvc.scaffolding;
 using t4mvc.scaffolding.EntityDefinition;
+using t4mvc.scaffolding.simpletemplates;
 using t4mvc.scaffolding.templates;
 
 Settings.RootPath               = @"..\..\..\..\..\src\";
@@ -16,6 +17,12 @@ ScaffoldDataServices(entities);
 static void ScaffoldModel(IEnumerable<Entity> entities)
 {
     var directory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.core");
+
+    // Scaffold the user 
+    var userFileName    = $"{Settings.ApplicationUserTypeName}.cs";
+    var fullUserFileName = Path.Combine(directory, userFileName);
+    var userText        = new app_identityuser().TransformText();
+    File.WriteAllText(fullUserFileName, userText);
 
     foreach(var entity in entities)
     {

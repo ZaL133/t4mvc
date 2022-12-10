@@ -18,6 +18,10 @@
     <None Update="schema.spec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="simpletemplates\app_identityuser.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>app_identityuser.cs</LastGenOutput>
+    </None>
     <None Update="templates\dataservice.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>dataservice.cs</LastGenOutput>
@@ -33,6 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="simpletemplates\app_identityuser.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>app_identityuser.tt</DependentUpon>
+    </Compile>
     <Compile Update="templates\dataservice.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -10,6 +10,7 @@ namespace t4mvc.scaffolding
     {
         public static string RootPath { get; set; }
         public static string ApplicationName { get; set; }
+        public static string ApplicationUserTypeName => $"{ApplicationName}User";
 
         public static string CreateAndMapPath(string folder)
         {
