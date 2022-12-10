@@ -17,4 +17,47 @@ namespace <#= Settings.ApplicationName #>.Data.Services
         void Update<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>, IEnumerable<string> ignore);
 		void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>);
     }
+
+    public partial class <#= this.Entity.Name #>Service : I<#= this.Entity.Name #>Service
+    {
+        private readonly <#= Settings.DbContextName #> context;
+        public <#= this.Entity.Name #>Service(<#= Settings.DbContextName #> dbContext)
+        {
+            this.context = dbContext;
+        }
+
+        public void Create<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>)
+        {
+            this.context.<#= this.Entity.Name #>s.Add(<#= this.Entity.Name.ToCamelCase() #>);
+        }
+
+        public <#= this.Entity.Name #> Find(params object[] keyValues)
+        {
+            return this.context.<#= this.Entity.Name #>s.Find(keyValues);
+        }
+
+        public IQueryable<<#= this.Entity.Name #>> GetAll<#= this.Entity.PluralName.ToSchemaName() #>()
+        {
+            return this.context.<#= this.Entity.Name #>s.AsQueryable();
+        }
+
+        public void Update<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>, IEnumerable<string> ignore)
+        {
+            this.context.<#= this.Entity.Name #>s.Attach(<#= this.Entity.Name.ToCamelCase() #>);
+
+            var entry       = this.context.Entry(<#= this.Entity.Name.ToCamelCase() #>);
+            entry.State     = EntityState.Modified;
+
+            foreach(var prop in ignore)
+            {
+                entry.Property(prop).IsModified = false;
+            }
+        }
+
+		public void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>)
+        {
+            this.context.<#= this.Entity.Name #>s.Remove(<#= this.Entity.Name.ToCamelCase() #>);
+        }
+    }
+
 }

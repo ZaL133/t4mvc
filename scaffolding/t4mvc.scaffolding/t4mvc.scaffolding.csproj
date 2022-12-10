@@ -26,6 +26,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>dataservice.cs</LastGenOutput>
     </None>
+    <None Update="templates\dbcontext.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>dbcontext.cs</LastGenOutput>
+    </None>
     <None Update="templates\entityclass.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityclass.cs</LastGenOutput>
@@ -46,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>dataservice.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\dbcontext.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\entityclass.cs">
       <DesignTime>True</DesignTime>

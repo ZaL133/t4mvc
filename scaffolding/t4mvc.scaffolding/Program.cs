@@ -5,8 +5,7 @@ using t4mvc.scaffolding.templates;
 
 Settings.RootPath               = @"..\..\..\..\..\src\";
 Settings.ApplicationName        = "t4mvc";
-string contextName              = "t4DbContext",
-       titleCaseApplicationName = "t4mvc";
+Settings.DbContextName          = "t4DbContext";
 
 var specFile = File.ReadAllText("schema.spec");
 var entities = EntityParser.ParseSpecFile(specFile);
@@ -24,6 +23,7 @@ static void ScaffoldModel(IEnumerable<Entity> entities)
     var userText        = new app_identityuser().TransformText();
     File.WriteAllText(fullUserFileName, userText);
 
+    // Scaffold each model item
     foreach(var entity in entities)
     {
         var ec          = new entityclass(entity);
@@ -38,6 +38,15 @@ static void ScaffoldModel(IEnumerable<Entity> entities)
 
 static void ScaffoldDataServices(IEnumerable<Entity> entities)
 {
+    // Create the data context 
+    var ctxFolder   = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Data");
+    var ctxFileName = $"{Settings.DbContextName}.CodeGen.cs";
+    var ctx         = new dbcontext(entities);
+    var ctxText     = ctx.TransformText();
+
+    File.WriteAllText(Path.Combine(ctxFolder, ctxFileName), ctxText);
+
+    // Write each data service file
     var directory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.data\\Services");
     foreach(var entity in entities)
     {

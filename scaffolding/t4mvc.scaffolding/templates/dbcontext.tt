@@ -1,0 +1,22 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #><# var applicationName = Settings.ApplicationName.ToSchemaName(); #>using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using <#= Settings.ApplicationName #>.core;
+
+namespace <#= Settings.ApplicationName #>.Data
+{
+    public partial class <#= Settings.DbContextName #> : IdentityDbContext<<#= Settings.ApplicationUserTypeName #>, IdentityRole<Guid>, Guid>
+    {
+        public <#= Settings.DbContextName #> (DbContextOptions<<#= Settings.DbContextName #>> options) : base(options)
+        {
+        }
+
+<# foreach(var entity in this.Entities.OrderBy(x=> x.Name))
+{ #>        public DbSet<<#= entity.Name.ToSchemaName() #>> <#= entity.Name.ToSchemaName() #>s { get; set; }
+<# } #>
+    }
+}
