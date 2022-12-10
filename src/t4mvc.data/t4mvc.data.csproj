@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\t4mvc.core\t4mvc.core.csproj" />
+  </ItemGroup>
+
 </Project>

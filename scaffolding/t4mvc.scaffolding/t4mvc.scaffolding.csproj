@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +18,10 @@
     <None Update="schema.spec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="templates\dataservice.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>dataservice.cs</LastGenOutput>
+    </None>
     <None Update="templates\entityclass.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityclass.cs</LastGenOutput>
@@ -29,6 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="templates\dataservice.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dataservice.tt</DependentUpon>
+    </Compile>
     <Compile Update="templates\entityclass.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

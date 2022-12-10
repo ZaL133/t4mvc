@@ -11,6 +11,7 @@ var specFile = File.ReadAllText("schema.spec");
 var entities = EntityParser.ParseSpecFile(specFile);
 
 ScaffoldModel(entities);
+ScaffoldDataServices(entities);
 
 static void ScaffoldModel(IEnumerable<Entity> entities)
 {
@@ -25,5 +26,20 @@ static void ScaffoldModel(IEnumerable<Entity> entities)
         
         // Write
         File.WriteAllText(fullFileName, ecText);
+    }
+}
+
+static void ScaffoldDataServices(IEnumerable<Entity> entities)
+{
+    var directory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.data\\Services");
+    foreach(var entity in entities)
+    {
+        var dataService     = new dataservice(entity);
+        var dsText          = dataService.TransformText();
+        var fileName        = $"{entity.Name.ToSchemaName()}Service.cs";
+        var fullFileName    = Path.Combine(directory, fileName);
+
+        // Write 
+        File.WriteAllText(fullFileName, dsText);
     }
 }
