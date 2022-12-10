@@ -34,6 +34,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityclass.cs</LastGenOutput>
     </None>
+    <None Update="templates\entityviewmodel.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>entityviewmodel.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +64,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>entityclass.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\entityviewmodel.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>entityviewmodel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

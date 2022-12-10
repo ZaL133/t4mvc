@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "t4mvc.core", "t4mvc.core\t4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.data", "t4mvc.data\t4mvc.data.csproj", "{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.web.core", "t4mvc.web.core\t4mvc.web.core.csproj", "{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

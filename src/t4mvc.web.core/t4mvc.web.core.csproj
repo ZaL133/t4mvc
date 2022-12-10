@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>false</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\t4mvc.core\t4mvc.core.csproj" />
+    <ProjectReference Include="..\t4mvc.data\t4mvc.data.csproj" />
+  </ItemGroup>
+
+</Project>

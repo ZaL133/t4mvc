@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using t4mvc.core;
 
-namespace t4mvc.Data
+namespace t4mvc.data
 {
     public partial class t4DbContext : IdentityDbContext<t4mvcUser, IdentityRole<Guid>, Guid>
     {

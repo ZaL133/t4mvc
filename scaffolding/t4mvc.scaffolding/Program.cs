@@ -12,7 +12,9 @@ var entities = EntityParser.ParseSpecFile(specFile);
 
 ScaffoldModel(entities);
 ScaffoldDataServices(entities);
+ScaffoldViewModels(entities);
 
+// Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
 {
     var directory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.core");
@@ -36,6 +38,7 @@ static void ScaffoldModel(IEnumerable<Entity> entities)
     }
 }
 
+// Scaffolds out the data access services and the data context
 static void ScaffoldDataServices(IEnumerable<Entity> entities)
 {
     // Create the data context 
@@ -57,5 +60,22 @@ static void ScaffoldDataServices(IEnumerable<Entity> entities)
 
         // Write 
         File.WriteAllText(fullFileName, dsText);
+    }
+}
+
+static void ScaffoldViewModels(IEnumerable<Entity> entities)
+{
+    var folderName  = Path.Combine($"{Settings.ApplicationName}.web.core", "ViewModels");
+    var folder      = Settings.CreateAndMapPath(folderName);
+
+    foreach (var entity in entities)
+    {
+        var vmFileName      = entity.Name.ToSchemaName() + "ViewModel.CodeGen.cs";
+        var vmFullFileName  = Path.Combine(folder, vmFileName);
+        var vm              = new entityviewmodel(entity);
+        var vmText          = vm.TransformText();
+
+        // Write the poco classes
+        File.WriteAllText(vmFullFileName, vmText);
     }
 }

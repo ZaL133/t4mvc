@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using <#= Settings.ApplicationName #>.core;
 
-namespace <#= Settings.ApplicationName #>.Data
+namespace <#= Settings.ApplicationName #>.data
 {
     public partial class <#= Settings.DbContextName #> : IdentityDbContext<<#= Settings.ApplicationUserTypeName #>, IdentityRole<Guid>, Guid>
     {
