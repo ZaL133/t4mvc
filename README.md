@@ -7,4 +7,16 @@ During the process of building a large application like this, you start to devel
 
 This project is meant to automate the all that repetitive boilerplate work, while still being flexible to any customizations, and encorporating best practices. It's all based on methods and opinions that I developed while working on a large web app. 
 
-**Currently, the database is not part of this scaffolding project and is generated manually due to personal preference**
+## Steps to build the project
+
+1. Clone the repo
+2. Reinstall nuget packages
+3. Set connection string and run the EF migrations
+4. Run the project to ensure it builds and runs and you can register
+5. Open the `t4mvc/scaffolding` solution
+6. Add your model and layout to the `schema.spec` and `layout.spec` files respectively. 
+    * These include documentation
+7. Run the scaffolding project to deploy any changes
+8. Add scaffolding migrations at the dotnet cli
+9. Deploy scaffolding migrations
+10. Run! 
