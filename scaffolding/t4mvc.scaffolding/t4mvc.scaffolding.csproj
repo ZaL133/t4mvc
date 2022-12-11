@@ -38,6 +38,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityviewmodel.cs</LastGenOutput>
     </None>
+    <None Update="templates\viewmodelservice.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>viewmodelservice.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -69,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>entityviewmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewmodelservice.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>viewmodelservice.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

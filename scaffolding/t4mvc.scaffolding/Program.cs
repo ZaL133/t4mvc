@@ -13,6 +13,7 @@ var entities = EntityParser.ParseSpecFile(specFile);
 ScaffoldModel(entities);
 ScaffoldDataServices(entities);
 ScaffoldViewModels(entities);
+ScaffoldViewModelServices(entities);
 
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
@@ -78,4 +79,21 @@ static void ScaffoldViewModels(IEnumerable<Entity> entities)
         // Write the poco classes
         File.WriteAllText(vmFullFileName, vmText);
     }
+}
+
+static void ScaffoldViewModelServices(IEnumerable<Entity> entities)
+{
+    var viewModelServiceDirectory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web.Core\\ViewModelServices");
+    Directory.CreateDirectory(viewModelServiceDirectory);
+
+    foreach (var entity in entities)
+    {
+        var fileName = $"{entity.Name.ToSchemaName()}ViewModelService.CodeGen.cs";
+        var fullFileName = Path.Combine(viewModelServiceDirectory, fileName);
+        var vms             = new viewmodelservice(entity);
+        var vmsText         = vms.TransformText();
+        // Write the poco classes
+        File.WriteAllText(fullFileName, vmsText);
+    }
+
 }
