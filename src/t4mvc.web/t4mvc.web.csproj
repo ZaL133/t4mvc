@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-t4mvc.web-c9528399-3b8a-4bcc-90b2-451b1ffaed88</UserSecretsId>
   </PropertyGroup>

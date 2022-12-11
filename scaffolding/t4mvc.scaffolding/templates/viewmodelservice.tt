@@ -2,4 +2,150 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Collections.Generic" #><# var applicationName = Settings.ApplicationName.ToSchemaName(); #>
+using AutoMapper;
+using <#= applicationName #>.core;
+using <#= applicationName #>.data.services;
+using <#= applicationName #>.web.core;
+using <#= applicationName #>.web.core.Infrastructure;
+using <#= applicationName #>.web.core.viewmodels;
+using System;
+using System.Collections.Generic;
+using System.Linq;<#
+
+
+
+#>
+
+namespace <#= applicationName #>.Web.Core.ViewModelServices
+{
+    public partial interface I<#= this.Entity.Name #>ViewModelService
+    {
+	    IQueryable<<#= this.Entity.Name #>ViewModel> GetAll<#= this.Entity.PluralName.ToSchemaName() #>();
+        <#= this.Entity.Name #>ViewModel Find(<#= this.Entity.KeyField.DataType #> <#= this.Entity.Name.ToCamelCase() #>Id);
+        void Create<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel);
+        void Save<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel);
+		void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel);
+		void Hydrate(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel);
+<# foreach(var childTable in this.Entity.ChildReferences) { #>
+        List<<#= childTable.Name#>ViewModel> Get<#= childTable.PluralName.ToSchemaName() #>(Guid <#= this.Entity.KeyField.Name.ToCamelCase() #>);
+<# } #>
+
+    }
+    public partial class <#= this.Entity.Name #>ViewModelService : I<#= this.Entity.Name #>ViewModelService
+    {
+<#
+foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefinitions()) { #>
+        private readonly <#= viewModelServiceDefinition #>;
+<# } #>
+        private readonly IContextHelper contextHelper;
+        private readonly IUserService userService;
+
+        public IQueryable<<#= this.Entity.Name #>ViewModel> GetAll<#= this.Entity.PluralName.ToSchemaName() #>()
+        {
+		    var query = (from <#= this.Entity.Name.ToCamelCase() #> in <#= this.Entity.Name.ToCamelCase() #>Service.GetAll<#= this.Entity.PluralName.ToSchemaName() #>()
+                         <# foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { if (childReference.IsNullable) { #>
+						 join <#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #> in <#= childReference.References.Name.ToCamelCase() #>Service.GetAll<#= childReference.References.PluralName.ToSchemaName() #>() on <#= this.Entity.Name.ToCamelCase() #>.<#= childReference.Name #> equals <#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #>.<#= childReference.References.KeyField.Name #> into left_tmp_<#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #>
+						 from left_<#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #> in left_tmp_<#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #>.DefaultIfEmpty()
+						 <#} else { #>
+                         join <#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #> in <#= childReference.References.Name.ToCamelCase() #>Service.GetAll<#= childReference.References.PluralName.ToSchemaName() #>() on <#= this.Entity.Name.ToCamelCase() #>.<#= childReference.Name #> equals <#= childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #>.<#= childReference.References.KeyField.Name #>
+                         <# } }#>
+			             select new <#= this.Entity.Name #>ViewModel
+						 {<# foreach(var field in this.Entity.Fields.Where(x => !x.IsAudit && !x.Secure)) { #>
+							<#= field.Name.ToSchemaName() #> = <#= this.Entity.Name.ToCamelCase() #>.<#= field.Name.ToSchemaName() #>,
+						 <# } #><# foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { #> <#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #> = <#= (childReference.IsNullable ? "left_" : "" ) + childReference.References.Name.ToCamelCase() #>_<#= childReference.Name #>.<#= childReference.References.NameField.Name.ToSchemaName() #>, <# }#>});
+            return query;
+        }
+
+        public <#= this.Entity.Name #>ViewModelService(<#= this.Entity.GetViewmModelServiceDefinitions().Any() ? string.Join(",", this.Entity.GetViewmModelServiceDefinitions()) + "," : "" #> IUserService userService,
+                                            IContextHelper contextHelper)
+        {
+            this.<#= this.Entity.Name.ToCamelCase() #>Service = <#= this.Entity.Name.ToCamelCase() #>Service;
+            this.contextHelper      = contextHelper;
+<# foreach(var svc in this.Entity.Fields.Where(x => x.References != null && !x.IsAudit).Select(x => $"{x.References.Name.ToCamelCase()}Service").Distinct()) { #>
+            this.<#= svc #> = <#= svc #>;
+<# } #>
+<# foreach(var childTable in this.Entity.ChildReferences.Where(x => x.Name != this.Entity.Name)) { #>
+            this.<#= childTable.Name.ToCamelCase() #>ViewModelService = <#= childTable.Name.ToCamelCase() #>ViewModelService;
+<# } #>
+        }
+
+        public void Create<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
+        {
+            var <#= this.Entity.Name.ToCamelCase() #> = <#= this.Entity.Name.ToCamelCase() #>ViewModel.Map<<#= this.Entity.Name #>>();
+            <# if (!this.Entity.RawData) { #><#= this.Entity.Name.ToCamelCase() #>.CreateDate = DateTime.Now;
+            <#= this.Entity.Name.ToCamelCase() #>.ModifyDate = DateTime.Now;
+            <#= this.Entity.Name.ToCamelCase() #>.CreateUserId = Current.UserId;
+            <#= this.Entity.Name.ToCamelCase() #>.ModifyUserId = Current.UserId;
+            <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.Name #>Id = Guid.NewGuid();
+
+<# } #>            <#= this.Entity.Name.ToCamelCase() #>Service.Create<#= this.Entity.Name #>(<#= this.Entity.Name.ToCamelCase() #>);
+
+            contextHelper.SaveChanges();
+
+            // Set the new id back on the view so it can be called post-save
+            <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= this.Entity.Name #>Id = <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.Name #>Id;
+        }
+
+        public <#= this.Entity.Name #>ViewModel Find(<#= this.Entity.KeyField.DataType #> <#= this.Entity.Name.ToCamelCase() #>Id)
+        {
+            var <#= this.Entity.Name.ToCamelCase() #> = <#= this.Entity.Name.ToCamelCase() #>Service.Find(<#= this.Entity.Name.ToCamelCase() #>Id)
+                                                  .Map<<#= this.Entity.Name #>ViewModel>();
+
+<# foreach(var field in this.Entity.Fields.Where(x => x.References != null && !x.IsAudit)) { #>
+            if (<#= this.Entity.Name.ToCamelCase() #>.<#= field.Name.ToSchemaName() #> != null)
+                <#= this.Entity.Name.ToCamelCase() #>.<#= field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #> = <#= field.References.Name.ToCamelCase() #>Service.Find(<#= this.Entity.Name.ToCamelCase() #>.<#= field.Name.ToSchemaName() #>)?.<#= field.References.NameField.Name.ToSchemaName() #>;
+<# } #>
+            Hydrate(<#= this.Entity.Name.ToCamelCase() #>);
+            return <#= this.Entity.Name.ToCamelCase() #>;
+        }
+
+        public void Save<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
+        {
+            var <#= this.Entity.Name.ToCamelCase() #> = <#= this.Entity.Name.ToCamelCase() #>ViewModel.Map<<#= this.Entity.Name #>>();
+            <# if (!this.Entity.RawData) {#><#= this.Entity.Name.ToCamelCase() #>.ModifyDate = DateTime.Now;
+            <#= this.Entity.Name.ToCamelCase() #>.ModifyUserId = Current.UserId;
+
+<# } #>            var ignore = FieldMappingInspector<<#= this.Entity.Name #>>.GetAllReadonlyFields(<#= this.Entity.Name.ToCamelCase() #>ViewModel);
+
+            <#= this.Entity.Name.ToCamelCase() #>Service.Update<#= this.Entity.Name #>(<#= this.Entity.Name.ToCamelCase() #>, ignore);
+
+            contextHelper.SaveChanges();
+        }
+
+		public void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
+        {
+            var <#= this.Entity.Name.ToCamelCase() #> = <#= this.Entity.Name.ToCamelCase() #>ViewModel.Map<<#= this.Entity.Name #>>();
+
+            <#= this.Entity.Name.ToCamelCase() #>Service.Delete<#= this.Entity.Name #>(<#= this.Entity.Name.ToCamelCase() #>);
+
+            contextHelper.SaveChanges();
+        }
+<# foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { #>        public string Get<#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #>(Guid? id)
+        {
+			return <#= childReference.References.Name.ToCamelCase() #>Service.Find(id)?.<#= childReference.References.NameField.Name.ToSchemaName() #>;
+        }
+<#
+        } #>
+
+        public void Hydrate(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
+        {
+            var id = <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= this.Entity.Name.ToSchemaName() #>Id;
+        <# if (this.Entity.Fields.Count(x => x.References != null) > 0) { foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { #>    <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #> =     Get<#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #>(<#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.Name.ToSchemaName() #>);
+        <#
+} } #><# if (this.Entity.ChildReferences.Count > 0) { foreach (var childReference in this.Entity.ChildReferences) { #>    <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.ParentFieldName #>=     Get<#= childReference.PluralName.ToSchemaName() #>(id);
+        <#
+} } #>
+}
+
+<# foreach(var childTable in this.Entity.ChildReferences) { #>
+        public List<<#= childTable.Name#>ViewModel> Get<#= childTable.PluralName.ToSchemaName() #>(Guid <#= this.Entity.KeyField.Name.ToCamelCase() #>)
+        {
+            return <#= (childTable.Name == this.Entity.Name) ? "this" : childTable.Name.ToCamelCase() + "ViewModelService" #>.GetAll<#= childTable.PluralName.ToSchemaName() #>()
+                        .Where(x => x.<#= childTable.Field.Name.ToSchemaName() #> == <#= this.Entity.KeyField.Name.ToCamelCase() #>)
+                        .ToList();
+        }
+<# } #>
+
+    }
+}

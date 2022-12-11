@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,9 +16,12 @@ namespace t4mvc.web.core.Infrastructure
     {
         private static IHttpContextAccessor httpContextAccessor;
 
+        public static IMapper Mapper { get; set; }
+
         public static void Configure(IServiceProvider serviceProvider)
         {
             httpContextAccessor     = serviceProvider.GetService<IHttpContextAccessor>();
+            Mapper                  = serviceProvider.GetService<IMapper>();
         }
 
         public static HttpContext Context
