@@ -20,3 +20,13 @@ This project is meant to automate the all that repetitive boilerplate work, whil
 8. Add scaffolding migrations at the dotnet cli
 9. Deploy scaffolding migrations
 10. Run! 
+
+## Open source projects
+
+* Automapper
+
+## Licenses 
+
+I rely heavily on the wonderful project EPPlus for excel functionality. 
+Please see EPPlus for more licensing info. If you are using this project for commercial use - you need to obtain a commercial license for EPPlus
+https://www.epplussoftware.com/en/LicenseOverview

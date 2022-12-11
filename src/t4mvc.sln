@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "t4mvc.core", "t4mvc.core\t4mvc.core.csproj", "{24DD42F0-ED16-446A-BB73-39657F718A49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.data", "t4mvc.data\t4mvc.data.csproj", "{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "t4mvc.data", "t4mvc.data\t4mvc.data.csproj", "{88FE9A66-4EC8-4880-84F0-A43F0F87AD87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.web.core", "t4mvc.web.core\t4mvc.web.core.csproj", "{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "t4mvc.web.core", "t4mvc.web.core\t4mvc.web.core.csproj", "{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.web", "t4mvc.web\t4mvc.web.csproj", "{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "t4mvc.web", "t4mvc.web\t4mvc.web.csproj", "{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
