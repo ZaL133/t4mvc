@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.data", "t4mvc.data\t4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.web.core", "t4mvc.web.core\t4mvc.web.core.csproj", "{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t4mvc.web", "t4mvc.web\t4mvc.web.csproj", "{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{012AC72A-F24E-4F83-B566-8E26BEB5CFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6DB2C8-E536-403D-9B11-8A10E80D9EF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
