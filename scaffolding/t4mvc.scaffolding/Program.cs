@@ -2,6 +2,7 @@
 using t4mvc.scaffolding.EntityDefinition;
 using t4mvc.scaffolding.simpletemplates;
 using t4mvc.scaffolding.templates;
+using t4mvc.scaffolding.templates.viewtemplates;
 
 Settings.RootPath               = @"..\..\..\..\..\src\";
 Settings.ApplicationName        = "t4mvc";
@@ -16,6 +17,8 @@ ScaffoldViewModels(entities);
 ScaffoldViewModelServices(entities);
 ScaffoldAutoMapper(entities);
 ScaffoldUnity(entities);
+// This is a big one
+ScaffoldAdminAreas(entities.Where(x => !x.DontScaffold));
 
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
@@ -124,4 +127,105 @@ static void ScaffoldUnity(IEnumerable<Entity> entities)
     var amText          = am.TransformText();
 
     File.WriteAllText(amFullFileName, amText);
+}
+
+static void ScaffoldAdminAreas(IEnumerable<Entity> entities)
+{
+    foreach(var areaGroup in entities.GroupBy(x => x.Area))
+    {
+        var areaKey = areaGroup.Key;
+        string areaPath;
+        if (areaKey == null)
+        {
+            areaPath = Path.Combine(Settings.RootPath, Settings.ApplicationName + ".web");
+        }
+        else
+        {
+            var folder = Path.Combine(Settings.RootPath, Settings.ApplicationName + ".web", "Areas", areaKey);
+            areaPath = Settings.CreateAndMapPath(folder);
+        }
+
+        // Write Nav
+        var navBar = "<nav>\n\t<ul>\n\t\t<li>" + string.Join("</li>\n\t\t<li>",
+                                                       entities.Select(x => "<a href='~/" + areaKey + "/" + x.Name.ToSchemaName() + "'>" + x.Name + "</a>")
+                                                               .ToArray())
+                                         + "</li>\n\t</ul>\n</nav>";
+
+        Directory.CreateDirectory(areaPath + "\\Views\\Shared");
+        Directory.CreateDirectory(areaPath + "\\Controllers");
+        Directory.CreateDirectory(areaPath + "\\Views");
+
+        if (areaKey != null)
+        {
+            File.WriteAllText(areaPath + "\\Views\\web.config", File.ReadAllText("CustomTemplates\\Web.Config.txt").Replace("{AppName}", Settings.ApplicationName));
+            File.WriteAllText(areaPath + "\\Views\\_ViewStart.cshtml", @"@{
+    Layout = Settings.ViewStart;
+}");
+            File.WriteAllText(areaPath + "\\Views\\Shared\\_Nav.cshtml", navBar);
+            File.WriteAllText(areaPath + "\\" + areaKey + "HostingStartup.cs", $@"
+using Microsoft.AspNetCore.Hosting;
+
+[assembly: HostingStartup(typeof({Settings.ApplicationName}.Web.Areas.{areaKey}.{areaKey}HostingStartup))]
+namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
+{{
+    public class {areaKey}HostingStartup : IHostingStartup
+    {{
+        public void Configure(IWebHostBuilder builder)
+        {{
+            builder.ConfigureServices((context, services) => {{}});
+        }}
+    }}
+}}");
+
+            Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.web.core\\Rendering");
+            File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web.Core\\Rendering\\{Settings.ApplicationName}HtmlHelper.CodeGen.cs",
+                              new htmlhelper(entities).TransformText());
+        }
+
+        foreach (var entity in areaGroup)
+        {
+            // Write Controller
+            File.WriteAllText(areaPath + "\\Controllers\\" + entity.Name.ToSchemaName() + "Controller.CodeGen.cs",
+                          new admincontroller(areaKey, entity).TransformText());
+
+            string viewDirectory;
+            if (areaKey == null)
+            {
+                viewDirectory = $"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Views\\" + entity.Name.ToSchemaName() + "\\CodeGen\\";
+            }
+            else
+            {
+                viewDirectory = $"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Areas\\" + areaKey + "\\Views\\" + entity.Name.ToSchemaName() + "\\CodeGen\\";
+            }
+
+            Directory.CreateDirectory(viewDirectory);
+            // Write Index View
+            File.WriteAllText(viewDirectory + "Index.cshtml",
+                          new adminindexview(areaKey, entity).TransformText());
+
+            //// Write Index View
+            //File.WriteAllText(viewDirectory + "_IndexPartial.cshtml",
+            //              new partialindexview(applicationName, areaKey, entity).TransformText());
+
+            //// Write Table View
+            //File.WriteAllText(viewDirectory + "_TablePartial.cshtml",
+            //              new partialtableview(applicationName, areaKey, entity).TransformText());
+
+            //// Write Edit View
+            //File.WriteAllText(viewDirectory + "Details.cshtml",
+            //              new admindetails(applicationName, areaKey, entity).TransformText());
+
+            //// Write Edit View
+            //if (entity.Layout != null)
+            //{
+            //    File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
+            //              new partialdetails_layout(applicationName, areaKey, entity).TransformText());
+            //}
+            //else
+            //{
+            //    File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
+            //              new partialdetails_nolayout(applicationName, areaKey, entity).TransformText());
+            //}
+        }
+    }
 }

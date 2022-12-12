@@ -1,5 +1,5 @@
-﻿Account
-	Name
+﻿Account | Icon:feather-home | HasNotes
+	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains
 	Address?
 	Address2?
 	City?

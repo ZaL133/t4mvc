@@ -1,0 +1,87 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>><# var schemaName = this.Entity.Name.ToSchemaName(); #>
+@{
+    ViewBag.Title = "<#= this.Entity.PluralFullName ?? (this.Entity.Description + "s") #>";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.PluralName ?? (this.Entity.Description + "s") #>";
+}
+
+<div class="widget-content widget-content-area br-6">
+<!-- Create New -->
+<div style="float:left; margin-top: 8px; margin-right: 16px;">
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default" })
+</div>
+
+<table class="table dataTable" role="grid" id="<#= this.Entity.Name.ToCamelCase() #>-table">
+    <thead>
+        <tr>
+            <th></th>
+<#
+foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>
+            <th><#= field.Name #></th>
+<# } #>
+        </tr>
+    </thead>
+</table>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+			var detailsUrl = "<#= (this.Entity.Area == null ? "" : "/" + this.Entity.Area) #>/<#= this.Entity.Name.ToSchemaName().ToLowerCase() #>/details/";
+            var dTable = $("#<#= this.Entity.Name.ToCamelCase() #>-table").DataTable({
+                "serverSide": true,
+                "ordering": true,
+				stateSave: true,
+                dom: <#= Settings.ApplicationName #>.excelButtonDom,
+                "ajax": {
+                    "url": "/api/get<#= this.Entity.Name.ToCamelCase() #>s?cacheKey=" + new Date().getTime()
+                },
+                columns: [
+                    { data: "<#= this.Entity.KeyField.Name #>" },
+<#
+foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>                    { data: "<#= field.References == null ? field.Name.ToSchemaName() : field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #>" },
+<# } #>
+                ],
+                columnDefs: [
+                    {
+                        targets: 0, render: function (a) {
+                            return '<a href="' + detailsUrl + a + '">@Settings.Icon.DetailsIcon</a>';
+                        }
+                    },
+<#
+foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude).Select((field, ix) => new { field, ix }).Where(x => x.field.RenderFunction != null)) { #>                    { targets: <#= field.ix + 1 #>, render: <#= field.field.RenderFunction #> },
+<# } #>
+                ],
+                order: [
+                    [1, "asc"]
+                ],
+                initComplete: function (settings, json) {
+                    feather.replace();
+                }
+            });
+
+            $("#<#= this.Entity.Name.ToCamelCase() #>-table tbody").on("dblclick", "tr", function () {
+                var data = dTable.row(this).data();
+                window.location.href = detailsUrl + data.<#= this.Entity.KeyField.Name #>;
+            });
+
+            key("esc", <#= Settings.ApplicationName #>.navigateUpOneLevel);
+            key("ctrl+enter", function () {
+                $(dTable.context[0].nTable).find("tbody tr:first a")[0].click();
+            });
+
+            $("#export-excel").click(function () {
+                var params = dTable.ajax.params();
+                var urlParams = $.param(params);
+
+                // The last data table parameters get cached on the server and so they don't need to be sent here
+                window.open("/api/export/<#= this.Entity.Name.ToLowerCase() #>");
+            });
+
+        })
+    </script>
+    <script src="/api/js/<#= this.Entity.Name.ToSchemaName() #>.index"></script>
+}

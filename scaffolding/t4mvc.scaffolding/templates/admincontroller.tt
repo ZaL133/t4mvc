@@ -1,0 +1,122 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #><#@ import namespace="t4mvc.scaffolding.EntityDefinition" #><#
+    var schemaName = this.Entity.Name.ToSchemaName();
+    var uViewModelName= schemaName + "ViewModel";
+    var lViewModelName= uViewModelName.ToCamelCase();
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Microsoft.AspNetCore.Mvc;
+using <#= Settings.ApplicationName #>.web;
+using <#= Settings.ApplicationName #>.web.core.Infrastructure;
+using <#= Settings.ApplicationName #>.web.core.ViewModels;
+using <#= Settings.ApplicationName #>.web.core.ViewModelServices;
+
+namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Admin" #>.Controllers
+{
+    public partial class <#= this.Entity.Name #>Controller : <#= this.Entity.Name #>ControllerBase
+    {
+        public <#= this.Entity.Name #>Controller(I<#= this.Entity.Name #>ViewModelService <#= this.Entity.Name.ToCamelCase() #>ViewModelService, IServiceProvider serviceProvider) : base(<#= this.Entity.Name.ToCamelCase() #>ViewModelService, serviceProvider)
+        {
+        }
+    }
+
+    public class <#= this.Entity.Name #>ControllerBase : <#= Settings.ApplicationName #>Controller
+    {
+        protected readonly I<#= this.Entity.Name #>ViewModelService <#= this.Entity.Name.ToCamelCase() #>ViewModelService;
+        protected readonly IServiceProvider serviceProvider;
+
+        // Contructor
+        public <#= this.Entity.Name #>ControllerBase(I<#= this.Entity.Name #>ViewModelService <#= this.Entity.Name.ToCamelCase() #>ViewModelService, IServiceProvider serviceProvider)
+        {
+            this.<#= this.Entity.Name.ToCamelCase() #>ViewModelService = <#= this.Entity.Name.ToCamelCase() #>ViewModelService;
+            this.serviceProvider        = serviceProvider;
+        }
+
+        // GET: Admin/Manufacturer
+        public virtual ActionResult Index()
+        {
+            return View();
+        }
+
+        public virtual ActionResult Details(<#= this.Entity.KeyField.DataType #>? id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            var viewModel = <#= this.Entity.Name.ToCamelCase() #>ViewModelService.Find(id.Value);
+
+            return View("Details", viewModel);
+        }
+
+        public virtual ActionResult Edit(<#= this.Entity.KeyField.DataType #>? id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            var viewModel = <#= this.Entity.Name.ToCamelCase() #>ViewModelService.Find(id.Value);
+            Current.EditMode = true;
+
+            return View("Details", viewModel);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Edit(<#= uViewModelName #> <#= lViewModelName #>)
+        {
+            ValidateViewModel();
+
+            if (ModelState.IsValid)
+            {
+                <#= lViewModelName #>Service.Save<#= schemaName #>(<#= lViewModelName #>);
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
+                                                  () => Url.Action("Index"));
+            }
+            else
+            {
+				<#= lViewModelName #>Service.Hydrate(<#= lViewModelName #>);
+                Current.EditMode = true;
+                return View("Details", <#= lViewModelName #>);
+            }
+        }
+
+        public virtual ActionResult Create()
+        {
+            Current.EditMode = true;
+			var viewModel = new <#= uViewModelName #>();
+            return View("Details", viewModel);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Create(<#= uViewModelName #> <#= lViewModelName #>)
+        {
+            ValidateViewModel();
+
+            if (ModelState.IsValid)
+            {
+                <#= lViewModelName #>Service.Create<#= schemaName #>(<#= lViewModelName #>);
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
+                                                  () => Url.Action("Index"));
+            }
+            else
+            {
+				<#= lViewModelName #>Service.Hydrate(<#= lViewModelName #>);
+                Current.EditMode = true;
+                return View("Details", <#= lViewModelName #>);
+            }
+        }
+
+        protected virtual void ValidateViewModel()
+        {
+            // custom validation here
+        }
+    }
+}

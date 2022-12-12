@@ -1,0 +1,100 @@
+>@{
+    ViewBag.Title = "Accounts";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Accounts";
+}
+
+<div class="widget-content widget-content-area br-6">
+<!-- Create New -->
+<div style="float:left; margin-top: 8px; margin-right: 16px;">
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default" })
+</div>
+
+<table class="table dataTable" role="grid" id="account-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Address2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th>Fax</th>
+            <th>Website</th>
+            <th>ParentAccountId</th>
+            <th>Lat</th>
+            <th>Lng</th>
+            <th>Description</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+</table>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+			var detailsUrl = "/account/details/";
+            var dTable = $("#account-table").DataTable({
+                "serverSide": true,
+                "ordering": true,
+				stateSave: true,
+                dom: t4mvc.excelButtonDom,
+                "ajax": {
+                    "url": "/api/getaccounts?cacheKey=" + new Date().getTime()
+                },
+                columns: [
+                    { data: "AccountId" },
+                    { data: "Name" },
+                    { data: "Address" },
+                    { data: "Address2" },
+                    { data: "City" },
+                    { data: "State" },
+                    { data: "Zip" },
+                    { data: "Phone" },
+                    { data: "Fax" },
+                    { data: "Website" },
+                    { data: "ParentAccountId" },
+                    { data: "Lat" },
+                    { data: "Lng" },
+                    { data: "Description" },
+                    { data: "Active" },
+                ],
+                columnDefs: [
+                    {
+                        targets: 0, render: function (a) {
+                            return '<a href="' + detailsUrl + a + '">@Settings.Icon.DetailsIcon</a>';
+                        }
+                    },
+                ],
+                order: [
+                    [1, "asc"]
+                ],
+                initComplete: function (settings, json) {
+                    feather.replace();
+                }
+            });
+
+            $("#account-table tbody").on("dblclick", "tr", function () {
+                var data = dTable.row(this).data();
+                window.location.href = detailsUrl + data.AccountId;
+            });
+
+            key("esc", t4mvc.navigateUpOneLevel);
+            key("ctrl+enter", function () {
+                $(dTable.context[0].nTable).find("tbody tr:first a")[0].click();
+            });
+
+            $("#export-excel").click(function () {
+                var params = dTable.ajax.params();
+                var urlParams = $.param(params);
+
+                // The last data table parameters get cached on the server and so they don't need to be sent here
+                window.open("/api/export/account");
+            });
+
+        })
+    </script>
+    <script src="/api/js/Account.index"></script>
+}

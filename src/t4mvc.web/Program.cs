@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using t4mvc.core;
 using t4mvc.data;
 using t4mvc.data.Services;
+using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.ViewModels;
 
 namespace t4mvc.web
@@ -22,7 +23,11 @@ namespace t4mvc.web
 
             builder.Services.AddDefaultIdentity<t4mvcUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<t4DbContext>();
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null)
+                    .AddRazorOptions(options =>
+                    {
+                        options.ViewLocationExpanders.Add(new t4mvcViewLocationExpander());
+                    });
 
             // Add automapper
             var mappingConfig = new MapperConfiguration(mc =>
@@ -45,6 +50,8 @@ namespace t4mvc.web
             ServiceConfig.AddCodeGen(builder.Services);
 
             var app = builder.Build();
+
+            Current.Configure(app.Services);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

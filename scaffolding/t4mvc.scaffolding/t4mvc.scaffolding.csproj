@@ -22,6 +22,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>app_identityuser.cs</LastGenOutput>
     </None>
+    <None Update="templates\admincontroller.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>admincontroller.cs</LastGenOutput>
+    </None>
     <None Update="templates\automapper.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>automapper.cs</LastGenOutput>
@@ -42,6 +46,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityviewmodel.cs</LastGenOutput>
     </None>
+    <None Update="templates\htmlhelper.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>htmlhelper.cs</LastGenOutput>
+    </None>
     <None Update="templates\unity.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>unity.cs</LastGenOutput>
@@ -49,6 +57,10 @@
     <None Update="templates\viewmodelservice.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>viewmodelservice.cs</LastGenOutput>
+    </None>
+    <None Update="templates\viewtemplates\adminindexview.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>adminindexview.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -61,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>app_identityuser.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\admincontroller.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>admincontroller.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\automapper.cs">
       <DesignTime>True</DesignTime>
@@ -87,6 +104,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>entityviewmodel.tt</DependentUpon>
     </Compile>
+    <Compile Update="templates\htmlhelper.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>htmlhelper.tt</DependentUpon>
+    </Compile>
     <Compile Update="templates\unity.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -96,6 +118,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>viewmodelservice.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewtemplates\adminindexview.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>adminindexview.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
