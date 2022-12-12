@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace t4mvc.data.services
+namespace t4mvc.data.Services
 {
     public interface IContextHelper
     {

@@ -42,7 +42,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(".data.services;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.C" +
+            this.Write(".data.Services;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.C" +
                     "omponentModel.DataAnnotations;\r\nusing System.Linq;\r\n\r\nnamespace ");
             
             #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
@@ -50,7 +50,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(".web.core.viewmodels\r\n{\r\n\tpublic partial class ");
+            this.Write(".web.core.ViewModels\r\n{\r\n\tpublic partial class ");
             
             #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));

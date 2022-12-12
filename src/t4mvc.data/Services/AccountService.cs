@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace t4mvc.data.services
+namespace t4mvc.data.Services
 {
     public partial interface IAccountService
     {

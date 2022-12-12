@@ -42,7 +42,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(".web.core.viewmodels;\r\n\r\nnamespace ");
+            this.Write(".web.core.ViewModels;\r\n\r\nnamespace ");
             
             #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));

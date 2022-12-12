@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using t4mvc.core;
 
-namespace t4mvc.data.services
+namespace t4mvc.data.Services
 {
     public partial interface IUserService
     {

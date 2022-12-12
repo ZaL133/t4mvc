@@ -5,7 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 using AutoMapper;
 using <#= Settings.ApplicationName #>.core;
-using <#= Settings.ApplicationName #>.web.core.viewmodels;
+using <#= Settings.ApplicationName #>.web.core.ViewModels;
 
 namespace <#= Settings.ApplicationName #>.web
 {

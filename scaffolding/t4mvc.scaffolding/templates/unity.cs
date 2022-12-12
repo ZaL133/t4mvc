@@ -50,21 +50,21 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(".data.services;\r\nusing ");
+            this.Write(".data.Services;\r\nusing ");
             
             #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.viewmodels;\r\nusing ");
+            this.Write(".web.core.ViewModels;\r\nusing ");
             
             #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.viewmodelservices;\r\n\r\nnamespace ");
+            this.Write(".web.core.ViewModelServices;\r\n\r\nnamespace ");
             
             #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));

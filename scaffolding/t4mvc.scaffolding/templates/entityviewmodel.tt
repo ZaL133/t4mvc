@@ -3,13 +3,13 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>using <#= Settings.ApplicationName #>.core;
-using <#= Settings.ApplicationName #>.data.services;
+using <#= Settings.ApplicationName #>.data.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace <#= Settings.ApplicationName.ToSchemaName()#>.web.core.viewmodels
+namespace <#= Settings.ApplicationName.ToSchemaName()#>.web.core.ViewModels
 {
 	public partial class <#= this.Entity.Name #>ViewModel
 	{

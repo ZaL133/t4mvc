@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace <#= Settings.ApplicationName #>.data.services
+namespace <#= Settings.ApplicationName #>.data.Services
 {
     public partial interface I<#= this.Entity.Name #>Service
     {

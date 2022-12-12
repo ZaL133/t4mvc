@@ -1,14 +1,14 @@
 using AutoMapper;
 using t4mvc.core;
-using t4mvc.data.services;
+using t4mvc.data.Services;
 using t4mvc.web.core;
 using t4mvc.web.core.Infrastructure;
-using t4mvc.web.core.viewmodels;
+using t4mvc.web.core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace t4mvc.web.core.viewmodelservices
+namespace t4mvc.web.core.ViewModelServices
 {
     public partial interface IAccountViewModelService
     {

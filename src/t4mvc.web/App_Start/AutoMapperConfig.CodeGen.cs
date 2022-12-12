@@ -1,6 +1,6 @@
 using AutoMapper;
 using t4mvc.core;
-using t4mvc.web.core.viewmodels;
+using t4mvc.web.core.ViewModels;
 
 namespace t4mvc.web
 {

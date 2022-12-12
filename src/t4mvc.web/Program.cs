@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using t4mvc.core;
 using t4mvc.data;
-using t4mvc.data.services;
-using t4mvc.web.core.viewmodels;
+using t4mvc.data.Services;
+using t4mvc.web.core.ViewModels;
 
 namespace t4mvc.web
 {

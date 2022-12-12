@@ -5,15 +5,15 @@
 <#@ import namespace="System.Collections.Generic" #><# var applicationName = Settings.ApplicationName.ToSchemaName(); #>
 using AutoMapper;
 using <#= applicationName #>.core;
-using <#= applicationName #>.data.services;
+using <#= applicationName #>.data.Services;
 using <#= applicationName #>.web.core;
 using <#= applicationName #>.web.core.Infrastructure;
-using <#= applicationName #>.web.core.viewmodels;
+using <#= applicationName #>.web.core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace <#= applicationName #>.web.core.viewmodelservices
+namespace <#= applicationName #>.web.core.ViewModelServices
 {
     public partial interface I<#= this.Entity.Name #>ViewModelService
     {

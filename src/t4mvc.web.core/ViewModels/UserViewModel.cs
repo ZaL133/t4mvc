@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace t4mvc.web.core.viewmodels
+namespace t4mvc.web.core.ViewModels
 {
     public class UserViewModel
     {

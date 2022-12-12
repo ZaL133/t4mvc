@@ -43,7 +43,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(".data.services\r\n{\r\n    public partial interface I");
+            this.Write(".data.Services\r\n{\r\n    public partial interface I");
             
             #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));

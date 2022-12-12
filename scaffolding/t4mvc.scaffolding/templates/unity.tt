@@ -6,9 +6,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using <#= Settings.ApplicationName #>.core;
 using <#= Settings.ApplicationName #>.data;
-using <#= Settings.ApplicationName #>.data.services;
-using <#= Settings.ApplicationName #>.web.core.viewmodels;
-using <#= Settings.ApplicationName #>.web.core.viewmodelservices;
+using <#= Settings.ApplicationName #>.data.Services;
+using <#= Settings.ApplicationName #>.web.core.ViewModels;
+using <#= Settings.ApplicationName #>.web.core.ViewModelServices;
 
 namespace <#= Settings.ApplicationName #>.web
 {
