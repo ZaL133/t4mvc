@@ -11,13 +11,9 @@ using <#= applicationName #>.web.core.Infrastructure;
 using <#= applicationName #>.web.core.viewmodels;
 using System;
 using System.Collections.Generic;
-using System.Linq;<#
+using System.Linq;
 
-
-
-#>
-
-namespace <#= applicationName #>.Web.Core.ViewModelServices
+namespace <#= applicationName #>.web.core.viewmodelservices
 {
     public partial interface I<#= this.Entity.Name #>ViewModelService
     {

@@ -7,14 +7,13 @@ using t4mvc.scaffolding.EntityDefinition;
 
 namespace t4mvc.scaffolding.templates
 {
-    public partial class entityviewmodel
+    public partial class automapper
     {
-        public Entity Entity { get; }
+        public IEnumerable<Entity> Entities { get; }
 
-        public entityviewmodel(Entity entity)
+        public automapper(IEnumerable<Entity> entities)
         {
-            this.Entity = entity;
+            this.Entities = entities;
         }
-
     }
 }

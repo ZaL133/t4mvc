@@ -9,7 +9,7 @@ namespace t4mvc.scaffolding.templates
 {
     public partial class dbcontext
     {
-        public IEnumerable<Entity> Entities { get; set; }
+        public IEnumerable<Entity> Entities { get; }
         public dbcontext(IEnumerable<Entity> entities)
         {
             this.Entities = entities;

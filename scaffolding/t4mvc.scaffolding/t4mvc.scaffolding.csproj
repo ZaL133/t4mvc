@@ -22,6 +22,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>app_identityuser.cs</LastGenOutput>
     </None>
+    <None Update="templates\automapper.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>automapper.cs</LastGenOutput>
+    </None>
     <None Update="templates\dataservice.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>dataservice.cs</LastGenOutput>
@@ -38,6 +42,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityviewmodel.cs</LastGenOutput>
     </None>
+    <None Update="templates\unity.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>unity.cs</LastGenOutput>
+    </None>
     <None Update="templates\viewmodelservice.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>viewmodelservice.cs</LastGenOutput>
@@ -53,6 +61,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>app_identityuser.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\automapper.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>automapper.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\dataservice.cs">
       <DesignTime>True</DesignTime>
@@ -73,6 +86,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>entityviewmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\unity.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>unity.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\viewmodelservice.cs">
       <DesignTime>True</DesignTime>

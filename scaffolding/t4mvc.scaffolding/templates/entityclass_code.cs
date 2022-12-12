@@ -9,7 +9,7 @@ namespace t4mvc.scaffolding.templates
 {
     public partial class entityclass
     {
-        public Entity Entity { get; set; }
+        public Entity Entity { get; }
         public entityclass(Entity entity)
         {
             this.Entity = entity;

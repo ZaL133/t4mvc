@@ -7,14 +7,13 @@ using t4mvc.scaffolding.EntityDefinition;
 
 namespace t4mvc.scaffolding.templates
 {
-    public partial class entityviewmodel
+    public partial class unity
     {
-        public Entity Entity { get; }
-
-        public entityviewmodel(Entity entity)
+        public unity(IEnumerable<Entity> entities)
         {
-            this.Entity = entity;
+            Entities = entities;
         }
 
+        public IEnumerable<Entity> Entities { get; }
     }
 }

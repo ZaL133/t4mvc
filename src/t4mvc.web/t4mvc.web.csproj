@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="App_Start\" />
   </ItemGroup>
 
 </Project>

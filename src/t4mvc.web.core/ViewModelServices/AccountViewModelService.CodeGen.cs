@@ -7,7 +7,8 @@ using t4mvc.web.core.viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace t4mvc.Web.Core.ViewModelServices
+
+namespace t4mvc.web.core.viewmodelservices
 {
     public partial interface IAccountViewModelService
     {
@@ -107,5 +108,7 @@ namespace t4mvc.Web.Core.ViewModelServices
         {
             var id = accountViewModel.AccountId;
         }
+
+
     }
 }

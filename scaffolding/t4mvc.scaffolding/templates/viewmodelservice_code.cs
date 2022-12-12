@@ -10,7 +10,7 @@ namespace t4mvc.scaffolding.templates
     
     public partial class viewmodelservice
     {
-        public Entity Entity { get; set; }
+        public Entity Entity { get; }
 
         public viewmodelservice(Entity entity)
         {

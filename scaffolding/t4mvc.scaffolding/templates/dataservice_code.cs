@@ -9,7 +9,7 @@ namespace t4mvc.scaffolding.templates
 {
     public partial class dataservice
     {
-        public Entity Entity;
+        public Entity Entity { get; }
 
         public dataservice(Entity entity)
         {

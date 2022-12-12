@@ -14,6 +14,8 @@ ScaffoldModel(entities);
 ScaffoldDataServices(entities);
 ScaffoldViewModels(entities);
 ScaffoldViewModelServices(entities);
+ScaffoldAutoMapper(entities);
+ScaffoldUnity(entities);
 
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
@@ -88,12 +90,38 @@ static void ScaffoldViewModelServices(IEnumerable<Entity> entities)
 
     foreach (var entity in entities)
     {
-        var fileName = $"{entity.Name.ToSchemaName()}ViewModelService.CodeGen.cs";
-        var fullFileName = Path.Combine(viewModelServiceDirectory, fileName);
+        var fileName        = $"{entity.Name.ToSchemaName()}ViewModelService.CodeGen.cs";
+        var fullFileName    = Path.Combine(viewModelServiceDirectory, fileName);
         var vms             = new viewmodelservice(entity);
         var vmsText         = vms.TransformText();
         // Write the poco classes
         File.WriteAllText(fullFileName, vmsText);
     }
 
+}
+
+static void ScaffoldAutoMapper(IEnumerable<Entity> entities)
+{
+    var appStart = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web\\App_Start");
+    Directory.CreateDirectory(appStart);
+
+    var amFileName      = $"AutoMapperConfig.CodeGen.cs";
+    var amFullFileName  = Path.Combine(appStart, amFileName);
+    var am              = new automapper(entities);
+    var amText          = am.TransformText();
+
+    File.WriteAllText(amFullFileName, amText);
+}
+
+static void ScaffoldUnity(IEnumerable<Entity> entities)
+{
+    var appStart = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web\\App_Start");
+    Directory.CreateDirectory(appStart);
+
+    var amFileName      = $"ServiceConfig.CodeGen.cs";
+    var amFullFileName  = Path.Combine(appStart, amFileName);
+    var am              = new unity(entities);
+    var amText          = am.TransformText();
+
+    File.WriteAllText(amFullFileName, amText);
 }

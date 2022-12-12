@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using AutoMapper;
+using <#= Settings.ApplicationName #>.core;
+using <#= Settings.ApplicationName #>.web.core.viewmodels;
+
+namespace <#= Settings.ApplicationName #>.web
+{
+    public static partial class AutoMapperConfig
+    {
+	    public static void AddCodeGen(IMapperConfigurationExpression cfg)
+        {
+<# foreach(var entity in this.Entities.OrderBy(x=> x.Name))
+{ #>		    cfg.CreateMap<<#= entity.Name #>, <#= entity.Name #>ViewModel>().ReverseMap();
+<# } #>
+        }
+    }
+
+    public class <#= Settings.ApplicationName #>MappingProfile : Profile
+    {
+        public <#= Settings.ApplicationName #>MappingProfile()
+        {
+<# foreach(var entity in this.Entities.OrderBy(x=> x.Name))
+{ #>		    CreateMap<<#= entity.Name #>, <#= entity.Name #>ViewModel>().ReverseMap();
+<# } #>
+        }
+    }
+}
