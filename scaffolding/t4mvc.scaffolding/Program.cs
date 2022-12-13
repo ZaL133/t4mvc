@@ -208,9 +208,9 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
             File.WriteAllText(viewDirectory + "_IndexPartial.cshtml",
                           new partialindexview(areaKey, entity).TransformText());
 
-            //// Write Table View
-            //File.WriteAllText(viewDirectory + "_TablePartial.cshtml",
-            //              new partialtableview(applicationName, areaKey, entity).TransformText());
+            // Write Table View
+            File.WriteAllText(viewDirectory + "_TablePartial.cshtml",
+                          new partialtableview(areaKey, entity).TransformText());
 
             //// Write Edit View
             //File.WriteAllText(viewDirectory + "Details.cshtml",
