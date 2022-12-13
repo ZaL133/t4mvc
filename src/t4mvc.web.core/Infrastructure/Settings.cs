@@ -9,6 +9,15 @@ namespace t4mvc.web.core.Infrastructure
 {
     public static class Settings
     {
+        private const string READONLYPREFIX = "prop-readOnly-";
+        public static void SetReadonlyProperty(string propertyName)
+        {
+            if (string.IsNullOrWhiteSpace(propertyName)) throw new ArgumentNullException(nameof(propertyName));
+
+            var key = READONLYPREFIX + propertyName;
+            Current.Context.Items[key] = true;
+        }
+
         public static class Icon
         {
             // Misc icons

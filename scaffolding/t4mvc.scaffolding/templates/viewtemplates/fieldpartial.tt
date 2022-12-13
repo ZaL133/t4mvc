@@ -1,0 +1,25 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<# if (Field.References == null)
+        {
+#>
+                    <!-- <#= (Field.Description ?? Field.Name) #> -->
+                    @Html.LabelFor(model => model.<#=                Field.Name.ToSchemaName() #>)
+                    @Html.t4mvcEditorFor(model => model.<#=                Field.Name.ToSchemaName() #>, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.<#=                Field.Name.ToSchemaName() #>, "", new { @class = "text-danger" })
+<#
+
+        }
+        else
+        {
+#>
+                    <!-- <#= (Field.Description ?? Field.Name) #> -->
+                    @Html.LabelFor(model => model.<#=                Field.Name.ToSchemaName() #>)
+                    @Html.Select2EditorFor(x => x.<#= Field.Name.ToSchemaName() #>, x => x.<#= Field.Name.ToSchemaName() #>, x => x.<#= Field.Name.ToSchemaName() + Field.References.NameField.Name.ToSchemaName() #>)
+                    @Html.ValidationMessageFor(model => model.<#=                Field.Name.ToSchemaName() #>, "", new { @class = "text-danger" })
+<#
+
+        }#>

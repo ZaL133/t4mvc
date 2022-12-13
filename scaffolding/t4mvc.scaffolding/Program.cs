@@ -212,21 +212,21 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
             File.WriteAllText(viewDirectory + "_TablePartial.cshtml",
                           new partialtableview(areaKey, entity).TransformText());
 
-            //// Write Edit View
-            //File.WriteAllText(viewDirectory + "Details.cshtml",
-            //              new admindetails(applicationName, areaKey, entity).TransformText());
+            // Write Edit View
+            File.WriteAllText(viewDirectory + "Details.cshtml",
+                          new admindetails(areaKey, entity).TransformText());
 
-            //// Write Edit View
-            //if (entity.Layout != null)
-            //{
-            //    File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
-            //              new partialdetails_layout(applicationName, areaKey, entity).TransformText());
-            //}
-            //else
-            //{
-            //    File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
-            //              new partialdetails_nolayout(applicationName, areaKey, entity).TransformText());
-            //}
+            // Write Edit View
+            if (entity.Layout != null)
+            {
+                File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
+                          new partialdetail_layout(areaKey, entity).TransformText());
+            }
+            else
+            {
+                File.WriteAllText(viewDirectory + "_DetailsPartial.cshtml",
+                          new partialdetail_nolayout(areaKey, entity).TransformText());
+            }
         }
     }
 }

@@ -1,0 +1,98 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
+<# var schemaName = this.Entity.Name.ToSchemaName(); #><#
+var hasNotes = this.Entity.HasNotes;
+#>
+@model <#= schemaName #>ViewModel
+@{
+    ViewBag.Title = "<#= this.Entity.Description #> Details";<# if (this.Entity.NameField != null) { #>
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.Name #> / " + Model.<#= this.Entity.NameField.Name.ToSchemaName() #>;<# } else { #>
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.Name #>";<# } #>
+}
+@section css {
+    <link rel="stylesheet" href="/api/css/<#= this.Entity.Name.ToSchemaName() #>.details" />
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+
+        <!-- Column 1 -->
+        <div class="<#= (hasNotes) ? "col-xl-8 col-md-8 col-sm-12 col-12" : "col-xl-12 col-md-12 col-sm-12 col-12" #>">
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.<#= this.Entity.KeyField.Name #>)
+
+            <!-- Details -->
+            <div class="layout-spacing col-xl-12 col-md-12 col-sm-12 col-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-content widget-content-area border-top-tab">
+
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="borderTop" role="tablist">
+
+                            <!-- Details -->
+                            <li class="nav-item">
+                                <a class="nav-link active" id="border-top-details-tab" data-toggle="tab" href="#border-top-details" role="tab" aria-controls="border-top-details" aria-selected="true">
+                                    Details
+                                </a>
+                            </li>
+<# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); #>
+                            <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-<#= sn #>-tab" data-toggle="tab" href="#border-top-<#= sn #>" role="tab" aria-controls="border-top-<#= sn #>" aria-selected="false">
+                                    <#= (tab.TabText ?? tab.ParentFieldName) #>
+                                </a>
+                            </li><# } #>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+
+                            <!-- Details -->
+                            <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
+                                <partial name="/Views/<#= this.Entity.Name.ToSchemaName() #>/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/<#= this.Entity.Name.ToSchemaName() #>/CodeGen/_DetailsPartial.cshtml" />
+                            </div>
+
+<# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); #>
+                            <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
+                            <div id="border-top-<#= sn #>" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-<#= sn #>-tab">
+                                <partial name="/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
+                            </div><# } #>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+<# if (hasNotes) { #>
+
+        <!-- Column 2 -->
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12">
+            <!-- Notes -->
+            <partial name="~/Views/Partials/NotesHtml.cshtml" model="Model.Notes" />
+        </div> <# } #>
+    </div>
+
+    <!-- Save buttons -->
+    <div class="account-settings-footer">
+        <div class="as-footer-container">
+            <# if (!this.Entity.RawData) { #>@Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
+    <# } #>        <div class="col-10">
+                <# if (!this.Entity.RawData) { #>@Html.EditSaveButton(Url.Action("Edit", new { id = Model.<#= schemaName #>Id}),
+                                     Url.Action("Details", new { id = Model.<#= schemaName #>Id }))
+    <# } #>            @Html.BackCancelButton(Current.ReturnUrl ?? Url.Action("Index"))
+        </div>
+    </div>
+</div>
+}
+
+<# if (hasNotes) { #>
+@section scripts {
+    <partial name="~/Views/Partials/NotesJs.cshtml" model="new grm.Web.Core.Models.NoteDefinition() { Id = Model.<#= this.Entity.KeyField.Name #>, KeyField = nameof(Model.<#= this.Entity.KeyField.Name #>) };" />
+    <script src="/api/js/<#= this.Entity.Name.ToSchemaName() #>.details"></script>
+} <# } #>

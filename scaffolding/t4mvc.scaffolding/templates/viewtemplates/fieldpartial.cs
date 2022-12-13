@@ -18,9 +18,9 @@ namespace t4mvc.scaffolding.templates.viewtemplates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+    #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class adminindexview : adminindexviewBase
+    public partial class fieldpartial : fieldpartialBase
     {
 #line hidden
         /// <summary>
@@ -29,225 +29,105 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- var schemaName = this.Entity.Name.ToSchemaName(); 
-            
-            #line default
-            #line hidden
-            this.Write("@{\r\n    ViewBag.Title = \"");
-            
-            #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralFullName ?? (this.Entity.Description + "s")));
-            
-            #line default
-            #line hidden
-            this.Write("\";\r\n\tViewBag.HtmlTitle = Settings.Icon.GetIcon26(\"");
-            
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
-            
-            #line default
-            #line hidden
-            this.Write("\") + \" ");
-            
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName ?? (this.Entity.Description + "s")));
-            
-            #line default
-            #line hidden
-            this.Write(@""";
-}
+            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+ if (Field.References == null)
+        {
 
-<div class=""widget-content widget-content-area br-6"">
-<!-- Create New -->
-<div style=""float:left; margin-top: 8px; margin-right: 16px;"">
-    @Html.ActionLink(""Create"", ""Create"", new { }, new { @class = ""btn btn-default"" })
-</div>
+            
+            #line default
+            #line hidden
+            this.Write("                    <!-- ");
+            
+            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture((Field.Description ?? Field.Name)));
+            
+            #line default
+            #line hidden
+            this.Write(" -->\r\n                    @Html.LabelFor(model => model.");
+            
+            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n                    @Html.t4mvcEditorFor(model => model.");
+            
+            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", new { htmlAttributes = new { @class = \"form-control\" } })\r\n                    " +
+                    "@Html.ValidationMessageFor(model => model.");
+            
+            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", \"\", new { @class = \"text-danger\" })\r\n");
+            
+            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
 
-<table class=""table dataTable"" role=""grid"" id=""");
-            
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-table\">\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n");
-            
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
 
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
-            
-            #line default
-            #line hidden
-            this.Write("            <th>");
-            
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
-            
-            #line default
-            #line hidden
-            this.Write("</th>\r\n");
-            
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("        </tr>\r\n    </thead>\r\n</table>\r\n</div>\r\n\r\n@section scripts {\r\n    <script>" +
-                    "\r\n        $(function () {\r\n\t\t\tvar detailsUrl = \"");
-            
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((this.Entity.Area == null ? "" : "/" + this.Entity.Area)));
-            
-            #line default
-            #line hidden
-            this.Write("/");
-            
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName().ToLowerCase()));
-            
-            #line default
-            #line hidden
-            this.Write("/details/\";\r\n            var dTable = $(\"#");
-            
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-table\").DataTable({\r\n                \"serverSide\": true,\r\n                \"order" +
-                    "ing\": true,\r\n\t\t\t\tstateSave: true,\r\n                dom: ");
-            
-            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
-            
-            #line default
-            #line hidden
-            this.Write(".excelButtonDom,\r\n                \"ajax\": {\r\n                    \"url\": \"/api/get" +
-                    "");
-            
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("s?cacheKey=\" + new Date().getTime()\r\n                },\r\n                columns:" +
-                    " [\r\n                    { data: \"");
-            
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\r\n");
-            
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+        }
+        else
+        {
 
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
             
             #line default
             #line hidden
-            this.Write("                    { data: \"");
+            this.Write("                    <!-- ");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.References == null ? field.Name.ToSchemaName() : field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\r\n");
-            
-            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- } 
+            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture((Field.Description ?? Field.Name)));
             
             #line default
             #line hidden
-            this.Write(@"                ],
-                columnDefs: [
-                    {
-                        targets: 0, render: function (a) {
-                            return '<a href=""' + detailsUrl + a + '"">@Settings.Icon.DetailsIcon</a>';
-                        }
-                    },
-");
+            this.Write(" -->\r\n                    @Html.LabelFor(model => model.");
             
-            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n                    @Html.Select2EditorFor(x => x.");
+            
+            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", x => x.");
+            
+            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", x => x.");
+            
+            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName() + Field.References.NameField.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n                    @Html.ValidationMessageFor(model => model.");
+            
+            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", \"\", new { @class = \"text-danger\" })\r\n");
+            
+            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
 
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude).Select((field, ix) => new { field, ix }).Where(x => x.field.RenderFunction != null)) { 
-            
-            #line default
-            #line hidden
-            this.Write("                    { targets: ");
-            
-            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.ix + 1));
-            
-            #line default
-            #line hidden
-            this.Write(", render: ");
-            
-            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.field.RenderFunction));
-            
-            #line default
-            #line hidden
-            this.Write(" },\r\n");
-            
-            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("                ],\r\n                order: [\r\n                    [1, \"asc\"]\r\n   " +
-                    "             ],\r\n                initComplete: function (settings, json) {\r\n    " +
-                    "                feather.replace();\r\n                }\r\n            });\r\n\r\n      " +
-                    "      $(\"#");
-            
-            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-table tbody\").on(\"dblclick\", \"tr\", function () {\r\n                var data = dTa" +
-                    "ble.row(this).data();\r\n                window.location.href = detailsUrl + data." +
-                    "");
-            
-            #line 68 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n            });\r\n\r\n            key(\"esc\", ");
-            
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
-            
-            #line default
-            #line hidden
-            this.Write(@".navigateUpOneLevel);
-            key(""ctrl+enter"", function () {
-                $(dTable.context[0].nTable).find(""tbody tr:first a"")[0].click();
-            });
 
-            $(""#export-excel"").click(function () {
-                var params = dTable.ajax.params();
-                var urlParams = $.param(params);
-
-                // The last data table parameters get cached on the server and so they don't need to be sent here
-                window.open(""/api/export/");
-            
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToLowerCase()));
+        }
             
             #line default
             #line hidden
-            this.Write("\");\r\n            });\r\n\r\n        })\r\n    </script>\r\n    <script src=\"/api/js/");
-            
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
-            
-            #line default
-            #line hidden
-            this.Write(".index\"></script>\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -259,7 +139,7 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class adminindexviewBase
+    public class fieldpartialBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

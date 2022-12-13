@@ -1,0 +1,44 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>><# var schemaName = this.Entity.Name.ToSchemaName(); #>
+@model <#= schemaName #>ViewModel
+
+                <div class="form-horizontal" style="background-color: white;">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<# foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure))
+    {
+        if (field.References == null)
+        {
+#>
+
+                    <!-- <#= (field.Description ?? field.Name) #> -->
+                    <div class="form-group"<#= field.RenderFunction == null ? "" : " data-render-function='" + field.RenderFunction + "'"#>>
+                        @Html.LabelFor(model => model.<#=                field.Name.ToSchemaName() #>, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.GrmEditorFor(model => model.<#=                field.Name.ToSchemaName() #>, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.<#=                field.Name.ToSchemaName() #>, "", new { @class = "text-danger" })
+                        </div>
+                    </div><#
+
+        }
+        else
+        {
+#>
+
+                    <!-- <#= (field.Description ?? field.Name) #> -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.<#=                field.Name.ToSchemaName() #>, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Select2EditorFor(x => x.<#= field.Name.ToSchemaName() #>, x => x.<#= field.Name.ToSchemaName() #>, x => x.<#= field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #>)
+                            @Html.ValidationMessageFor(model => model.<#=                field.Name.ToSchemaName() #>, "", new { @class = "text-danger" })
+                        </div>
+                    </div><#
+
+        }
+    }
+#>
+
+                </div>
+

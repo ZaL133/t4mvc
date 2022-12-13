@@ -62,6 +62,26 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>adminindexview.cs</LastGenOutput>
     </None>
+    <None Update="templates\viewtemplates\admindetails.tt">
+      <LastGenOutput>admindetails.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="templates\viewtemplates\fieldpartial.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>fieldpartial.cs</LastGenOutput>
+    </None>
+    <None Update="templates\viewtemplates\fieldpartial_horizontal.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>fieldpartial_horizontal.cs</LastGenOutput>
+    </None>
+    <None Update="templates\viewtemplates\partialdetail_layout.tt">
+      <LastGenOutput>partialdetail_layout.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="templates\viewtemplates\partialdetail_nolayout.tt">
+      <LastGenOutput>partialdetail_nolayout.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
     <None Update="templates\viewtemplates\partialtableview.tt">
       <LastGenOutput>partialtableview.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -131,6 +151,31 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>adminindexview.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewtemplates\admindetails.cs">
+      <DependentUpon>admindetails.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="templates\viewtemplates\fieldpartial.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>fieldpartial.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewtemplates\fieldpartial_horizontal.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>fieldpartial_horizontal.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewtemplates\partialdetail_layout.cs">
+      <DependentUpon>partialdetail_layout.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="templates\viewtemplates\partialdetail_nolayout.cs">
+      <DependentUpon>partialdetail_nolayout.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="templates\viewtemplates\partialtableview.cs">
       <DependentUpon>partialtableview.tt</DependentUpon>

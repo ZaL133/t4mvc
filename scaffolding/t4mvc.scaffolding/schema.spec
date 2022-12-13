@@ -1,4 +1,4 @@
-﻿Account | Icon:feather-home | HasNotes
+﻿Account | Icon:feather-home
 	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains
 	Address?
 	Address2?

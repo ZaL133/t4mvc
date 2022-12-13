@@ -1,0 +1,125 @@
+@model AccountViewModel
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-row">                        <div class="form-group col-12">
+                                <!-- Name -->
+                    @Html.LabelFor(model => model.Name)
+                    @Html.t4mvcEditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                        </div>
+                                </div>                    <div class="form-row">                        <div class="form-group col-12">
+                                <!-- ParentAccountId -->
+                    @Html.LabelFor(model => model.ParentAccountId)
+                    @Html.t4mvcEditorFor(model => model.ParentAccountId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ParentAccountId, "", new { @class = "text-danger" })
+
+                        </div>
+                                </div>                    <div class="form-row">                        <div class="form-group col-12">
+                                <!-- Description -->
+                    @Html.LabelFor(model => model.Description)
+                    @Html.t4mvcEditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                        </div>
+                                </div><div class="sections-accordion" id="sections-accordion">
+    <div class="card">
+        <div class="card-header" id="accordion-label-0">
+            <section class="mb-0 mt-0">
+                <div role="menu" class="collapsed" aria-expanded="false" data-toggle="collapse" data-target="#accordion-0" aria-controls="accordion-0">
+                    <i data-feather="map-pin"></i>                    Address
+                    <div class="icons"><i data-feather="chevron-down"></i></div>
+                </div>
+            </section>
+        </div>
+        <div id="accordion-0" class="collapse" aria-labelledby="accordion-label-0">
+            <div class="card-body">
+                <div class="form-row">                        <div class="form-group col-12">
+                                <!-- Address -->
+                    @Html.LabelFor(model => model.Address)
+                    @Html.t4mvcEditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>                <div class="form-row">                        <div class="form-group col-12">
+                                <!-- Address2 -->
+                    @Html.LabelFor(model => model.Address2)
+                    @Html.t4mvcEditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>                <div class="form-row">                        <div class="form-group col-4">
+                                <!-- City -->
+                    @Html.LabelFor(model => model.City)
+                    @Html.t4mvcEditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group col-4">
+                                <!-- State -->
+                    @Html.LabelFor(model => model.State)
+                    @Html.t4mvcEditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group col-4">
+                                <!-- Zip -->
+                    @Html.LabelFor(model => model.Zip)
+                    @Html.t4mvcEditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>                <div class="form-row">                        <div class="form-group col-6">
+                                <!-- Lat -->
+                    @Html.LabelFor(model => model.Lat)
+                    @Html.t4mvcEditorFor(model => model.Lat, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Lat, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group col-6">
+                                <!-- Lng -->
+                    @Html.LabelFor(model => model.Lng)
+                    @Html.t4mvcEditorFor(model => model.Lng, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Lng, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="accordion-label-1">
+            <section class="mb-0 mt-0">
+                <div role="menu" class="collapsed" aria-expanded="false" data-toggle="collapse" data-target="#accordion-1" aria-controls="accordion-1">
+                    <i data-feather="phone-call"></i>                    Contact Info
+                    <div class="icons"><i data-feather="chevron-down"></i></div>
+                </div>
+            </section>
+        </div>
+        <div id="accordion-1" class="collapse" aria-labelledby="accordion-label-1">
+            <div class="card-body">
+                <div class="form-row">                        <div class="form-group col-6">
+                                <!-- Phone -->
+                    @Html.LabelFor(model => model.Phone)
+                    @Html.t4mvcEditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group col-6">
+                                <!-- Fax -->
+                    @Html.LabelFor(model => model.Fax)
+                    @Html.t4mvcEditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>                <div class="form-row">                        <div class="form-group col-12">
+                                <!-- Website -->
+                    @Html.LabelFor(model => model.Website)
+                    @Html.t4mvcEditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+
+                        </div>
+                </div>            </div>
+        </div>
+    </div>
+</div>

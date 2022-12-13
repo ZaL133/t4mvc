@@ -1,0 +1,64 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); #>
+@model <#= schemaName #>ViewModel
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<# foreach(var row in this.Entity.Layout.Rows)
+    {
+#>
+                    <div class="form-row"><#
+        foreach(var layoutField in row.Fields)
+        {
+            #>
+                        <div class="form-group col-<#= layoutField.Columns #>">
+            <#= new fieldpartial(layoutField.Field, layoutField.Columns).TransformText() #>
+                        </div>
+            <#
+        }
+#>
+                    </div><#
+    }
+#>
+<div class="sections-accordion" id="sections-accordion">
+<# int i = 0; foreach(var section in this.Entity.Layout.Sections)
+    {
+#>
+    <div class="card">
+        <div class="card-header" id="accordion-label-<#= i #>">
+            <section class="mb-0 mt-0">
+                <div role="menu" <# if (!section.Expanded) { #>class="collapsed" aria-expanded="false"<# }#> data-toggle="collapse" data-target="#accordion-<#= i #>" aria-controls="accordion-<#= i #>">
+                    <# if (section.Icon != null) { #><i data-feather="<#= section.Icon#>"></i><# } #>
+                    <#= section.Title #>
+                    <div class="icons"><i data-feather="chevron-down"></i></div>
+                </div>
+            </section>
+        </div>
+        <div id="accordion-<#= i #>" class="collapse<# if (section.Expanded) { #> show<# } #>" aria-labelledby="accordion-label-<#= i #>">
+            <div class="card-body">
+<#
+    foreach(var row in section.Rows) {
+#>
+                <div class="form-row"><#
+        foreach(var layoutField in row.Fields)
+        {
+            #>
+                        <div class="form-group col-<#= layoutField.Columns #>">
+            <#= new fieldpartial(layoutField.Field, layoutField.Columns).TransformText() #>
+                        </div>
+<#
+        }
+#>
+                </div><#
+    }
+#>
+            </div>
+        </div>
+    </div>
+<# i++;
+    }
+#>
+</div>

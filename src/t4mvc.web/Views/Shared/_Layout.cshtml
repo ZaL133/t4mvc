@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/t4mvc.web.styles.css" asp-append-version="true" />
+    @RenderSection("css", required: false)
+    @RenderSection("head", required: false)
 </head>
 <body>
     <header>
