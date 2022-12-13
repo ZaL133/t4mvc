@@ -77,8 +77,8 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             #line default
             #line hidden
             this.Write(", htmlAttributes: new { @class = \"control-label col-md-2\" })\r\n                   " +
-                    "     <div class=\"col-md-10\">\r\n                            @Html.GrmEditorFor(mod" +
-                    "el => model.");
+                    "     <div class=\"col-md-10\">\r\n                            @Html.t4mvcEditorFor(m" +
+                    "odel => model.");
             
             #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));

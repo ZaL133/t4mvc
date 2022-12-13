@@ -11,8 +11,10 @@ using log4net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
+using t4mvc.web.core.Models;
 
 namespace t4mvc.web.core.Infrastructure
 {
@@ -24,6 +26,8 @@ namespace t4mvc.web.core.Infrastructure
         private static IHttpContextAccessor httpContextAccessor;
 
         public static IMapper Mapper { get; set; }
+
+        private static IMemoryCache memoryCache;
         private static ILog logger = LogManager.GetLogger(typeof(t4mvc.web.core.Infrastructure.Current));
         public static ILog Logger => logger;
 
@@ -32,6 +36,7 @@ namespace t4mvc.web.core.Infrastructure
         {
             httpContextAccessor     = serviceProvider.GetService<IHttpContextAccessor>();
             Mapper                  = serviceProvider.GetService<IMapper>();
+            memoryCache             = serviceProvider.GetService<IMemoryCache>();
         }
 
         public static HttpContext Context
@@ -133,6 +138,32 @@ namespace t4mvc.web.core.Infrastructure
             }
 
             throw new ArgumentException("Action not found");
+        }
+
+        private static string GetDataTableParametersKey(string apiMethod, string cacheKey)
+        {
+            var userId = Current.UserId;
+            var result = $"{userId}-{apiMethod}-{cacheKey}-dataTables-key";
+            return result;
+        }
+        public static DataTablesRequestBase GetDataTablesParameters(string apiMethod, string cacheKey)
+        {
+            var key = GetDataTableParametersKey(apiMethod, cacheKey);
+            var cache = memoryCache;
+            return cache.Get(key) as DataTablesRequestBase;
+        }
+
+        public static DataTablesRequestBase GetMaxLengthDataTablesParameters(string apiMethod, string cacheKey)
+        {
+            var rv = GetDataTablesParameters(apiMethod, cacheKey);
+            if (rv != null) rv.Length = Settings.DATATABLEMAXLENGTH;
+            return rv;
+        }
+        public static void SetDataTablesParameters(string apiMethod, string cacheKey, DataTablesRequestBase request)
+        {
+            var key = GetDataTableParametersKey(apiMethod, cacheKey);
+            var cache = memoryCache;
+            cache.Set(key, request, TimeSpan.FromMinutes(30));
         }
     }
 

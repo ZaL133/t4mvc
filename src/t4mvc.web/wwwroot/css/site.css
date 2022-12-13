@@ -18,5 +18,19 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: linear-gradient(#fff, #efefef);
 }
+
+.index-table {
+    cursor: pointer;
+    user-select: none;
+}
+
+.dataTable {
+    width: 100%;
+}
+
+    .dataTable tbody tr td {
+        cursor: pointer;
+    }

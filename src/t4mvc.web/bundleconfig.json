@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "wwwroot/content/css/mainbundle.css",
+    "inputFiles": [
+      "wwwroot/bootstrap/dist/css/bootstrap.min.css",
+
+      // last
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/content/js/mainbundle.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      // add this last
+      "wwwroot/js/site.js"
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "datatables.net@2.1.1",
+      "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "feather-icons@4.29.0",
+      "destination": "wwwroot/lib/feather-icons/"
+    },
+    {
+      "library": "keymaster@1.6.1",
+      "destination": "wwwroot/lib/keymaster/"
+    }
+  ]
+}

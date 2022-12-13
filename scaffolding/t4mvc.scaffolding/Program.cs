@@ -18,6 +18,9 @@ ScaffoldViewModels(entities);
 ScaffoldViewModelServices(entities);
 ScaffoldAutoMapper(entities);
 ScaffoldUnity(entities);
+ScaffoldApiController();
+
+
 // This is a big one
 ScaffoldAdminAreas(entities.Where(x => !x.DontScaffold));
 
@@ -229,4 +232,12 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
             }
         }
     }
+}
+
+void ScaffoldApiController()
+{
+    Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.Web");
+    Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Controllers");
+    File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Controllers\\{Settings.ApplicationName}ApiController.CodeGen.cs",
+                      new apimethodset().TransformText());
 }

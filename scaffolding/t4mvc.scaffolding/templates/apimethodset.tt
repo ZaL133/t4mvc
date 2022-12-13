@@ -1,0 +1,110 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using <#= Settings.ApplicationName.ToSchemaName() #>.web.core;
+using <#= Settings.ApplicationName.ToSchemaName() #>.web.core.Infrastructure;
+using <#= Settings.ApplicationName.ToSchemaName() #>.web.core.Models;
+using <#= Settings.ApplicationName.ToSchemaName() #>.web.core.ViewModels;
+using <#= Settings.ApplicationName.ToSchemaName() #>.web.core.ViewModelServices;
+using Microsoft.AspNetCore.Mvc;<#
+var constructorParams = string.Join(",", this.Entities.Select(x => "I" + x.Name + "ViewModelService " + x.Name.ToCamelCase() +"ViewModelService"));#>
+
+namespace <#= Settings.ApplicationName #>.Web.Controllers
+{
+    public partial interface I<#= Settings.ApplicationName #>ApiController
+    {
+<# foreach(var entity in this.Entities) { #>        DataTablesResultsBase Get<#= entity.Name.ToSchemaName() #>s(DataTablesRequestBase request, string cacheKey);
+<# } #>
+    }
+
+    [Route("api")]
+	public partial class <#= Settings.ApplicationName #>ApiController : t4mvcController, I<#= Settings.ApplicationName #>ApiController
+	{
+        IServiceProvider serviceProvider;
+<# foreach(var entity in this.Entities) { #>
+        I<#= entity.Name #>ViewModelService <#= entity.Name.ToCamelCase() #>ViewModelService;
+<# } #>
+
+	public <#= Settings.ApplicationName #>ApiController(IServiceProvider serviceProvider, <#= constructorParams #>)
+    {
+        this.serviceProvider = serviceProvider;<# foreach(var entity in this.Entities) { #>
+        this.<#= entity.Name.ToCamelCase() #>ViewModelService = <#= entity.Name.ToCamelCase() #>ViewModelService;
+<# } #>    }
+
+<# foreach(var entity in this.Entities)
+		{
+		var entityName = entity.Name.ToSchemaName();
+		var entityCamelCase = entityName.ToCamelCase(); #>
+        [Route("get<#= entityName.ToLowerCase() #>s")]
+        public DataTablesResultsBase Get<#= entityName #>s(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(Get<#= entityName #>s), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = <#= entityCamelCase #>ViewModelService.GetAll<#= entity.PluralName.ToSchemaName() #>();
+
+<#
+var searchableFields = entity.Fields.Where(x=> x.IsSearchable);
+if (searchableFields.Count() > 0)
+{
+ #>
+            if (request.Search != null && request.Search.Value != null)
+            {
+                var s = request.Search.Value;
+<# if (entity.HasIntSearchableFields) { #>
+                int i;
+                if (int.TryParse(s, out i))
+                {
+                    queryBase = queryBase.Where(x => <#=                string.Join(" || ", searchableFields.Select(x => $"x.{(x.References == null ? (x.IsNumber ? x.Name.ToSchemaName() + " == i" : x.Name.ToSchemaName() + $".{x.SearchOperator}(s)") : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() + $".{x.SearchOperator}(s)" )}")) #>);
+                }
+                else
+                {
+                    queryBase = queryBase.Where(x => <#=                string.Join(" || ", searchableFields.Where(x => !x.IsNumber).Select(x => $"x.{(x.References == null ? x.Name.ToSchemaName() : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(s)")) #>);
+                }
+<# } else { #>
+                queryBase = queryBase.Where(x => <#=                string.Join(" || ", searchableFields.Select(x => $"x.{(x.References == null ? x.Name.ToSchemaName() : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(s)")) #>);
+<# } #>
+            }
+<# } #>
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
+<# if (entity.NameField != null) { #>
+        // Select2 field
+        [HttpGet]
+        [Route("select2/get<#= entityName.ToLowerCase() #>s")]
+        public IEnumerable<<#= entityName #>ViewModel> Select2<#= entityName #>s(Select2SearchParameter searchParameter)
+        {
+            var records = <#= entityName.ToCamelCase() #>ViewModelService.GetAll<#= entity.PluralName.ToSchemaName() #>();
+
+            if (searchParameter != null && searchParameter.Query != null)
+            {
+                records = records.Where(x => x.<#= entity.NameField.Name.ToSchemaName() #>.StartsWith(searchParameter.Query));
+            }
+
+            return records.ToList();
+        }
+<# } #>
+<#}#>
+
+	}
+}

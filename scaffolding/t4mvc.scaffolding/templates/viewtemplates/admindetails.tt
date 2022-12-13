@@ -93,6 +93,6 @@ var hasNotes = this.Entity.HasNotes;
 
 <# if (hasNotes) { #>
 @section scripts {
-    <partial name="~/Views/Partials/NotesJs.cshtml" model="new grm.Web.Core.Models.NoteDefinition() { Id = Model.<#= this.Entity.KeyField.Name #>, KeyField = nameof(Model.<#= this.Entity.KeyField.Name #>) };" />
+    <partial name="~/Views/Partials/NotesJs.cshtml" model="new t4mvc.Web.Core.Models.NoteDefinition() { Id = Model.<#= this.Entity.KeyField.Name #>, KeyField = nameof(Model.<#= this.Entity.KeyField.Name #>) };" />
     <script src="/api/js/<#= this.Entity.Name.ToSchemaName() #>.details"></script>
 } <# } #>

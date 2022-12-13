@@ -26,6 +26,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>admincontroller.cs</LastGenOutput>
     </None>
+    <None Update="templates\apimethodset.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>apimethodset.cs</LastGenOutput>
+    </None>
     <None Update="templates\automapper.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>automapper.cs</LastGenOutput>
@@ -106,6 +110,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>admincontroller.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\apimethodset.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>apimethodset.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\automapper.cs">
       <DesignTime>True</DesignTime>

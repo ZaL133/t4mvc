@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using t4mvc.web.core.Infrastructure;
+using t4mvc.web.core.Models;
 
 namespace t4mvc.web.core
 {
@@ -81,6 +84,70 @@ namespace t4mvc.web.core
                 return attributes[0].Description;
             else
                 return value.ToString();
+        }
+
+
+        /// <summary>
+        /// Sorts a IQueryable<T> for use with a datatables.net sort parameter
+        /// </summary>
+        public static IQueryable<T> Sort<T>(this IQueryable<T> src, DataTablesRequestBase dtParams)
+        {
+            if (dtParams.Order == null || dtParams.Order.Length == 0)
+                return src;
+
+            IOrderedQueryable<T> result = null;
+            foreach (var sort in dtParams.Order)
+            {
+                // The first pass this is null, meaning it's the first sort. Use OrderBy
+                if (result == null)
+                {
+                    result = src.OrderBy(dtParams.Columns[sort.Column].Data, sort.Dir == "asc");
+                }
+                else // Subsequent passes, use ThenBy to sort by multiple conditions
+                {
+                    result = result.ThenBy(dtParams.Columns[sort.Column].Data, sort.Dir == "asc");
+                }
+            }
+            return result;
+        }
+
+        public static IQueryable<T> Filter<T>(this IQueryable<T> src, DataTablesRequestBase dtParams)
+        {
+            var where = src;
+            foreach (var filter in dtParams.Columns.Where(x => !string.IsNullOrWhiteSpace(x.Search.Value) && x.Search.Value != "null"))
+            {
+                where = where.Where($"{filter.Data} == @0", filter.Search.Value);
+            }
+
+            return where;
+        }
+
+        // sort by text https://stackoverflow.com/a/40572006/972250
+        public static IOrderedQueryable<TSource> OrderBy<TSource>(this IQueryable<TSource> query, string key, bool ascending = true)
+        {
+            var expression = (dynamic)CreateExpression(typeof(TSource), key);
+
+            return ascending
+                ? Queryable.OrderBy(query, expression)
+                : Queryable.OrderByDescending(query, expression);
+        }
+
+        public static IOrderedQueryable<TSource> ThenBy<TSource>(this IOrderedQueryable<TSource> query, string key, bool ascending = true)
+        {
+            var expression = (dynamic)CreateExpression(typeof(TSource), key);
+
+            return ascending
+                ? Queryable.ThenBy(query, expression)
+                : Queryable.ThenByDescending(query, expression);
+        }
+
+        private static LambdaExpression CreateExpression(Type type, string propertyName)
+        {
+            var param = Expression.Parameter(type, "x");
+            Expression body = param;
+            body = Expression.PropertyOrField(body, propertyName);
+
+            return Expression.Lambda(body, param);
         }
     }
 }
