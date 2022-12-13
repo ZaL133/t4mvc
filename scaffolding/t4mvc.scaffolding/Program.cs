@@ -8,8 +8,9 @@ Settings.RootPath               = @"..\..\..\..\..\src\";
 Settings.ApplicationName        = "t4mvc";
 Settings.DbContextName          = "t4DbContext";
 
-var specFile = File.ReadAllText("schema.spec");
-var entities = EntityParser.ParseSpecFile(specFile);
+var specFile        = File.ReadAllText("schema.spec");
+Settings.Entities   = EntityParser.ParseSpecFile(specFile).ToList();
+var entities = Settings.Entities;
 
 ScaffoldModel(entities);
 ScaffoldDataServices(entities);
@@ -203,9 +204,9 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
             File.WriteAllText(viewDirectory + "Index.cshtml",
                           new adminindexview(areaKey, entity).TransformText());
 
-            //// Write Index View
-            //File.WriteAllText(viewDirectory + "_IndexPartial.cshtml",
-            //              new partialindexview(applicationName, areaKey, entity).TransformText());
+            // Write Index View
+            File.WriteAllText(viewDirectory + "_IndexPartial.cshtml",
+                          new partialindexview(areaKey, entity).TransformText());
 
             //// Write Table View
             //File.WriteAllText(viewDirectory + "_TablePartial.cshtml",

@@ -62,6 +62,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>adminindexview.cs</LastGenOutput>
     </None>
+    <None Update="templates\viewtemplates\partialindexview.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>partialindexview.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -123,6 +127,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>adminindexview.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\viewtemplates\partialindexview.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>partialindexview.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

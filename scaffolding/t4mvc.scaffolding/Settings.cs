@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using t4mvc.scaffolding.EntityDefinition;
 
 namespace t4mvc.scaffolding
 {
@@ -12,6 +13,7 @@ namespace t4mvc.scaffolding
         public static string ApplicationName { get; set; }
         public static string DbContextName { get; set; }
         public static string ApplicationUserTypeName => $"{ApplicationName}User";
+        public static List<Entity> Entities { get; set; }
 
 
         public static string CreateAndMapPath(string folder)
