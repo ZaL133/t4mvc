@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 using System.Web;
 using AutoMapper;
 using log4net;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Primitives;
 using t4mvc.web.core.Models;
 
@@ -28,6 +30,7 @@ namespace t4mvc.web.core.Infrastructure
         public static IMapper Mapper { get; set; }
 
         private static IMemoryCache memoryCache;
+        private static IWebHostEnvironment webHostEnvironment;
         private static ILog logger = LogManager.GetLogger(typeof(t4mvc.web.core.Infrastructure.Current));
         public static ILog Logger => logger;
 
@@ -37,6 +40,7 @@ namespace t4mvc.web.core.Infrastructure
             httpContextAccessor     = serviceProvider.GetService<IHttpContextAccessor>();
             Mapper                  = serviceProvider.GetService<IMapper>();
             memoryCache             = serviceProvider.GetService<IMemoryCache>();
+            webHostEnvironment      = serviceProvider.GetService<IWebHostEnvironment>();
         }
 
         public static HttpContext Context
@@ -165,6 +169,12 @@ namespace t4mvc.web.core.Infrastructure
             var cache = memoryCache;
             cache.Set(key, request, TimeSpan.FromMinutes(30));
         }
+
+        public static IFileInfo MapPath(string path)
+        {
+            return webHostEnvironment.WebRootFileProvider.GetFileInfo(path);
+        }
+
     }
 
     public static class HttpContextExtensions
