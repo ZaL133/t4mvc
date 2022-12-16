@@ -22,6 +22,10 @@ namespace t4mvc.web.Controllers
         {
             return View();
         }
+        public IActionResult OpenSource()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -24,6 +24,8 @@ namespace t4mvc.web.core.Infrastructure
             // Misc icons
             public static HtmlString SearchIcon => GetIcon("fa-search");
             public static HtmlString DetailsIcon => GetIcon26("feather-file-text");
+            public static HtmlString FileIcon => GetIcon26("feather-file-text");
+            
 
             private static HtmlString GetIcon(string icon)
             {

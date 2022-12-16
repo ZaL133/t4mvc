@@ -34055,6 +34055,9 @@ $(function () {
 
     // Data table - default options
     $(".t4mvc-data-table").dataTable();
+
+    // Setup feather
+    feather.replace();
 });
 
 t4mvc = (function () {

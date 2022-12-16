@@ -15,7 +15,7 @@ function js() {
 }
 
 function css() {
-    return src(['wwwroot/lib/jquery/dist/jquery.js',
+    return src([
         'wwwroot/lib/bootstrap/dist/css/bootstrap.css',
         // custom
         'wwwroot/css/site.css'])
