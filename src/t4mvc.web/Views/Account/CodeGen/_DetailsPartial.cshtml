@@ -23,17 +23,18 @@
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
                         </div>
-                                </div><div class="sections-accordion" id="sections-accordion">
-    <div class="card">
-        <div class="card-header" id="accordion-label-0">
+                                </div>
+<div class="sections-accordion accordion" id="sections-accordion">
+    <div class="card accordion-item">
+        <div class="card-header accordion-header" id="accordion-label-0">
             <section class="mb-0 mt-0">
-                <div role="menu" class="collapsed" aria-expanded="false" data-toggle="collapse" data-target="#accordion-0" aria-controls="accordion-0">
+                <div role="menu" class="collapsed" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#accordion-0" aria-controls="accordion-0">
                     <i data-feather="map-pin"></i>                    Address
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
-        <div id="accordion-0" class="collapse" aria-labelledby="accordion-label-0">
+        <div id="accordion-0" class="collapse accordion-collapse" aria-labelledby="accordion-label-0">
             <div class="card-body">
                 <div class="form-row">                        <div class="form-group col-12">
                                 <!-- Address -->
@@ -87,16 +88,16 @@
                 </div>            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header" id="accordion-label-1">
+    <div class="card accordion-item">
+        <div class="card-header accordion-header" id="accordion-label-1">
             <section class="mb-0 mt-0">
-                <div role="menu" class="collapsed" aria-expanded="false" data-toggle="collapse" data-target="#accordion-1" aria-controls="accordion-1">
+                <div role="menu" class="collapsed" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#accordion-1" aria-controls="accordion-1">
                     <i data-feather="phone-call"></i>                    Contact Info
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
-        <div id="accordion-1" class="collapse" aria-labelledby="accordion-label-1">
+        <div id="accordion-1" class="collapse accordion-collapse" aria-labelledby="accordion-label-1">
             <div class="card-body">
                 <div class="form-row">                        <div class="form-group col-6">
                                 <!-- Phone -->

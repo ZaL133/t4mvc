@@ -23,21 +23,22 @@
                     </div><#
     }
 #>
-<div class="sections-accordion" id="sections-accordion">
+
+<div class="sections-accordion accordion" id="sections-accordion">
 <# int i = 0; foreach(var section in this.Entity.Layout.Sections)
     {
 #>
-    <div class="card">
-        <div class="card-header" id="accordion-label-<#= i #>">
+    <div class="card accordion-item">
+        <div class="card-header accordion-header" id="accordion-label-<#= i #>">
             <section class="mb-0 mt-0">
-                <div role="menu" <# if (!section.Expanded) { #>class="collapsed" aria-expanded="false"<# }#> data-toggle="collapse" data-target="#accordion-<#= i #>" aria-controls="accordion-<#= i #>">
+                <div role="menu" <# if (!section.Expanded) { #>class="collapsed" aria-expanded="false"<# }#> data-bs-toggle="collapse" data-bs-target="#accordion-<#= i #>" aria-controls="accordion-<#= i #>">
                     <# if (section.Icon != null) { #><i data-feather="<#= section.Icon#>"></i><# } #>
                     <#= section.Title #>
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
-        <div id="accordion-<#= i #>" class="collapse<# if (section.Expanded) { #> show<# } #>" aria-labelledby="accordion-label-<#= i #>">
+        <div id="accordion-<#= i #>" class="collapse accordion-collapse<# if (section.Expanded) { #> show<# } #>" aria-labelledby="accordion-label-<#= i #>">
             <div class="card-body">
 <#
     foreach(var row in section.Rows) {
