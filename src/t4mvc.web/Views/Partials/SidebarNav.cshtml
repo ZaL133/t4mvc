@@ -1,0 +1,35 @@
+﻿<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">t4mvc</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="/crm/account" class="nav-link">
+                <i data-feather="home"></i>
+                Accounts
+            </a>
+        </li>
+        <li>
+            <a href="/crm/contact" class="nav-link">
+                <i data-feather="user"></i>
+                Contacts
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <i data-feather="user"></i>
+            <strong>@User.Identity.Name</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="/Identity/Account/Manage">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><form class="form-inline" action="/Identity/Account/Logout?returnUrl=%2F" method="post">
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8N9RFnAM141Kvpt9_7FKN2kSS6nk7Qxv70PSFvIZUGsfCmIv3tFUN9VpNdywzSFM2M644nu_FchcAUEwJwgx_luhyCW-2XRx1tW_HOT5PsXRHGkD7YmO8GN_rVmh0D_aXDQPHz9U6CoaSute6ZJQo0WcLEERtJyZIdmZVcJnG0l7-XXAwcskMDqtBVbvw7TGwA"></form></li>
+        </ul>
+    </div>
+</div>

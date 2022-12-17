@@ -27,6 +27,7 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="App_Start\" />
+    <Folder Include="wwwroot\img\theme\" />
   </ItemGroup>
 
 </Project>
