@@ -13,6 +13,14 @@
     {
       "library": "keymaster@1.6.1",
       "destination": "wwwroot/lib/keymaster/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/select2/",
+      "files": [
+        "js/select2.js",
+        "css/select2.css"
+      ]
     }
   ]
 }

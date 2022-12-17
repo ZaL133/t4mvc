@@ -108,6 +108,18 @@
         },
     });
 
+    // jQuery config
+    $.ajaxSetup({
+        cache: false,
+        // Handle the request verification token
+        beforeSend: function (request) {
+            var reqVerToken = $("[name='__RequestVerificationToken']").val();
+            if (reqVerToken)
+                request.setRequestHeader("RequestVerificationToken", reqVerToken);
+        }
+    });
+
+    // Client side data table needs some custom configuration
     $(".clientSideExcelButtonDataTable").each(function (ix, elem) {
         var id = elem.id;
         var columnDefs = [];
@@ -126,6 +138,64 @@
             columnDefs: columnDefs
         });
     })
+
+    // Initialize Select2 fields 
+    // Select2 Setup
+    var select2s = $(".t4mvc-select2");
+    select2s.each(function (i, e) {
+        var $e = $(e);
+        var t4mvcApi = $e.attr("data-t4mvc-api"),
+            t4mvcId = $e.attr("data-t4mvc-id") || "id",
+            t4mvcText = $e.attr("data-t4mvc-text") || "text",
+            t4mvcPrefetch = $e.attr("data-t4mvc-prefetch") == "True" || false,
+            process = function (data, t4mvcId, t4mvcText) {
+                return $.map(data, function (item) {
+                    return { id: (t4mvcId ? item[t4mvcId] : item), text: (t4mvcText ? item[t4mvcText] : item) }
+                })
+            },
+            // get the function for processing results. Default to the above, but allow override
+            t4mvcProcess = $e.attr("data-t4mvc-process") ? function (data) {
+                return t4mvc[$e.attr("data-t4mvc-process")](data, t4mvcId, t4mvcText);
+            } : function (data) { return process(data, t4mvcId, t4mvcText); },
+            t4mvcAttachTo = $("#" + $e.attr("data-t4mvc-attach"));
+
+        var defaultSelectOptions = { placeholder: "Please select", selectOnClose: true };
+        if (t4mvcAttachTo.length) defaultSelectOptions["dropdownParent"] = t4mvcAttachTo;
+
+        if (t4mvcPrefetch) {
+            $.ajax({
+                method: "GET",
+                url: t4mvcApi,
+                success: function (data) {
+                    var items = t4mvcProcess(data);
+                    defaultSelectOptions["data"] = items;
+                    $e.select2(defaultSelectOptions);
+                }
+            })
+        }
+        else {
+            defaultSelectOptions["ajax"] = {
+                dataType: "json",
+                delay: 100,
+                width: "100%",
+                method: "GET",
+                data: function (params) {
+                    return {
+                        query: params.term
+                    };
+                },
+                url: t4mvcApi,
+                processResults: function (data) {
+
+                    var processedData = t4mvcProcess(data);
+
+                    return { "results": processedData };
+                }
+            };
+            defaultSelectOptions["minimumInputLength"] = 1;
+            $e.select2(defaultSelectOptions);
+        }
+    });
 
     // Data table - default options
     $(".t4mvc-data-table").dataTable();
