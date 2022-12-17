@@ -41,12 +41,12 @@
 
                             <!-- Details -->
                             <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
-                                <partial name="/Views/Account/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/Account/CodeGen/_DetailsPartial.cshtml" />
+                                <partial name="~/Areas/crm/Views/Account/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/crm/Views/Account/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
                             <!-- Contacts -->
                             <div id="border-top-Contact" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Contact-tab">
-                                <partial name="/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="/Views/Contact/CodeGen/_TablePartial.cshtml" />
+                                <partial name="~/Areas/crm/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_TablePartial.cshtml" />
                             </div>                        </div>
                     </div>
                 </div>

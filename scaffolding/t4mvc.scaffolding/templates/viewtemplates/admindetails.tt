@@ -4,8 +4,9 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
-<# var schemaName = this.Entity.Name.ToSchemaName(); #><#
-var hasNotes = this.Entity.HasNotes;
+<# var schemaName   = this.Entity.Name.ToSchemaName(); #><#
+var hasNotes        = this.Entity.HasNotes;
+var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 #>
 @model <#= schemaName #>ViewModel
 @{
@@ -55,13 +56,13 @@ var hasNotes = this.Entity.HasNotes;
 
                             <!-- Details -->
                             <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
-                                <partial name="/Views/<#= this.Entity.Name.ToSchemaName() #>/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/<#= this.Entity.Name.ToSchemaName() #>/CodeGen/_DetailsPartial.cshtml" />
+                                <partial name="<#= areaPrefix #>/Views/<#= this.Entity.Name.ToSchemaName() #>/_DetailsPartial.cshtml" model="Model" fallback-name="<#= areaPrefix #>/Views/<#= this.Entity.Name.ToSchemaName() #>/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
 <# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); #>
                             <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
                             <div id="border-top-<#= sn #>" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-<#= sn #>-tab">
-                                <partial name="/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
+                                <partial name="<#= areaPrefix #>/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="<#= areaPrefix #>/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
                             </div><# } #>
                         </div>
                     </div>
@@ -72,10 +73,14 @@ var hasNotes = this.Entity.HasNotes;
 <# if (hasNotes) { #>
 
         <!-- Column 2 -->
+        @if (Model.ContactId != default(Guid))
+        {
         <div class="col-xl-4 col-md-4 col-sm-12 col-12">
             <!-- Notes -->
             <partial name="~/Views/Partials/NotesHtml.cshtml" model="Model.Notes" />
-        </div> <# } #>
+        </div> 
+        }
+<# } #>
     </div>
 
     <!-- Save buttons -->

@@ -31,91 +31,92 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         {
             
             #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
- var schemaName = this.Entity.Name.ToSchemaName(); 
+ var schemaName   = this.Entity.Name.ToSchemaName(); 
             
             #line default
             #line hidden
             
             #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
 
-var hasNotes = this.Entity.HasNotes;
+var hasNotes        = this.Entity.HasNotes;
+var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 
             
             #line default
             #line hidden
             this.Write("@model ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
             this.Write("ViewModel\r\n@{\r\n    ViewBag.Title = \"");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Description));
             
             #line default
             #line hidden
             this.Write(" Details\";");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (this.Entity.NameField != null) { 
             
             #line default
             #line hidden
             this.Write("\tViewBag.HtmlTitle = Settings.Icon.GetIcon26(\"");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
             
             #line default
             #line hidden
             this.Write("\") + \" ");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" / \" + Model.");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(";");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write("\tViewBag.HtmlTitle = Settings.Icon.GetIcon26(\"");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
             
             #line default
             #line hidden
             this.Write("\") + \" ");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("\";");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
             #line hidden
             this.Write("}\r\n@section css {\r\n    <link rel=\"stylesheet\" href=\"/api/css/");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
@@ -123,14 +124,14 @@ var hasNotes = this.Entity.HasNotes;
             this.Write(".details\" />\r\n}\r\n\r\n@using (Html.BeginForm())\r\n{\r\n    <div class=\"row\">\r\n\r\n       " +
                     " <!-- Column 1 -->\r\n        <div class=\"");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((hasNotes) ? "col-xl-8 col-md-8 col-sm-12 col-12" : "col-xl-12 col-md-12 col-sm-12 col-12"));
             
             #line default
             #line hidden
             this.Write("\">\r\n\r\n            @Html.AntiForgeryToken()\r\n            @Html.HiddenFor(x => x.");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
@@ -153,14 +154,14 @@ var hasNotes = this.Entity.HasNotes;
                             </li>
 ");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); 
             
             #line default
             #line hidden
             this.Write("                            <!-- ");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((tab.TabText ?? tab.ParentFieldName)));
             
             #line default
@@ -168,35 +169,35 @@ var hasNotes = this.Entity.HasNotes;
             this.Write(" -->\r\n                            <li class=\"nav-item\">\r\n                        " +
                     "        <a class=\"nav-link\" id=\"border-top-");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("-tab\" data-toggle=\"tab\" href=\"#border-top-");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("\" role=\"tab\" aria-controls=\"border-top-");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("\" aria-selected=\"false\">\r\n                                    ");
             
-            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 49 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((tab.TabText ?? tab.ParentFieldName)));
             
             #line default
             #line hidden
             this.Write("\r\n                                </a>\r\n                            </li>");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
@@ -208,72 +209,100 @@ var hasNotes = this.Entity.HasNotes;
 
                             <!-- Details -->
                             <div id=""border-top-details"" class=""tab-pane fade show active"" role=""tabpanel"" aria-labelledby=""border-top-details-tab"">
-                                <partial name=""/Views/");
+                                <partial name=""");
             
-            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            
+            #line default
+            #line hidden
+            this.Write("/Views/");
+            
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("/_DetailsPartial.cshtml\" model=\"Model\" fallback-name=\"/Views/");
+            this.Write("/_DetailsPartial.cshtml\" model=\"Model\" fallback-name=\"");
             
-            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            
+            #line default
+            #line hidden
+            this.Write("/Views/");
+            
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("/CodeGen/_DetailsPartial.cshtml\" />\r\n                            </div>\r\n\r\n");
             
-            #line 61 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); 
             
             #line default
             #line hidden
             this.Write("                            <!-- ");
             
-            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((tab.TabText ?? tab.ParentFieldName)));
             
             #line default
             #line hidden
             this.Write(" -->\r\n                            <div id=\"border-top-");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("\" class=\"tab-pane fade show\" role=\"tabpanel\" aria-labelledby=\"border-top-");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
-            this.Write("-tab\">\r\n                                <partial name=\"/Views/");
+            this.Write("-tab\">\r\n                                <partial name=\"");
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            
+            #line default
+            #line hidden
+            this.Write("/Views/");
+            
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("/_TablePartial.cshtml\" model=\"Model.");
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tab.ParentFieldName));
             
             #line default
             #line hidden
-            this.Write("\" fallback-name=\"/Views/");
+            this.Write("\" fallback-name=\"");
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            
+            #line default
+            #line hidden
+            this.Write("/Views/");
+            
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
             
             #line default
             #line hidden
             this.Write("/CodeGen/_TablePartial.cshtml\" />\r\n                            </div>");
             
-            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
@@ -281,16 +310,23 @@ var hasNotes = this.Entity.HasNotes;
             this.Write("                        </div>\r\n                    </div>\r\n                </div" +
                     ">\r\n            </div>\r\n\r\n        </div>\r\n");
             
-            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 73 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (hasNotes) { 
             
             #line default
             #line hidden
-            this.Write("\r\n        <!-- Column 2 -->\r\n        <div class=\"col-xl-4 col-md-4 col-sm-12 col-" +
-                    "12\">\r\n            <!-- Notes -->\r\n            <partial name=\"~/Views/Partials/No" +
-                    "tesHtml.cshtml\" model=\"Model.Notes\" />\r\n        </div> ");
+            this.Write(@"
+        <!-- Column 2 -->
+        @if (Model.ContactId != default(Guid))
+        {
+        <div class=""col-xl-4 col-md-4 col-sm-12 col-12"">
+            <!-- Notes -->
+            <partial name=""~/Views/Partials/NotesHtml.cshtml"" model=""Model.Notes"" />
+        </div> 
+        }
+");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 83 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
@@ -298,28 +334,28 @@ var hasNotes = this.Entity.HasNotes;
             this.Write("    </div>\r\n\r\n    <!-- Save buttons -->\r\n    <div class=\"account-settings-footer\"" +
                     ">\r\n        <div class=\"as-footer-container\">\r\n            ");
             
-            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (!this.Entity.RawData) { 
             
             #line default
             #line hidden
             this.Write("@Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)\r\n    ");
             
-            #line 85 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 90 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
             #line hidden
             this.Write("        <div class=\"col-10\">\r\n                ");
             
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 91 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (!this.Entity.RawData) { 
             
             #line default
             #line hidden
             this.Write("@Html.EditSaveButton(Url.Action(\"Edit\", new { id = Model.");
             
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 91 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
@@ -327,14 +363,14 @@ var hasNotes = this.Entity.HasNotes;
             this.Write("Id}),\r\n                                     Url.Action(\"Details\", new { id = Mode" +
                     "l.");
             
-            #line 87 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
             this.Write("Id }))\r\n    ");
             
-            #line 88 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default
@@ -342,7 +378,7 @@ var hasNotes = this.Entity.HasNotes;
             this.Write("            @Html.BackCancelButton(Current.ReturnUrl ?? Url.Action(\"Index\"))\r\n   " +
                     "     </div>\r\n    </div>\r\n</div>\r\n}\r\n\r\n");
             
-            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (hasNotes) { 
             
             #line default
@@ -350,28 +386,28 @@ var hasNotes = this.Entity.HasNotes;
             this.Write("@section scripts {\r\n    <partial name=\"~/Views/Partials/NotesJs.cshtml\" model=\"ne" +
                     "w t4mvc.web.core.Models.NoteDefinition() { Id = Model.");
             
-            #line 96 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(", KeyField = nameof(Model.");
             
-            #line 96 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(") };\" />\r\n    <script src=\"/api/js/");
             
-            #line 97 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 102 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(".details\"></script>\r\n} ");
             
-            #line 98 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            #line 103 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 
             
             #line default

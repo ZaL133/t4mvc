@@ -36,7 +36,7 @@
 
                             <!-- Details -->
                             <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
-                                <partial name="/Views/Contact/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/Contact/CodeGen/_DetailsPartial.cshtml" />
+                                <partial name="~/Areas/crm/Views/Contact/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
                         </div>
@@ -47,10 +47,14 @@
         </div>
 
         <!-- Column 2 -->
+        @if (Model.ContactId != default(Guid))
+        {
         <div class="col-xl-4 col-md-4 col-sm-12 col-12">
             <!-- Notes -->
             <partial name="~/Views/Partials/NotesHtml.cshtml" model="Model.Notes" />
-        </div>     </div>
+        </div> 
+        }
+    </div>
 
     <!-- Save buttons -->
     <div class="account-settings-footer">

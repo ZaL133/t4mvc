@@ -1,0 +1,21 @@
+﻿@model NoteDefinition
+<script>
+    $(function () {
+        function saveNote(api) {
+
+            var noteText    = $("#new-note-text").val();
+
+            $.ajax({
+                method:     "POST",
+                url:        api,
+                data:       { @Model.KeyField: '@(Model?.Id)', 
+                                NoteText: noteText },
+                success:    function () { window.location.reload(); },
+                error:      function (msg) { alert(msg); }
+            });
+        }
+
+        // Create
+        $("#save-note").click(function () { saveNote("/api/new-note") });
+    });
+</script>

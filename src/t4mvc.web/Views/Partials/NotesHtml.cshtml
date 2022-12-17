@@ -1,0 +1,68 @@
+﻿@model List<NoteViewModel>
+<div class="statbox widget box box-shadow">
+
+    <div class="widget-header">
+        <div class="row">
+            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4>Notes</h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="widget-content widget-content-area">
+        <div class="no-icons" id="new-note-card">
+            <div class="card">
+                <div class="card-header" id="new-note-heading">
+                    <section class="mb-0 mt-0">
+                        <div role="menu" class="collapsed" data-toggle="collapse" data-target="#noIconAccordionOne" aria-expanded="true" aria-controls="noIconAccordionOne">
+                            <a><i data-feather="plus"></i> New Note</a>
+                        </div>
+                    </section>
+                </div>
+                <div id="noIconAccordionOne" class="collapse" aria-labelledby="new-note-heading" data-parent="#new-note-card" style="">
+                    <div class="card-body">
+                        <textarea name="NoteText" data-grm-wysiwyg style="width: 100%;" id="new-note-text"></textarea>
+                        <br />
+                        <div class="btn btn-success" id="save-note">Save</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-icons" id="previous-notes-card">
+            <div class="card">
+                <div class="card-header" id="previous-notes-heading">
+                    <section class="mb-0 mt-0">
+                        <div role="menu" class="" data-toggle="collapse" data-target="#noIconAccordionTwo" aria-expanded="true" aria-controls="noIconAccordionTwo">
+                            Previous Notes
+                        </div>
+                    </section>
+                </div>
+                <div id="noIconAccordionTwo" class="collapse show" aria-labelledby="previous-notes-heading" data-parent="#previous-notes-card" style="">
+                    <div class="card-body">
+                        <div class="timeline-simple">
+                            <div class="timeline-list">
+                                @foreach (var note in Model.OrderByDescending(x => x.ModifyDate))
+                                {
+                                    <div class="timeline-post-content">
+                                        <div class="user-profile">
+                                            <img data-user-thumbnail="@note.ModifyUserId" alt="User Image">
+                                        </div>
+
+                                        <div class="">
+                                            <h4 data-user-fullname='@note.ModifyUserId'></h4>
+                                            <p class="meta-time-date">@(note.ModifyDate.ToShortDateString()) @note.ModifyDate.ToShortTimeString()</p>
+                                            <div class="post-text">
+                                                @Html.Raw(note.NoteText)
+                                            </div>
+                                        </div>
+                                    </div>}
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
