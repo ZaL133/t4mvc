@@ -18,11 +18,15 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveAccount(AccountViewModel accountViewModel);
 		void DeleteAccount(AccountViewModel accountViewModel);
 		void Hydrate(AccountViewModel accountViewModel);
+        List<ContactViewModel> GetContacts(Guid accountId);
+        List<NoteViewModel> GetNotes(Guid accountId);
 
     }
     public partial class AccountViewModelService : IAccountViewModelService
     {
         private readonly IAccountService accountService;
+        private readonly IContactViewModelService contactViewModelService;
+        private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
 
@@ -49,11 +53,13 @@ namespace t4mvc.web.core.ViewModelServices
             return query;
         }
 
-        public AccountViewModelService(IAccountService accountService, IUserService userService,
+        public AccountViewModelService(IAccountService accountService,IContactViewModelService contactViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
                                             IContextHelper contextHelper)
         {
             this.accountService = accountService;
             this.contextHelper      = contextHelper;
+            this.contactViewModelService = contactViewModelService;
+            this.noteViewModelService = noteViewModelService;
         }
 
         public void CreateAccount(AccountViewModel accountViewModel)
@@ -107,8 +113,22 @@ namespace t4mvc.web.core.ViewModelServices
         public void Hydrate(AccountViewModel accountViewModel)
         {
             var id = accountViewModel.AccountId;
+            accountViewModel.Contacts=     GetContacts(id);
+            accountViewModel.Notes=     GetNotes(id);
         }
 
+        public List<ContactViewModel> GetContacts(Guid accountId)
+        {
+            return contactViewModelService.GetAllContacts()
+                        .Where(x => x.AccountId == accountId)
+                        .ToList();
+        }
+        public List<NoteViewModel> GetNotes(Guid accountId)
+        {
+            return noteViewModelService.GetAllNotes()
+                        .Where(x => x.AccountId == accountId)
+                        .ToList();
+        }
 
     }
 }

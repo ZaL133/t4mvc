@@ -7,6 +7,7 @@ using t4mvc.scaffolding.templates.viewtemplates;
 Settings.RootPath               = @"..\..\..\..\..\src\";
 Settings.ApplicationName        = "t4mvc";
 Settings.DbContextName          = "t4DbContext";
+Settings.AreaDictionary         = AreaParser.GetAreaSpect();
 
 var specFile        = File.ReadAllText("schema.spec");
 Settings.Entities   = EntityParser.ParseSpecFile(specFile).ToList();
@@ -145,7 +146,7 @@ static void ScaffoldAdminAreas(IEnumerable<Entity> entities)
         }
         else
         {
-            var folder = Path.Combine(Settings.RootPath, Settings.ApplicationName + ".web", "Areas", areaKey);
+            var folder = Path.Combine(Settings.ApplicationName + ".web", "Areas", areaKey);
             areaPath = Settings.CreateAndMapPath(folder);
         }
 
@@ -161,9 +162,9 @@ static void ScaffoldAdminAreas(IEnumerable<Entity> entities)
 
         if (areaKey != null)
         {
-            File.WriteAllText(areaPath + "\\Views\\web.config", File.ReadAllText("CustomTemplates\\Web.Config.txt").Replace("{AppName}", Settings.ApplicationName));
+            File.WriteAllText(areaPath + "\\Views\\_ViewImports.cshtml", File.ReadAllText("simpletemplates\\_ViewImports.cshtml").Replace("{AppName}", Settings.ApplicationName));
             File.WriteAllText(areaPath + "\\Views\\_ViewStart.cshtml", @"@{
-    Layout = Settings.ViewStart;
+    Layout = ""_Layout"";
 }");
             File.WriteAllText(areaPath + "\\Views\\Shared\\_Nav.cshtml", navBar);
             File.WriteAllText(areaPath + "\\" + areaKey + "HostingStartup.cs", $@"
@@ -180,10 +181,6 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
         }}
     }}
 }}");
-
-            Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.web.core\\Rendering");
-            File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web.Core\\Rendering\\{Settings.ApplicationName}HtmlHelper.CodeGen.cs",
-                              new htmlhelper(entities).TransformText());
         }
 
         foreach (var entity in areaGroup)
@@ -232,6 +229,10 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
             }
         }
     }
+    
+    Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.web.core\\Rendering");
+    File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web.Core\\Rendering\\{Settings.ApplicationName}HtmlHelper.CodeGen.cs",
+                      new htmlhelper(entities).TransformText());
 }
 
 void ScaffoldApiController()

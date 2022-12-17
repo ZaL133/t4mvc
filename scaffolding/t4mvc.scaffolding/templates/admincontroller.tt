@@ -6,6 +6,7 @@
     var schemaName = this.Entity.Name.ToSchemaName();
     var uViewModelName= schemaName + "ViewModel";
     var lViewModelName= uViewModelName.ToCamelCase();
+    var areaName        = this.Entity.Area;
 #>
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ using <#= Settings.ApplicationName #>.web.core.ViewModelServices;
 
 namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Admin" #>.Controllers
 {
-    public partial class <#= this.Entity.Name #>Controller : <#= this.Entity.Name #>ControllerBase
+    <# if (!string.IsNullOrWhiteSpace(areaName)) { #>[Area("<#= areaName #>")]
+    <# } #>public partial class <#= this.Entity.Name #>Controller : <#= this.Entity.Name #>ControllerBase
     {
         public <#= this.Entity.Name #>Controller(I<#= this.Entity.Name #>ViewModelService <#= this.Entity.Name.ToCamelCase() #>ViewModelService, IServiceProvider serviceProvider) : base(<#= this.Entity.Name.ToCamelCase() #>ViewModelService, serviceProvider)
         {

@@ -1,0 +1,70 @@
+@model AccountViewModel
+@{
+    ViewBag.Title = "Account Details";	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Account / " + Model.Name;}
+@section css {
+    <link rel="stylesheet" href="/api/css/Account.details" />
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+
+        <!-- Column 1 -->
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.AccountId)
+
+            <!-- Details -->
+            <div class="layout-spacing col-xl-12 col-md-12 col-sm-12 col-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-content widget-content-area border-top-tab">
+
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="borderTop" role="tablist">
+
+                            <!-- Details -->
+                            <li class="nav-item">
+                                <a class="nav-link active" id="border-top-details-tab" data-toggle="tab" href="#border-top-details" role="tab" aria-controls="border-top-details" aria-selected="true">
+                                    Details
+                                </a>
+                            </li>
+                            <!-- Contacts -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-Contact-tab" data-toggle="tab" href="#border-top-Contact" role="tab" aria-controls="border-top-Contact" aria-selected="false">
+                                    Contacts
+                                </a>
+                            </li>                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+
+                            <!-- Details -->
+                            <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
+                                <partial name="/Views/Account/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/Account/CodeGen/_DetailsPartial.cshtml" />
+                            </div>
+
+                            <!-- Contacts -->
+                            <div id="border-top-Contact" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Contact-tab">
+                                <partial name="/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="/Views/Contact/CodeGen/_TablePartial.cshtml" />
+                            </div>                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Save buttons -->
+    <div class="account-settings-footer">
+        <div class="as-footer-container">
+            @Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
+            <div class="col-10">
+                @Html.EditSaveButton(Url.Action("Edit", new { id = Model.AccountId}),
+                                     Url.Action("Details", new { id = Model.AccountId }))
+                @Html.BackCancelButton(Current.ReturnUrl ?? Url.Action("Index"))
+        </div>
+    </div>
+</div>
+}
+

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using t4mvc.web.core.Annotation;
 
 namespace t4mvc.web.core.ViewModels
 {
@@ -29,5 +30,7 @@ namespace t4mvc.web.core.ViewModels
         public string Description { get; set; }
         public bool? Active { get; set; }
 
+        public List<ContactViewModel> Contacts { get; set; } = new List<ContactViewModel>();
+        public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
 	}
 }

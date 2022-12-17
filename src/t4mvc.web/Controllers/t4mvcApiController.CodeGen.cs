@@ -12,6 +12,8 @@ namespace t4mvc.Web.Controllers
     public partial interface It4mvcApiController
     {
         DataTablesResultsBase GetAccounts(DataTablesRequestBase request, string cacheKey);
+        DataTablesResultsBase GetContacts(DataTablesRequestBase request, string cacheKey);
+        DataTablesResultsBase GetNotes(DataTablesRequestBase request, string cacheKey);
     }
 
     [Route("api")]
@@ -19,10 +21,14 @@ namespace t4mvc.Web.Controllers
 	{
         IServiceProvider serviceProvider;
         IAccountViewModelService accountViewModelService;
+        IContactViewModelService contactViewModelService;
+        INoteViewModelService noteViewModelService;
 
-	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService)
+	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService,IContactViewModelService contactViewModelService,INoteViewModelService noteViewModelService)
     {
         this.serviceProvider = serviceProvider;        this.accountViewModelService = accountViewModelService;
+        this.contactViewModelService = contactViewModelService;
+        this.noteViewModelService = noteViewModelService;
     }
 
         [Route("getaccounts")]
@@ -69,6 +75,75 @@ namespace t4mvc.Web.Controllers
 
             return records.ToList();
         }
+        [Route("getcontacts")]
+        public DataTablesResultsBase GetContacts(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(GetContacts), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = contactViewModelService.GetAllContacts();
+
+            if (request.Search != null && request.Search.Value != null)
+            {
+                var s = request.Search.Value;
+                queryBase = queryBase.Where(x => x.FirstName.StartsWith(s) || x.LastName.StartsWith(s) || x.EmailAddress.StartsWith(s));
+            }
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
+        // Select2 field
+        [HttpGet]
+        [Route("select2/getcontacts")]
+        public IEnumerable<ContactViewModel> Select2Contacts(Select2SearchParameter searchParameter)
+        {
+            var records = contactViewModelService.GetAllContacts();
+
+            if (searchParameter != null && searchParameter.Query != null)
+            {
+                records = records.Where(x => x.EmailAddress.StartsWith(searchParameter.Query));
+            }
+
+            return records.ToList();
+        }
+        [Route("getnotes")]
+        public DataTablesResultsBase GetNotes(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(GetNotes), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = noteViewModelService.GetAllNotes();
+
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
 
 	}
 }

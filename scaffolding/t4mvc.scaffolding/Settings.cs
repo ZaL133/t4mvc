@@ -14,6 +14,7 @@ namespace t4mvc.scaffolding
         public static string DbContextName { get; set; }
         public static string ApplicationUserTypeName => $"{ApplicationName}User";
         public static List<Entity> Entities { get; set; }
+        public static Dictionary<string, Area> AreaDictionary = null;
 
 
         public static string CreateAndMapPath(string folder)

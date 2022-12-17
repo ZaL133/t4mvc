@@ -12,5 +12,7 @@ namespace t4mvc.data
         }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Note> Notes { get; set; }
     }
 }

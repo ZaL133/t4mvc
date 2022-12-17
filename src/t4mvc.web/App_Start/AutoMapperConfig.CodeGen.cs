@@ -9,6 +9,8 @@ namespace t4mvc.web
 	    public static void AddCodeGen(IMapperConfigurationExpression cfg)
         {
 		    cfg.CreateMap<Account, AccountViewModel>().ReverseMap();
+		    cfg.CreateMap<Contact, ContactViewModel>().ReverseMap();
+		    cfg.CreateMap<Note, NoteViewModel>().ReverseMap();
         }
     }
 
@@ -17,6 +19,8 @@ namespace t4mvc.web
         public t4mvcMappingProfile()
         {
 		    CreateMap<Account, AccountViewModel>().ReverseMap();
+		    CreateMap<Contact, ContactViewModel>().ReverseMap();
+		    CreateMap<Note, NoteViewModel>().ReverseMap();
         }
     }
 }

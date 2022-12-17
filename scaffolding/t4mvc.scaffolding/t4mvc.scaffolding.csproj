@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="area.spec">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="layout.spec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -21,6 +24,9 @@
     <None Update="simpletemplates\app_identityuser.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>app_identityuser.cs</LastGenOutput>
+    </None>
+    <None Update="simpletemplates\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="templates\admincontroller.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

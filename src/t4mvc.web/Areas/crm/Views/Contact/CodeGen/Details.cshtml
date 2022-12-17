@@ -1,0 +1,71 @@
+@model ContactViewModel
+@{
+    ViewBag.Title = "Contact Details";	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contact / " + Model.EmailAddress;}
+@section css {
+    <link rel="stylesheet" href="/api/css/Contact.details" />
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+
+        <!-- Column 1 -->
+        <div class="col-xl-8 col-md-8 col-sm-12 col-12">
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.ContactId)
+
+            <!-- Details -->
+            <div class="layout-spacing col-xl-12 col-md-12 col-sm-12 col-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-content widget-content-area border-top-tab">
+
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="borderTop" role="tablist">
+
+                            <!-- Details -->
+                            <li class="nav-item">
+                                <a class="nav-link active" id="border-top-details-tab" data-toggle="tab" href="#border-top-details" role="tab" aria-controls="border-top-details" aria-selected="true">
+                                    Details
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+
+                            <!-- Details -->
+                            <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
+                                <partial name="/Views/Contact/_DetailsPartial.cshtml" model="Model" fallback-name="/Views/Contact/CodeGen/_DetailsPartial.cshtml" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12">
+            <!-- Notes -->
+            <partial name="~/Views/Partials/NotesHtml.cshtml" model="Model.Notes" />
+        </div>     </div>
+
+    <!-- Save buttons -->
+    <div class="account-settings-footer">
+        <div class="as-footer-container">
+            @Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
+            <div class="col-10">
+                @Html.EditSaveButton(Url.Action("Edit", new { id = Model.ContactId}),
+                                     Url.Action("Details", new { id = Model.ContactId }))
+                @Html.BackCancelButton(Current.ReturnUrl ?? Url.Action("Index"))
+        </div>
+    </div>
+</div>
+}
+
+@section scripts {
+    <partial name="~/Views/Partials/NotesJs.cshtml" model="new t4mvc.web.core.Models.NoteDefinition() { Id = Model.ContactId, KeyField = nameof(Model.ContactId) };" />
+    <script src="/api/js/Contact.details"></script>
+} 

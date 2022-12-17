@@ -18,10 +18,25 @@ namespace t4mvc.scaffolding.EntityDefinition
         public bool DontScaffold { get { return Attributes.Contains("DontScaffold"); } }
         public bool HasNotes { get { return Attributes.Contains("HasNotes"); } }
         public string Description { get { return Attributes.SingleOrDefault(x => x.StartsWith("Description"))?.Split('(')[1].TrimEnd(")") ?? Name; } }
-        public string? Area { get { return AreaText?.Replace(" ", ""); } }
-        public string? AreaText { get { return Attributes.SingleOrDefault(x => x.StartsWith("Area:"))?.Split(':')[1]; } }
+        public string Area { get { return AreaText.Replace(" ", ""); } }
+        public string AreaText { get { return Attributes.SingleOrDefault(x => x.StartsWith("Area:"))?.Split(':')[1] ?? "Admin"; } }
+        public Area AreaDefinition
+        {
+            get
+            {
+                if (AreaText != null && Settings.AreaDictionary.ContainsKey(AreaText))
+                    return Settings.AreaDictionary[AreaText];
+                else
+                    return null;
+            }
+        }
         public string Icon { get { return Attributes.SingleOrDefault(x => x.StartsWith("Icon:"))?.Split(':')[1] ?? "fa-building"; } }
+        public string Security { get { return Attributes.SingleOrDefault(x => x.StartsWith("Security("))?.Split('(', ')')[1]; } }
         public bool RawData { get { return Attributes.Any(x => x == "RawData"); } }
+        /// <summary>
+        /// Skip the navigation node
+        /// </summary>
+        public bool NoNav { get { return Attributes.Any(x => x == "NoNav"); } }
         // Layout
         public Layout? Layout { get; set; }
         // A list of the entities which have a foreign key field for this table

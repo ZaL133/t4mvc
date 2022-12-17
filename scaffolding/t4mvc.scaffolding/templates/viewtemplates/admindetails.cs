@@ -348,7 +348,7 @@ var hasNotes = this.Entity.HasNotes;
             #line default
             #line hidden
             this.Write("@section scripts {\r\n    <partial name=\"~/Views/Partials/NotesJs.cshtml\" model=\"ne" +
-                    "w t4mvc.Web.Core.Models.NoteDefinition() { Id = Model.");
+                    "w t4mvc.web.core.Models.NoteDefinition() { Id = Model.");
             
             #line 96 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));

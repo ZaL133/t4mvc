@@ -4,28 +4,33 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using System.Linq;
 using <#= Settings.ApplicationName #>.web.core.Models;
 using <#= Settings.ApplicationName #>.web.core.Infrastructure;
 
-namespace <#= Settings.ApplicationName #>.web.core.Rendering
+
+
+namespace <#= Settings.ApplicationName #>.Web.Core.Rendering
 {
     public static partial class <#= Settings.ApplicationName #>HtmlHelpers
     {
-//	    public static void AddCodeGen(UrlHelper url, SidebarMenuModel model)
-//        {
-//			SidebarMenuLink parent = null; <# foreach(var area in this.Entities.GroupBy(x => new { x.Area, x.AreaText })) { #>
-//
-//			// Area: <#= area.Key.AreaText #>
-//			parent = model.MenuLinks.FirstOrDefault(x => x.Text == "<#= area.Key.AreaText #>");
-//			if (parent == null)
-//			{
-//				parent = new SidebarMenuLink { Url = "/<#= area.Key.Area.ToLower() #>", Text = "<#= area.Key.AreaText #>"};
-//				model.MenuLinks.Add(parent);
-//			}
-<# foreach(var entity in area.OrderBy(x=> x.Name))
-{ #>//            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "<#= entity.Name #>", new { Area = "<#= area.Key.Area #>"}), Icon = Settings.Icon.GetIcon20("<#= entity.Icon #>"), Text = "<#= entity.Description #>"});
-<# } } #>//
-//        }
+	    public static void AddCodeGen(UrlHelper url, SidebarMenuModel model)
+        {
+			SidebarMenuLink parent = null; <# foreach(var area in this.Entities.GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; #>
+
+			// Area: <#= area.Key.AreaText #>
+			parent = model.MenuLinks.FirstOrDefault(x => x.Text == "<#= area.Key.AreaText #>");
+			if (parent == null<# if (areaDefinition != null && areaDefinition.Security != null) { #> && SecurityHelper.HasSecurityLevel(SecurityLevel.<#= areaDefinition.Security #>)<# }#>)
+			{
+				parent = new SidebarMenuLink { Url = "/<#= area.Key.Area.ToLower() #>", Text = "<#= area.Key.AreaText #>"};
+				model.MenuLinks.Add(parent);
+			}
+<# foreach(var entity in area.Where(x => !x.NoNav).OrderBy(x=> x.Name))
+{ #><# if (entity.Security != null) { #>
+            if (SecurityHelper.HasSecurityLevel(SecurityLevel.<#= entity.Security #>))
+    <# }#>            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "<#= entity.Name #>", new { Area = "<#= area.Key.Area #>"}), Icon = Settings.Icon.GetIcon20("<#= entity.Icon #>"), Text = "<#= entity.Description #>"});
+<# } } #>
+        }
     }
 }

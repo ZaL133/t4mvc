@@ -8,24 +8,25 @@ using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.ViewModels;
 using t4mvc.web.core.ViewModelServices;
 
-namespace t4mvc.web.Areas.Admin.Controllers
+namespace t4mvc.web.Areas.crm.Controllers
 {
-    public partial class AccountController : AccountControllerBase
+    [Area("crm")]
+    public partial class ContactController : ContactControllerBase
     {
-        public AccountController(IAccountViewModelService accountViewModelService, IServiceProvider serviceProvider) : base(accountViewModelService, serviceProvider)
+        public ContactController(IContactViewModelService contactViewModelService, IServiceProvider serviceProvider) : base(contactViewModelService, serviceProvider)
         {
         }
     }
 
-    public class AccountControllerBase : t4mvcController
+    public class ContactControllerBase : t4mvcController
     {
-        protected readonly IAccountViewModelService accountViewModelService;
+        protected readonly IContactViewModelService contactViewModelService;
         protected readonly IServiceProvider serviceProvider;
 
         // Contructor
-        public AccountControllerBase(IAccountViewModelService accountViewModelService, IServiceProvider serviceProvider)
+        public ContactControllerBase(IContactViewModelService contactViewModelService, IServiceProvider serviceProvider)
         {
-            this.accountViewModelService = accountViewModelService;
+            this.contactViewModelService = contactViewModelService;
             this.serviceProvider        = serviceProvider;
         }
 
@@ -42,7 +43,7 @@ namespace t4mvc.web.Areas.Admin.Controllers
                 throw new ArgumentNullException(nameof(id));
             }
 
-            var viewModel = accountViewModelService.Find(id.Value);
+            var viewModel = contactViewModelService.Find(id.Value);
 
             return View("Details", viewModel);
         }
@@ -54,54 +55,54 @@ namespace t4mvc.web.Areas.Admin.Controllers
                 throw new ArgumentNullException(nameof(id));
             }
 
-            var viewModel = accountViewModelService.Find(id.Value);
+            var viewModel = contactViewModelService.Find(id.Value);
             Current.EditMode = true;
 
             return View("Details", viewModel);
         }
 
         [HttpPost]
-        public virtual ActionResult Edit(AccountViewModel accountViewModel)
+        public virtual ActionResult Edit(ContactViewModel contactViewModel)
         {
             ValidateViewModel();
 
             if (ModelState.IsValid)
             {
-                accountViewModelService.SaveAccount(accountViewModel);
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
+                contactViewModelService.SaveContact(contactViewModel);
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = contactViewModel.ContactId }),
                                                   () => Url.Action("Index"));
             }
             else
             {
-				accountViewModelService.Hydrate(accountViewModel);
+				contactViewModelService.Hydrate(contactViewModel);
                 Current.EditMode = true;
-                return View("Details", accountViewModel);
+                return View("Details", contactViewModel);
             }
         }
 
         public virtual ActionResult Create()
         {
             Current.EditMode = true;
-			var viewModel = new AccountViewModel();
+			var viewModel = new ContactViewModel();
             return View("Details", viewModel);
         }
 
         [HttpPost]
-        public virtual ActionResult Create(AccountViewModel accountViewModel)
+        public virtual ActionResult Create(ContactViewModel contactViewModel)
         {
             ValidateViewModel();
 
             if (ModelState.IsValid)
             {
-                accountViewModelService.CreateAccount(accountViewModel);
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
+                contactViewModelService.CreateContact(contactViewModel);
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = contactViewModel.ContactId }),
                                                   () => Url.Action("Index"));
             }
             else
             {
-				accountViewModelService.Hydrate(accountViewModel);
+				contactViewModelService.Hydrate(contactViewModel);
                 Current.EditMode = true;
-                return View("Details", accountViewModel);
+                return View("Details", contactViewModel);
             }
         }
 

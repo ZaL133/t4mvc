@@ -1,0 +1,86 @@
+@{
+    ViewBag.Title = "Contacts";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contacts";
+}
+
+<div class="widget-content widget-content-area br-6">
+<!-- Create New -->
+<div style="float:left; margin-top: 8px; margin-right: 16px;">
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default" })
+</div>
+
+<table class="table dataTable" role="grid" id="contact-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>AccountId</th>
+            <th>Email Address</th>
+            <th>Job Title</th>
+            <th>Phone</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+</table>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+			var detailsUrl = "/crm/contact/details/";
+            var dTable = $("#contact-table").DataTable({
+                "serverSide": true,
+                "ordering": true,
+				stateSave: true,
+                dom: t4mvc.excelButtonDom,
+                "ajax": {
+                    "url": "/api/getcontacts?cacheKey=" + new Date().getTime()
+                },
+                columns: [
+                    { data: "ContactId" },
+                    { data: "FirstName" },
+                    { data: "LastName" },
+                    { data: "AccountIdName" },
+                    { data: "EmailAddress" },
+                    { data: "JobTitle" },
+                    { data: "Phone" },
+                    { data: "Active" },
+                ],
+                columnDefs: [
+                    {
+                        targets: 0, render: function (a) {
+                            return '<a href="' + detailsUrl + a + '">@Settings.Icon.DetailsIcon</a>';
+                        }
+                    },
+                ],
+                order: [
+                    [1, "asc"]
+                ],
+                initComplete: function (settings, json) {
+                    feather.replace();
+                }
+            });
+
+            $("#contact-table tbody").on("dblclick", "tr", function () {
+                var data = dTable.row(this).data();
+                window.location.href = detailsUrl + data.ContactId;
+            });
+
+            key("esc", t4mvc.navigateUpOneLevel);
+            key("ctrl+enter", function () {
+                $(dTable.context[0].nTable).find("tbody tr:first a")[0].click();
+            });
+
+            $("#export-excel").click(function () {
+                var params = dTable.ajax.params();
+                var urlParams = $.param(params);
+
+                // The last data table parameters get cached on the server and so they don't need to be sent here
+                window.open("/api/export/contact");
+            });
+
+        })
+    </script>
+    <script src="/api/js/Contact.index"></script>
+}

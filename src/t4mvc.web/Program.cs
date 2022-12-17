@@ -14,7 +14,7 @@ namespace t4mvc.web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<t4DbContext>(options =>
@@ -72,6 +72,9 @@ namespace t4mvc.web
 
             app.UseAuthorization();
 
+            app.MapControllerRoute(
+                name: "MyArea",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

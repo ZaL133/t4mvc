@@ -13,9 +13,11 @@ namespace t4mvc.web.core.Infrastructure
         {
             //{2} is area, {1} is controller,{0} is the action
             string location     = "/Views/{1}/CodeGen/{0}.cshtml";
+            string areaLocation = "/Areas/{2}/Views/{1}/CodeGen/{0}.cshtml";
             var rv              = viewLocations.ToList();
 
             rv.Add(location);
+            rv.Add(areaLocation);
             return rv;
         }
 
