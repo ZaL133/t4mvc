@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,10 +16,11 @@ using System.Text;
 using System.Threading.Tasks;
 using t4mvc.web.core.Annotation;
 using t4mvc.web.core.Infrastructure;
+using t4mvc.web.core.Models;
 
 namespace t4mvc.web.core.Rendering
 {
-    public static class t4mvcHtmlHelper
+    public static partial class t4mvcHtmlHelper
     {
 
         /// <summary>
@@ -296,5 +300,26 @@ namespace t4mvc.web.core.Rendering
             return new HtmlString(result.ToString());
         }
 
+        public static Action<IUrlHelper, SidebarMenuModel> AddCodeGenFunc { get; set; }
+        public static SidebarMenuModel GetSidebarMenuModel(this IHtmlHelper helper)
+        {
+            var url         = Current.UrlHelper;
+            var rv          = new SidebarMenuModel() { MenuLinks = new List<SidebarMenuLink>() };
+
+
+            // To-do fix
+            if (AddCodeGenFunc != null)
+            {
+                AddCodeGenFunc(url, rv);
+            }
+
+            return rv;
+        }
+        public static IHtmlContent SidebarMenu(this IHtmlHelper helper)
+        {
+            var model   = helper.GetSidebarMenuModel();
+
+            return helper.Partial("~/Views/Partials/SidebarNav.cshtml", model);
+        }
     }
 }

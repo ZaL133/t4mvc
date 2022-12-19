@@ -1,9 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using t4mvc.core;
 using t4mvc.data;
 using t4mvc.data.Services;
+using t4mvc.web.App_Start;
 using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.ViewModels;
 
@@ -42,12 +46,20 @@ namespace t4mvc.web
             var mapper = mappingConfig.CreateMapper();
             builder.Services.AddSingleton(mapper);
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
             builder.Services.AddScoped<IContextHelper, ContextHelper>();
             builder.Services.AddScoped<IUserService, UserService>();
 
+            builder.Services.AddScoped<IUrlHelper>(x => {
+                var actionContext   = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+                var factory         = x.GetRequiredService<IUrlHelperFactory>();
+                return factory.GetUrlHelper(actionContext);
+            });
+
             // Add the code generated services 
             ServiceConfig.AddCodeGen(builder.Services);
+
+            // Configure the sidebar
+            SidebarConfig.Configure();
 
             var app = builder.Build();
 

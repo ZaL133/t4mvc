@@ -11,6 +11,7 @@ using log4net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,8 @@ namespace t4mvc.web.core.Infrastructure
                         returnUrlParam  = "ReturnUrl";
 
         private static IHttpContextAccessor httpContextAccessor;
+        private static IActionContextAccessor actionContextAccessor;
+        private static IServiceProvider servicePro;
 
         public static IMapper Mapper { get; set; }
 
@@ -37,7 +40,9 @@ namespace t4mvc.web.core.Infrastructure
 
         public static void Configure(IServiceProvider serviceProvider)
         {
+            servicePro              = serviceProvider;
             httpContextAccessor     = serviceProvider.GetService<IHttpContextAccessor>();
+            actionContextAccessor   = serviceProvider.GetService<IActionContextAccessor>();
             Mapper                  = serviceProvider.GetService<IMapper>();
             memoryCache             = serviceProvider.GetService<IMemoryCache>();
             webHostEnvironment      = serviceProvider.GetService<IWebHostEnvironment>();
@@ -48,6 +53,14 @@ namespace t4mvc.web.core.Infrastructure
             get
             {
                 return httpContextAccessor.HttpContext;
+            }
+        }
+
+        public static IUrlHelper UrlHelper
+        {
+            get
+            {
+                return servicePro.GetService<IUrlHelper>();
             }
         }
 
@@ -95,6 +108,14 @@ namespace t4mvc.web.core.Infrastructure
                 }
 
                 return returnUrl;
+            }
+        }
+
+        public static string RequestUrl
+        {
+            get
+            {
+                return Current.Context.Request.Path.Value;
             }
         }
         public static string ReturnUrlEncoded

@@ -60,6 +60,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>htmlhelper.cs</LastGenOutput>
     </None>
+    <None Update="templates\sidebar_nav.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>sidebar_nav.cs</LastGenOutput>
+    </None>
     <None Update="templates\unity.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>unity.cs</LastGenOutput>
@@ -151,6 +155,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>htmlhelper.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\sidebar_nav.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>sidebar_nav.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\unity.cs">
       <DesignTime>True</DesignTime>

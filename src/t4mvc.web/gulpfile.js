@@ -18,6 +18,7 @@ function js() {
 function css() {
     return src(['wwwroot/lib/bootstrap/dist/css/bootstrap.css',
                 'wwwroot/lib/select2/css/select2.css',
+                'wwwroot/css/dashboard.css',
                 // custom
                 'wwwroot/css/site.css'])
                 .pipe(concat('mainbundle.css'))

@@ -233,6 +233,10 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
     Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.web.core\\Rendering");
     File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web.Core\\Rendering\\{Settings.ApplicationName}HtmlHelper.CodeGen.cs",
                       new htmlhelper(entities).TransformText());
+
+    Directory.CreateDirectory($@"{Settings.RootPath}\{Settings.ApplicationName}.web\Views\Partials");
+    File.WriteAllText($@"{Settings.RootPath}\{Settings.ApplicationName}.web\Views\Partials\SidebarNav.CodeGen.cshtml",
+                      new sidebar_nav().TransformText());
 }
 
 void ScaffoldApiController()

@@ -15,6 +15,7 @@ namespace t4mvc.web.core.Models
         public string Url { get; set; }
         public HtmlString Icon { get; set; }
         public string Text { get; set; }
+        public bool IsActive { get; set; }
 
         public HtmlString GetLink()
         {
