@@ -53,14 +53,14 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("-collapse\">\r\n                    ");
+            this.Write("-collapse\" aria-expanded=\"true\">\r\n                    ");
             
             #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText));
             
             #line default
             #line hidden
-            this.Write("\r\n                </button>\r\n                <div class=\"collapse\" id=\"");
+            this.Write("\r\n                </button>\r\n                <div class=\"collapse show\" id=\"");
             
             #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText.ToSchemaName()));
@@ -82,14 +82,14 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("                @if (SecurityHelper.HasSecurityLevel(SecurityLevel.");
+            this.Write("                @if (User.IsInRole(\"");
             
             #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Security));
             
             #line default
             #line hidden
-            this.Write(")) {\r\n        ");
+            this.Write("\")) {\r\n        ");
             
             #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 

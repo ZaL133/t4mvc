@@ -58,7 +58,7 @@ namespace t4mvc.scaffolding.templates
             #line default
             #line hidden
             this.Write("HtmlHelpers\r\n    {\r\n\t    public static void AddCodeGen(UrlHelper url, SidebarMenu" +
-                    "Model model)\r\n        {\r\n\t\t\tSidebarMenuLink parent = null; ");
+                    "Model model)\r\n        {\r\n//\t\t\tSidebarMenuLink parent = null; ");
             
             #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
  foreach(var area in this.Entities.GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; 
@@ -72,14 +72,14 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\tparent = model.MenuLinks.FirstOrDefault(x => x.Text == \"");
+            this.Write("\r\n//\t\t\tparent = model.MenuLinks.FirstOrDefault(x => x.Text == \"");
             
             #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText));
             
             #line default
             #line hidden
-            this.Write("\");\r\n\t\t\tif (parent == null");
+            this.Write("\");\r\n//\t\t\tif (parent == null");
             
             #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
  if (areaDefinition != null && areaDefinition.Security != null) { 
@@ -100,7 +100,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(")\r\n\t\t\t{\r\n\t\t\t\tparent = new SidebarMenuLink { Url = \"/");
+            this.Write(")\r\n//\t\t\t{\r\n//\t\t\t\tparent = new SidebarMenuLink { Url = \"/");
             
             #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.Area.ToLower()));
@@ -114,7 +114,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("\"};\r\n\t\t\t\tmodel.MenuLinks.Add(parent);\r\n\t\t\t}\r\n");
+            this.Write("\"};\r\n//\t\t\t\tmodel.MenuLinks.Add(parent);\r\n//\t\t\t}\r\n");
             
             #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
  foreach(var entity in area.Where(x => !x.NoNav).OrderBy(x=> x.Name))
@@ -128,22 +128,22 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("            if (SecurityHelper.HasSecurityLevel(SecurityLevel.");
+            this.Write("//            if (SecurityHelper.HasSecurityLevel(SecurityLevel.");
             
             #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Security));
             
             #line default
             #line hidden
-            this.Write("))\r\n    ");
+            this.Write("))\r\n//    ");
             
             #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
  }
             
             #line default
             #line hidden
-            this.Write("            parent.Children.Add(new SidebarMenuLink() { Url = url.Action(\"Index\"," +
-                    " \"");
+            this.Write("//            parent.Children.Add(new SidebarMenuLink() { Url = url.Action(\"Index" +
+                    "\", \"");
             
             #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\htmlhelper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
