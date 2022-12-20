@@ -34,6 +34,17 @@ namespace t4mvc.scaffolding.EntityDefinition
             }
         }
         public string Icon { get { return Attributes.SingleOrDefault(x => x.StartsWith("Icon:"))?.Split(':')[1] ?? "fa-building"; } }
+        public string HtmlIcon { get
+            {
+                // Feather
+                if (Icon.StartsWith("feather-")) return $"<i data-feather=\"{Icon.Replace("feather-", "")}\"></i>";
+
+                // Font-awesome
+                if (Icon.StartsWith("fa-")) return $"<i class=\"{Icon}\"></i>";
+
+                return $"<i class=\"{Icon}\"></i>";
+            } 
+        }
         public string Security { get { return Attributes.SingleOrDefault(x => x.StartsWith("Security("))?.Split('(', ')')[1]; } }
         public bool RawData { get { return Attributes.Any(x => x == "RawData"); } }
         /// <summary>

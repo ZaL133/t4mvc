@@ -11,6 +11,7 @@
 #	- Plural		= Override the plural name. By default plural adds an s to the end. But that doesn't make sense for something like Installed Software (which is already plural) or categoy (categories)
 #	- RawData		= Don't include the audit fields. Also - no edit button
 #	- NoNav			= Don't add to the main navigation bar
+#	- Security		= Adds role based permission checks
 #
 # Viewmodel attributes can be
 #	- TextArea		= [DataType(DataType.MultilineText)]
@@ -32,7 +33,7 @@
 #	- Prefetch		= Only applicable to reference fields. Indicates whether the dropdown list should pre-load data vs using ajax api
 #	- ProcessFunction = Override the function which processes the data into Select2 data format. This is a gxi function with the gxi prefix.
 #	- NoReference	= NEEDS DOCUMENTATION
-Account | Area:crm| Icon:feather-home | Security(Crm)
+Account | Area:crm| Icon:feather-home
 	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains
 	Address?
 	Address2?

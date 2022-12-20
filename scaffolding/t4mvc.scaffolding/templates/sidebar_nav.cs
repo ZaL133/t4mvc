@@ -124,8 +124,14 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("\" asp-action=\"index\" class=\"nav-link\">\r\n                                <i data-f" +
-                    "eather=\"home\"></i>\r\n                                ");
+            this.Write("\" asp-action=\"index\" class=\"nav-link\">\r\n                                ");
+            
+            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.HtmlIcon));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n                                ");
             
             #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));

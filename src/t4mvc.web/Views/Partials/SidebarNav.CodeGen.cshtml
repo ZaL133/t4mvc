@@ -8,17 +8,14 @@
                 </button>
                 <div class="collapse show" id="crm-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-                        @if (User.IsInRole("Crm")) {
                         <li class="nav-item">
                             <a asp-area="crm" asp-controller="Account" asp-action="index" class="nav-link">
                                 <i data-feather="home"></i>
                                 Account
                             </a>
-                        </li>
-                        } 
-                        <li class="nav-item">
+                        </li>                        <li class="nav-item">
                             <a asp-area="crm" asp-controller="Contact" asp-action="index" class="nav-link">
-                                <i data-feather="home"></i>
+                                <i data-feather="user"></i>
                                 Contact
                             </a>
                         </li>        

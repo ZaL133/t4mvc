@@ -19,7 +19,7 @@
         <# } #>
                 <li class="nav-item">
                             <a <# if (area.Key.AreaText != null && area.Key.AreaText != "") { #>asp-area="<#=area.Key.AreaText #>" <# } #>asp-controller="<#= entity.Name.ToSchemaName() #>" asp-action="index" class="nav-link">
-                                <i data-feather="home"></i>
+                                <#= entity.HtmlIcon #>
                                 <#= entity.Name #>
                             </a>
                         </li><# if (entity.Security != null) { 
