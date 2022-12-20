@@ -7,6 +7,8 @@ During the process of building a large application like this, you start to devel
 
 This project is meant to automate the all that repetitive boilerplate work, while still being flexible to any customizations, and encorporating best practices. It's all based on methods and opinions that I developed while working on a large web app. 
 
+The theme is based on the [admin bootstrap example](https://getbootstrap.com/docs/5.0/examples/dashboard/)
+
 ## Steps to build the project
 
 1. Clone the repo
