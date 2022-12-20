@@ -3,24 +3,36 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<ul class="nav nav-pills flex-column mb-auto">
-<# foreach(var area in Settings.Entities.Where(x => !x.DontScaffold && !x.NoNav).GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; #>
-    // Area: <#= area.Key.AreaText #>
-    <li class="mb-1 nav-item">
-        <button class="btn btn-toggle align-items-center rounded collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#<#= area.Key.AreaText.ToSchemaName() #>-collapse">
-            <#= area.Key.AreaText #>
-        </button>
-        <div class="collapse" id="<#= area.Key.AreaText.ToSchemaName() #>-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-<# foreach(var entity in area.Where(x => !x.NoNav).OrderBy(x=> x.Name)) { #><li class="nav-item">
-                    <a <# if (area.Key.AreaText != null && area.Key.AreaText != "") { #>asp-area="<#=area.Key.AreaText #>" <# } #>asp-controller="<#= entity.Name.ToSchemaName() #>" asp-action="index" class="nav-link">
-                        <i data-feather="home"></i>
-                        <#= entity.Name #>
-                    </a>
-                </li>
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="">
+    <div class="position-sticky pt-3 p-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+        <# foreach(var area in Settings.Entities.Where(x => !x.DontScaffold && !x.NoNav).GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; #>
+            <!-- Area: <#= area.Key.AreaText #> -->
+            <li class="mb-1 nav-item">
+                <button class="btn btn-toggle align-items-center rounded collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#<#= area.Key.AreaText.ToSchemaName() #>-collapse">
+                    <#= area.Key.AreaText #>
+                </button>
+                <div class="collapse" id="<#= area.Key.AreaText.ToSchemaName() #>-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+        <# foreach(var entity in area.Where(x => !x.NoNav).OrderBy(x=> x.Name)) { 
+#><# if (entity.Security != null) { #>                @if (SecurityHelper.HasSecurityLevel(SecurityLevel.<#= entity.Security #>)) {
+        <# } #>
+                <li class="nav-item">
+                            <a <# if (area.Key.AreaText != null && area.Key.AreaText != "") { #>asp-area="<#=area.Key.AreaText #>" <# } #>asp-controller="<#= entity.Name.ToSchemaName() #>" asp-action="index" class="nav-link">
+                                <i data-feather="home"></i>
+                                <#= entity.Name #>
+                            </a>
+                        </li><# if (entity.Security != null) { 
+#>
+
+                        } 
 <# } #>
-            </ul>
-        </div>
-    </li>
+        <# } #>
+
+                    </ul>
+                </div>
+            </li>
 <# } #>
-</ul>
+        </ul>
+    </div>
+</nav>
