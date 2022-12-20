@@ -11,7 +11,7 @@ namespace t4mvc.web.App_Start
                 // add anything custom here 
 
                 // Then call the codegen function 
-                t4mvcHtmlHelper.AddCodeGen(helper, sidebarModel);
+                // t4mvcHtmlHelper.AddCodeGen(helper, sidebarModel);
             };
         }
     }

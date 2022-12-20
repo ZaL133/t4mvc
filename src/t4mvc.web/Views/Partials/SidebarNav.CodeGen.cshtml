@@ -1,1 +1,24 @@
-﻿
+<ul class="nav nav-pills flex-column mb-auto">
+    // Area: crm
+    <li class="mb-1 nav-item">
+        <button class="btn btn-toggle align-items-center rounded collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#crm-collapse">
+            crm
+        </button>
+        <div class="collapse" id="crm-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+<li class="nav-item">
+                    <a asp-area="crm" asp-controller="Account" asp-action="index" class="nav-link">
+                        <i data-feather="home"></i>
+                        Account
+                    </a>
+                </li>
+<li class="nav-item">
+                    <a asp-area="crm" asp-controller="Contact" asp-action="index" class="nav-link">
+                        <i data-feather="home"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

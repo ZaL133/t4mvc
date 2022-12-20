@@ -25,8 +25,8 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            @*<partial name="~/Views/Partials/SidebarNav.cshtml" />*@
-            @Html.SidebarMenu()
+            <partial name="~/Views/Partials/SidebarNav.CodeGen.cshtml" />
+            @*@Html.SidebarMenu()*@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 @RenderBody()
             </main>

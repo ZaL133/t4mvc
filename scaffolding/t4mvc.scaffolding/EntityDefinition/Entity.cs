@@ -19,7 +19,10 @@ namespace t4mvc.scaffolding.EntityDefinition
         public bool HasNotes { get { return Attributes.Contains("HasNotes"); } }
         public string Description { get { return Attributes.SingleOrDefault(x => x.StartsWith("Description"))?.Split('(')[1].TrimEnd(")") ?? Name; } }
         public string Area { get { return AreaText.Replace(" ", ""); } }
-        public string AreaText { get { return Attributes.SingleOrDefault(x => x.StartsWith("Area:"))?.Split(':')[1] ?? "Admin"; } }
+        public string AreaText { get {
+                if (DontScaffold) return "";
+                return Attributes.SingleOrDefault(x => x.StartsWith("Area:"))?.Split(':')[1] ?? "Admin"; 
+            } }
         public Area AreaDefinition
         {
             get

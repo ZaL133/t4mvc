@@ -235,8 +235,9 @@ namespace {Settings.ApplicationName}.Web.Areas.{areaKey}
                       new htmlhelper(entities).TransformText());
 
     Directory.CreateDirectory($@"{Settings.RootPath}\{Settings.ApplicationName}.web\Views\Partials");
+    var text = new sidebar_nav().TransformText();
     File.WriteAllText($@"{Settings.RootPath}\{Settings.ApplicationName}.web\Views\Partials\SidebarNav.CodeGen.cshtml",
-                      new sidebar_nav().TransformText());
+                      text);
 }
 
 void ScaffoldApiController()

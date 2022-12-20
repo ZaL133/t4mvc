@@ -7,11 +7,11 @@ using t4mvc.web.core.Infrastructure;
 
 
 
-namespace t4mvc.web.core.Rendering
+namespace t4mvc.Web.Core.Rendering
 {
-    public static partial class t4mvcHtmlHelper
+    public static partial class t4mvcHtmlHelpers
     {
-	    public static void AddCodeGen(IUrlHelper url, SidebarMenuModel model)
+	    public static void AddCodeGen(UrlHelper url, SidebarMenuModel model)
         {
 			SidebarMenuLink parent = null; 
 			// Area: crm
