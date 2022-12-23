@@ -56,8 +56,8 @@
     </div>
 
     <!-- Save buttons -->
-    <div class="account-settings-footer">
-        <div class="as-footer-container">
+    <div class="action-footer">
+        <div class="action-footer-container">
             @Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
             <div class="col-10">
                 @Html.EditSaveButton(Url.Action("Edit", new { id = Model.AccountId}),

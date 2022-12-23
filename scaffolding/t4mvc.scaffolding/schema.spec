@@ -58,7 +58,7 @@ Contact | Area:crm | Icon:feather-user | HasNotes
 	Suffix?		| GridExclude
 	Email Address? | IsIndexed | IsSearchable | KeyField | IsNameField | ViewModelAttributes(Email)
 	Job Title?
-	Phone? | ViewModelAttributes(Phone) | RenderFunction:format-phone
+	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber
 	Fax?		| GridExclude
 	Mobile? | GridExclude | ViewModelAttributes(Phone)
 	Address? | GridExclude

@@ -58,7 +58,7 @@ namespace t4mvc.web.core.Rendering
             return modstamp.HasValue ? new HtmlString($@"
 
                 <div class=""dropup col-2"">
-                    <a href=""#"" class=""dropdown-toggle"" data-toggle=""dropdown"" aria-expanded=""false"" style=""color:white;"" >
+                    <a href=""#"" class=""dropdown-toggle"" data-bs-toggle=""dropdown"" aria-expanded=""false"" style=""color:white;"" >
                         <i data-feather=""info""></i>&nbsp;
                     </a>
                     <div class=""dropdown-menu"" style=""width:100%;"">
