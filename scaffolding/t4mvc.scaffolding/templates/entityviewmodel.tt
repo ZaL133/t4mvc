@@ -23,6 +23,7 @@ namespace <#= Settings.ApplicationName.ToSchemaName()#>.web.core.ViewModels
 				  #>, "<#= field.References.KeyField.Name.ToSchemaName() #>"<#
 				  #>, "<#= field.References.NameField.Name.ToSchemaName() #>"<#
 				  #>, "<#= field.References.Name.ToSchemaName() #>"<#= (field.Prefetch ? " , prefetch : true" : "" )
+				  #><#= (this.Entity.AreaText == null ? "" : ", area : \"" + this.Entity.AreaText + "\"" )
 				  #><#= (field.ProcessFunction == null ? "" : $" , processFunction : \"{field.ProcessFunction}\"" )
 				  #>)]
 <# } if (field.ViewModelAttributes.Count > 0) { foreach(var attrib in field.ViewModelAttributes) {

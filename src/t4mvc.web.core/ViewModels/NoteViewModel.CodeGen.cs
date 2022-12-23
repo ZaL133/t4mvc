@@ -20,10 +20,10 @@ namespace t4mvc.web.core.ViewModels
         [DataType(DataType.MultilineText)]
         [UIHint("t4mvcHtmlTextArea")]
         public string NoteText { get; set; }
-        [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account")]
+        [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "")]
         public Guid? AccountId { get; set; }
         public string AccountIdName { get; set; }
-        [Select2("/api/select2/getcontacts", "ContactId", "EmailAddress", "Contact")]
+        [Select2("/api/select2/getcontacts", "ContactId", "EmailAddress", "Contact", area : "")]
         public Guid? ContactId { get; set; }
         public string ContactIdEmailAddress { get; set; }
 

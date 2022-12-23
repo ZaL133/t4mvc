@@ -19,7 +19,7 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Account")]
-        [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account")]
+        [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "crm")]
         public Guid? AccountId { get; set; }
         public string AccountIdName { get; set; }
         [Display(Name = "Middle")]
