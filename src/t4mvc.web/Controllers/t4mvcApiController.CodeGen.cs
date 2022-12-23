@@ -7,7 +7,7 @@ using t4mvc.web.core.Models;
 using t4mvc.web.core.ViewModels;
 using t4mvc.web.core.ViewModelServices;
 using Microsoft.AspNetCore.Mvc;
-namespace t4mvc.Web.Controllers
+namespace t4mvc.web.Controllers
 {
     public partial interface It4mvcApiController
     {

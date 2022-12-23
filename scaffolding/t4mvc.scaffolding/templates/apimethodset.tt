@@ -14,7 +14,7 @@ using <#= Settings.ApplicationName.ToSchemaName() #>.web.core.ViewModelServices;
 using Microsoft.AspNetCore.Mvc;<#
 var constructorParams = string.Join(",", this.Entities.Select(x => "I" + x.Name + "ViewModelService " + x.Name.ToCamelCase() +"ViewModelService"));#>
 
-namespace <#= Settings.ApplicationName #>.Web.Controllers
+namespace <#= Settings.ApplicationName #>.web.Controllers
 {
     public partial interface I<#= Settings.ApplicationName #>ApiController
     {

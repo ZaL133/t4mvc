@@ -78,7 +78,7 @@ var constructorParams = string.Join(",", this.Entities.Select(x => "I" + x.Name 
             
             #line default
             #line hidden
-            this.Write(".Web.Controllers\r\n{\r\n    public partial interface I");
+            this.Write(".web.Controllers\r\n{\r\n    public partial interface I");
             
             #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
