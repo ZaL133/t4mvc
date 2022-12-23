@@ -51,7 +51,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("                    <div class=\"form-row\">");
+            this.Write("                    <div class=\"row\">");
             
             #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
@@ -205,7 +205,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("                <div class=\"form-row\">");
+            this.Write("                <div class=\"row\">");
             
             #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 

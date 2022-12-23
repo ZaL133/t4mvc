@@ -10,7 +10,7 @@
 <# foreach(var row in this.Entity.Layout.Rows)
     {
 #>
-                    <div class="form-row"><#
+                    <div class="row"><#
         foreach(var layoutField in row.Fields)
         {
             #>
@@ -43,7 +43,7 @@
 <#
     foreach(var row in section.Rows) {
 #>
-                <div class="form-row"><#
+                <div class="row"><#
         foreach(var layoutField in row.Fields)
         {
             #>

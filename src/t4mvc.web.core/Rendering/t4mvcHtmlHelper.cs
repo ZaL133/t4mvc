@@ -59,7 +59,7 @@ namespace t4mvc.web.core.Rendering
 
                 <div class=""dropup col-2"">
                     <a href=""#"" class=""dropdown-toggle"" data-bs-toggle=""dropdown"" aria-expanded=""false"" style=""color:white;"" >
-                        <i data-feather=""info""></i>&nbsp;
+                        <i data-feather=""info""></i>
                     </a>
                     <div class=""dropdown-menu"" style=""width:100%;"">
                         <div class=""card"">

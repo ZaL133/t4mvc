@@ -18,7 +18,6 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
     background: linear-gradient(#fff, #efefef);
 }
 
@@ -60,4 +59,7 @@ body {
 }
 .action-footer .btn-default {
     background-color: #ccc;
+}
+a.dropdown-toggle {
+    text-decoration: none;
 }
