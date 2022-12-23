@@ -42012,19 +42012,40 @@ t4mvc = (function () {
         tzOffset                = new Date().getTimezoneOffset(),
         userSessionStorageKey   = "t4mvc-USERS";
 
-    function formatPhoneNumber(i, elem) {
-        var $elem = $(elem),
-            val = $elem.val();
-        //If val is blank, phone number might be in table cell of grid, so check text value
-        if (!val) {
-            var text = $elem.text();
+    function formatPhoneNumber(phone) {
+        // Null or empty
+        if (!phone) return phone;
+        var tempPhone       = phone;
+        var tempExt         = '';
+        var tempTrunkPrefix = "";
+        //Look for trunk code prefix (leading 1)
+        if (tempPhone.substring(0, 1) === "1") {
+            tempTrunkPrefix     = tempPhone.substring(0, 1);
+            tempPhone           = tempPhone.substring(1, tempPhone.length);
         }
-        if (val) {
-            $elem.val(gxi.phoneNumber(val));
+        //Look for extension
+        var extPos = tempPhone.toUpperCase().indexOf('X');
+        if (extPos > -1) {
+            //If extension found, extract to its own var
+            tempExt     = tempPhone.substring(extPos);
+            tempPhone   = tempPhone.substring(0, extPos);
         }
-        if (text) {
-            $elem.text(gxi.phoneNumber(text));
+        //Check for extension with no "x"
+        if (tempPhone.length > 10 && extPos < 0) {
+            tempExt     = 'x' + tempPhone.substring(10, tempPhone.length);
+            tempPhone   = tempPhone.substring(0, 10);
         }
+        //Format phone number based on length. If it's not one of the
+        //2 recognized lengths, don't format it.
+        if (tempPhone.length === 10) {
+            phone = '(' + tempPhone.substr(0, 3) + ') ' + tempPhone.substr(3, 3) + '-' + tempPhone.substr(6, 4);
+        } else if (tempPhone.length === 7) {
+            phone = tempPhone.substr(1, 3) + '-' + tempPhone.substr(3, 4);
+        } else phone = tempPhone;
+
+        //Add extension and trunk code prefix back
+        phone = tempTrunkPrefix + " " + phone + " " + tempExt;
+        return phone;
     }
 
     function navigateUpOneLevel() {
