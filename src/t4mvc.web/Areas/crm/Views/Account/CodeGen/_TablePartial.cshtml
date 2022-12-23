@@ -42,3 +42,14 @@
 	</tbody>
 </table>
 
+<script>
+	(function() {
+		var renderFuncs = window.renderFuncs || {};
+
+		renderFuncs["account-table"] = [
+            { targets: 6, render: "t4mvc.formatPhoneNumber" },
+		];
+
+		window.renderFuncs = renderFuncs;
+	})();
+</script>

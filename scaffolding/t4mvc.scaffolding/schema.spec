@@ -40,7 +40,7 @@ Account | Area:crm| Icon:feather-home
 	City?
 	State?
 	Zip?
-	Phone? | ViewModelAttributes(Phone)
+	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber
 	Fax?
 	Website?
 	ParentAccountId?(Guid?)

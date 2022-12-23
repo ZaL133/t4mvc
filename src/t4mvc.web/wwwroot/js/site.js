@@ -214,12 +214,56 @@
         }
     }
 
+    // User thumbnail
+    $("[data-user-thumbnail]").each(function () {
+        var $this = $($(this)[0]), userId = $this.attr("data-user-thumbnail");
+        if (userId) {
+            var userRecord = t4mvc.getUserRecord(userId);
+
+            if (userRecord) {
+                if (userRecord && userRecord.ProfilePic) {
+                    $this.attr("src", userRecord.ProfilePic);
+                    $this.show();
+                }
+            } else {
+                setTimeout(function () {
+                    var userRecord = t4mvc.getUserRecord(userId);
+                    if (userRecord && userRecord.ProfilePic) {
+                        $this.attr("src", userRecord.ProfilePic);
+                        $this.show();
+                    }
+                }, 400);
+            }
+        }
+    })
+
+    // User fullname
+    $("[data-user-fullname]").each(function () {
+        var $this = $($(this)[0]), userId = $this.attr("data-user-fullname");
+        if (userId) {
+            var userRecord = t4mvc.getUserRecord(userId);
+
+            if (userRecord) {
+                if (userRecord && userRecord.FullName) {
+                    $this.text(userRecord.FullName);
+                }
+            } else {
+                setTimeout(function () {
+                    var userRecord = t4mvc.getUserRecord(userId);
+                    if (userRecord && userRecord.FullName) {
+                        $this.text(userRecord.FullName || "(user not found)");
+                    }
+                }, 400);
+            }
+        }
+    })
+
     // Setup feather
     feather.replace();
 });
 
 t4mvc = (function () {
-    var publicApi               = { api: {} },
+    const publicApi             = { api: {} },
         tzOffset                = new Date().getTimezoneOffset(),
         userSessionStorageKey   = "t4mvc-USERS";
 
@@ -259,6 +303,15 @@ t4mvc = (function () {
         return phone;
     }
 
+    // Get user record
+    function getUserRecord(userId) {
+        var userList = sessionStorage.getItem(userSessionStorageKey);
+        var userObje = JSON.parse(userList);
+
+        if (userObje) return userObje.filter(function (e) { return e.UserId === userId; })[0];
+        else return null;
+    }
+
     function navigateUpOneLevel() {
         var parts = window.location.href.split("/");
         parts.pop();
@@ -267,10 +320,24 @@ t4mvc = (function () {
         window.location.href = parts.join("/");
     }
 
+    // Initialize the users object
+    // This is cached per session
+    // Doesn't work if you're not logged in though so test for the login page
+    if (!sessionStorage.getItem(userSessionStorageKey) && !/identity\/account\/login/i.test(window.location.pathname)) {
+        $.ajax({
+            url: "/api/all-users",
+            success: function (userList) {
+                var usersJson = JSON.stringify(userList);
+                sessionStorage.setItem(userSessionStorageKey, usersJson);
+            },
+            error: function (errorMessage) { console.log(errorMessage); }
+        });
+    }
 
     publicApi.clientSideExcelButtonDom = 'frl<"cs-excel-dt-button"><"preview-dt-button">tip';
     publicApi.excelButtonDom        = 'frl<"excel-dt-button"><"preview-dt-button">tip';
     publicApi.formatPhoneNumber     = formatPhoneNumber;
+    publicApi.getUserRecord         = getUserRecord;
     publicApi.navigateUpOneLevel    = navigateUpOneLevel;
 
     return publicApi;

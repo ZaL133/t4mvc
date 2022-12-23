@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\img\profiles\" />
     <Folder Include="wwwroot\img\theme\" />
   </ItemGroup>
 

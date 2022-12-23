@@ -62,11 +62,9 @@ namespace t4mvc.web.core.Rendering
                         <i data-feather=""info""></i>&nbsp;
                     </a>
                     <div class=""dropdown-menu"" style=""width:100%;"">
-                        <div class=""card component-card_4"">
+                        <div class=""card"">
+                            <img data-user-thumbnail='{moduser}' />
                             <div class=""card-body"">
-                                <div class=""user-profile"">
-                                    <img style='height: 90px; width: 90px;' data-user-thumbnail='{moduser}' />
-                                </div>
                                 <div class=""user-info"">
                                     <h5 class=""card-user_bold"">Modified By: <span data-user-fullname='{moduser}'></span></h5>
                                     <h5 class=""card-user_bold"">Modified On: {modstamp.Value.ToShortDateString()}</h5>
