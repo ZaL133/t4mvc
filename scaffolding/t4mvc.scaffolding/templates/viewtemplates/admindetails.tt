@@ -38,14 +38,14 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 
                             <!-- Details -->
                             <li class="nav-item">
-                                <a class="nav-link active" id="border-top-details-tab" data-toggle="tab" href="#border-top-details" role="tab" aria-controls="border-top-details" aria-selected="true">
+                                <a class="nav-link active" id="border-top-details-tab" data-bs-toggle="tab" href="#border-top-details" role="tab" aria-controls="border-top-details" aria-selected="true">
                                     Details
                                 </a>
                             </li>
 <# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); #>
                             <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
                             <li class="nav-item">
-                                <a class="nav-link" id="border-top-<#= sn #>-tab" data-toggle="tab" href="#border-top-<#= sn #>" role="tab" aria-controls="border-top-<#= sn #>" aria-selected="false">
+                                <a class="nav-link" id="border-top-<#= sn #>-tab" data-bs-toggle="tab" href="#border-top-<#= sn #>" role="tab" aria-controls="border-top-<#= sn #>" aria-selected="false">
                                     <#= (tab.TabText ?? tab.ParentFieldName) #>
                                 </a>
                             </li><# } #>

@@ -16,10 +16,10 @@
 # Viewmodel attributes can be
 #	- TextArea		= [DataType(DataType.MultilineText)]
 #	- AllowHtml		= [AllowHtml]
-#	- Wysiwyg		= [UIHint("GxiHtmlTextArea")]
-#	- DiskSize		= [UIHint("DiskSize")]
-#	- ProcessorSpeed= [UIHint("ProcessorSpeed")]
+#	- Wysiwyg		= [UIHint("t4mvcHtmlTextArea")]
 #	- Money			= [UIHint("Money")]
+#	- Phone			= [UIHint("Phone")]
+#	- Email			= [UIHint("Email")]
 #
 # Field attributes are
 #	- Description	= ViewModel Description Attribute
@@ -40,7 +40,7 @@ Account | Area:crm| Icon:feather-home
 	City?
 	State?
 	Zip?
-	Phone?
+	Phone? | ViewModelAttributes(Phone)
 	Fax?
 	Website?
 	ParentAccountId?(Guid?)

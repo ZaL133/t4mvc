@@ -1,0 +1,35 @@
+﻿@model string
+
+<div class="input-group">
+
+    @if (Current.EditMode)
+    {
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i data-feather="globe"></i>
+            </span>
+        </div>
+        @Html.TextBox("", Model, new { @class = "form-control" })
+    }
+    else
+    {
+        if (string.IsNullOrWhiteSpace(Model))
+        {
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i data-feather="globe"></i>
+                </span>
+            </div>
+            @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
+        }
+        else
+        {
+            <div class="input-group-prepend">
+                <a href="@Model" class="input-group-text" target="_blank">
+                    <i data-feather="globe"></i>
+                </a>
+            </div>
+            @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
+        }
+    }
+</div>

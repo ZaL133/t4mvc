@@ -1,0 +1,14 @@
+﻿@using t4mvc.web.core.Annotation
+@model Guid?
+@{
+    var select2Attribute    = ViewData["select2Attribute"] as Select2 ?? new Select2(null);
+    var text                = ViewData["text"] as string;
+}
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon5">
+            <a href="/@select2Attribute.Entity/details/@Model?returnUrl=@Current.PathAndQuery"><i data-feather="external-link"></i></a>
+        </span>
+    </div>
+    <input class="form-control" value="@text" disabled="disabled" />
+</div>

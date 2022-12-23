@@ -21,6 +21,7 @@ namespace t4mvc.web.core.ViewModels
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+        [UIHint("Phone")]
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Website { get; set; }

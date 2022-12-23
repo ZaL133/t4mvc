@@ -148,7 +148,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 
                             <!-- Details -->
                             <li class=""nav-item"">
-                                <a class=""nav-link active"" id=""border-top-details-tab"" data-toggle=""tab"" href=""#border-top-details"" role=""tab"" aria-controls=""border-top-details"" aria-selected=""true"">
+                                <a class=""nav-link active"" id=""border-top-details-tab"" data-bs-toggle=""tab"" href=""#border-top-details"" role=""tab"" aria-controls=""border-top-details"" aria-selected=""true"">
                                     Details
                                 </a>
                             </li>
@@ -174,7 +174,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("-tab\" data-toggle=\"tab\" href=\"#border-top-");
+            this.Write("-tab\" data-bs-toggle=\"tab\" href=\"#border-top-");
             
             #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sn));
