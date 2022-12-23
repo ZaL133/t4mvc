@@ -84,8 +84,8 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
     </div>
 
     <!-- Save buttons -->
-    <div class="account-settings-footer">
-        <div class="as-footer-container">
+    <div class="action-footer">
+        <div class="action-footer-container">
             <# if (!this.Entity.RawData) { #>@Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
     <# } #>        <div class="col-10">
                 <# if (!this.Entity.RawData) { #>@Html.EditSaveButton(Url.Action("Edit", new { id = Model.<#= schemaName #>Id}),

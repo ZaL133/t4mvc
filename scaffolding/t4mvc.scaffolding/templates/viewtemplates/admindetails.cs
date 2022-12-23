@@ -331,8 +331,8 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("    </div>\r\n\r\n    <!-- Save buttons -->\r\n    <div class=\"account-settings-footer\"" +
-                    ">\r\n        <div class=\"as-footer-container\">\r\n            ");
+            this.Write("    </div>\r\n\r\n    <!-- Save buttons -->\r\n    <div class=\"action-footer\">\r\n       " +
+                    " <div class=\"action-footer-container\">\r\n            ");
             
             #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (!this.Entity.RawData) { 
