@@ -34,6 +34,10 @@ body {
     .dataTable tbody tr td {
         cursor: pointer;
     }
+
 .tab-content {
     padding: 6px;
+}
+.card-header {
+    cursor: pointer; 
 }

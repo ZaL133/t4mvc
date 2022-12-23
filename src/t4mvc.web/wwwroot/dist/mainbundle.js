@@ -41989,6 +41989,20 @@ $(function () {
     // Data table - default options
     $(".t4mvc-data-table").dataTable();
 
+    // Formatters 
+    $("[data-render-function]").each(formatRenderFunction);
+    function formatRenderFunction(i, elem) {
+        var $elem = $(elem);
+        var $field = $elem.find("input[disabled]");
+
+        if ($field && $field.length > 0) {
+            var funcName = $elem.attr("data-render-function");
+            var func = getFunctionReference(funcName);
+            $field[0].type = "text";
+            $field.val(func($field.val()));
+        }
+    }
+
     // Setup feather
     feather.replace();
 });
@@ -41997,6 +42011,21 @@ t4mvc = (function () {
     var publicApi               = { api: {} },
         tzOffset                = new Date().getTimezoneOffset(),
         userSessionStorageKey   = "t4mvc-USERS";
+
+    function formatPhoneNumber(i, elem) {
+        var $elem = $(elem),
+            val = $elem.val();
+        //If val is blank, phone number might be in table cell of grid, so check text value
+        if (!val) {
+            var text = $elem.text();
+        }
+        if (val) {
+            $elem.val(gxi.phoneNumber(val));
+        }
+        if (text) {
+            $elem.text(gxi.phoneNumber(text));
+        }
+    }
 
     function navigateUpOneLevel() {
         var parts = window.location.href.split("/");
@@ -42008,8 +42037,9 @@ t4mvc = (function () {
 
 
     publicApi.clientSideExcelButtonDom = 'frl<"cs-excel-dt-button"><"preview-dt-button">tip';
-    publicApi.excelButtonDom = 'frl<"excel-dt-button"><"preview-dt-button">tip';
-    publicApi.navigateUpOneLevel = navigateUpOneLevel;
+    publicApi.excelButtonDom        = 'frl<"excel-dt-button"><"preview-dt-button">tip';
+    publicApi.formatPhoneNumber     = formatPhoneNumber;
+    publicApi.navigateUpOneLevel    = navigateUpOneLevel;
 
     return publicApi;
 })();

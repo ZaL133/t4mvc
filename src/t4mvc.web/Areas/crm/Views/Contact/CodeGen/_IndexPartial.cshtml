@@ -32,3 +32,14 @@
 	</tbody>
 </table>
 
+<script>
+	(function() {
+		var renderFuncs = window.renderFuncs || {};
+
+		renderFuncs["contact-table"] = [
+            { targets: 5, render: "format-phone" },
+		];
+
+		window.renderFuncs = renderFuncs;
+	})();
+</script>
