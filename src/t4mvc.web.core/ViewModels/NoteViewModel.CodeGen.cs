@@ -18,7 +18,7 @@ namespace t4mvc.web.core.ViewModels
         public DateTime ModifyDate { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [UIHint("t4mvcHtmlTextArea")]
+        [UIHint("t4mvcWysiwyg")]
         public string NoteText { get; set; }
         [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "")]
         public Guid? AccountId { get; set; }

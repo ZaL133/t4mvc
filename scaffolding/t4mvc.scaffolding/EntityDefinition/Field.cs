@@ -113,7 +113,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         {
             { "TextArea", "[DataType(DataType.MultilineText)]" },
             { "AllowHtml", "[AllowHtml]" },
-            { "Wysiwyg", "[UIHint(\"t4mvcHtmlTextArea\")]" },
+            { "Wysiwyg", "[UIHint(\"t4mvcWysiwyg\")]" },
             { "DiskSize", "[UIHint(\"DiskSize\")]" },
             { "ProcessorSpeed", "[UIHint(\"ProcessorSpeed\")]" },
             { "Email", "[UIHint(\"Email\")]" },

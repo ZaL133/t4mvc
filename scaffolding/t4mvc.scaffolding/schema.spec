@@ -16,7 +16,7 @@
 # Viewmodel attributes can be
 #	- TextArea		= [DataType(DataType.MultilineText)]
 #	- AllowHtml		= [AllowHtml]
-#	- Wysiwyg		= [UIHint("t4mvcHtmlTextArea")]
+#	- Wysiwyg		= [UIHint("t4mvcWysiwyg")]
 #	- Money			= [UIHint("Money")]
 #	- Phone			= [UIHint("Phone")]
 #	- Email			= [UIHint("Email")]
@@ -46,7 +46,7 @@ Account | Area:crm| Icon:feather-home
 	ParentAccountId?(Guid?)
 	Lat?(double?)
 	Lng?(double?)
-	Description?
+	Description? | ViewModelAttributes(Wysiwyg)
 	Active?(bool?)
 
 Contact | Area:crm | Icon:feather-user | HasNotes

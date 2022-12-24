@@ -28,6 +28,7 @@ namespace t4mvc.web.core.ViewModels
         public Guid? ParentAccountId { get; set; }
         public double? Lat { get; set; }
         public double? Lng { get; set; }
+        [UIHint("t4mvcWysiwyg")]
         public string Description { get; set; }
         public bool? Active { get; set; }
 

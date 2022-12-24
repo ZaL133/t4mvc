@@ -1,9 +1,8 @@
-/// <binding BeforeBuild='default' />
+/// <binding />
 const { series, parallel, src, dest, watch } = require('gulp');
 const concat    = require('gulp-concat');
 const uglify    = require('gulp-uglify');
 const sass      = require('gulp-sass')(require('sass'))
-// const watcher   = 
 
 function js() {
     return src(['wwwroot/lib/jquery/dist/jquery.js',
@@ -11,6 +10,7 @@ function js() {
                 'wwwroot/lib/datatables.net/jquery.dataTables.js',
                 'wwwroot/lib/feather-icons/feather.js',
                 'wwwroot/lib/select2/js/select2.js',
+                'wwwroot/lib/summernote/summernote-bs5.js',
                 'wwwroot/lib/keymaster/keymaster.js',
                 'wwwroot/js/site.js'])
             .pipe(concat('mainbundle.js'))
@@ -21,6 +21,7 @@ function js() {
 function buildStyles() {
     return src(['wwwroot/lib/bootstrap/dist/css/bootstrap.css',
                 'wwwroot/lib/select2/css/select2.css',
+                'wwwroot/lib/summernote/summernote-bs5.css',
                 'wwwroot/css/dashboard.css',
                 // custom
                 'wwwroot/sass/**/*.scss'])
@@ -30,7 +31,13 @@ function buildStyles() {
                 .pipe(dest('wwwroot/dist'));
 }
 
-exports.default = parallel(js, buildStyles);
+function fonts() {
+    return src(['wwwroot/lib/**/font/*.*'], { base: "wwwroot/lib/summernote" })
+            // .pipe(uglify())
+            .pipe(dest('wwwroot/dist'));
+}
+
+exports.default = parallel(js, buildStyles, fonts);
 exports.watch   = function () {
     watch(['wwwroot/js/site.js', 'wwwroot/sass/**/*.scss'],
         parallel(js, buildStyles)

@@ -261,6 +261,9 @@
 
     // Setup feather
     feather.replace();
+
+    // Setup wysiwyg editors 
+    $("[data-t4mvc-wysiwyg]").summernote({ height: 300, tabsize: 2 });
 });
 
 t4mvc = (function () {

@@ -1,0 +1,16 @@
+﻿@using t4mvc.web.core.Rendering
+@model string
+@{
+    var t4mvcControlAttributes = ViewData["t4mvcControlAttributes"] as t4mvcControlAttribute ?? new t4mvcControlAttribute();
+}
+
+@if (Current.EditMode && !t4mvcControlAttributes.Disabled)
+{
+<div class="form-control">
+    @Html.TextArea("", Model, new { @class = "form-control text-box", data_t4mvc_wysiwyg = true })
+</div>
+}
+else
+{
+    @Html.Raw("<div class=\"form-control\" disabled>" + Model + "</div>");
+}

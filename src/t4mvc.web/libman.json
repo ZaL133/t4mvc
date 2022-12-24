@@ -21,6 +21,28 @@
         "js/select2.js",
         "css/select2.css"
       ]
+    },
+    {
+      "library": "summernote@0.8.20",
+      "destination": "wwwroot/lib/summernote/",
+      "files": [
+        "font/summernote.eot",
+        "summernote-bs5.js.map",
+        "summernote-bs5.css.map",
+        "summernote-bs5.css",
+        "summernote-bs5.js",
+        "font/summernote.ttf",
+        "font/summernote.woff",
+        "font/summernote.woff2",
+        "plugin/databasic/summernote-ext-databasic.css",
+        "plugin/databasic/summernote-ext-databasic.js",
+        "plugin/databasic/summernote-ext-databasic.min.css",
+        "plugin/databasic/summernote-ext-databasic.min.js",
+        "plugin/hello/summernote-ext-hello.js",
+        "plugin/hello/summernote-ext-hello.min.js",
+        "plugin/specialchars/summernote-ext-specialchars.js",
+        "plugin/specialchars/summernote-ext-specialchars.min.js"
+      ]
     }
   ]
 }
