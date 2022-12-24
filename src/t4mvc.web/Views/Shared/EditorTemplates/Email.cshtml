@@ -1,36 +1,33 @@
 ﻿@model string
 
-<div class="input-group">
-
-    @if (Current.EditMode)
+@if (Current.EditMode)
+{
+    <div class="input-group">
+        <span class="input-group-text">
+            <i data-feather="at-sign"></i>
+        </span>
+        @Html.TextBox("", Model, new { @class = "form-control" })
+    </div>
+        
+}
+else
+{
+    if (string.IsNullOrWhiteSpace(Model))
     {
         <div class="input-group">
             <span class="input-group-text">
                 <i data-feather="at-sign"></i>
             </span>
-            @Html.TextBox("", Model, new { @class = "form-control" })
+            @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
         </div>
-        
     }
     else
     {
-        if (string.IsNullOrWhiteSpace(Model))
-        {
-            <div class="input-group">
-                <span class="input-group-text">
-                    <i data-feather="at-sign"></i>
-                </span>
-                @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
-            </div>
-        }
-        else
-        {
-            <div class="input-group">
-                <a href="mailto:@Model" class="input-group-text">
-                    <i data-feather="at-sign"></i>
-                </a>
-                @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
-            </div>
-        }
+        <div class="input-group">
+            <a href="mailto:@Model" class="input-group-text">
+                <i data-feather="at-sign"></i>
+            </a>
+            @Html.TextBox("", Model, new { @class= "form-control", disabled = "disabled" })
+        </div>
     }
-</div>
+}
