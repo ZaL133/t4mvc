@@ -1,6 +1,11 @@
-﻿
+﻿$borderRadius: 5px;
 .tab-content {
     padding: 6px;
+    border-color: #dee2e6;
+    border: solid 1px #dee2e6;
+    border-top: none;
+    border-end-end-radius: $borderRadius;
+    border-end-start-radius: $borderRadius;
 }
 
 .card-header {
@@ -8,9 +13,10 @@
 }
 
 .action-footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    width: calc(100% - 266px);
+    left: 0;
+    width: 100%;
     background: #191e3a;
     padding: 12px 20px;
     -webkit-box-shadow: -2px -9px 20px rgba(126, 142, 177, 0.12);
@@ -36,4 +42,8 @@ a.dropdown-toggle {
 
 .accordion .icons {
     float: right;
+}
+
+.accordion-item {
+    margin: 8px 0px;
 }

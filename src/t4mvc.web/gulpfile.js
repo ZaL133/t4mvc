@@ -30,4 +30,3 @@ function buildStyles() {
 }
 
 exports.default = parallel(js, buildStyles);
-exports.buildStyles = buildStyles;

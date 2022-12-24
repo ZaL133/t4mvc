@@ -11349,6 +11349,11 @@ html {
 body {
   background: linear-gradient(#fff, #efefef);
 }
+
+main {
+  position: relative;
+  min-height: calc(100vh - 48px);
+}
 .index-table {
   cursor: pointer;
   user-select: none;
@@ -11397,8 +11402,22 @@ body {
 .dataTables_filter {
   float: right;
 }
+
+.dataTables_length {
+  float: right;
+  margin-right: 27px;
+}
+
+input[type=search] {
+  margin-left: 8px;
+}
 .tab-content {
   padding: 6px;
+  border-color: #dee2e6;
+  border: solid 1px #dee2e6;
+  border-top: none;
+  border-end-end-radius: 5px;
+  border-end-start-radius: 5px;
 }
 
 .card-header {
@@ -11406,9 +11425,10 @@ body {
 }
 
 .action-footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  width: calc(100% - 266px);
+  left: 0;
+  width: 100%;
   background: #191e3a;
   padding: 12px 20px;
   -webkit-box-shadow: -2px -9px 20px rgba(126, 142, 177, 0.12);
@@ -11434,4 +11454,8 @@ a.dropdown-toggle {
 
 .accordion .icons {
   float: right;
+}
+
+.accordion-item {
+  margin: 8px 0px;
 }
