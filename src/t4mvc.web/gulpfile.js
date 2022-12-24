@@ -1,7 +1,8 @@
 /// <binding BeforeBuild='default' />
 const { series, parallel, src, dest } = require('gulp');
-const concat                = require('gulp-concat');
-const uglify                = require('gulp-uglify');
+const concat    = require('gulp-concat');
+const uglify    = require('gulp-uglify');
+const sass      = require('gulp-sass')(require('sass'))
 
 function js() {
     return src(['wwwroot/lib/jquery/dist/jquery.js',
@@ -16,15 +17,17 @@ function js() {
             .pipe(dest('wwwroot/dist/'))
 }
 
-function css() {
+function buildStyles() {
     return src(['wwwroot/lib/bootstrap/dist/css/bootstrap.css',
                 'wwwroot/lib/select2/css/select2.css',
                 'wwwroot/css/dashboard.css',
                 // custom
-                'wwwroot/css/site.css'])
+                'wwwroot/sass/**/*.scss'])
+                .pipe(sass().on('error', sass.logError))
                 .pipe(concat('mainbundle.css'))
                 // .pipe(uglify())
-                .pipe(dest('wwwroot/dist/'))
+                .pipe(dest('wwwroot/dist'));
 }
 
-exports.default = parallel(js, css);
+exports.default = parallel(js, buildStyles);
+exports.buildStyles = buildStyles;

@@ -44,7 +44,8 @@
             }
 
             var previewButton = $(tableElement).find(".preview-dt-button");
-            if (previewButton) {
+            if (previewButton)
+            {
                 previewButton.html(previewButtonHtml);
                 previewButton.click(function (e) {
                     e.preventDefault();
@@ -61,6 +62,8 @@
                         generateContentToNewWindow("/exportpdf/generatepreview", "/exportpdf/preview");
                     }
                 });
+
+                feather.replace();
             }
 
             function generateContentToNewWindow(postUrl, getUrl) {

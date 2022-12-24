@@ -1,0 +1,50 @@
+﻿
+.index-table {
+    cursor: pointer;
+    user-select: none;
+}
+
+.dataTable {
+    width: 100%;
+
+    tbody tr td {
+        cursor: pointer;
+    }
+}
+
+.dt-buttons {
+    display: inline-block;
+    margin: 0px 9px;
+}
+
+.excel-dt-button, .cs-excel-dt-button, .preview-dt-button {
+    display: inline-block;
+}
+
+.excel-dt-button button, .cs-excel-dt-button button, .preview-dt-button button {
+    margin-left: 10px;
+    background: none;
+    border: solid 1px #ccc;
+    box-shadow: 1px 1px green;
+    padding: 3px 10px;
+}
+
+.preview-dt-button button {
+    box-shadow: 1px 1px #810000;
+}
+
+.excel-dt-button button:hover, .cs-excel-dt-button button:hover {
+    background-color: #f3f6f3;
+}
+
+.preview-dt-button button:hover {
+    background-color: #ffebeb;
+}
+
+.excel-dt-button button:focus, .cs-excel-dt-button button:focus, .preview-dt-button button {
+    outline: none;
+}
+
+.dataTables_filter {
+    float: right;
+}

@@ -1,0 +1,10 @@
+﻿@model bool?
+
+@if (Current.EditMode)
+{
+    @Html.CheckBox("", Model.GetValueOrDefault(), new { @class = "form-control" })
+}
+else
+{
+    @Html.CheckBox("", Model.GetValueOrDefault(), new { @class = "form-control" , disabled = "disabled" })
+}

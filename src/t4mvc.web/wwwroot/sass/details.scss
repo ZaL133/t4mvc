@@ -1,45 +1,12 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    background: linear-gradient(#fff, #efefef);
-}
-
-.index-table {
-    cursor: pointer;
-    user-select: none;
-}
-
-.dataTable {
-    width: 100%;
-}
-
-    .dataTable tbody tr td {
-        cursor: pointer;
-    }
-
+﻿
 .tab-content {
     padding: 6px;
 }
+
 .card-header {
-    cursor: pointer; 
+    cursor: pointer;
 }
+
 .action-footer {
     position: fixed;
     bottom: 0;
@@ -53,13 +20,20 @@ body {
     border-radius: 6px 6px 0 0;
     z-index: 5;
 }
+
 .action-footer .action-footer-container {
     display: flex;
     justify-content: space-between;
 }
+
 .action-footer .btn-default {
     background-color: #ccc;
 }
+
 a.dropdown-toggle {
     text-decoration: none;
+}
+
+.accordion .icons {
+    float: right;
 }
