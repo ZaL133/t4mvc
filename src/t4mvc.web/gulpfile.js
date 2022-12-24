@@ -1,8 +1,9 @@
 /// <binding BeforeBuild='default' />
-const { series, parallel, src, dest } = require('gulp');
+const { series, parallel, src, dest, watch } = require('gulp');
 const concat    = require('gulp-concat');
 const uglify    = require('gulp-uglify');
 const sass      = require('gulp-sass')(require('sass'))
+// const watcher   = 
 
 function js() {
     return src(['wwwroot/lib/jquery/dist/jquery.js',
@@ -30,3 +31,8 @@ function buildStyles() {
 }
 
 exports.default = parallel(js, buildStyles);
+exports.watch   = function () {
+    watch(['wwwroot/js/site.js', 'wwwroot/sass/**/*.scss'],
+        parallel(js, buildStyles)
+    );
+}

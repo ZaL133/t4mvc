@@ -84,6 +84,7 @@ namespace t4mvc.web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

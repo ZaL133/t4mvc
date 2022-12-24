@@ -2,19 +2,23 @@
 @inject SignInManager<t4mvcUser> SignInManager
 @inject UserManager<t4mvcUser> UserManager
 
-<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            @User.Identity.Name
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/Identity/Account/Manage">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="btn btn-link dropdown-item link-dark">Logout</button>
-                </form>
-            </li>
-        </ul>
-    </li>
-</ul>
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        @User.Identity.Name
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark">
+        <li>
+            <a class="nav-link px-3" href="/Identity/Account/Manage">Profile</a>
+        </li>
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <input id="logout-button" type="submit" class="nav-link px-3" value="Logout" />
+            </form>
+        </li>
+    </ul>
+}
+else
+{
+    <a class="nav-link px-3" href="/Identity/Account/Login">Login</a>
+}

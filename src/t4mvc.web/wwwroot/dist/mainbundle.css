@@ -11354,6 +11354,20 @@ main {
   position: relative;
   min-height: calc(100vh - 48px);
 }
+
+.navbar .dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.navbar #logout-button {
+  background-color: unset;
+  border: unset;
+}
+.navbar .dropdown-menu {
+  position: absolute;
+  left: auto;
+  right: 0;
+}
 .index-table {
   cursor: pointer;
   user-select: none;
@@ -11458,4 +11472,14 @@ a.dropdown-toggle {
 
 .accordion-item {
   margin: 8px 0px;
+}
+
+.select2-container--default .select2-selection--single {
+  height: auto;
+  line-height: 1.5em;
+  padding: 0.3em 0.3em;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 0.3em;
 }
