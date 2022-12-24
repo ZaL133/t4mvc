@@ -62,8 +62,6 @@
                         generateContentToNewWindow("/exportpdf/generatepreview", "/exportpdf/preview");
                     }
                 });
-
-                feather.replace();
             }
 
             function generateContentToNewWindow(postUrl, getUrl) {

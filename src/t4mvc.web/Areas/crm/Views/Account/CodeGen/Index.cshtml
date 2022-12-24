@@ -71,7 +71,8 @@
                 ],
                 order: [
                     [1, "asc"]
-                ]
+                ],
+                drawCallback: function() { feather.replace(); }
             });
 
             $("#account-table tbody").on("dblclick", "tr", function () {

@@ -58,9 +58,7 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
                 order: [
                     [1, "asc"]
                 ],
-                initComplete: function (settings, json) {
-                    feather.replace();
-                }
+                drawCallback: function() { feather.replace(); }
             });
 
             $("#<#= this.Entity.Name.ToCamelCase() #>-table tbody").on("dblclick", "tr", function () {

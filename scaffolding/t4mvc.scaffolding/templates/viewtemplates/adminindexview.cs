@@ -198,11 +198,10 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
             #line default
             #line hidden
             this.Write("                ],\r\n                order: [\r\n                    [1, \"asc\"]\r\n   " +
-                    "             ],\r\n                initComplete: function (settings, json) {\r\n    " +
-                    "                feather.replace();\r\n                }\r\n            });\r\n\r\n      " +
-                    "      $(\"#");
+                    "             ],\r\n                drawCallback: function() { feather.replace(); }" +
+                    "\r\n            });\r\n\r\n            $(\"#");
             
-            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
@@ -211,14 +210,14 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
                     "ble.row(this).data();\r\n                window.location.href = detailsUrl + data." +
                     "");
             
-            #line 68 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n            });\r\n\r\n            key(\"esc\", ");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
@@ -235,14 +234,14 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
                 // The last data table parameters get cached on the server and so they don't need to be sent here
                 window.open(""/api/export/");
             
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToLowerCase()));
             
             #line default
             #line hidden
             this.Write("\");\r\n            });\r\n\r\n        })\r\n    </script>\r\n    <script src=\"/api/js/");
             
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default

@@ -57,7 +57,8 @@
                 ],
                 order: [
                     [1, "asc"]
-                ]
+                ],
+                drawCallback: function() { feather.replace(); }
             });
 
             $("#contact-table tbody").on("dblclick", "tr", function () {
