@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<t4mvcUser> SignInManager
+@inject UserManager<t4mvcUser> UserManager
+@inject RoleManager<t4mvcRole> RoleManager
+
+<h1>Roles</h1>
+
+<a asp-action="create" asp-controller="role" asp-area="admin">create</a>
+<ul>
+@foreach(var role in RoleManager.Roles) {
+        <li><a asp-action="details" asp-controller="role" asp-route-id="@role.Id">@role.Name</a></li>
+}
+</ul>

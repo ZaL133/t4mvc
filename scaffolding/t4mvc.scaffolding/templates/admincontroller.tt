@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using <#= Settings.ApplicationName #>.web;
 using <#= Settings.ApplicationName #>.web.core.Infrastructure;
@@ -21,6 +22,7 @@ using <#= Settings.ApplicationName #>.web.core.ViewModelServices;
 namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Admin" #>.Controllers
 {
     <# if (!string.IsNullOrWhiteSpace(areaName)) { #>[Area("<#= areaName #>")]
+    <# } #><# if (this.Entity.Security != null) { #>[Authorize(Roles = "<#= this.Entity.Security #>")]
     <# } #>public partial class <#= this.Entity.Name #>Controller : <#= this.Entity.Name #>ControllerBase
     {
         public <#= this.Entity.Name #>Controller(I<#= this.Entity.Name #>ViewModelService <#= this.Entity.Name.ToCamelCase() #>ViewModelService, IServiceProvider serviceProvider) : base(<#= this.Entity.Name.ToCamelCase() #>ViewModelService, serviceProvider)

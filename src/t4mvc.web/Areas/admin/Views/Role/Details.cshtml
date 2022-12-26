@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Guid
+@inject UserManager<t4mvcUser> userManager
+@inject RoleManager<t4mvcRole> roleManager
+@{
+    t4mvcRole role                      = await roleManager.FindByIdAsync(Model.ToString());
+    IQueryable<t4mvcUser> allUsers      = userManager.Users;
+    IEnumerable<t4mvcUser> roleUsers    = await userManager.GetUsersInRoleAsync(role.Name);
+    HashSet<Guid> usersInRoleHashSet    = roleUsers.Select(x => x.Id).ToHashSet();
+}
+
+<div class="row">
+    <div class="col-md-6"
+        <h2>All users</h2>
+        <ul>
+        @foreach(var user in allUsers.Where(x => !usersInRoleHashSet.Contains(x.Id))) 
+        {
+            <li>@user.Email 
+                <form asp-action="add" method="POST">
+                    <input type="hidden" name="userId" value="@user.Id" />
+                    <input type="hidden" name="roleId" value="@role.Id" />
+                    <input type="submit" value="add" />
+                </form>
+            </li>
+        }
+        </ul>
+    </div>
+
+    <div class="col-md-6"
+        <h2>Users in role</h2>
+        <ul>
+            @foreach (var user in roleUsers)
+            {
+                <li>@user.Email 
+                    <form asp-action="remove" method="POST">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <input type="hidden" name="roleId" value="@role.Id" />
+                        <input type="submit" value="remove" />
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

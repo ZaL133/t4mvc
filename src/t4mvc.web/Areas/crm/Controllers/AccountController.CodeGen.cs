@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using t4mvc.web;
 using t4mvc.web.core.Infrastructure;
@@ -11,6 +12,7 @@ using t4mvc.web.core.ViewModelServices;
 namespace t4mvc.web.Areas.crm.Controllers
 {
     [Area("crm")]
+    [Authorize(Roles = "crm")]
     public partial class AccountController : AccountControllerBase
     {
         public AccountController(IAccountViewModelService accountViewModelService, IServiceProvider serviceProvider) : base(accountViewModelService, serviceProvider)

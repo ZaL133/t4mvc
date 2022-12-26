@@ -1,0 +1,13 @@
+﻿@model t4mvcRole
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.EditorFor(x => x.Name)
+    </div>    
+
+    <button type="submit">Save</button>
+}

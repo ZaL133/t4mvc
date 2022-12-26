@@ -27,6 +27,7 @@ namespace t4mvc.web
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<t4mvcUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<t4mvcRole>()
                 .AddEntityFrameworkStores<t4DbContext>();
             builder.Services.AddControllersWithViews().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null)
                     .AddRazorOptions(options =>
