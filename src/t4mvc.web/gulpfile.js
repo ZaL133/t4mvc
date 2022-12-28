@@ -22,6 +22,7 @@ function buildStyles() {
     return src(['wwwroot/lib/bootstrap/dist/css/bootstrap.css',
                 'wwwroot/lib/select2/css/select2.css',
                 'wwwroot/lib/summernote/summernote-bs5.css',
+                'wwwroot/lib/datatables.net/jquery.dataTables.min.css',
                 'wwwroot/css/dashboard.css',
                 // custom
                 'wwwroot/sass/**/*.scss'])
