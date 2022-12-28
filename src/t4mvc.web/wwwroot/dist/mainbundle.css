@@ -12394,3 +12394,16 @@ a.dropdown-toggle {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 0.3em;
 }
+.notes .tl-header {
+  display: flex;
+}
+.notes .tl-header [data-user-fullname] {
+  font-size: 1em;
+  font-weight: bolder;
+}
+.notes .tl-header .meta-time-date {
+  font-size: smaller;
+}
+.notes .post-text {
+  text-align: right;
+}

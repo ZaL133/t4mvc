@@ -1,5 +1,5 @@
 ﻿@model List<NoteViewModel>
-<div class="statbox widget box box-shadow">
+<div class="statbox widget box box-shadow notes">
 
     <div class="widget-header">
         <div class="row">
@@ -42,16 +42,28 @@
                     <div class="card-body">
                         <div class="timeline-simple">
                             <div class="timeline-list">
+                                @{ var first = true; }
                                 @foreach (var note in Model.OrderByDescending(x => x.ModifyDate))
                                 {
+                                    @if (first)
+                                    {
+                                        first = false;
+                                    }
+                                    else
+                                    {
+                                        <hr />
+                                    }
+
                                     <div class="timeline-post-content">
-                                        <div class="user-profile">
+                                        <div class="tl-header">
                                             <img data-user-thumbnail="@note.ModifyUserId" alt="User Image">
+                                            <div>
+                                                <div data-user-fullname='@note.ModifyUserId'></div>
+                                                <p class="meta-time-date">@(note.ModifyDate.ToShortDateString()) @note.ModifyDate.ToShortTimeString()</p>
+                                            </div>
                                         </div>
 
-                                        <div class="">
-                                            <h4 data-user-fullname='@note.ModifyUserId'></h4>
-                                            <p class="meta-time-date">@(note.ModifyDate.ToShortDateString()) @note.ModifyDate.ToShortTimeString()</p>
+                                        <div class="tl-body">
                                             <div class="post-text">
                                                 @Html.Raw(note.NoteText)
                                             </div>

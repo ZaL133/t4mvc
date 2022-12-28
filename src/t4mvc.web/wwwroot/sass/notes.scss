@@ -1,0 +1,18 @@
+﻿.notes {
+    .tl-header {
+        display: flex;
+
+        [data-user-fullname] {
+            font-size: 1em;
+            font-weight: bolder;
+        }
+
+        .meta-time-date {
+            font-size: smaller;
+        }
+    }
+
+    .post-text {
+        text-align: right;
+    }
+}
