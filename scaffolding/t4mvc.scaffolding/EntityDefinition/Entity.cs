@@ -9,8 +9,16 @@ namespace t4mvc.scaffolding.EntityDefinition
     public class Entity
     {
         public string? Name { get; set; }
+        public string SchemaName => Name.ToSchemaName();
+        public string CamelCaseName => Name.ToCamelCase();
         public string PluralFullName { get { return Attributes.Where(x => x.StartsWith("Plural:")).Select(x => x.Split(':')[1]).SingleOrDefault() ?? (Description + "s" ?? Name + "s"); } }
         public string? PluralName { get { return PluralFullName?.ToSchemaName(); } }
+        public string PluralCamelCaseName => PluralName.ToCamelCase();
+        public string ServiceInterfaceTypeName => $"I{Name}Service";
+        public string ServiceInterfaceInstanceName => $"{Name.ToCamelCase()}Service";
+
+        public string DetailsUrl => $"{(Area == null ? "" : "/" + Area)}/{SchemaName.ToLowerCase()}/details/";
+
         public IList<string> Attributes { get; set; } = new List<string>();
         public List<Field> Fields { get; } = new List<Field>();
         public IEnumerable<Field> SearchableFields { get { return Fields.Where(x => x.IsSearchable); } }
@@ -82,7 +90,7 @@ namespace t4mvc.scaffolding.EntityDefinition
                 yield return $"I{Name}Service {Name.ToCamelCase()}Service";
             foreach (var field in Fields.Where(x => x.References != null && x.References.Name != "User"))
             {
-                yield return $"I{field.References.Name}Service {field.References.Name.ToCamelCase()}Service";
+                yield return $"{field.References.ServiceInterfaceTypeName} {field.References.ServiceInterfaceInstanceName}";
             }
             foreach (var childRef in ChildReferences.Where(x => x.Name != this.Name))
             {

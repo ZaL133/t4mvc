@@ -56,6 +56,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>entityviewmodel.cs</LastGenOutput>
     </None>
+    <None Update="templates\globalsearch.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>globalsearch.cs</LastGenOutput>
+    </None>
     <None Update="templates\htmlhelper.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>htmlhelper.cs</LastGenOutput>
@@ -150,6 +154,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>entityviewmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\globalsearch.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>globalsearch.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\htmlhelper.cs">
       <DesignTime>True</DesignTime>

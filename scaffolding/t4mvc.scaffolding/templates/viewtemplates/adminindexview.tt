@@ -30,7 +30,7 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
 @section scripts {
     <script>
         $(function () {
-			var detailsUrl = "<#= (this.Entity.Area == null ? "" : "/" + this.Entity.Area) #>/<#= this.Entity.Name.ToSchemaName().ToLowerCase() #>/details/";
+			var detailsUrl = "<#= this.Entity.DetailsUrl #>";
             var dTable = $("#<#= this.Entity.Name.ToCamelCase() #>-table").DataTable({
                 "serverSide": true,
                 "ordering": true,

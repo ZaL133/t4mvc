@@ -1,3 +1,8 @@
+
+
+
+
+
 @{
     ViewBag.Title = "Contacts";
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contacts";
@@ -13,20 +18,27 @@
     <thead>
         <tr>
             <th></th>
+
             <th>First Name</th>
+
             <th>Last Name</th>
+
             <th>AccountId</th>
+
             <th>Email Address</th>
+
             <th>Job Title</th>
+
             <th>Phone</th>
+
             <th>Active</th>
+
         </tr>
     </thead>
 </table>
 </div>
 
 @section scripts {
-    
     <script>
         $(function () {
 			var detailsUrl = "/crm/contact/details/";
@@ -47,6 +59,7 @@
                     { data: "JobTitle" },
                     { data: "Phone" },
                     { data: "Active" },
+
                 ],
                 columnDefs: [
                     {
@@ -55,6 +68,7 @@
                         }
                     },
                     { targets: 6, render: t4mvc.formatPhoneNumber },
+
                 ],
                 order: [
                     [1, "asc"]

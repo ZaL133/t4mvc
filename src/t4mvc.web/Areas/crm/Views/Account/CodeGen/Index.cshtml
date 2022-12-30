@@ -1,3 +1,8 @@
+
+
+
+
+
 @{
     ViewBag.Title = "Accounts";
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Accounts";
@@ -13,20 +18,35 @@
     <thead>
         <tr>
             <th></th>
+
             <th>Name</th>
+
             <th>Address</th>
+
             <th>Address2</th>
+
             <th>City</th>
+
             <th>State</th>
+
             <th>Zip</th>
+
             <th>Phone</th>
+
             <th>Fax</th>
+
             <th>Website</th>
+
             <th>ParentAccountId</th>
+
             <th>Lat</th>
+
             <th>Lng</th>
+
             <th>Description</th>
+
             <th>Active</th>
+
         </tr>
     </thead>
 </table>
@@ -60,6 +80,7 @@
                     { data: "Lng" },
                     { data: "Description" },
                     { data: "Active" },
+
                 ],
                 columnDefs: [
                     {
@@ -68,6 +89,7 @@
                         }
                     },
                     { targets: 7, render: t4mvc.formatPhoneNumber },
+
                 ],
                 order: [
                     [1, "asc"]

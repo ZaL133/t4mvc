@@ -9,6 +9,7 @@ namespace t4mvc.scaffolding.EntityDefinition
     public class Field
     {
         public string? Name { get; set; }
+        public string SchemaName => Name.ToSchemaName();
         public List<string> Attributes { get; set; } = new List<string>();
         public string DataType { get; set; } = "string"; // default
         public string? ViewModelType { get; set; }

@@ -21,9 +21,10 @@ ScaffoldAutoMapper(entities);
 ScaffoldUnity(entities);
 ScaffoldApiController();
 
-
 // This is a big one
 ScaffoldAdminAreas(entities.Where(x => !x.DontScaffold));
+
+ScaffoldGlobalSearch();
 
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
@@ -246,4 +247,18 @@ void ScaffoldApiController()
     Directory.CreateDirectory($"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Controllers");
     File.WriteAllText($"{Settings.RootPath}\\{Settings.ApplicationName}.Web\\Controllers\\{Settings.ApplicationName}ApiController.CodeGen.cs",
                       new apimethodset().TransformText());
+}
+
+void ScaffoldGlobalSearch()
+{
+    var viewModelServiceDirectory = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web.Core\\ViewModelServices");
+    Directory.CreateDirectory(viewModelServiceDirectory);
+
+    var fileName        = $"SearchViewModelService.CodeGen.cs";
+    var fullFileName    = Path.Combine(viewModelServiceDirectory, fileName);
+    var vms             = new globalsearch();
+    var vmsText         = vms.TransformText();
+
+    // Write the poco classes
+    File.WriteAllText(fullFileName, vmsText);
 }

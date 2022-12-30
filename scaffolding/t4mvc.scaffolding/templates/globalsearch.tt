@@ -1,0 +1,89 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using <#= Settings.ApplicationName #>.core;
+using <#= Settings.ApplicationName #>.data.Services;
+using <#= Settings.ApplicationName #>.web.core.Infrastructure;
+using <#= Settings.ApplicationName #>.web.core.ViewModels;
+
+
+namespace t4mvc.web.core.ViewModelServices
+{
+    public interface ISearchViewModelServiceBase
+    {
+        GlobalSearchResult Search(string searchTerm);
+        GlobalSearchResult SearchAll(string searchTerm);
+    }
+    public class SearchViewModelServiceBase : ISearchViewModelServiceBase
+    {
+<# foreach (var entity in this.SearchEntities) { #>
+        private readonly <#= entity.ServiceInterfaceTypeName #> <#= entity.ServiceInterfaceInstanceName #>;
+<# } #>
+
+        public SearchViewModelServiceBase(<#= string.Join(", ", this.SearchEntities.Select(x => $"{x.ServiceInterfaceTypeName} {x.ServiceInterfaceInstanceName}")) #>)
+        {
+<# foreach (var entity in this.SearchEntities) { #>
+            this.<#= entity.ServiceInterfaceInstanceName #> = <#= entity.ServiceInterfaceInstanceName #>;
+<# } #>
+        }
+
+        public GlobalSearchResult Search(string searchTerm)
+        {
+            return SearchInternal(searchTerm, 3);
+        }
+
+        public GlobalSearchResult SearchAll(string searchTerm)
+        {
+            return SearchInternal(searchTerm, null);
+        }
+
+        private GlobalSearchResult SearchInternal(string searchTerm, int? take = null)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm)) return new GlobalSearchResult();
+
+            var rv              = new GlobalSearchResult();
+            var requestor       = Current.UserId;
+            bool isPossibleId   = Guid.TryParse(searchTerm, out Guid searchId);
+
+<# foreach (var entity in this.SearchEntities) { #>
+            IQueryable<<#= entity.SchemaName #>> <#= entity.PluralCamelCaseName #>;
+<# } #>
+
+            if (isPossibleId)
+            {
+<# foreach (var entity in this.SearchEntities) { #>
+                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => x.<#= entity.KeyField.Name #> == searchId);
+<# } #>
+            }
+            else
+            {
+<# foreach (var entity in this.SearchEntities) { #>
+                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => <#= string.Join(" || ", entity.SearchableFields.Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)")) #>);
+<# } #>
+            }
+
+            if (take.HasValue)
+            {
+<# foreach (var entity in this.SearchEntities) { #>
+                <#= entity.PluralCamelCaseName #> = <#= entity.PluralCamelCaseName #>.Take(take.Value);
+<# } #>
+            }
+
+<# foreach (var entity in this.SearchEntities) { #>
+            if (<#= entity.PluralCamelCaseName #>.Any())
+            {
+                rv.Categories.Add(new SearchResultCategory
+                {
+                    Name    = "<#= entity.SchemaName #>",
+                    Icon    = "<#= entity.HtmlIcon.Replace("\"", "\\\"") #>",
+                    Results = <#= entity.PluralCamelCaseName #>.AsEnumerable().Select(x => new SearchResultItem { Title = $"{x.<#= entity.NameField.SchemaName #>}", Url = "<#= entity.DetailsUrl #>" + x.<#= entity.KeyField.Name #> }).ToList()
+                });
+            }
+
+<# } #>
+            return rv;
+        }
+    }
+}

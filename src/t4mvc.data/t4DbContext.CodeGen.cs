@@ -5,7 +5,7 @@ using t4mvc.core;
 
 namespace t4mvc.data
 {
-    public partial class t4DbContext : IdentityDbContext<t4mvcUser, t4mvcRole, Guid>
+    public partial class t4DbContext : IdentityDbContext<t4mvcUser, IdentityRole<Guid>, Guid>
     {
         public t4DbContext (DbContextOptions<t4DbContext> options) : base(options)
         {

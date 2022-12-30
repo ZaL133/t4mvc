@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace t4mvc.scaffolding.templates.viewtemplates
+namespace t4mvc.scaffolding.templates
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace t4mvc.scaffolding.templates.viewtemplates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+    #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class adminindexview : adminindexviewBase
+    public partial class globalsearch : globalsearchBase
     {
 #line hidden
         /// <summary>
@@ -28,221 +28,334 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
+            this.Write("using ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- var schemaName = this.Entity.Name.ToSchemaName(); 
-            
-            #line default
-            #line hidden
-            this.Write("\n@{\n    ViewBag.Title = \"");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralFullName ?? (this.Entity.Description + "s")));
-            
-            #line default
-            #line hidden
-            this.Write("\";\n\tViewBag.HtmlTitle = Settings.Icon.GetIcon26(\"");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
-            
-            #line default
-            #line hidden
-            this.Write("\") + \" ");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName ?? (this.Entity.Description + "s")));
-            
-            #line default
-            #line hidden
-            this.Write(@""";
-}
-
-<div class=""widget-content widget-content-area br-6"">
-<!-- Create New -->
-<div style=""float:left; margin-top: 8px; margin-right: 16px;"">
-    @Html.ActionLink(""Create"", ""Create"", new { }, new { @class = ""btn btn-default"" })
-</div>
-
-<table class=""table dataTable"" role=""grid"" id=""");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-table\">\n    <thead>\n        <tr>\n            <th></th>\n");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n            <th>");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
-            
-            #line default
-            #line hidden
-            this.Write("</th>\n");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\n        </tr>\n    </thead>\n</table>\n</div>\n\n@section scripts {\n    <script>\n    " +
-                    "    $(function () {\n\t\t\tvar detailsUrl = \"");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.DetailsUrl));
-            
-            #line default
-            #line hidden
-            this.Write("\";\n            var dTable = $(\"#");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-table\").DataTable({\n                \"serverSide\": true,\n                \"orderin" +
-                    "g\": true,\n\t\t\t\tstateSave: true,\n                dom: ");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".excelButtonDom,\n                \"ajax\": {\n                    \"url\": \"/api/get");
+            this.Write(".core;\r\nusing ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("s?cacheKey=\" + new Date().getTime()\n                },\n                columns: [" +
-                    "\n                    { data: \"");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
+            #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write("\" },\n");
+            this.Write(".data.Services;\r\nusing ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
+            
+            #line default
+            #line hidden
+            this.Write(".web.core.Infrastructure;\r\nusing ");
+            
+            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
+            
+            #line default
+            #line hidden
+            this.Write(@".web.core.ViewModels;
 
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
-            
-            #line default
-            #line hidden
-            this.Write("                    { data: \"");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.References == null ? field.Name.ToSchemaName() : field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write(@"
-                ],
-                columnDefs: [
-                    {
-                        targets: 0, render: function (a) {
-                            return '<a href=""' + detailsUrl + a + '"">@Settings.Icon.DetailsIcon</a>';
-                        }
-                    },
+
+namespace t4mvc.web.core.ViewModelServices
+{
+    public interface ISearchViewModelServiceBase
+    {
+        GlobalSearchResult Search(string searchTerm);
+        GlobalSearchResult SearchAll(string searchTerm);
+    }
+    public class SearchViewModelServiceBase : ISearchViewModelServiceBase
+    {
 ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude).Select((field, ix) => new { field, ix }).Where(x => x.field.RenderFunction != null)) { 
+            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
-            this.Write("                    { targets: ");
+            this.Write("        private readonly ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.ix + 1));
-            
-            #line default
-            #line hidden
-            this.Write(", render: ");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.field.RenderFunction));
+            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceTypeName));
             
             #line default
             #line hidden
-            this.Write(" },\n");
+            this.Write(" ");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n                ],\n                order: [\n                    [1, \"asc\"]\n     " +
-                    "           ],\n                drawCallback: function() { feather.replace(); }\n  " +
-                    "          });\n\n            $(\"#");
+            this.Write("\r\n        public SearchViewModelServiceBase(");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(", ", this.SearchEntities.Select(x => $"{x.ServiceInterfaceTypeName} {x.ServiceInterfaceInstanceName}"))));
             
             #line default
             #line hidden
-            this.Write("-table tbody\").on(\"dblclick\", \"tr\", function () {\n                var data = dTab" +
-                    "le.row(this).data();\n                window.location.href = detailsUrl + data.");
+            this.Write(")\r\n        {\r\n");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\n            });\n\n            key(\"esc\", ");
-            
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
+            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
-            this.Write(@".navigateUpOneLevel);
-            key(""ctrl+enter"", function () {
-                $(dTable.context[0].nTable).find(""tbody tr:first a"")[0].click();
-            });
+            this.Write("            this.");
+            
+            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(@"        }
 
-            $(""#export-excel"").click(function () {
-                var params = dTable.ajax.params();
-                var urlParams = $.param(params);
+        public GlobalSearchResult Search(string searchTerm)
+        {
+            return SearchInternal(searchTerm, 3);
+        }
 
-                // The last data table parameters get cached on the server and so they don't need to be sent here
-                window.open(""/api/export/");
+        public GlobalSearchResult SearchAll(string searchTerm)
+        {
+            return SearchInternal(searchTerm, null);
+        }
+
+        private GlobalSearchResult SearchInternal(string searchTerm, int? take = null)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm)) return new GlobalSearchResult();
+
+            var rv              = new GlobalSearchResult();
+            var requestor       = Current.UserId;
+            bool isPossibleId   = Guid.TryParse(searchTerm, out Guid searchId);
+
+");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToLowerCase()));
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
-            this.Write("\");\n            });\n\n        })\n    </script>\n    <script src=\"/api/js/");
+            this.Write("            IQueryable<");
             
-            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
+            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
             
             #line default
             #line hidden
-            this.Write(".index\"></script>\n}\n");
+            this.Write("> ");
+            
+            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n            if (isPossibleId)\r\n            {\r\n");
+            
+            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
+            
+            #line default
+            #line hidden
+            this.Write("                ");
+            
+            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write("   = ");
+            
+            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
+            
+            #line default
+            #line hidden
+            this.Write(".GetAll");
+            
+            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName));
+            
+            #line default
+            #line hidden
+            this.Write("().Where(x => x.");
+            
+            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.KeyField.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" == searchId);\r\n");
+            
+            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("            }\r\n            else\r\n            {\r\n");
+            
+            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
+            
+            #line default
+            #line hidden
+            this.Write("                ");
+            
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write("   = ");
+            
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
+            
+            #line default
+            #line hidden
+            this.Write(".GetAll");
+            
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName));
+            
+            #line default
+            #line hidden
+            this.Write("().Where(x => ");
+            
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" || ", entity.SearchableFields.Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)"))));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n");
+            
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("            }\r\n\r\n            if (take.HasValue)\r\n            {\r\n");
+            
+            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
+            
+            #line default
+            #line hidden
+            this.Write("                ");
+            
+            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write(".Take(take.Value);\r\n");
+            
+            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("            }\r\n\r\n");
+            
+            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ foreach (var entity in this.SearchEntities) { 
+            
+            #line default
+            #line hidden
+            this.Write("            if (");
+            
+            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write(".Any())\r\n            {\r\n                rv.Categories.Add(new SearchResultCategor" +
+                    "y\r\n                {\r\n                    Name    = \"");
+            
+            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                    Icon    = \"");
+            
+            #line 80 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.HtmlIcon.Replace("\"", "\\\"")));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                    Results = ");
+            
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
+            
+            #line default
+            #line hidden
+            this.Write(".AsEnumerable().Select(x => new SearchResultItem { Title = $\"{x.");
+            
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.NameField.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("}\", Url = \"");
+            
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.DetailsUrl));
+            
+            #line default
+            #line hidden
+            this.Write("\" + x.");
+            
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.KeyField.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" }).ToList()\r\n                });\r\n            }\r\n\r\n");
+            
+            #line 85 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("            return rv;\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -254,7 +367,7 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class adminindexviewBase
+    public class globalsearchBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
