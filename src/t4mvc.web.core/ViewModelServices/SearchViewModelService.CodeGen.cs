@@ -6,12 +6,13 @@ using t4mvc.web.core.ViewModels;
 
 namespace t4mvc.web.core.ViewModelServices
 {
-    public interface ISearchViewModelServiceBase
+    public interface ISearchViewModelService
     {
         GlobalSearchResult Search(string searchTerm);
         GlobalSearchResult SearchAll(string searchTerm);
     }
-    public class SearchViewModelServiceBase : ISearchViewModelServiceBase
+
+    public class SearchViewModelServiceBase : ISearchViewModelService
     {
         private readonly IAccountService accountService;
         private readonly IContactService contactService;
@@ -22,17 +23,17 @@ namespace t4mvc.web.core.ViewModelServices
             this.contactService = contactService;
         }
 
-        public GlobalSearchResult Search(string searchTerm)
+        public virtual GlobalSearchResult Search(string searchTerm)
         {
-            return SearchInternal(searchTerm, 3);
+            return SearchInternalBase(searchTerm, 3);
         }
 
-        public GlobalSearchResult SearchAll(string searchTerm)
+        public virtual GlobalSearchResult SearchAll(string searchTerm)
         {
-            return SearchInternal(searchTerm, null);
+            return SearchInternalBase(searchTerm, null);
         }
 
-        private GlobalSearchResult SearchInternal(string searchTerm, int? take = null)
+        protected GlobalSearchResult SearchInternalBase(string searchTerm, int? take = null)
         {
             if (string.IsNullOrWhiteSpace(searchTerm)) return new GlobalSearchResult();
 

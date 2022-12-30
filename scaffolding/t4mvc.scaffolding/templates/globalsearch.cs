@@ -61,89 +61,90 @@ namespace t4mvc.scaffolding.templates
 
 namespace t4mvc.web.core.ViewModelServices
 {
-    public interface ISearchViewModelServiceBase
+    public interface ISearchViewModelService
     {
         GlobalSearchResult Search(string searchTerm);
         GlobalSearchResult SearchAll(string searchTerm);
     }
-    public class SearchViewModelServiceBase : ISearchViewModelServiceBase
+
+    public class SearchViewModelServiceBase : ISearchViewModelService
     {
 ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("        private readonly ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceTypeName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n        public SearchViewModelServiceBase(");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(", ", this.SearchEntities.Select(x => $"{x.ServiceInterfaceTypeName} {x.ServiceInterfaceInstanceName}"))));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("            this.");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write(@"        }
 
-        public GlobalSearchResult Search(string searchTerm)
+        public virtual GlobalSearchResult Search(string searchTerm)
         {
-            return SearchInternal(searchTerm, 3);
+            return SearchInternalBase(searchTerm, 3);
         }
 
-        public GlobalSearchResult SearchAll(string searchTerm)
+        public virtual GlobalSearchResult SearchAll(string searchTerm)
         {
-            return SearchInternal(searchTerm, null);
+            return SearchInternalBase(searchTerm, null);
         }
 
-        private GlobalSearchResult SearchInternal(string searchTerm, int? take = null)
+        protected GlobalSearchResult SearchInternalBase(string searchTerm, int? take = null)
         {
             if (string.IsNullOrWhiteSpace(searchTerm)) return new GlobalSearchResult();
 
@@ -153,154 +154,154 @@ namespace t4mvc.web.core.ViewModelServices
 
 ");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("            IQueryable<");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 53 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n            if (isPossibleId)\r\n            {\r\n");
             
-            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write("   = ");
             
-            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
             
             #line default
             #line hidden
             this.Write(".GetAll");
             
-            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName));
             
             #line default
             #line hidden
             this.Write("().Where(x => x.");
             
-            #line 57 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(" == searchId);\r\n");
             
-            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            }\r\n            else\r\n            {\r\n");
             
-            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write("   = ");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.ServiceInterfaceInstanceName));
             
             #line default
             #line hidden
             this.Write(".GetAll");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName));
             
             #line default
             #line hidden
             this.Write("().Where(x => ");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" || ", entity.SearchableFields.Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)"))));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            }\r\n\r\n            if (take.HasValue)\r\n            {\r\n");
             
-            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write(".Take(take.Value);\r\n");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            }\r\n\r\n");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  foreach (var entity in this.SearchEntities) { 
             
             #line default
             #line hidden
             this.Write("            if (");
             
-            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 76 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
@@ -308,49 +309,49 @@ namespace t4mvc.web.core.ViewModelServices
             this.Write(".Any())\r\n            {\r\n                rv.Categories.Add(new SearchResultCategor" +
                     "y\r\n                {\r\n                    Name    = \"");
             
-            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 80 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
             
             #line default
             #line hidden
             this.Write("\",\r\n                    Icon    = \"");
             
-            #line 80 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.HtmlIcon.Replace("\"", "\\\"")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                    Results = ");
             
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralCamelCaseName));
             
             #line default
             #line hidden
             this.Write(".AsEnumerable().Select(x => new SearchResultItem { Title = $\"{x.");
             
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.NameField.SchemaName));
             
             #line default
             #line hidden
             this.Write("}\", Url = \"");
             
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.DetailsUrl));
             
             #line default
             #line hidden
             this.Write("\" + x.");
             
-            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(" }).ToList()\r\n                });\r\n            }\r\n\r\n");
             
-            #line 85 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
+            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\globalsearch.tt"
  } 
             
             #line default
