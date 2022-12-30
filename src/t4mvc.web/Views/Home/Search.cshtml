@@ -1,0 +1,11 @@
+﻿@model GlobalSearchResult
+
+@foreach(var category in Model.Categories) {
+    <h1>@Html.Raw(category.Icon) @category.Name</h1>
+    <ul>
+        @foreach(var item in category.Results)
+        {
+            <li><a href="@item.Url">@item.Title</a></li>
+        }
+    </ul>
+}

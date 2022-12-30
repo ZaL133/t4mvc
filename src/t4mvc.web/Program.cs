@@ -48,7 +48,7 @@ namespace t4mvc.web
             var mapper = mappingConfig.CreateMapper();
             builder.Services.AddSingleton(mapper);
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Services.AddSingleton<ISearchViewModelService, SearchViewModelService>();
+            builder.Services.AddScoped<ISearchViewModelService, SearchViewModelService>();
             builder.Services.AddScoped<IContextHelper, ContextHelper>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IUserViewModelService, UserViewModelService>();
