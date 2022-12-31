@@ -9,7 +9,7 @@ using <#= Settings.ApplicationName #>.core;
 
 namespace <#= Settings.ApplicationName #>.data
 {
-    public partial class <#= Settings.DbContextName #> : IdentityDbContext<<#= Settings.ApplicationUserTypeName #>, IdentityRole<Guid>, Guid>
+    public partial class <#= Settings.DbContextName #> : IdentityDbContext<<#= Settings.ApplicationUserTypeName #>, <#= Settings.ApplicationRoleTypeName #>, Guid>
     {
         public <#= Settings.DbContextName #> (DbContextOptions<<#= Settings.DbContextName #>> options) : base(options)
         {

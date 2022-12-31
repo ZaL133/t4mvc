@@ -63,7 +63,14 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(", IdentityRole<Guid>, Guid>\r\n    {\r\n        public ");
+            this.Write(", ");
+            
+            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationRoleTypeName));
+            
+            #line default
+            #line hidden
+            this.Write(", Guid>\r\n    {\r\n        public ");
             
             #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));

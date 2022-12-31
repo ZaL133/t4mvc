@@ -13,6 +13,7 @@ namespace t4mvc.scaffolding
         public static string ApplicationName { get; set; }
         public static string DbContextName { get; set; }
         public static string ApplicationUserTypeName => $"{ApplicationName}User";
+        public static string ApplicationRoleTypeName => $"{ApplicationName}Role";
         public static List<Entity> Entities { get; set; }
         public static Dictionary<string, Area> AreaDictionary = null;
 
