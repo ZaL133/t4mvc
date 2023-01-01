@@ -32,6 +32,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>admincontroller.cs</LastGenOutput>
     </None>
+    <None Update="templates\apiexcelexport.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>apiexcelexport.cs</LastGenOutput>
+    </None>
     <None Update="templates\apimethodset.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>apimethodset.cs</LastGenOutput>
@@ -124,6 +128,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>admincontroller.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\apiexcelexport.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>apiexcelexport.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\apimethodset.cs">
       <DesignTime>True</DesignTime>

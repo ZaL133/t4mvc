@@ -26,6 +26,8 @@ ScaffoldAdminAreas(entities.Where(x => !x.DontScaffold));
 
 ScaffoldGlobalSearch();
 
+ScaffoldExcelExport();
+
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
 {
@@ -261,4 +263,15 @@ void ScaffoldGlobalSearch()
 
     // Write the poco classes
     File.WriteAllText(fullFileName, vmsText);
+}
+
+void ScaffoldExcelExport()
+{
+    var directory       = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web\\Controllers");
+    var fileName        = $"{Settings.ApplicationName}ApiExcelExport.CodeGen.cs";
+    var fullFileName    = Path.Combine(directory, fileName);
+
+    File.WriteAllText(fullFileName,
+                      new apiexcelexport().TransformText());
+
 }

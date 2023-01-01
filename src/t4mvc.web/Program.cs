@@ -8,6 +8,7 @@ using t4mvc.core;
 using t4mvc.data;
 using t4mvc.data.Services;
 using t4mvc.web.App_Start;
+using t4mvc.web.Controllers;
 using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.ViewModels;
 using t4mvc.web.core.ViewModelServices;
@@ -50,8 +51,10 @@ namespace t4mvc.web
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped<ISearchViewModelService, SearchViewModelService>();
             builder.Services.AddScoped<IContextHelper, ContextHelper>();
+            builder.Services.AddScoped<It4mvcApiController, t4mvcApiController>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IUserViewModelService, UserViewModelService>();
+            
 
             builder.Services.AddScoped<IUrlHelper>(x => {
                 var actionContext   = x.GetRequiredService<IActionContextAccessor>().ActionContext;
