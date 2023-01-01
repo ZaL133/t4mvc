@@ -65,7 +65,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
 <div class=""widget-content widget-content-area br-6"">
 <!-- Create New -->
 <div style=""float:left; margin-top: 8px; margin-right: 16px;"">
-    @Html.ActionLink(""Create"", ""Create"", new { }, new { @class = ""btn btn-default"" })
+    @Html.ActionLink(""Create"", ""Create"", new { }, new { @class = ""btn btn-default"", @data_key_combo = ""alt+c"", title = ""alt + c""  })
 </div>
 
 <table class=""table dataTable"" role=""grid"" id=""");

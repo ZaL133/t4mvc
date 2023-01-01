@@ -52288,13 +52288,56 @@ $(function () {
 
     // Setup wysiwyg editors 
     $("[data-t4mvc-wysiwyg]").summernote({ height: 300, tabsize: 2 });
+
+    // Key bindings
+    // Global key bindings
+    (function () {
+        $("a[data-key-combo]").each(function (ix, elem) {
+            var keyCombo = elem.getAttribute("data-key-combo");
+
+            if (keyCombo) {
+                t4mvc.setNonGlobalSearchKeyBinding(keyCombo, function () {
+                    elem.click();
+                });
+            }
+        });
+
+        key("ctrl+s", function () {
+            t4mvc.unbindNonGlobalSearch();
+            $("#global-search").focus();
+            return false;
+        });
+        key("esc", t4mvc.escapeButtonPressed);
+        key("ctrl+e", function () {
+            var editButton = $("#edit-button");
+            if (editButton && editButton[0] && editButton[0].tagName == "A") {
+                window.location.href = editButton.attr("href");
+                return false;
+            }
+        });
+        //key('c', function () {
+        //    window.location.href = "/servicedesk/ticket/create";
+        //    return false;
+        //});
+    })();
 });
 
 t4mvc = (function () {
-    const publicApi             = { api: {} },
-        tzOffset                = new Date().getTimezoneOffset(),
-        userSessionStorageKey   = "t4mvc-USERS";
+    const publicApi                 = { api: {} },
+        tzOffset                    = new Date().getTimezoneOffset(),
+        userSessionStorageKey       = "t4mvc-USERS",
+        nonGlobalSearchKeyBindings  = [];
 
+    // If you press the escape button, it should cancel out of edit mode if you're editing a record. If not, it should take you back
+    // Actually it should clik the back button
+    function escapeButtonPressed() {
+        if (/\/edit\//i.test(window.location.href))
+            window.location.href = window.location.href.replace(/\/edit\//i, "/details/");
+        else
+            navigateUpOneLevel();
+    }
+
+    // Formats a string as a phone number
     function formatPhoneNumber(phone) {
         // Null or empty
         if (!phone) return phone;
@@ -52348,6 +52391,21 @@ t4mvc = (function () {
         window.location.href = parts.join("/");
     }
 
+    // Register a custom key binding
+    function setNonGlobalSearchKeyBinding(keyCombo, fn) {
+        nonGlobalSearchKeyBindings.push(keyCombo);
+        key(keyCombo, fn);
+    }
+
+    // This removes all key bindings
+    function unbindNonGlobalSearch() {
+        if (nonGlobalSearchKeyBindings && nonGlobalSearchKeyBindings.length > 0) {
+            for (var i = 0; i < nonGlobalSearchKeyBindings.length; i++) {
+                key.unbind(nonGlobalSearchKeyBindings[i]);
+            }
+        }
+    }
+
     // Initialize the users object
     // This is cached per session
     // Doesn't work if you're not logged in though so test for the login page
@@ -52362,11 +52420,15 @@ t4mvc = (function () {
         });
     }
 
-    publicApi.clientSideExcelButtonDom = 'frl<"cs-excel-dt-button"><"preview-dt-button">tip';
-    publicApi.excelButtonDom        = 'frl<"excel-dt-button"><"preview-dt-button">tip';
-    publicApi.formatPhoneNumber     = formatPhoneNumber;
-    publicApi.getUserRecord         = getUserRecord;
-    publicApi.navigateUpOneLevel    = navigateUpOneLevel;
+    publicApi.clientSideExcelButtonDom  = 'frl<"cs-excel-dt-button"><"preview-dt-button">tip';
+    publicApi.excelButtonDom            = 'frl<"excel-dt-button"><"preview-dt-button">tip';
+
+    publicApi.escapeButtonPressed       = escapeButtonPressed;
+    publicApi.formatPhoneNumber         = formatPhoneNumber;
+    publicApi.getUserRecord             = getUserRecord;
+    publicApi.navigateUpOneLevel        = navigateUpOneLevel;
+    publicApi.setNonGlobalSearchKeyBinding = setNonGlobalSearchKeyBinding;
+    publicApi.unbindNonGlobalSearch     = unbindNonGlobalSearch;
 
     return publicApi;
 })();
