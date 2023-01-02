@@ -7,6 +7,23 @@ During the process of building a large application like this, you start to devel
 
 This project is meant to automate the all that repetitive boilerplate work, while still being flexible to any customizations, and encorporating best practices. It's all based on methods and opinions that I developed while working on a large web app. 
 
+Boilterplate code that is automated
+
+* Model
+* Entity Framework context
+* Configuration for automapper, Dependency Injection
+* Security based on users and roles
+* ViewModels with read only properties, Create and Modify fields for Date and User on all generated records
+* Creationg of MVC Controllers, Views, and Areas
+* Custom layout specification file for views
+* Child record tables
+* Select2 Lookups of Foreign key references
+* Datatables.net index pages with server side sorting, filtering etc. 
+	* Includes export to excel endpoint 
+	* Includes report - simpile page with results from the datatable
+* Icons used everywhere
+* Global search
+
 The theme is based on the [admin bootstrap example](https://getbootstrap.com/docs/5.0/examples/dashboard/)
 
 ## Steps to build the project
