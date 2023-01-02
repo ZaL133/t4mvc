@@ -12822,6 +12822,9 @@ main {
   left: auto;
   right: 0;
 }
+.navbar .navbar-brand img {
+  max-height: 100%;
+}
 .index-table {
   cursor: pointer;
   user-select: none;

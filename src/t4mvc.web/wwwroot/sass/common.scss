@@ -25,11 +25,27 @@ main {
     position: relative;
     min-height: calc(100vh - 48px);
 }
-// Nav stuff 
+// Nav stuff
 .navbar {
-    .dropdown-toggle { padding-left: 8px; padding-right: 8px; }
-    #logout-button { background-color: unset; border: unset; }
-    .dropdown-menu { position: absolute; left: auto; right: 0; }
+    .dropdown-toggle {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    #logout-button {
+        background-color: unset;
+        border: unset;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        left: auto;
+        right: 0;
+    }
+
+    .navbar-brand {
+        img { max-height: 100%; }
+    }
 }
 
 
