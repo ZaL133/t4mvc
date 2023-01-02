@@ -196,6 +196,28 @@ namespace t4mvc.web.core.Infrastructure
             return webHostEnvironment.WebRootFileProvider.GetFileInfo(path);
         }
 
+        /// <summary>
+        /// Adds a temporary item to the memory cache.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="val"></param>
+        public static void PushTemp(string key, object val)
+        {
+            memoryCache.Set(key, val);
+        }
+
+        /// <summary>
+        /// Pulls a temporary item from the memory cache
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static object PopTemp(string key)
+        {
+            var returnVal = memoryCache.Get(key);
+            memoryCache.Remove(key);
+            return returnVal;
+        }
+
     }
 
     public static class HttpContextExtensions
@@ -218,5 +240,6 @@ namespace t4mvc.web.core.Infrastructure
 
             return StringValues.Empty;
         }
+
     }
 }

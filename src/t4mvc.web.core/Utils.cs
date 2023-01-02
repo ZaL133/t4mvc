@@ -8,6 +8,7 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.Models;
@@ -16,6 +17,9 @@ namespace t4mvc.web.core
 {
     public static class Utils
     {
+        public static Regex HtmlRegex = new Regex("<[^>]*>");
+        public static Regex TrimPrecision = new Regex(@"(?<=\d\.\d\d)(\d\d)");
+
         /// <summary>
         /// Simple extension method around Mapper.Map<T>(src)
         /// </summary>
@@ -148,6 +152,46 @@ namespace t4mvc.web.core
             body = Expression.PropertyOrField(body, propertyName);
 
             return Expression.Lambda(body, param);
+        }
+
+        public static string FormatNullableBool(bool? src, string t, string f)
+        {
+            return src.HasValue && src.Value ? t : f;
+        }
+
+        public static string YesNo(bool? src)
+        {
+            return FormatNullableBool(src, Consts.YES, Consts.NO);
+        }
+
+        public static string YesNo(int? src)
+        {
+            return YesNo(src == 1);
+        }
+
+        public static string FormatDataTablesValue(string input, string render)
+        {
+
+            switch (render)
+            {
+                case "formatYesNoFromByteOrInt":
+                    return YesNo(render == "1");
+                case "formatDate":
+                    if (string.IsNullOrWhiteSpace(input)) return null;
+                    return DateTime.Parse(input).ToShortDateString();
+                case "formatMoney":
+                    if (string.IsNullOrWhiteSpace(input)) return null;
+                    var tmp = decimal.Parse(input);
+                    return tmp.ToString("C");
+                default:
+                    if (string.IsNullOrWhiteSpace(input)) return input;
+                    input = Utils.HtmlRegex.Replace(input, "");
+                    input = Utils.TrimPrecision.Replace(input, "");
+                    input = input.Trim();
+                    break;
+            }
+
+            return input;
         }
     }
 }

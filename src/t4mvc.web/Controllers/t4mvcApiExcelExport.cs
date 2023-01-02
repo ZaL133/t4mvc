@@ -9,6 +9,7 @@ using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.Models;
 using Newtonsoft.Json.Linq;
 using OfficeOpenXml;
+using t4mvc.web.core;
 
 namespace t4mvc.web.Controllers
 {
@@ -36,7 +37,7 @@ namespace t4mvc.web.Controllers
                 var result = data();
                 var resultFile = ResultToExcel(request, result, numberFormat);
 
-                return File(resultFile, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+                return File(resultFile, Consts.EXCELMIMETYPE, fileName);
             }
         }
 
