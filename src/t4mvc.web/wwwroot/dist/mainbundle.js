@@ -52035,9 +52035,9 @@ $(function () {
     // datatables config
     $.extend(true, $.fn.dataTable.defaults, {
         initComplete: function () {
-            var self = this;
-            var excelButtonHtml = '<button><img src="/content/img/Excel.gif" style="max-height:20px;"> Export</button>',
-                previewButtonHtml = '<button><img src="/content/img/pdf.png" style="max-height:20px;"> Preview</button>';
+            var self                = this;
+            var excelButtonHtml     = '<button><img src="/content/img/Excel.gif" style="max-height:20px;"> Export</button>',
+                previewButtonHtml   = '<button><img src="/content/img/pdf.png" style="max-height:20px;"> Preview</button>';
 
             var tableElement = this.api().table().container();
 
@@ -52048,9 +52048,9 @@ $(function () {
                 excelButton.html(excelButtonHtml);
                 excelButton.click(function (e) {
                     e.preventDefault();
-                    var dt = $(this).siblings(".dataTable").DataTable();
+                    var dt          = $(this).siblings(".dataTable").DataTable();
                     var originalUrl = dt.ajax.url();
-                    var exportUrl = originalUrl.replace("/api/", "/api/export/");
+                    var exportUrl   = originalUrl.replace("/api/", "/api/export/");
 
                     window.open(exportUrl);
                 });
@@ -52079,11 +52079,11 @@ $(function () {
 
                     // This means this is an ajax request
                     if (originalUrl) {
-                        var exportUrl = originalUrl.replace("/api/", "/exportpdf/");
+                        var exportUrl = originalUrl.replace("/api/", "/report/");
 
                         window.open(exportUrl);
                     } else { // If not, this is a client side data table.
-                        generateContentToNewWindow("/exportpdf/generatepreview", "/exportpdf/preview");
+                        generateContentToNewWindow("/report/generatepreview", "/report/preview");
                     }
                 });
             }
@@ -52105,17 +52105,17 @@ $(function () {
                 });
 
                 $.ajax({
-                    url: postUrl,
-                    method: "POST",
-                    dataType: "JSON",
+                    url:        postUrl,
+                    method:     "POST",
+                    dataType:   "JSON",
                     contentType: "application/json",
                     data: JSON.stringify({
                         columns: columns, data: data, columnDefs: columnDefs
                     }),
                     success: function (result) {
                         if (result.keyid) {
-                            var exportFile = $(tableElement).find("[data-export-file]");
-                            var fileName = (exportFile && exportFile.length > 0) ? exportFile.attr("data-export-file").replace(/[/\\?%*:|"<>]/g, '-') : "results.xlsx";
+                            var exportFile  = $(tableElement).find("[data-export-file]");
+                            var fileName    = (exportFile && exportFile.length > 0) ? exportFile.attr("data-export-file").replace(/[/\\?%*:|"<>]/g, '-') : "results.xlsx";
                             window.open(getUrl + "?id=" + result.keyid + "&fileName=" + fileName, "_blank");
                             t4mvc.stopSpinner();
                         }
@@ -52397,7 +52397,7 @@ t4mvc = (function () {
         key(keyCombo, fn);
     }
 
-    // This removes all key bindings
+    // This removes all key bindings. This is necessary when entering a text area so that normal editing can take place without triggering key combo's
     function unbindNonGlobalSearch() {
         if (nonGlobalSearchKeyBindings && nonGlobalSearchKeyBindings.length > 0) {
             for (var i = 0; i < nonGlobalSearchKeyBindings.length; i++) {
