@@ -64,6 +64,9 @@ namespace t4mvc.web
             // Add the code generated services 
             ServiceConfig.AddCodeGen(builder.Services);
 
+            // Log4net
+            builder.Logging.AddLog4Net("log4net.config");
+
             var app = builder.Build();
 
             Current.Configure(app.Services);

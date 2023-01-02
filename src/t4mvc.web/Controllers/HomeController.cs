@@ -18,6 +18,7 @@ namespace t4mvc.web.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Home page it");
             return View();
         }
 
