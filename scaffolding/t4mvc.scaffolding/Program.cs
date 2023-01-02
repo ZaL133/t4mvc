@@ -28,6 +28,8 @@ ScaffoldGlobalSearch();
 
 ScaffoldExcelExport();
 
+ScaffoldReportController();
+
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
 {
@@ -273,5 +275,16 @@ void ScaffoldExcelExport()
 
     File.WriteAllText(fullFileName,
                       new apiexcelexport().TransformText());
+
+}
+
+void ScaffoldReportController()
+{
+    var directory       = Settings.CreateAndMapPath($"{Settings.ApplicationName}.Web\\Controllers");
+    var fileName        = $"ReportController.CodeGen.cs";
+    var fullFileName    = Path.Combine(directory, fileName);
+
+    File.WriteAllText(fullFileName,
+                      new reportcontroller().TransformText());
 
 }

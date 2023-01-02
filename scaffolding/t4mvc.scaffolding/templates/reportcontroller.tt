@@ -1,0 +1,30 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #><#
+    var schemaName      = Settings.ApplicationName;
+    var apiController   = schemaName + "ApiController";
+    var iApiController  = "I" + Settings.ApplicationName + "ApiController";
+#>
+
+namespace <#= Settings.ApplicationName #>.web.Controllers
+{
+    public partial class ReportController
+    {
+<#
+foreach(var entity in Settings.Entities)
+{
+        var methodName = $"Get{entity.Name}s";
+#>
+        public ActionResult <#= methodName #>(string cacheKey)
+        {
+            return GetPreview(methodName:   nameof(<#= iApiController #>.<#= methodName #>),
+                              cacheKey:     cacheKey,
+                              dataMethod:   (request) => <#= apiController #>.<#= methodName #>(request, cacheKey),
+                              reportName:   "<#= entity.Name #>");
+        }
+<#    } #>
+
+    }
+}

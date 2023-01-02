@@ -1,0 +1,145 @@
+﻿@model t4mvc.web.core.Reporting.Report
+@{
+    Layout = null;
+}
+@functions {
+                void RenderTable(IEnumerable<t4mvc.web.core.Reporting.ReportRow> grouping) {
+    <table>
+        <thead>
+            <tr>
+                @foreach (var column in Model.Columns.Where(x => x.ColumnNumber >= 0).OrderBy(x => x.ColumnNumber))
+                {
+                    <th class="@column.ColumnClass">@Html.Raw(column.ColumnName)</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in grouping)
+            {
+                <tr>
+                    @foreach (var column in Model.Columns)
+                    {
+                        var value = item.Values[column.ColumnName];
+                        <td class="@column.RowClass">@value.GetValue()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                @foreach (var column in Model.Columns)
+                {
+                    if (column.CalculateTotal)
+                    {
+                        <td class="@column.TotalRowClass">
+                            @Model.SumColumn(grouping, column.ColumnName)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="@column.TotalRowClass">@column.TotalRowText</td>
+                    }
+                }
+            </tr>
+        </tfoot>
+    </table>
+                    }
+}
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@Model.Name</title>
+        <style>
+        body { margin: 0; padding: 0; background-color: #f3f3f3; overflow: auto; }
+        .report { width: 11in; min-height: 8in; margin: auto; padding: .25in; border-width: 0px 1px 0px 1px; border-color: darkgrey; min-height: 100vh; height: 100%; background-color: white; }
+        .report-header { height: 1in; position: relative; }
+        .report-title { position: absolute; text-align: center; width: 100%; top: 0; }
+        .report-title * { margin-top: .05in; margin-bottom: .05in; padding: 0; }
+        .report-title h3 { text-transform: uppercase; }
+        .report-body { font-family: Arial; font-size: 9px; }
+        .grouping { margin-top: .4in; }
+        .grouping-title { margin: .2in; font-size: 20px; font-weight: bold; text-align: center; }
+        table { border-collapse: collapse; width: 100%; }
+        table * { border-color: #222; border-width: 1px; border-style: none; text-align: center; padding: 4px; }
+        table th { vertical-align: top; min-width: .4in; padding: 4px .1in;}
+        table tr { border-style: solid ;  }
+        table tbody tr td:first-of-type { text-align: left; }
+        .left-align { text-align: left; }
+        .data { width: .9in; border: solid; border-width: inherit; border-color: inherit; }
+        .table-footer-total { font-weight: bold; text-align: right; padding-right: 4px; }
+        .report-footer { width: 100%; }
+        .report-footer:after { counter-increment: page; content: counter(page) }
+        .report-footer .date { float: left; margin-left: .25in; }
+        .report-footer .page { float: right; margin-right: .25in; }
+        .money { text-align: right; border-style: solid; }
+        .border { border: solid 1px #222; }
+        .bold { font-weight: bold; }
+        @@media print {
+            margin: 0;
+            writing-mode: tb-rl;
+            @@page {
+                size: A4 landscape;
+
+                @@bottom-right {
+                    content: counter(page) " of " counter(pages);
+                }
+            }
+            .report { border: none; }
+        }
+        @@page {
+            size: A4 landscape;
+
+            @@bottom-right {
+                content: counter(page) " of " counter(pages);
+            }
+        }
+
+        .col-md-4 { width: 33%; }
+        .col-md-3 { width: 25%; }
+        @Html.Raw(Model.CustomCss)
+        </style>
+    </head>
+    <body>
+        <div class="report">
+            <div class="report-header">
+                <img src="~/content/img/favicon.png" style="height: .5in;" alt="t4mvc logo" />
+                <div class="report-title">
+                    <h2>@Model.Header1</h2>
+                    <h3>@Model.Header2</h3>
+                    <h4>@Model.Header3</h4>
+                </div>
+            </div>
+            <div class="report-body">
+                @if (Model.GroupBy != null)
+                {
+                    foreach (var grouping in Model.GroupedData)
+                    {
+                        <div class="grouping">
+                            <div class="grouping-title">
+                                <label>Preparer</label> @grouping.Key
+                            </div>
+                            @{ RenderTable(grouping); }
+                        </div>
+                    }
+                }
+                else
+                {
+                    var grouping = Model.Data;
+                    RenderTable(grouping);
+                }
+
+            </div>
+            <div class="report-footer">
+                <div class="date">Date: @DateTime.Now.ToShortDateString()</div>
+                <div class="page">Page: 1</div>
+            </div>
+        </div>
+
+        <script src="~/dist/mainbundle.js"></script>
+        <script src="/content/theme/assets/js/custom.js"></script>
+        <div id="loading-window" style="display:none"><div class="loader-inner"><div class="loader"></div></div></div>
+
+    </body>
+</html>

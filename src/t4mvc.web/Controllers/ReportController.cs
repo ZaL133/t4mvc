@@ -8,13 +8,13 @@ using t4mvc.web.core.Reporting;
 
 namespace t4mvc.web.Controllers
 {
-    public class ReportController : Controller
+    public partial class ReportController : Controller
     {
-        private readonly It4mvcApiController t4MvcApiController;
+        private readonly It4mvcApiController t4mvcApiController;
 
         public ReportController(It4mvcApiController t4mvcApiController) 
         {
-            t4MvcApiController = t4mvcApiController;
+            this.t4mvcApiController = t4mvcApiController;
         }
 
         [HttpPost]
