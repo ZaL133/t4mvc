@@ -52036,8 +52036,8 @@ $(function () {
     $.extend(true, $.fn.dataTable.defaults, {
         initComplete: function () {
             var self                = this;
-            var excelButtonHtml     = '<button><img src="/content/img/Excel.gif" style="max-height:20px;"> Export</button>',
-                previewButtonHtml   = '<button><img src="/content/img/pdf.png" style="max-height:20px;"> Preview</button>';
+            var excelButtonHtml     = '<button><i data-feather="download" style="max-height:20px;"></i> Export</button>',
+                previewButtonHtml   = '<button><i data-feather="search" style="max-height:20px;"></i> Preview</button>';
 
             var tableElement = this.api().table().container();
 
@@ -52130,6 +52130,9 @@ $(function () {
                     }
                 });
             }
+
+            // Fix the icons
+            feather.replace();
         },
     });
 
