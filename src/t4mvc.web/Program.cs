@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using t4mvc.core;
 using t4mvc.data;
 using t4mvc.data.Services;
-using t4mvc.web.App_Start;
 using t4mvc.web.Controllers;
 using t4mvc.web.core.Infrastructure;
 using t4mvc.web.core.ViewModels;
@@ -64,9 +63,6 @@ namespace t4mvc.web
 
             // Add the code generated services 
             ServiceConfig.AddCodeGen(builder.Services);
-
-            // Configure the sidebar
-            SidebarConfig.Configure();
 
             var app = builder.Build();
 
