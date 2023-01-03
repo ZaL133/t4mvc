@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -34,6 +35,10 @@ namespace t4mvc.web
                     {
                         options.ViewLocationExpanders.Add(new t4mvcViewLocationExpander());
                     });
+            builder.Services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            });
 
             // Add automapper
             var mappingConfig = new MapperConfiguration(mc =>
