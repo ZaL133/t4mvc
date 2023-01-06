@@ -28,6 +28,13 @@ namespace <#= Settings.ApplicationName #>.data.Services
 
         public void Create<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>)
         {
+<# if (this.Entity.EnableAuditing) { #>
+            // Auditing 
+            var oldRecord       = this.context.<#= this.Entity.Name #>s.AsNoTracking().Single(x => x.<#= this.Entity.KeyField.Name #> == <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>);
+            var auditRecord     = oldRecord.GetCreateAuditRecord(<#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>, <#= this.Entity.Name.ToCamelCase() #>.CreateUserId);
+            this.context.AuditRecord.Add(auditRecord); 
+
+<# } #>
             this.context.<#= this.Entity.Name #>s.Add(<#= this.Entity.Name.ToCamelCase() #>);
         }
 
@@ -43,6 +50,13 @@ namespace <#= Settings.ApplicationName #>.data.Services
 
         public void Update<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>, IEnumerable<string> ignore)
         {
+<# if (this.Entity.EnableAuditing) { #>
+            // Auditing 
+            var oldRecord       = this.context.<#= this.Entity.Name #>s.AsNoTracking().Single(x => x.<#= this.Entity.KeyField.Name #> == <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>);
+            var auditRecord     = oldRecord.GetUpdateAuditRecord(<#= this.Entity.Name.ToCamelCase() #>, ignore);
+            this.context.AuditRecord.Add(auditRecord); 
+
+<# } #>
             this.context.<#= this.Entity.Name #>s.Attach(<#= this.Entity.Name.ToCamelCase() #>);
 
             var entry       = this.context.Entry(<#= this.Entity.Name.ToCamelCase() #>);
@@ -56,6 +70,13 @@ namespace <#= Settings.ApplicationName #>.data.Services
 
 		public void Delete<#= this.Entity.Name #>(<#= this.Entity.Name #> <#= this.Entity.Name.ToCamelCase() #>)
         {
+<# if (this.Entity.EnableAuditing) { #>
+            // Auditing 
+            var oldRecord       = this.context.<#= this.Entity.Name #>s.AsNoTracking().Single(x => x.<#= this.Entity.KeyField.Name #> == <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>);
+            var auditRecord     = oldRecord.GetDeleteAuditRecord(<#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>, <#= this.Entity.Name.ToCamelCase() #>.ModifyUserId);
+            this.context.AuditRecord.Add(auditRecord); 
+
+<# } #>
             this.context.<#= this.Entity.Name #>s.Remove(<#= this.Entity.Name.ToCamelCase() #>);
         }
     }

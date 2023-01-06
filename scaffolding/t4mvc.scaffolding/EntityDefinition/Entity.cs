@@ -59,6 +59,12 @@ namespace t4mvc.scaffolding.EntityDefinition
         /// Skip the navigation node
         /// </summary>
         public bool NoNav { get { return Attributes.Any(x => x == "NoNav"); } }
+
+        /// <summary>
+        /// Enable auditing 
+        /// </summary>
+        public bool EnableAuditing => Attributes.Any(x => x == nameof(EnableAuditing));
+
         // Layout
         public Layout? Layout { get; set; }
         // A list of the entities which have a foreign key field for this table

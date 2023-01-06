@@ -38,7 +38,7 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace ");
+            this.Write("using Microsoft.AspNetCore.Mvc;\r\n\r\nnamespace ");
             
             #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\reportcontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));

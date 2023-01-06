@@ -24,6 +24,10 @@ namespace t4mvc.data.Services
 
         public void CreateAccount(Account account)
         {
+            // Auditing 
+            var auditRecord     = account.GetCreateAuditRecord(account.AccountId, account.CreateUserId);
+            this.context.AuditRecord.Add(auditRecord); 
+
             this.context.Accounts.Add(account);
         }
 
@@ -42,7 +46,7 @@ namespace t4mvc.data.Services
             // Auditing 
             var oldRecord       = this.context.Accounts.AsNoTracking().Single(x => x.AccountId == account.AccountId);
             var auditRecord     = oldRecord.GetUpdateAuditRecord(account, ignore);
-            this.context.AuditRecord.Add(auditRecord);
+            this.context.AuditRecord.Add(auditRecord); 
 
             this.context.Accounts.Attach(account);
 
@@ -57,6 +61,11 @@ namespace t4mvc.data.Services
 
 		public void DeleteAccount(Account account)
         {
+            // Auditing 
+            var oldRecord       = this.context.Accounts.AsNoTracking().Single(x => x.AccountId == account.AccountId);
+            var auditRecord     = oldRecord.GetDeleteAuditRecord(account.AccountId, account.ModifyUserId);
+            this.context.AuditRecord.Add(auditRecord); 
+
             this.context.Accounts.Remove(account);
         }
     }

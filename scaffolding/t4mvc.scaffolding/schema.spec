@@ -33,7 +33,7 @@
 #	- Prefetch		= Only applicable to reference fields. Indicates whether the dropdown list should pre-load data vs using ajax api
 #	- ProcessFunction = Override the function which processes the data into Select2 data format. This is a gxi function with the gxi prefix.
 #	- NoReference	= NEEDS DOCUMENTATION
-Account | Area:crm| Icon:feather-home | Security(crm)
+Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
 	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains
 	Address?
 	Address2?

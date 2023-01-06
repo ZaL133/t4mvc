@@ -11,23 +11,26 @@ namespace t4mvc.data
 {
     public static class AuditInspector
     {
-        public static AuditRecord GetCreateAuditRecord<T>(this T oldRecord, T newRecord, IEnumerable<string> fieldsToIgnore)
+        public static AuditRecord GetCreateAuditRecord<T>(this T record, Guid recordId, Guid userId)
         {
-            return oldRecord.GetAuditRecord(newRecord, fieldsToIgnore, "Create");
+            var rv = new AuditRecord
+            {
+                AuditRecordId   = Guid.NewGuid(),
+                AuditType       = "Created",
+                CreateDate      = DateTime.Now,
+                RecordId        = recordId, 
+                UserId          = userId
+            };
+            rv.ChangedFields    = JsonConvert.SerializeObject(record, Formatting.Indented);
+            rv.RecordType       = record.GetType().Name;
+
+            return rv;
         }
 
         public static AuditRecord GetUpdateAuditRecord<T>(this T oldRecord, T newRecord, IEnumerable<string> fieldsToIgnore)
         {
-            return oldRecord.GetAuditRecord(newRecord, fieldsToIgnore, "Update");
-        }
+            string auditType = "Update";
 
-        public static AuditRecord GetDeleteAuditRecord<T>(this T oldRecord, T newRecord, IEnumerable<string> fieldsToIgnore)
-        {
-            return oldRecord.GetAuditRecord(newRecord, fieldsToIgnore, "Delete");
-        }
-
-        private static AuditRecord GetAuditRecord<T>(this T oldRecord, T newRecord, IEnumerable<string> fieldsToIgnore, string auditType)
-        {
             var rv = new AuditRecord
             {
                 AuditRecordId   = Guid.NewGuid(),
@@ -35,8 +38,8 @@ namespace t4mvc.data
                 CreateDate      = DateTime.Now
             };
 
-            var recordType      = oldRecord.GetType();
-            rv.RecordType       = recordType.Name;
+            var recordType = oldRecord.GetType();
+            rv.RecordType = recordType.Name;
 
             var changedValues = new List<ChangeValue>();
             var allProperties = recordType.GetProperties(System.Reflection.BindingFlags.Instance | BindingFlags.Public)
@@ -46,7 +49,7 @@ namespace t4mvc.data
 
             rv.RecordId = (Guid)(allProperties.First().GetValue(oldRecord));
 
-            foreach (var prop in allProperties) 
+            foreach (var prop in allProperties)
             {
                 if (prop.Name == "ModifyUserId") rv.UserId = (Guid)prop.GetValue(newRecord);
                 var oldValue = prop.GetValue(oldRecord);
@@ -82,6 +85,22 @@ namespace t4mvc.data
             }
 
             rv.ChangedFields = JsonConvert.SerializeObject(changedValues, Formatting.Indented);
+
+            return rv;
+        }
+
+        public static AuditRecord GetDeleteAuditRecord<T>(this T oldRecord, Guid recordId, Guid userId)
+        {
+            var rv = new AuditRecord
+            {
+                AuditRecordId   = Guid.NewGuid(),
+                AuditType       = "Deleted",
+                CreateDate      = DateTime.Now,
+                RecordId        = recordId, 
+                UserId          = userId
+            };
+            rv.ChangedFields    = JsonConvert.SerializeObject(oldRecord, Formatting.Indented);
+            rv.RecordType       = oldRecord.GetType().Name;
 
             return rv;
         }

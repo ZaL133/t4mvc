@@ -6,7 +6,7 @@
     var schemaName      = Settings.ApplicationName;
     var apiController   = schemaName + "ApiController";
     var iApiController  = "I" + Settings.ApplicationName + "ApiController";
-#>
+#>using Microsoft.AspNetCore.Mvc;
 
 namespace <#= Settings.ApplicationName #>.web.Controllers
 {
