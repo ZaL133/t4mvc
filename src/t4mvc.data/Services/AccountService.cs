@@ -39,6 +39,9 @@ namespace t4mvc.data.Services
 
         public void UpdateAccount(Account account, IEnumerable<string> ignore)
         {
+            var oldRecord       = this.context.Accounts.AsNoTracking().Single(x => x.AccountId == account.AccountId);
+            var auditRecord     = oldRecord.GetAuditRecord(account, ignore);
+
             this.context.Accounts.Attach(account);
 
             var entry       = this.context.Entry(account);
