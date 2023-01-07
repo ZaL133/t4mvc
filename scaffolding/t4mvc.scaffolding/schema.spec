@@ -12,6 +12,7 @@
 #	- RawData		= Don't include the audit fields. Also - no edit button
 #	- NoNav			= Don't add to the main navigation bar
 #	- Security		= Adds role based permission checks
+#	- EnableAuditing= Adds create/update/delete auditing and old value/new value tracking for the entity. This logs to the AuditRecord table
 #
 # Viewmodel attributes can be
 #	- TextArea		= [DataType(DataType.MultilineText)]
