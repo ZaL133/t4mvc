@@ -21,6 +21,7 @@
 #	- Money			= [UIHint("Money")]
 #	- Phone			= [UIHint("Phone")]
 #	- Email			= [UIHint("Email")]
+#	- Website		= [UIHint("Website")]
 #
 # Field attributes are
 #	- Description	= ViewModel Description Attribute
@@ -43,7 +44,7 @@ Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
 	Zip?
 	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber
 	Fax?
-	Website?
+	Website? | ViewModelAttributes(Website)
 	ParentAccountId?(Guid?)
 	Lat?(double?)
 	Lng?(double?)

@@ -24,6 +24,7 @@ namespace t4mvc.web.core.ViewModels
         [UIHint("Phone")]
         public string Phone { get; set; }
         public string Fax { get; set; }
+        [UIHint("Website")]
         public string Website { get; set; }
         public Guid? ParentAccountId { get; set; }
         public double? Lat { get; set; }

@@ -25,7 +25,8 @@ namespace t4mvc.data.Services
         public void CreateAccount(Account account)
         {
             // Auditing 
-            var auditRecord     = account.GetCreateAuditRecord(account.AccountId, account.CreateUserId);
+            var oldRecord       = this.context.Accounts.AsNoTracking().Single(x => x.AccountId == account.AccountId);
+            var auditRecord     = oldRecord.GetCreateAuditRecord(account.AccountId, account.CreateUserId);
             this.context.AuditRecord.Add(auditRecord); 
 
             this.context.Accounts.Add(account);
