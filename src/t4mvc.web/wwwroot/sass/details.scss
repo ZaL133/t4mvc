@@ -1,4 +1,6 @@
-﻿$borderRadius: 5px;
+﻿@import 'mixins/breakpoints.scss';
+$borderRadius: 5px;
+
 .tab-content {
     padding: 6px;
     border-color: #dee2e6;
@@ -6,6 +8,10 @@
     border-top: none;
     border-end-end-radius: $borderRadius;
     border-end-start-radius: $borderRadius;
+
+    @include screen('sm') {
+        overflow-x: scroll;
+    }
 }
 
 .card-header {
@@ -25,6 +31,10 @@
     border-top: 1px solid #f1f2f3;
     border-radius: 6px 6px 0 0;
     z-index: 5;
+
+    @include screen('small') {
+        position: fixed;
+    }
 }
 
 .action-footer .action-footer-container {

@@ -12891,6 +12891,11 @@ input[type=search] {
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;
 }
+@media screen and (max-width: 767px) {
+  .tab-content {
+    overflow-x: scroll;
+  }
+}
 
 .card-header {
   cursor: pointer;
@@ -12941,14 +12946,6 @@ a.dropdown-toggle {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 0.3em;
 }
-@media (max-width: 768px) {
-  .action-footer {
-    position: fixed;
-  }
-  .tab-content {
-    overflow-x: scroll;
-  }
-}
 .notes .tl-header {
   display: flex;
 }
@@ -12962,3 +12959,4 @@ a.dropdown-toggle {
 .notes .post-text {
   text-align: right;
 }
+

@@ -1,0 +1,30 @@
+﻿$breakpoint-sm: 767px;
+$breakpoint-md: 991px;
+$breakpoint-lg: 1199px;
+$breakpoint-xl: 1399px;
+
+@mixin screen($size, $type: max, $pixels: $breakpoint-sm) {
+    @if $size == 'sm' {
+        @media screen and ($type + -width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @if $size == 'md' {
+        @media screen and ($type + -width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @if $size == 'lg' {
+        @media screen and ($type + -width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @if $size == 'xl' {
+        @media screen and ($type + -width: $breakpoint-xl) {
+            @content;
+        }
+    }
+}
