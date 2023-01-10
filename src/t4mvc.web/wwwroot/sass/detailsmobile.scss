@@ -1,0 +1,10 @@
+﻿@import 'vars.scss';
+
+@media (max-width: $breakpoint-phone) {
+    .action-footer {
+        position: fixed;
+    }
+    .tab-content {
+        overflow-x: scroll;
+    }
+}
