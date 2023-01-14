@@ -10,7 +10,17 @@ foreach(var entity in entities) {
 IF NOT EXISTS (
 	SELECT * FROM sys.Tables WHERE [Name] = '<#= entity.SchemaName #>')
 BEGIN 
+	CREATE TABLE <#= entity.SchemaName #> ( 
+<# foreach(var field in entity.Fields) { #>
+		<#= field.SchemaName #> <#= field.SqlDataType
+#><#=
+	field.IsNullable ? " NULL" : " NOT NULL"
+#><#= field.IsKeyField ? " PRIMARY KEY " : "" #><#= field.References == null ? "" : $" CONSTRAINT FK_{entity.SchemaName}_{field.SchemaName} FOREIGN KEY REFERENCES {field.References.SchemaName}({field.References.KeyField.SchemaName})" #>,
+<# } #>	)
 
+<# foreach(var field in entity.Fields.Where(x => x.IsSearchable || x.References != null)) { #>
+	CREATE INDEX IX_<#= entity.SchemaName #>_<#= field.SchemaName #> ON <#= entity.SchemaName #>(<#= field.SchemaName #>)
+<# } #>
 END 
 <# } #>
 

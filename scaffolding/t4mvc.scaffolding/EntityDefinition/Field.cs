@@ -12,6 +12,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         public string SchemaName => Name.ToSchemaName();
         public List<string> Attributes { get; set; } = new List<string>();
         public string DataType { get; set; } = "string"; // default
+        public string SqlDataType => SqlTypeLookup[DataType.TrimEnd('?')];
         public string? ViewModelType { get; set; }
         public int Length { get; set; }
         public bool IsNameField { get; set; }
@@ -182,5 +183,17 @@ namespace t4mvc.scaffolding.EntityDefinition
 
             return rv.ToArray();
         }
+
+        internal Dictionary<string, string> SqlTypeLookup = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase)
+        {
+            { "string" , "varchar"},
+            { "guid", "uniqueidentifier" },
+            { "datetime", "datetime" },
+            { "double", "float" },
+            { "bool", "bit" },
+            { "int", "int" },
+            { "long", "bigint" },
+            { "numeric", "decimal" }
+        };
     }
 }
