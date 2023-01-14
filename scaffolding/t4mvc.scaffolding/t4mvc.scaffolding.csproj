@@ -72,6 +72,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>reportcontroller.cs</LastGenOutput>
     </None>
+    <None Update="templates\schematemplates\sqltable.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>sqltable.cs</LastGenOutput>
+    </None>
     <None Update="templates\sidebar_nav.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>sidebar_nav.cs</LastGenOutput>
@@ -182,6 +186,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>reportcontroller.tt</DependentUpon>
+    </Compile>
+    <Compile Update="templates\schematemplates\sqltable.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>sqltable.tt</DependentUpon>
     </Compile>
     <Compile Update="templates\sidebar_nav.cs">
       <DesignTime>True</DesignTime>

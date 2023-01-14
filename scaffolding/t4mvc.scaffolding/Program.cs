@@ -2,6 +2,7 @@
 using t4mvc.scaffolding.EntityDefinition;
 using t4mvc.scaffolding.simpletemplates;
 using t4mvc.scaffolding.templates;
+using t4mvc.scaffolding.templates.schematemplates;
 using t4mvc.scaffolding.templates.viewtemplates;
 
 Settings.RootPath               = @"..\..\..\..\..\src\";
@@ -29,6 +30,8 @@ ScaffoldGlobalSearch();
 ScaffoldExcelExport();
 
 ScaffoldReportController();
+
+ScaffoldSchema();
 
 // Scaffolds out the model files 
 static void ScaffoldModel(IEnumerable<Entity> entities)
@@ -287,4 +290,14 @@ void ScaffoldReportController()
     File.WriteAllText(fullFileName,
                       new reportcontroller().TransformText());
 
+}
+
+void ScaffoldSchema()
+{
+    var directory = Settings.CreateAndMapPath($"..\\database\\schema");
+    var fileName = $"{Settings.ApplicationName}_schema.sql";
+    var fullFileName = Path.Combine(directory, fileName);
+
+    File.WriteAllText(fullFileName,
+                      new sqltable().TransformText());
 }
