@@ -30,8 +30,7 @@ namespace <#= Settings.ApplicationName #>.data.Services
         {
 <# if (this.Entity.EnableAuditing) { #>
             // Auditing 
-            var oldRecord       = this.context.<#= this.Entity.Name #>s.AsNoTracking().Single(x => x.<#= this.Entity.KeyField.Name #> == <#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>);
-            var auditRecord     = oldRecord.GetCreateAuditRecord(<#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>, <#= this.Entity.Name.ToCamelCase() #>.CreateUserId);
+            var auditRecord     = <#= this.Entity.Name.ToCamelCase() #>.GetCreateAuditRecord(<#= this.Entity.Name.ToCamelCase() #>.<#= this.Entity.KeyField.Name #>, <#= this.Entity.Name.ToCamelCase() #>.CreateUserId);
             this.context.AuditRecord.Add(auditRecord); 
 
 <# } #>
