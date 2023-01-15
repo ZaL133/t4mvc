@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/src/t4mvc.web/Properties/ServiceDependencies/t4mvc - Web Deploy
+/src/t4mvc.web/Properties/serviceDependencies.t4mvc - Web Deploy.json
+/src/t4mvc.web/Properties/serviceDependencies.json
