@@ -51,23 +51,23 @@ If publishing to IIS, you need to set the maxQueryString and maxUrl fields to >=
 Here's a sample web.config 
 
 ```xml
-	<?xml version="1.0" encoding="utf-8"?>
-	<configuration>
-	<location path="." inheritInChildApplications="false">
-		<system.webServer>
-		<handlers>
-			<add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
-		</handlers>
-		<aspNetCore processPath="dotnet" arguments=".\t4mvc.web.dll" stdoutLogEnabled="false" stdoutLogFile="\\?\%home%\LogFiles\stdout" hostingModel="inprocess" />
-		<security>
-			<requestFiltering allowDoubleEscaping="false">
-				<requestLimits maxUrl="6000" maxQueryString="6000" />
-			</requestFiltering>
-		</security>
-		</system.webServer>
-	</location>
-	</configuration>
-	<!--ProjectGuid: 2d6db2c8-e536-403d-9b11-8a10e80d9ef7-->
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<location path="." inheritInChildApplications="false">
+	<system.webServer>
+	<handlers>
+		<add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+	</handlers>
+	<aspNetCore processPath="dotnet" arguments=".\t4mvc.web.dll" stdoutLogEnabled="false" stdoutLogFile="\\?\%home%\LogFiles\stdout" hostingModel="inprocess" />
+	<security>
+		<requestFiltering allowDoubleEscaping="false">
+			<requestLimits maxUrl="6000" maxQueryString="6000" />
+		</requestFiltering>
+	</security>
+	</system.webServer>
+</location>
+</configuration>
+<!--ProjectGuid: 2d6db2c8-e536-403d-9b11-8a10e80d9ef7-->
 ```
 
 ## Licenses 
