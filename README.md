@@ -1,6 +1,14 @@
 # t4mvc
 Scaffolding an .net core MVC application using a spec file and T4 templates
 
+See here for a functional example! 
+
+<a href="https://t4mvc.azurewebsites.net/">t4mvc</a>
+<pre>
+User: admin@gmail.com
+Pass: t4mvcP@$$word
+</pre>
+
 Often in a data access application, there is a TON of stuff that is done over and over. There's the model, the data access, the viewmodel and associated mapper, the html templates (list, details, edit), the navigation, dropdown lists, excel exports etc etc etc... 
 
 During the process of building a large application like this, you start to develop standard ways of doing things, and then repeating those things over and over for each component. 

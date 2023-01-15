@@ -36,38 +36,38 @@
 #	- ProcessFunction = Override the function which processes the data into Select2 data format. This is a gxi function with the gxi prefix.
 #	- NoReference	= NEEDS DOCUMENTATION
 Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
-	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains
-	Address?
-	Address2?
-	City?
-	State?
-	Zip?
-	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber
-	Fax?
-	Website? | ViewModelAttributes(Website)
+	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains | Length:255
+	Address? | Length:255
+	Address2? | Length:255
+	City? | Length:64
+	State? | Length:64
+	Zip? | Length:16
+	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber | Length:32
+	Fax? | Length:32
+	Website? | ViewModelAttributes(Website) | Length:255
 	ParentAccountId?(Guid?)
 	Lat?(double?)
 	Lng?(double?)
-	Description? | ViewModelAttributes(Wysiwyg)
+	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
 	Active?(bool?)
 
 Contact | Area:crm | Icon:feather-user | HasNotes
-	First Name? | IsSearchable
-	Last Name? | IsSearchable
+	First Name? | IsSearchable | Length:255
+	Last Name? | IsSearchable | Length:255
 	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed
-	Middle Name? | Description: Middle | GridExclude
-	Prefix?	| GridExclude
-	Suffix?		| GridExclude
-	Email Address? | IsIndexed | IsSearchable | KeyField | IsNameField | ViewModelAttributes(Email)
-	Job Title?
+	Middle Name? | Description: Middle | GridExclude | Length:128
+	Prefix?	| GridExclude | Length:64
+	Suffix?		| GridExclude | Length:64
+	Email Address? | IsIndexed | IsSearchable | KeyField | IsNameField | ViewModelAttributes(Email) | Length:255
+	Job Title? | Length:255
 	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber
-	Fax?		| GridExclude
-	Mobile? | GridExclude | ViewModelAttributes(Phone)
-	Address? | GridExclude
-	Address2? | GridExclude
-	City? | GridExclude
-	State? | GridExclude
-	Zip? | GridExclude
+	Fax?		| GridExclude | Length:32
+	Mobile? | GridExclude | ViewModelAttributes(Phone) | Length:32
+	Address? | GridExclude | Length:255
+	Address2? | GridExclude | Length:128
+	City? | GridExclude | Length:64
+	State? | GridExclude | Length:64
+	Zip? | GridExclude | Length:16
 	Active?(bool)
 
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)

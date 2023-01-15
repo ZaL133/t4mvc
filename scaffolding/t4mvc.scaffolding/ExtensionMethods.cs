@@ -45,5 +45,7 @@ namespace t4mvc.scaffolding
                       .Split(':')[1]
                       .Trim();
         }
+
+        public static int ParseInt(this string src) => int.Parse(src);
     }
 }

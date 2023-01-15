@@ -1,3 +1,9 @@
+/*
+	DROP TABLE [Note];
+	DROP TABLE [Contact];
+	DROP TABLE [Account];
+*/
+
 IF NOT EXISTS (
 	SELECT * FROM sys.Tables WHERE [Name] = 'Account')
 BEGIN 
@@ -7,19 +13,19 @@ BEGIN
 		CreateDate datetime NOT NULL,
 		ModifyUserId uniqueidentifier NOT NULL,
 		ModifyDate datetime NOT NULL,
-		Name varchar NOT NULL,
-		Address varchar NULL,
-		Address2 varchar NULL,
-		City varchar NULL,
-		State varchar NULL,
-		Zip varchar NULL,
-		Phone varchar NULL,
-		Fax varchar NULL,
-		Website varchar NULL,
+		Name varchar(255) NOT NULL,
+		Address varchar(255) NULL,
+		Address2 varchar(255) NULL,
+		City varchar(64) NULL,
+		State varchar(64) NULL,
+		Zip varchar(16) NULL,
+		Phone varchar(32) NULL,
+		Fax varchar(32) NULL,
+		Website varchar(255) NULL,
 		ParentAccountId uniqueidentifier NULL,
 		Lat float NULL,
 		Lng float NULL,
-		Description varchar NULL,
+		Description varchar(MAX) NULL,
 		Active bit NULL,
 	)
 
@@ -34,22 +40,22 @@ BEGIN
 		CreateDate datetime NOT NULL,
 		ModifyUserId uniqueidentifier NOT NULL,
 		ModifyDate datetime NOT NULL,
-		FirstName varchar NULL,
-		LastName varchar NULL,
+		FirstName varchar(255) NULL,
+		LastName varchar(255) NULL,
 		AccountId uniqueidentifier NULL CONSTRAINT FK_Contact_AccountId FOREIGN KEY REFERENCES Account(AccountId),
-		MiddleName varchar NULL,
-		Prefix varchar NULL,
-		Suffix varchar NULL,
-		EmailAddress varchar NULL,
-		JobTitle varchar NULL,
+		MiddleName varchar(128) NULL,
+		Prefix varchar(64) NULL,
+		Suffix varchar(64) NULL,
+		EmailAddress varchar(255) NULL,
+		JobTitle varchar(255) NULL,
 		Phone varchar NULL,
-		Fax varchar NULL,
-		Mobile varchar NULL,
-		Address varchar NULL,
-		Address2 varchar NULL,
-		City varchar NULL,
-		State varchar NULL,
-		Zip varchar NULL,
+		Fax varchar(32) NULL,
+		Mobile varchar(32) NULL,
+		Address varchar(255) NULL,
+		Address2 varchar(128) NULL,
+		City varchar(64) NULL,
+		State varchar(64) NULL,
+		Zip varchar(16) NULL,
 		Active bit NULL,
 	)
 

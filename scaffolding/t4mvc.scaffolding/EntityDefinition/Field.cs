@@ -14,7 +14,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         public string DataType { get; set; } = "string"; // default
         public string SqlDataType => SqlTypeLookup[DataType.TrimEnd('?')];
         public string? ViewModelType { get; set; }
-        public int Length { get; set; }
+        public int? Length { get; set; }
         public bool IsNameField { get; set; }
         public bool IsNullable { get; set; }
         public bool IsKeyField { get; set; }

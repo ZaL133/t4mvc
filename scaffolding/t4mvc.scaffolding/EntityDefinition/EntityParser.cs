@@ -15,7 +15,10 @@ namespace t4mvc.scaffolding.EntityDefinition
 
             foreach (var specFileLine in specFileContents.Split('\n'))
             {
+                // # is a comment - ignore
                 if (specFileLine.Length > 0 && specFileLine[0] == '#') continue;
+                
+                // Skip blank lines 
                 if (specFileLine.Length > 1)
                 {
                     // Entity starts at the beginning of a line
@@ -48,7 +51,7 @@ namespace t4mvc.scaffolding.EntityDefinition
 
                         entities.Add(e);
                     }
-                    else
+                    else // it's a field
                     {
                         var fieldParts = specFileLine.TrimStart('\t').Split('|')
                                                      .Select(x => x.Trim())
@@ -56,6 +59,7 @@ namespace t4mvc.scaffolding.EntityDefinition
 
                         string fieldName, dataType;
 
+                        // The () lets you specify a c# data type. E.g. RecordId(Guid) 
                         if (fieldParts[0].Contains("("))
                         {
                             fieldName = fieldParts[0].Split('(')[0];
@@ -94,6 +98,8 @@ namespace t4mvc.scaffolding.EntityDefinition
                         if (fieldParts.Where((x, y) => y > 0).Any(x => x.StartsWith("Description"))) field.Description = fieldParts.Where((x, y) => y > 0).Single(x => x.StartsWith("Description")).Split(':')[1].Trim();
                         if (fieldParts.Has("ViewModelType"))
                             field.ViewModelType = fieldParts.GetVal("ViewModelType");
+                        if (fieldParts.Has("Length"))
+                            field.Length = fieldParts.GetVal("Length").ParseInt();
                         if (e.KeyField == null && fieldParts.Contains("KeyField")) field.IsKeyField = true;
 
                         e.Fields.Add(field);

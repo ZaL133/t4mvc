@@ -3,9 +3,14 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<# var entities = Settings.Entities; 
+<# var entities = Settings.Entities; #>
+/*
+<# for(var i = entities.Count-1; i >= 0; i--) { #>
+	DROP TABLE [<#= entities[i].SchemaName#>];
+<# }#>
+*/
 
-foreach(var entity in entities) {
+<# foreach(var entity in entities) {
 #>
 IF NOT EXISTS (
 	SELECT * FROM sys.Tables WHERE [Name] = '<#= entity.SchemaName #>')
@@ -13,6 +18,8 @@ BEGIN
 	CREATE TABLE <#= entity.SchemaName #> ( 
 <# foreach(var field in entity.Fields) { #>
 		<#= field.SchemaName #> <#= field.SqlDataType
+#><#= 
+	field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)})"
 #><#=
 	field.IsNullable ? " NULL" : " NOT NULL"
 #><#= field.IsKeyField ? " PRIMARY KEY " : "" #><#= field.References == null ? "" : $" CONSTRAINT FK_{entity.SchemaName}_{field.SchemaName} FOREIGN KEY REFERENCES {field.References.SchemaName}({field.References.KeyField.SchemaName})" #>,
