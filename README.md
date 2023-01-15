@@ -44,6 +44,32 @@ The theme is based on the [admin bootstrap example](https://getbootstrap.com/doc
 
 * Automapper
 
+## How to publish
+
+If publishing to IIS, you need to set the maxQueryString and maxUrl fields to >= 6000. This is because the datatables.net url's get very long. If you have an error on the datatables grid, it's because this needs to be set. 
+
+Here's a sample web.config 
+
+```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<configuration>
+	<location path="." inheritInChildApplications="false">
+		<system.webServer>
+		<handlers>
+			<add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+		</handlers>
+		<aspNetCore processPath="dotnet" arguments=".\t4mvc.web.dll" stdoutLogEnabled="false" stdoutLogFile="\\?\%home%\LogFiles\stdout" hostingModel="inprocess" />
+		<security>
+			<requestFiltering allowDoubleEscaping="false">
+				<requestLimits maxUrl="6000" maxQueryString="6000" />
+			</requestFiltering>
+		</security>
+		</system.webServer>
+	</location>
+	</configuration>
+	<!--ProjectGuid: 2d6db2c8-e536-403d-9b11-8a10e80d9ef7-->
+```
+
 ## Licenses 
 
 I rely heavily on the wonderful project EPPlus for excel functionality. 
