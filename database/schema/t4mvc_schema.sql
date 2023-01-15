@@ -73,7 +73,7 @@ BEGIN
 		CreateDate datetime NOT NULL,
 		ModifyUserId uniqueidentifier NOT NULL,
 		ModifyDate datetime NOT NULL,
-		NoteText varchar NOT NULL,
+		NoteText varchar(MAX) NOT NULL,
 		AccountId uniqueidentifier NULL CONSTRAINT FK_Note_AccountId FOREIGN KEY REFERENCES Account(AccountId),
 		ContactId uniqueidentifier NULL CONSTRAINT FK_Note_ContactId FOREIGN KEY REFERENCES Contact(ContactId),
 	)

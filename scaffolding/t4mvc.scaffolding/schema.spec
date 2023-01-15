@@ -71,6 +71,6 @@ Contact | Area:crm | Icon:feather-user | HasNotes
 	Active?(bool)
 
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
-	NoteText | ViewModelAttributes(TextArea, Wysiwyg)
+	NoteText | ViewModelAttributes(TextArea, Wysiwyg) | Length:-1
 	AccountId?(Guid?) | References Account(AccountId)
 	ContactId?(Guid?) | References Contact(ContactId)
