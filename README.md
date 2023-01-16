@@ -31,6 +31,8 @@ Boilterplate code that is automated
 	* Includes report - simpile page with results from the datatable
 * Icons used everywhere
 * Global search
+* Auditing
+* Database Schema
 
 The theme is based on the [admin bootstrap example](https://getbootstrap.com/docs/5.0/examples/dashboard/)
 
