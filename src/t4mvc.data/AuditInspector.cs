@@ -46,7 +46,8 @@ namespace t4mvc.data
             var allProperties = recordType.GetProperties(System.Reflection.BindingFlags.Instance | BindingFlags.Public)
                                                    // Ignore anything specified in the fieldsToIgnore list
                                                    // This will contain read-only properties as well as the create/modify user/date
-                                                   .Where(x => !fieldsToIgnore.Contains(x.Name));
+                                                   .Where(x => !fieldsToIgnore.Contains(x.Name)
+                                                                && x.Name != "ModifyDate");
 
             rv.RecordId = (Guid)(allProperties.First().GetValue(oldRecord));
 
@@ -66,8 +67,9 @@ namespace t4mvc.data
                     {
                         changedValues.Add(new ChangeValue
                         {
-                            OldValue = oldValue?.ToString(),
-                            NewValue = newValue?.ToString()
+                            FieldName   = prop.Name,
+                            OldValue    = oldValue?.ToString(),
+                            NewValue    = newValue?.ToString()
                         });
                     }
                     else
@@ -76,9 +78,9 @@ namespace t4mvc.data
                         {
                             changedValues.Add(new ChangeValue
                             {
-                                FieldName = prop.Name,
-                                OldValue = oldValue?.ToString(),
-                                NewValue = newValue?.ToString()
+                                FieldName   = prop.Name,
+                                OldValue    = oldValue?.ToString(),
+                                NewValue    = newValue?.ToString()
                             });
                         }
                     }
