@@ -26,6 +26,9 @@ namespace t4mvc.web.core.ViewModels
         [Select2("/api/select2/getcontacts", "ContactId", "EmailAddress", "Contact", area : "")]
         public Guid? ContactId { get; set; }
         public string ContactIdEmailAddress { get; set; }
+        [Select2("/api/select2/getprojects", "ProjectId", "ProjectName", "Project", area : "")]
+        public Guid? ProjectId { get; set; }
+        public string ProjectIdProjectName { get; set; }
 
 	}
 }

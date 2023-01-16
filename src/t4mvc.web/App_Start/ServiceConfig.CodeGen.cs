@@ -18,6 +18,8 @@ namespace t4mvc.web
 		    services.AddScoped<IContactViewModelService, ContactViewModelService>();
 		    services.AddScoped<INoteService, NoteService>();
 		    services.AddScoped<INoteViewModelService, NoteViewModelService>();
+		    services.AddScoped<IProjectService, ProjectService>();
+		    services.AddScoped<IProjectViewModelService, ProjectViewModelService>();
         }
     }
 }

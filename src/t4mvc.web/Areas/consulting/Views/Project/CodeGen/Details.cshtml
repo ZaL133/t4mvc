@@ -5,13 +5,13 @@
 
 
 
-@model ContactViewModel
+@model ProjectViewModel
 @{
-    ViewBag.Title = "Contact Details";
-	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contact / " + Model.EmailAddress;
+    ViewBag.Title = "Project Details";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-archive") + " Project / " + Model.ProjectName;
 }
 @section css {
-    <link rel="stylesheet" href="/api/css/Contact.details" />
+    <link rel="stylesheet" href="/api/css/Project.details" />
 }
 
 @using (Html.BeginForm())
@@ -22,7 +22,7 @@
         <div class="col-xl-8 col-md-8 col-sm-12 col-12">
 
             @Html.AntiForgeryToken()
-            @Html.HiddenFor(x => x.ContactId)
+            @Html.HiddenFor(x => x.ProjectId)
 
             <!-- Details -->
             <div class="layout-spacing col-xl-12 col-md-12 col-sm-12 col-12">
@@ -39,13 +39,6 @@
                                 </a>
                             </li>
 
-                            <!-- Projects -->
-                            <li class="nav-item">
-                                <a class="nav-link" id="border-top-Project-tab" data-bs-toggle="tab" href="#border-top-Project" role="tab" aria-controls="border-top-Project" aria-selected="false">
-                                    Projects
-                                </a>
-                            </li>
-
                         </ul>
 
                         <!-- Tab Content -->
@@ -53,14 +46,9 @@
 
                             <!-- Details -->
                             <div id="border-top-details" class="tab-pane fade show active" role="tabpanel" aria-labelledby="border-top-details-tab">
-                                <partial name="~/Areas/crm/Views/Contact/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_DetailsPartial.cshtml" />
+                                <partial name="~/Areas/consulting/Views/Project/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/consulting/Views/Project/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
-
-                            <!-- Projects -->
-                            <div id="border-top-Project" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Project-tab">
-                                <partial name="~/Areas/crm/Views/Project/_TablePartial.cshtml" model="Model.Projects" fallback-name="~/Areas/crm/Views/Project/CodeGen/_TablePartial.cshtml" />
-                            </div>
 
                         </div>
                     </div>
@@ -71,7 +59,7 @@
 
 
         <!-- Column 2 -->
-        @if (Model.ContactId != default(Guid))
+        @if (Model.ProjectId != default(Guid))
         {
         <div class="col-xl-4 col-md-4 col-sm-12 col-12">
             <!-- Notes -->
@@ -86,8 +74,8 @@
         <div class="action-footer-container">
             @Html.RecordInfo(Model?.ModifyUserId, Model?.ModifyDate)
             <div class="col-10">
-                @Html.EditSaveButton(Url.Action("Edit", new { id = Model.ContactId}),
-                                     Url.Action("Details", new { id = Model.ContactId }))
+                @Html.EditSaveButton(Url.Action("Edit", new { id = Model.ProjectId}),
+                                     Url.Action("Details", new { id = Model.ProjectId }))
                 @Html.BackCancelButton(Current.ReturnUrl ?? Url.Action("Index"))
         </div>
     </div>
@@ -96,6 +84,6 @@
 
 
 @section scripts {
-    <partial name="~/Views/Partials/NotesJs.cshtml" model="new t4mvc.web.core.Models.NoteDefinition() { Id = Model.ContactId, KeyField = nameof(Model.ContactId) };" />
-    <script src="/api/js/Contact.details"></script>
+    <partial name="~/Views/Partials/NotesJs.cshtml" model="new t4mvc.web.core.Models.NoteDefinition() { Id = Model.ProjectId, KeyField = nameof(Model.ProjectId) };" />
+    <script src="/api/js/Project.details"></script>
 } 

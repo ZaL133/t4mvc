@@ -24,6 +24,15 @@ namespace t4mvc.Web.Core.Rendering
 //            if (SecurityHelper.HasSecurityLevel(SecurityLevel.crm))
 //    //            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "Account", new { Area = "crm"}), Icon = Settings.Icon.GetIcon20("feather-home"), Text = "Account"});
 //            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "Contact", new { Area = "crm"}), Icon = Settings.Icon.GetIcon20("feather-user"), Text = "Contact"});
+
+			// Area: consulting
+//			parent = model.MenuLinks.FirstOrDefault(x => x.Text == "consulting");
+//			if (parent == null)
+//			{
+//				parent = new SidebarMenuLink { Url = "/consulting", Text = "consulting"};
+//				model.MenuLinks.Add(parent);
+//			}
+//            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "Project", new { Area = "consulting"}), Icon = Settings.Icon.GetIcon20("feather-archive"), Text = "Project"});
         }
     }
 }

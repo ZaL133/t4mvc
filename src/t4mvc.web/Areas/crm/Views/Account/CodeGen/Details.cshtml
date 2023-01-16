@@ -46,6 +46,13 @@
                                 </a>
                             </li>
 
+                            <!-- Projects -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-Project-tab" data-bs-toggle="tab" href="#border-top-Project" role="tab" aria-controls="border-top-Project" aria-selected="false">
+                                    Projects
+                                </a>
+                            </li>
+
                             <!-- Audit History -->
                             <li class="nav-item">
                                 <a class="nav-link" id="border-top-Audit-tab" data-bs-toggle="tab" href="#border-top-Audit" role="tab" aria-controls="border-top-Audit" aria-selected="false">
@@ -67,6 +74,11 @@
                             <!-- Contacts -->
                             <div id="border-top-Contact" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Contact-tab">
                                 <partial name="~/Areas/crm/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_TablePartial.cshtml" />
+                            </div>
+
+                            <!-- Projects -->
+                            <div id="border-top-Project" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Project-tab">
+                                <partial name="~/Areas/crm/Views/Project/_TablePartial.cshtml" model="Model.Projects" fallback-name="~/Areas/crm/Views/Project/CodeGen/_TablePartial.cshtml" />
                             </div>
 
                             <!-- Audit -->

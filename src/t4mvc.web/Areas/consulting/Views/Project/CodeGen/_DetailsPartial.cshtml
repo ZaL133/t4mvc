@@ -1,0 +1,55 @@
+@model ProjectViewModel
+
+                <div class="form-horizontal" style="background-color: white;">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <!-- Project Name -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.t4mvcEditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- Start Date -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.t4mvcEditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- Due Date -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.t4mvcEditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- Account -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Select2EditorFor(x => x.AccountId, x => x.AccountId, x => x.AccountIdName)
+                            @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- Primary Contact -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryContactId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Select2EditorFor(x => x.PrimaryContactId, x => x.PrimaryContactId, x => x.PrimaryContactIdEmailAddress)
+                            @Html.ValidationMessageFor(model => model.PrimaryContactId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.t4mvcEditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+

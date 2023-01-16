@@ -1,0 +1,32 @@
+@model List<ProjectViewModel>
+<!-- Create New -->
+<div>
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default" })
+</div>
+
+<table class="tabletable-bordered table-hover dataTable clientSideExcelButtonDataTable" role="grid" id="project-table">
+    <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Start Date</th>
+            <th>Due Date</th>
+            <th>AccountId</th>
+            <th>PrimaryContactId</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var record in Model)
+        {
+            <tr>
+            <td>@record.ProjectName</td>
+            <td>@record.StartDate</td>
+            <td>@record.DueDate</td>
+            <td>@record.AccountId</td>
+            <td>@record.PrimaryContactId</td>
+            <td>@record.Description</td>
+            </tr>
+        }
+	</tbody>
+</table>
+

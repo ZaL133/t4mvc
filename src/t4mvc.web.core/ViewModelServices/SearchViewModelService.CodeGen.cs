@@ -16,11 +16,13 @@ namespace t4mvc.web.core.ViewModelServices
     {
         private readonly IAccountService accountService;
         private readonly IContactService contactService;
+        private readonly IProjectService projectService;
 
-        public SearchViewModelServiceBase(IAccountService accountService, IContactService contactService)
+        public SearchViewModelServiceBase(IAccountService accountService, IContactService contactService, IProjectService projectService)
         {
             this.accountService = accountService;
             this.contactService = contactService;
+            this.projectService = projectService;
         }
 
         public virtual GlobalSearchResult Search(string searchTerm)
@@ -43,22 +45,26 @@ namespace t4mvc.web.core.ViewModelServices
 
             IQueryable<Account> accounts;
             IQueryable<Contact> contacts;
+            IQueryable<Project> projects;
 
             if (isPossibleId)
             {
                 accounts   = accountService.GetAllAccounts().Where(x => x.AccountId == searchId);
                 contacts   = contactService.GetAllContacts().Where(x => x.ContactId == searchId);
+                projects   = projectService.GetAllProjects().Where(x => x.ProjectId == searchId);
             }
             else
             {
                 accounts   = accountService.GetAllAccounts().Where(x => x.Name.Contains(searchTerm));
                 contacts   = contactService.GetAllContacts().Where(x => x.FirstName.StartsWith(searchTerm) || x.LastName.StartsWith(searchTerm) || x.EmailAddress.StartsWith(searchTerm));
+                projects   = projectService.GetAllProjects().Where(x => x.ProjectName.StartsWith(searchTerm));
             }
 
             if (take.HasValue)
             {
                 accounts = accounts.Take(take.Value);
                 contacts = contacts.Take(take.Value);
+                projects = projects.Take(take.Value);
             }
 
             if (accounts.Any())
@@ -78,6 +84,16 @@ namespace t4mvc.web.core.ViewModelServices
                     Name    = "Contact",
                     Icon    = "<i data-feather=\"user\"></i>",
                     Results = contacts.AsEnumerable().Select(x => new SearchResultItem { Title = $"{x.EmailAddress}", Url = "/crm/contact/details/" + x.ContactId }).ToList()
+                });
+            }
+
+            if (projects.Any())
+            {
+                rv.Categories.Add(new SearchResultCategory
+                {
+                    Name    = "Project",
+                    Icon    = "<i data-feather=\"archive\"></i>",
+                    Results = projects.AsEnumerable().Select(x => new SearchResultItem { Title = $"{x.ProjectName}", Url = "/consulting/project/details/" + x.ProjectId }).ToList()
                 });
             }
 

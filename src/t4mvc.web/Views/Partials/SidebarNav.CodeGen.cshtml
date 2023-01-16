@@ -25,6 +25,22 @@
                     </ul>
                 </div>
             </li>
+            <!-- Area: consulting -->
+            <li class="mb-1 nav-item">
+                <button class="btn btn-toggle align-items-center rounded collapsed nav-link sb-area" data-bs-toggle="collapse" data-bs-target="#consulting-collapse" aria-expanded="true">
+                    consulting
+                </button>
+                <div class="collapse show" id="consulting-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+                        <li class="nav-item">
+                            <a asp-area="consulting" asp-controller="Project" asp-action="index" class="nav-link">
+                                <i data-feather="archive"></i>
+                                Project
+                            </a>
+                        </li>        
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>

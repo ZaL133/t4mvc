@@ -25,6 +25,7 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly INoteService noteService;
         private readonly IAccountService accountService;
         private readonly IContactService contactService;
+        private readonly IProjectService projectService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
         public IQueryable<NoteViewModel> GetAllNotes()
@@ -34,6 +35,8 @@ namespace t4mvc.web.core.ViewModelServices
 						 from left_account_AccountId in left_tmp_account_AccountId.DefaultIfEmpty()
 						 						 join contact_ContactId in contactService.GetAllContacts() on note.ContactId equals contact_ContactId.ContactId into left_tmp_contact_ContactId
 						 from left_contact_ContactId in left_tmp_contact_ContactId.DefaultIfEmpty()
+						 						 join project_ProjectId in projectService.GetAllProjects() on note.ProjectId equals project_ProjectId.ProjectId into left_tmp_project_ProjectId
+						 from left_project_ProjectId in left_tmp_project_ProjectId.DefaultIfEmpty()
 						 			             select new NoteViewModel
 						 {							NoteId = note.NoteId,
 						 							ModifyUserId = note.ModifyUserId,
@@ -41,17 +44,19 @@ namespace t4mvc.web.core.ViewModelServices
 						 							NoteText = note.NoteText,
 						 							AccountId = note.AccountId,
 						 							ContactId = note.ContactId,
-						  AccountIdName = left_account_AccountId.Name,  ContactIdEmailAddress = left_contact_ContactId.EmailAddress, });
+						 							ProjectId = note.ProjectId,
+						  AccountIdName = left_account_AccountId.Name,  ContactIdEmailAddress = left_contact_ContactId.EmailAddress,  ProjectIdProjectName = left_project_ProjectId.ProjectName, });
             return query;
         }
 
-        public NoteViewModelService(INoteService noteService,IAccountService accountService,IContactService contactService, IUserService userService,
+        public NoteViewModelService(INoteService noteService,IAccountService accountService,IContactService contactService,IProjectService projectService, IUserService userService,
                                             IContextHelper contextHelper)
         {
             this.noteService = noteService;
             this.contextHelper      = contextHelper;
             this.accountService = accountService;
             this.contactService = contactService;
+            this.projectService = projectService;
         }
 
         public void CreateNote(NoteViewModel noteViewModel)
@@ -80,6 +85,8 @@ namespace t4mvc.web.core.ViewModelServices
                 note.AccountIdName = accountService.Find(note.AccountId)?.Name;
             if (note.ContactId != null)
                 note.ContactIdEmailAddress = contactService.Find(note.ContactId)?.EmailAddress;
+            if (note.ProjectId != null)
+                note.ProjectIdProjectName = projectService.Find(note.ProjectId)?.ProjectName;
             Hydrate(note);
             return note;
         }
@@ -113,11 +120,16 @@ namespace t4mvc.web.core.ViewModelServices
         {
 			return contactService.Find(id)?.EmailAddress;
         }
+        public string GetProjectIdProjectName(Guid? id)
+        {
+			return projectService.Find(id)?.ProjectName;
+        }
 
         public void Hydrate(NoteViewModel noteViewModel)
         {
             var id = noteViewModel.NoteId;            noteViewModel.AccountIdName =     GetAccountIdName(noteViewModel.AccountId);
             noteViewModel.ContactIdEmailAddress =     GetContactIdEmailAddress(noteViewModel.ContactId);
+            noteViewModel.ProjectIdProjectName =     GetProjectIdProjectName(noteViewModel.ProjectId);
         }
 
     }

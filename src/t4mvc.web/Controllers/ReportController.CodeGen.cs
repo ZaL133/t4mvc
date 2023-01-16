@@ -18,6 +18,13 @@ namespace t4mvc.web.Controllers
                               dataMethod:   (request) => t4mvcApiController.GetContacts(request, cacheKey),
                               reportName:   "Contact");
         }
+        public ActionResult GetProjects(string cacheKey)
+        {
+            return GetPreview(methodName:   nameof(It4mvcApiController.GetProjects),
+                              cacheKey:     cacheKey,
+                              dataMethod:   (request) => t4mvcApiController.GetProjects(request, cacheKey),
+                              reportName:   "Project");
+        }
         public ActionResult GetNotes(string cacheKey)
         {
             return GetPreview(methodName:   nameof(It4mvcApiController.GetNotes),

@@ -70,7 +70,16 @@ Contact | Area:crm | Icon:feather-user | HasNotes
 	Zip? | GridExclude | Length:16
 	Active?(bool)
 
+Project | Area:consulting | Icon:feather-archive | HasNotes
+	Project Name | IsSearchable | Length:255 | IsNameField
+	Start Date?(DateTime?)
+	Due Date?(DateTime?)
+	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed
+	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed
+	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
+
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
 	NoteText | ViewModelAttributes(TextArea, Wysiwyg) | Length:-1
 	AccountId?(Guid?) | References Account(AccountId)
 	ContactId?(Guid?) | References Contact(ContactId)
+	ProjectId?(Guid?) | References Project(ProjectId)

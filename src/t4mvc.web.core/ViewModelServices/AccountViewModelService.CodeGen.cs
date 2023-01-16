@@ -19,6 +19,7 @@ namespace t4mvc.web.core.ViewModelServices
 		void DeleteAccount(AccountViewModel accountViewModel);
 		void Hydrate(AccountViewModel accountViewModel);
         List<ContactViewModel> GetContacts(Guid accountId);
+        List<ProjectViewModel> GetProjects(Guid accountId);
         List<NoteViewModel> GetNotes(Guid accountId);
 
     }
@@ -26,6 +27,7 @@ namespace t4mvc.web.core.ViewModelServices
     {
         private readonly IAccountService accountService;
         private readonly IContactViewModelService contactViewModelService;
+        private readonly IProjectViewModelService projectViewModelService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
@@ -54,12 +56,13 @@ namespace t4mvc.web.core.ViewModelServices
             return query;
         }
 
-        public AccountViewModelService(IAccountService accountService,IContactViewModelService contactViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
+        public AccountViewModelService(IAccountService accountService,IContactViewModelService contactViewModelService,IProjectViewModelService projectViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
                                             IContextHelper contextHelper, IAuditService auditService )
         {
             this.accountService = accountService;
             this.contextHelper      = contextHelper;
             this.contactViewModelService = contactViewModelService;
+            this.projectViewModelService = projectViewModelService;
             this.noteViewModelService = noteViewModelService;
             this.auditService = auditService;
 
@@ -118,12 +121,19 @@ namespace t4mvc.web.core.ViewModelServices
             var id = accountViewModel.AccountId;
             accountViewModel.AuditHistory = GetAuditRecords(id);
             accountViewModel.Contacts=     GetContacts(id);
+            accountViewModel.Projects=     GetProjects(id);
             accountViewModel.Notes=     GetNotes(id);
         }
 
         public List<ContactViewModel> GetContacts(Guid accountId)
         {
             return contactViewModelService.GetAllContacts()
+                        .Where(x => x.AccountId == accountId)
+                        .ToList();
+        }
+        public List<ProjectViewModel> GetProjects(Guid accountId)
+        {
+            return projectViewModelService.GetAllProjects()
                         .Where(x => x.AccountId == accountId)
                         .ToList();
         }

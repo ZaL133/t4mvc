@@ -13,6 +13,7 @@ namespace t4mvc.web.Controllers
     {
         DataTablesResultsBase GetAccounts(DataTablesRequestBase request, string cacheKey);
         DataTablesResultsBase GetContacts(DataTablesRequestBase request, string cacheKey);
+        DataTablesResultsBase GetProjects(DataTablesRequestBase request, string cacheKey);
         DataTablesResultsBase GetNotes(DataTablesRequestBase request, string cacheKey);
     }
 
@@ -22,12 +23,14 @@ namespace t4mvc.web.Controllers
         IServiceProvider serviceProvider;
         IAccountViewModelService accountViewModelService;
         IContactViewModelService contactViewModelService;
+        IProjectViewModelService projectViewModelService;
         INoteViewModelService noteViewModelService;
 
-	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService,IContactViewModelService contactViewModelService,INoteViewModelService noteViewModelService)
+	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService,IContactViewModelService contactViewModelService,IProjectViewModelService projectViewModelService,INoteViewModelService noteViewModelService)
     {
         this.serviceProvider = serviceProvider;        this.accountViewModelService = accountViewModelService;
         this.contactViewModelService = contactViewModelService;
+        this.projectViewModelService = projectViewModelService;
         this.noteViewModelService = noteViewModelService;
     }
 
@@ -115,6 +118,50 @@ namespace t4mvc.web.Controllers
             if (searchParameter != null && searchParameter.Query != null)
             {
                 records = records.Where(x => x.EmailAddress.StartsWith(searchParameter.Query));
+            }
+
+            return records.ToList();
+        }
+        [Route("getprojects")]
+        public DataTablesResultsBase GetProjects(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(GetProjects), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = projectViewModelService.GetAllProjects();
+
+            if (request.Search != null && request.Search.Value != null)
+            {
+                var s = request.Search.Value;
+                queryBase = queryBase.Where(x => x.ProjectName.StartsWith(s));
+            }
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
+        // Select2 field
+        [HttpGet]
+        [Route("select2/getprojects")]
+        public IEnumerable<ProjectViewModel> Select2Projects(Select2SearchParameter searchParameter)
+        {
+            var records = projectViewModelService.GetAllProjects();
+
+            if (searchParameter != null && searchParameter.Query != null)
+            {
+                records = records.Where(x => x.ProjectName.StartsWith(searchParameter.Query));
             }
 
             return records.ToList();

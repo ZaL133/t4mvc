@@ -34,6 +34,7 @@ namespace t4mvc.web.core.ViewModels
         public bool? Active { get; set; }
 
         public List<ContactViewModel> Contacts { get; set; } = new List<ContactViewModel>();
+        public List<ProjectViewModel> Projects { get; set; } = new List<ProjectViewModel>();
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
 	}

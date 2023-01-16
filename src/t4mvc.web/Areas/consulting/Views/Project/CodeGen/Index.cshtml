@@ -1,0 +1,96 @@
+
+
+
+
+
+@{
+    ViewBag.Title = "Projects";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-archive") + " Projects";
+}
+
+<div class="widget-content widget-content-area br-6">
+<!-- Create New -->
+<div style="float:left; margin-top: 8px; margin-right: 16px;">
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default", @data_key_combo = "alt+c", title = "alt + c"  })
+</div>
+
+<table class="table dataTable" role="grid" id="project-table">
+    <thead>
+        <tr>
+            <th></th>
+
+            <th>Project Name</th>
+
+            <th>Start Date</th>
+
+            <th>Due Date</th>
+
+            <th>AccountId</th>
+
+            <th>PrimaryContactId</th>
+
+            <th>Description</th>
+
+        </tr>
+    </thead>
+</table>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+			var detailsUrl = "/consulting/project/details/";
+            var dTable = $("#project-table").DataTable({
+                "serverSide": true,
+                "ordering": true,
+				stateSave: true,
+                dom: t4mvc.excelButtonDom,
+                "ajax": {
+                    "url": "/api/getprojects?cacheKey=" + new Date().getTime()
+                },
+                columns: [
+                    { data: "ProjectId" },
+                    { data: "ProjectName" },
+                    { data: "StartDate" },
+                    { data: "DueDate" },
+                    { data: "AccountIdName" },
+                    { data: "PrimaryContactIdEmailAddress" },
+                    { data: "Description" },
+
+                ],
+                columnDefs: [
+                    {
+                        targets: 0, render: function (a) {
+                            return '<a href="' + detailsUrl + a + '">@Settings.Icon.DetailsIcon</a>';
+                        }
+                    },
+
+                ],
+                order: [
+                    [1, "asc"]
+                ],
+                drawCallback: function() { feather.replace(); }
+            });
+
+            $("#project-table tbody").on("dblclick", "tr", function () {
+                var data = dTable.row(this).data();
+                window.location.href = detailsUrl + data.ProjectId;
+            });
+
+            key("esc", t4mvc.navigateUpOneLevel);
+            key("ctrl+enter", function () {
+                $(dTable.context[0].nTable).find("tbody tr:first a")[0].click();
+            });
+
+            $("#export-excel").click(function () {
+                var params = dTable.ajax.params();
+                var urlParams = $.param(params);
+
+                // The last data table parameters get cached on the server and so they don't need to be sent here
+                window.open("/api/export/project");
+            });
+
+        })
+    </script>
+    <script src="/api/js/Project.index"></script>
+}

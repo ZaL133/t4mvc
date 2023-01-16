@@ -1,5 +1,6 @@
 /*
 	DROP TABLE [Note];
+	DROP TABLE [Project];
 	DROP TABLE [Contact];
 	DROP TABLE [Account];
 */
@@ -65,6 +66,27 @@ BEGIN
 	CREATE INDEX IX_Contact_EmailAddress ON Contact(EmailAddress)
 END 
 IF NOT EXISTS (
+	SELECT * FROM sys.Tables WHERE [Name] = 'Project')
+BEGIN 
+	CREATE TABLE Project ( 
+		ProjectId uniqueidentifier NOT NULL PRIMARY KEY ,
+		CreateUserId uniqueidentifier NOT NULL,
+		CreateDate datetime NOT NULL,
+		ModifyUserId uniqueidentifier NOT NULL,
+		ModifyDate datetime NOT NULL,
+		ProjectName varchar(255) NOT NULL,
+		StartDate datetime NULL,
+		DueDate datetime NULL,
+		AccountId uniqueidentifier NULL CONSTRAINT FK_Project_AccountId FOREIGN KEY REFERENCES Account(AccountId),
+		PrimaryContactId uniqueidentifier NULL CONSTRAINT FK_Project_PrimaryContactId FOREIGN KEY REFERENCES Contact(ContactId),
+		Description varchar(MAX) NULL,
+	)
+
+	CREATE INDEX IX_Project_ProjectName ON Project(ProjectName)
+	CREATE INDEX IX_Project_AccountId ON Project(AccountId)
+	CREATE INDEX IX_Project_PrimaryContactId ON Project(PrimaryContactId)
+END 
+IF NOT EXISTS (
 	SELECT * FROM sys.Tables WHERE [Name] = 'Note')
 BEGIN 
 	CREATE TABLE Note ( 
@@ -76,9 +98,11 @@ BEGIN
 		NoteText varchar(MAX) NOT NULL,
 		AccountId uniqueidentifier NULL CONSTRAINT FK_Note_AccountId FOREIGN KEY REFERENCES Account(AccountId),
 		ContactId uniqueidentifier NULL CONSTRAINT FK_Note_ContactId FOREIGN KEY REFERENCES Contact(ContactId),
+		ProjectId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectId FOREIGN KEY REFERENCES Project(ProjectId),
 	)
 
 	CREATE INDEX IX_Note_AccountId ON Note(AccountId)
 	CREATE INDEX IX_Note_ContactId ON Note(ContactId)
+	CREATE INDEX IX_Note_ProjectId ON Note(ProjectId)
 END 
 

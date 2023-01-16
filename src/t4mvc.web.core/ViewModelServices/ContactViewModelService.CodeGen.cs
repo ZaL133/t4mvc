@@ -18,6 +18,7 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveContact(ContactViewModel contactViewModel);
 		void DeleteContact(ContactViewModel contactViewModel);
 		void Hydrate(ContactViewModel contactViewModel);
+        List<ProjectViewModel> GetProjects(Guid contactId);
         List<NoteViewModel> GetNotes(Guid contactId);
 
     }
@@ -25,6 +26,7 @@ namespace t4mvc.web.core.ViewModelServices
     {
         private readonly IContactService contactService;
         private readonly IAccountService accountService;
+        private readonly IProjectViewModelService projectViewModelService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
@@ -56,12 +58,13 @@ namespace t4mvc.web.core.ViewModelServices
             return query;
         }
 
-        public ContactViewModelService(IContactService contactService,IAccountService accountService,INoteViewModelService noteViewModelService, IUserService userService,
+        public ContactViewModelService(IContactService contactService,IAccountService accountService,IProjectViewModelService projectViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
                                             IContextHelper contextHelper)
         {
             this.contactService = contactService;
             this.contextHelper      = contextHelper;
             this.accountService = accountService;
+            this.projectViewModelService = projectViewModelService;
             this.noteViewModelService = noteViewModelService;
         }
 
@@ -122,9 +125,16 @@ namespace t4mvc.web.core.ViewModelServices
         public void Hydrate(ContactViewModel contactViewModel)
         {
             var id = contactViewModel.ContactId;            contactViewModel.AccountIdName =     GetAccountIdName(contactViewModel.AccountId);
+            contactViewModel.Projects=     GetProjects(id);
             contactViewModel.Notes=     GetNotes(id);
         }
 
+        public List<ProjectViewModel> GetProjects(Guid contactId)
+        {
+            return projectViewModelService.GetAllProjects()
+                        .Where(x => x.PrimaryContactId == contactId)
+                        .ToList();
+        }
         public List<NoteViewModel> GetNotes(Guid contactId)
         {
             return noteViewModelService.GetAllNotes()
