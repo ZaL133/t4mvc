@@ -12947,6 +12947,11 @@ a.dropdown-toggle {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 0.3em;
 }
+
+.form-control[disabled] {
+  background-color: #ced4da;
+  min-height: 34px;
+}
 .notes .tl-header {
   display: flex;
 }

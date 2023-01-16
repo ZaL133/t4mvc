@@ -1,4 +1,5 @@
 ﻿@import 'mixins/breakpoints.scss';
+@import 'vars.scss';
 $borderRadius: 5px;
 
 .tab-content {
@@ -65,4 +66,9 @@ a.dropdown-toggle {
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: .3em;
+}
+
+.form-control[disabled] {
+    background-color: $disabled-background-color;
+    min-height: 34px;
 }
