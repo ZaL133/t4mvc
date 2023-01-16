@@ -12826,6 +12826,11 @@ main {
 .navbar .navbar-brand img {
   max-height: 100%;
 }
+
+.sidebar .sb-area {
+  width: 100%;
+  background: radial-gradient(#efefef, #caced2);
+}
 .index-table {
   cursor: pointer;
   user-select: none;
