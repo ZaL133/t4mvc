@@ -9,7 +9,7 @@
         <# foreach(var area in Settings.Entities.Where(x => !x.DontScaffold && !x.NoNav).GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; #>
             <!-- Area: <#= area.Key.AreaText #> -->
             <li class="mb-1 nav-item">
-                <button class="btn btn-toggle align-items-center rounded collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#<#= area.Key.AreaText.ToSchemaName() #>-collapse" aria-expanded="true">
+                <button class="btn btn-toggle align-items-center rounded collapsed nav-link sb-area" data-bs-toggle="collapse" data-bs-target="#<#= area.Key.AreaText.ToSchemaName() #>-collapse" aria-expanded="true">
                     <#= area.Key.AreaText #>
                 </button>
                 <div class="collapse show" id="<#= area.Key.AreaText.ToSchemaName() #>-collapse">

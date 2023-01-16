@@ -277,6 +277,20 @@ if (field.References != null && field.References.NameField != null) {
             
             #line default
             #line hidden
+            
+            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();\r" +
+                    "\n");
+            
+            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+ }
+            
+            #line default
+            #line hidden
             this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }

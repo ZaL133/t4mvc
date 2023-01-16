@@ -45,8 +45,8 @@ namespace t4mvc.scaffolding.templates
             #line default
             #line hidden
             this.Write(" -->\r\n            <li class=\"mb-1 nav-item\">\r\n                <button class=\"btn " +
-                    "btn-toggle align-items-center rounded collapsed nav-link\" data-bs-toggle=\"collap" +
-                    "se\" data-bs-target=\"#");
+                    "btn-toggle align-items-center rounded collapsed nav-link sb-area\" data-bs-toggle" +
+                    "=\"collapse\" data-bs-target=\"#");
             
             #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText.ToSchemaName()));

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using t4mvc.core;
 
 namespace t4mvc.data
 {
@@ -113,15 +114,4 @@ namespace t4mvc.data
         public string NewValue { get; set; }
     }
 
-    public class AuditRecord 
-    {
-        public Guid AuditRecordId { get; set; }
-        public DateTime CreateDate { get; set; }
-        public Guid UserId { get; set; }
-        public Guid RecordId { get; set; }
-        // Create, Update, Delete
-        public string AuditType { get; set; }
-        public string RecordType { get; set; }
-        public string ChangedFields { get; set; }
-    }
 }

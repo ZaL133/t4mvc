@@ -35,5 +35,6 @@ namespace t4mvc.web.core.ViewModels
 
         public List<ContactViewModel> Contacts { get; set; } = new List<ContactViewModel>();
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
+		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
 	}
 }

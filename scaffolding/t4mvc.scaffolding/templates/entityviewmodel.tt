@@ -38,6 +38,8 @@ if (field.References != null && field.References.NameField != null) {  #>
 
 <# foreach(var childTable in this.Entity.ChildReferences) { #>
         public List<<#= childTable.Name#>ViewModel> <#= childTable.ParentFieldName #> { get; set; } = new List<<#= childTable.Name#>ViewModel>();
-<# } #>
+<# } #><# if (this.Entity.EnableAuditing) { #>
+		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
+<# }#>
 	}
 }
