@@ -1,0 +1,31 @@
+﻿@model List<AuditRecord>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Record Date</th>
+                <th>Audit Type</th>
+                <th>User Id</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.OrderByDescending(x => x.CreateDate))
+            {
+                <tr>
+                    <td>@record.CreateDate</td>
+                    <td>@record.AuditType</td>
+                    <td><span data-user-fullname="@record.UserId"></span></td>
+                    <td><pre>@Html.Raw(record.ChangedFields)</pre></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

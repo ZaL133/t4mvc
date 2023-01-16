@@ -27,7 +27,6 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly IContactService contactService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
-
         public IQueryable<NoteViewModel> GetAllNotes()
         {
 		    var query = (from note in noteService.GetAllNotes()
@@ -117,11 +116,9 @@ namespace t4mvc.web.core.ViewModelServices
 
         public void Hydrate(NoteViewModel noteViewModel)
         {
-            var id = noteViewModel.NoteId;
-            noteViewModel.AccountIdName =     GetAccountIdName(noteViewModel.AccountId);
+            var id = noteViewModel.NoteId;            noteViewModel.AccountIdName =     GetAccountIdName(noteViewModel.AccountId);
             noteViewModel.ContactIdEmailAddress =     GetContactIdEmailAddress(noteViewModel.ContactId);
         }
-
 
     }
 }

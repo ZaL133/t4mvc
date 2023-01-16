@@ -48,7 +48,16 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
                                 <a class="nav-link" id="border-top-<#= sn #>-tab" data-bs-toggle="tab" href="#border-top-<#= sn #>" role="tab" aria-controls="border-top-<#= sn #>" aria-selected="false">
                                     <#= (tab.TabText ?? tab.ParentFieldName) #>
                                 </a>
-                            </li><# } #>
+                            </li>
+<# } if (Entity.EnableAuditing) { #>
+
+                            <!-- Audit History -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-Audit-tab" data-bs-toggle="tab" href="#border-top-Audit" role="tab" aria-controls="border-top-Audit" aria-selected="false">
+                                    Audit
+                                </a>
+                            </li>
+<# }#>
                         </ul>
 
                         <!-- Tab Content -->
@@ -63,7 +72,14 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
                             <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
                             <div id="border-top-<#= sn #>" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-<#= sn #>-tab">
                                 <partial name="<#= areaPrefix #>/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="<#= areaPrefix #>/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
-                            </div><# } #>
+                            </div>
+<# } if (Entity.EnableAuditing) { #>
+
+                            <!-- Audit -->
+                            <div id="border-top-Audit" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Audit-tab">
+                                <partial name="~/Views/Shared/AuditHistory.cshtml" model="Model.AuditHistory" />
+                            </div>
+<# } #>
                         </div>
                     </div>
                 </div>

@@ -268,511 +268,552 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
             #line default
             #line hidden
             this.Write("        private readonly IContextHelper contextHelper;\r\n        private readonly " +
-                    "IUserService userService;\r\n\r\n        public IQueryable<");
+                    "IUserService userService;");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        private readonly IAuditService auditService;\r\n        ");
+            
+            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ }
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public IQueryable<");
+            
+            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel> GetAll");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n\t\t    var query = (from ");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(" in ");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.GetAll");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("()\r\n                         ");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { if (childReference.IsNullable) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t\t\t join ");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(" in ");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.GetAll");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("() on ");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(" equals ");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(" into left_tmp_");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t\t\t\t from left_");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(" in left_tmp_");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(".DefaultIfEmpty()\r\n\t\t\t\t\t\t ");
             
-            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 49 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
 } else { 
             
             #line default
             #line hidden
             this.Write("                         join ");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(" in ");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.GetAll");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("() on ");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(" equals ");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.KeyField.Name));
             
             #line default
             #line hidden
             this.Write("\r\n                         ");
             
-            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } }
             
             #line default
             #line hidden
             this.Write("\t\t\t             select new ");
             
-            #line 49 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel\r\n\t\t\t\t\t\t {");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 53 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach(var field in this.Entity.Fields.Where(x => !x.IsAudit && !x.Secure)) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t\t\t\t");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t ");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((childReference.IsNullable ? "left_" : "" ) + childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  }
             
             #line default
             #line hidden
             this.Write("});\r\n            return query;\r\n        }\r\n\r\n        public ");
             
-            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModelService(");
             
-            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.GetViewmModelServiceDefinitions().Any() ? string.Join(",", this.Entity.GetViewmModelServiceDefinitions()) + "," : ""));
             
             #line default
             #line hidden
             this.Write(" IUserService userService,\r\n                                            IContextH" +
-                    "elper contextHelper)\r\n        {\r\n            this.");
+                    "elper contextHelper");
             
-            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 60 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write(", IAuditService auditService ");
+            
+            #line 60 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ }
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n            this.");
+            
+            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service = ");
             
-            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service;\r\n            this.contextHelper      = contextHelper;\r\n");
             
-            #line 61 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach(var svc in this.Entity.Fields.Where(x => x.References != null && !x.IsAudit).Select(x => $"{x.References.Name.ToCamelCase()}Service").Distinct()) { 
             
             #line default
             #line hidden
             this.Write("            this.");
             
-            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(svc));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(svc));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 63 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 67 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach(var childTable in this.Entity.ChildReferences.Where(x => x.Name != this.Entity.Name)) { 
             
             #line default
             #line hidden
             this.Write("            this.");
             
-            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 68 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModelService = ");
             
-            #line 65 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 68 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModelService;\r\n");
             
-            #line 66 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
+            
+            #line default
+            #line hidden
+            
+            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write("            this.auditService = auditService;\r\n\r\n");
+            
+            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ }
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n        public void Create");
             
-            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel ");
             
-            #line 69 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel)\r\n        {\r\n            var ");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 77 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 77 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.Map<");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 77 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(">();\r\n            ");
             
-            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  if (!this.Entity.RawData) { 
             
             #line default
             #line hidden
             
-            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".CreateDate = DateTime.Now;\r\n            ");
             
-            #line 73 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".ModifyDate = DateTime.Now;\r\n            ");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 80 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".CreateUserId = Current.UserId;\r\n            ");
             
-            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 81 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".ModifyUserId = Current.UserId;\r\n            ");
             
-            #line 76 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 76 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 82 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("Id = Guid.NewGuid();\r\n\r\n");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            ");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.Create");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
@@ -780,265 +821,265 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
             this.Write(");\r\n\r\n            contextHelper.SaveChanges();\r\n\r\n            // Set the new id b" +
                     "ack on the view so it can be called post-save\r\n            ");
             
-            #line 83 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.");
             
-            #line 83 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("Id = ");
             
-            #line 83 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
-            
-            #line 83 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
-            
-            #line default
-            #line hidden
-            this.Write("Id;\r\n        }\r\n\r\n        public ");
-            
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
-            
-            #line default
-            #line hidden
-            this.Write("ViewModel Find(");
-            
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.DataType));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 86 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("Id)\r\n        {\r\n            var ");
-            
-            #line 88 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write(" = ");
-            
-            #line 88 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("Service.Find(");
-            
-            #line 88 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
-            
-            #line default
-            #line hidden
-            this.Write("Id)\r\n                                                  .Map<");
             
             #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
+            this.Write("Id;\r\n        }\r\n\r\n        public ");
+            
+            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
+            this.Write("ViewModel Find(");
+            
+            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.DataType));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write("Id)\r\n        {\r\n            var ");
+            
+            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write("Service.Find(");
+            
+            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write("Id)\r\n                                                  .Map<");
+            
+            #line 95 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
             this.Write("ViewModel>();\r\n\r\n");
             
-            #line 91 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 97 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach(var field in this.Entity.Fields.Where(x => x.References != null && !x.IsAudit)) { 
             
             #line default
             #line hidden
             this.Write("            if (");
             
-            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 98 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 98 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" != null)\r\n                ");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.Find(");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(")?.");
             
-            #line 93 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 100 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            Hydrate(");
             
-            #line 95 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(");\r\n            return ");
             
-            #line 96 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 102 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(";\r\n        }\r\n\r\n        public void Save");
             
-            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel ");
             
-            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel)\r\n        {\r\n            var ");
             
-            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.Map<");
             
-            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(">();\r\n            ");
             
-            #line 102 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 108 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  if (!this.Entity.RawData) {
             
             #line default
             #line hidden
             
-            #line 102 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 108 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".ModifyDate = DateTime.Now;\r\n            ");
             
-            #line 103 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 109 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".ModifyUserId = Current.UserId;\r\n\r\n");
             
-            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 111 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
             this.Write("            var ignore = FieldMappingInspector<");
             
-            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 111 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(">.GetAllReadonlyFields(");
             
-            #line 105 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 111 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel);\r\n\r\n            ");
             
-            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 113 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.Update");
             
-            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 113 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 113 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
@@ -1046,98 +1087,98 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
             this.Write(", ignore);\r\n\r\n            contextHelper.SaveChanges();\r\n        }\r\n\r\n\t\tpublic voi" +
                     "d Delete");
             
-            #line 112 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 118 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 112 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 118 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel ");
             
-            #line 112 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 118 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel)\r\n        {\r\n            var ");
             
-            #line 114 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 120 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 114 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 120 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.Map<");
             
-            #line 114 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 120 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(">();\r\n\r\n            ");
             
-            #line 116 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 122 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.Delete");
             
-            #line 116 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 122 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 116 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 122 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n            contextHelper.SaveChanges();\r\n        }\r\n");
             
-            #line 120 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 126 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { 
             
             #line default
             #line hidden
             this.Write("        public string Get");
             
-            #line 120 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 126 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("(Guid? id)\r\n        {\r\n\t\t\treturn ");
             
-            #line 122 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 128 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("Service.Find(id)?.");
             
-            #line 122 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 128 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(";\r\n        }\r\n");
             
-            #line 124 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
 
         } 
             
@@ -1145,112 +1186,133 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
             #line hidden
             this.Write("\r\n        public void Hydrate(");
             
-            #line 127 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 133 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel ");
             
-            #line 127 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 133 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel)\r\n        {\r\n            var id = ");
             
-            #line 129 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 135 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.");
             
-            #line 129 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 135 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("Id;\r\n        ");
+            this.Write("Id;");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 135 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n            ");
+            
+            #line 137 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write("ViewModel.AuditHistory = GetAuditRecords(id);\r\n");
+            
+            #line 138 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("        ");
+            
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  if (this.Entity.Fields.Count(x => x.References != null) > 0) { foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { 
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" =     Get");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.");
             
-            #line 130 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 139 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 131 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 140 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
 
 } } 
             
             #line default
             #line hidden
             
-            #line 132 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  if (this.Entity.ChildReferences.Count > 0) { foreach (var childReference in this.Entity.ChildReferences) { 
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 132 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModel.");
             
-            #line 132 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.ParentFieldName));
             
             #line default
             #line hidden
             this.Write("=     Get");
             
-            #line 132 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childReference.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("(id);\r\n        ");
             
-            #line 133 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 142 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
 
 } } 
             
@@ -1258,68 +1320,103 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
             #line hidden
             this.Write("}\r\n\r\n");
             
-            #line 137 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 146 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  foreach(var childTable in this.Entity.ChildReferences) { 
             
             #line default
             #line hidden
             this.Write("        public List<");
             
-            #line 138 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 147 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel> Get");
             
-            #line 138 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 147 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("(Guid ");
             
-            #line 138 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 147 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return ");
             
-            #line 140 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 149 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((childTable.Name == this.Entity.Name) ? "this" : childTable.Name.ToCamelCase() + "ViewModelService"));
             
             #line default
             #line hidden
             this.Write(".GetAll");
             
-            #line 140 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 149 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("()\r\n                        .Where(x => x.");
             
-            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 150 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(" == ");
             
-            #line 141 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 150 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(")\r\n                        .ToList();\r\n        }\r\n");
             
-            #line 144 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            #line 153 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n    }\r\n}\r\n");
+            
+            #line 153 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ if (this.Entity.EnableAuditing) { 
+            
+            #line default
+            #line hidden
+            this.Write("        public List<AuditRecord> GetAuditRecords(Guid ");
+            
+            #line 154 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n            return auditService.GetAuditRecords()\r\n                " +
+                    "               .Where(x => x.RecordId == ");
+            
+            #line 157 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToCamelCase()));
+            
+            #line default
+            #line hidden
+            this.Write(" && x.RecordType == \"");
+            
+            #line 157 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\")\r\n                               .ToList();\r\n        }\r\n\r\n");
+            
+            #line 161 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewmodelservice.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

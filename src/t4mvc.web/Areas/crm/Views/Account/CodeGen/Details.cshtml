@@ -1,6 +1,15 @@
+
+
+
+
+
+
+
 @model AccountViewModel
 @{
-    ViewBag.Title = "Account Details";	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Account / " + Model.Name;}
+    ViewBag.Title = "Account Details";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Account / " + Model.Name;
+}
 @section css {
     <link rel="stylesheet" href="/api/css/Account.details" />
 }
@@ -29,12 +38,22 @@
                                     Details
                                 </a>
                             </li>
+
                             <!-- Contacts -->
                             <li class="nav-item">
                                 <a class="nav-link" id="border-top-Contact-tab" data-bs-toggle="tab" href="#border-top-Contact" role="tab" aria-controls="border-top-Contact" aria-selected="false">
                                     Contacts
                                 </a>
-                            </li>                        </ul>
+                            </li>
+
+                            <!-- Audit History -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-Audit-tab" data-bs-toggle="tab" href="#border-top-Audit" role="tab" aria-controls="border-top-Audit" aria-selected="false">
+                                    Audit
+                                </a>
+                            </li>
+
+                        </ul>
 
                         <!-- Tab Content -->
                         <div class="tab-content">
@@ -44,15 +63,24 @@
                                 <partial name="~/Areas/crm/Views/Account/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/crm/Views/Account/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
+
                             <!-- Contacts -->
                             <div id="border-top-Contact" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Contact-tab">
                                 <partial name="~/Areas/crm/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_TablePartial.cshtml" />
-                            </div>                        </div>
+                            </div>
+
+                            <!-- Audit -->
+                            <div id="border-top-Audit" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Audit-tab">
+                                <partial name="~/Views/Shared/AuditHistory.cshtml" model="Model.AuditHistory" />
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
+
     </div>
 
     <!-- Save buttons -->

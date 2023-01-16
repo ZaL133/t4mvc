@@ -1,6 +1,15 @@
+
+
+
+
+
+
+
 @model ContactViewModel
 @{
-    ViewBag.Title = "Contact Details";	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contact / " + Model.EmailAddress;}
+    ViewBag.Title = "Contact Details";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contact / " + Model.EmailAddress;
+}
 @section css {
     <link rel="stylesheet" href="/api/css/Contact.details" />
 }
@@ -29,6 +38,7 @@
                                     Details
                                 </a>
                             </li>
+
                         </ul>
 
                         <!-- Tab Content -->
@@ -39,12 +49,14 @@
                                 <partial name="~/Areas/crm/Views/Contact/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
+
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+
 
         <!-- Column 2 -->
         @if (Model.ContactId != default(Guid))
@@ -54,6 +66,7 @@
             <partial name="~/Views/Partials/NotesHtml.cshtml" model="Model.Notes" />
         </div> 
         }
+
     </div>
 
     <!-- Save buttons -->
@@ -68,6 +81,7 @@
     </div>
 </div>
 }
+
 
 @section scripts {
     <partial name="~/Views/Partials/NotesJs.cshtml" model="new t4mvc.web.core.Models.NoteDefinition() { Id = Model.ContactId, KeyField = nameof(Model.ContactId) };" />

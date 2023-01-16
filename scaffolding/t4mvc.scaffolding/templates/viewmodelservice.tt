@@ -35,7 +35,10 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
         private readonly <#= viewModelServiceDefinition #>;
 <# } #>
         private readonly IContextHelper contextHelper;
-        private readonly IUserService userService;
+        private readonly IUserService userService;<# if (this.Entity.EnableAuditing) { #>
+
+        private readonly IAuditService auditService;
+        <# }#>
 
         public IQueryable<<#= this.Entity.Name #>ViewModel> GetAll<#= this.Entity.PluralName.ToSchemaName() #>()
         {
@@ -54,7 +57,7 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
         }
 
         public <#= this.Entity.Name #>ViewModelService(<#= this.Entity.GetViewmModelServiceDefinitions().Any() ? string.Join(",", this.Entity.GetViewmModelServiceDefinitions()) + "," : "" #> IUserService userService,
-                                            IContextHelper contextHelper)
+                                            IContextHelper contextHelper<# if (this.Entity.EnableAuditing) { #>, IAuditService auditService <# }#>)
         {
             this.<#= this.Entity.Name.ToCamelCase() #>Service = <#= this.Entity.Name.ToCamelCase() #>Service;
             this.contextHelper      = contextHelper;
@@ -63,7 +66,10 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
 <# } #>
 <# foreach(var childTable in this.Entity.ChildReferences.Where(x => x.Name != this.Entity.Name)) { #>
             this.<#= childTable.Name.ToCamelCase() #>ViewModelService = <#= childTable.Name.ToCamelCase() #>ViewModelService;
-<# } #>
+<# } #><# if (this.Entity.EnableAuditing) { #>
+            this.auditService = auditService;
+
+<# }#>
         }
 
         public void Create<#= this.Entity.Name #>(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
@@ -126,7 +132,10 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
 
         public void Hydrate(<#= this.Entity.Name #>ViewModel <#= this.Entity.Name.ToCamelCase() #>ViewModel)
         {
-            var id = <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= this.Entity.Name.ToSchemaName() #>Id;
+            var id = <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= this.Entity.Name.ToSchemaName() #>Id;<# if (this.Entity.EnableAuditing) { #>
+
+            <#= this.Entity.Name.ToCamelCase() #>ViewModel.AuditHistory = GetAuditRecords(id);
+<# } #>
         <# if (this.Entity.Fields.Count(x => x.References != null) > 0) { foreach (var childReference in this.Entity.Fields.Where(x => x.References != null)) { #>    <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #> =     Get<#= childReference.Name.ToSchemaName() + childReference.References.NameField.Name.ToSchemaName() #>(<#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.Name.ToSchemaName() #>);
         <#
 } } #><# if (this.Entity.ChildReferences.Count > 0) { foreach (var childReference in this.Entity.ChildReferences) { #>    <#= this.Entity.Name.ToCamelCase() #>ViewModel.<#= childReference.ParentFieldName #>=     Get<#= childReference.PluralName.ToSchemaName() #>(id);
@@ -141,7 +150,14 @@ foreach(var viewModelServiceDefinition in this.Entity.GetViewmModelServiceDefini
                         .Where(x => x.<#= childTable.Field.Name.ToSchemaName() #> == <#= this.Entity.KeyField.Name.ToCamelCase() #>)
                         .ToList();
         }
-<# } #>
+<# } #><# if (this.Entity.EnableAuditing) { #>
+        public List<AuditRecord> GetAuditRecords(Guid <#= this.Entity.KeyField.Name.ToCamelCase() #>)
+        {
+            return auditService.GetAuditRecords()
+                               .Where(x => x.RecordId == <#= this.Entity.KeyField.Name.ToCamelCase() #> && x.RecordType == "<#= this.Entity.SchemaName #>")
+                               .ToList();
+        }
 
+<# } #>
     }
 }

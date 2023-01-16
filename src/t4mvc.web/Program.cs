@@ -58,6 +58,7 @@ namespace t4mvc.web
             builder.Services.AddScoped<It4mvcApiController, t4mvcApiController>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IUserViewModelService, UserViewModelService>();
+            builder.Services.AddScoped<IAuditService, AuditService>();
             
 
             builder.Services.AddScoped<IUrlHelper>(x => {

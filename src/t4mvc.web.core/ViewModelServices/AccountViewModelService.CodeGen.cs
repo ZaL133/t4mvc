@@ -29,7 +29,8 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
-
+        private readonly IAuditService auditService;
+        
         public IQueryable<AccountViewModel> GetAllAccounts()
         {
 		    var query = (from account in accountService.GetAllAccounts()
@@ -54,12 +55,14 @@ namespace t4mvc.web.core.ViewModelServices
         }
 
         public AccountViewModelService(IAccountService accountService,IContactViewModelService contactViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
-                                            IContextHelper contextHelper)
+                                            IContextHelper contextHelper, IAuditService auditService )
         {
             this.accountService = accountService;
             this.contextHelper      = contextHelper;
             this.contactViewModelService = contactViewModelService;
             this.noteViewModelService = noteViewModelService;
+            this.auditService = auditService;
+
         }
 
         public void CreateAccount(AccountViewModel accountViewModel)
@@ -113,6 +116,7 @@ namespace t4mvc.web.core.ViewModelServices
         public void Hydrate(AccountViewModel accountViewModel)
         {
             var id = accountViewModel.AccountId;
+            accountViewModel.AuditHistory = GetAuditRecords(id);
             accountViewModel.Contacts=     GetContacts(id);
             accountViewModel.Notes=     GetNotes(id);
         }
@@ -128,6 +132,12 @@ namespace t4mvc.web.core.ViewModelServices
             return noteViewModelService.GetAllNotes()
                         .Where(x => x.AccountId == accountId)
                         .ToList();
+        }
+        public List<AuditRecord> GetAuditRecords(Guid accountId)
+        {
+            return auditService.GetAuditRecords()
+                               .Where(x => x.RecordId == accountId && x.RecordType == "Account")
+                               .ToList();
         }
 
     }
