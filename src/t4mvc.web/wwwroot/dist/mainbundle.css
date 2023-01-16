@@ -12884,10 +12884,6 @@ main {
   float: right;
   margin-right: 27px;
 }
-
-input[type=search] {
-  margin-left: 8px;
-}
 .tab-content {
   padding: 6px;
   border-color: #dee2e6;
