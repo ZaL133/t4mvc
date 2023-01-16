@@ -348,17 +348,16 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write(@"
-
-        <!-- Column 2 -->
-        @if (Model.ContactId != default(Guid))
-        {
-        <div class=""col-xl-4 col-md-4 col-sm-12 col-12"">
-            <!-- Notes -->
-            <partial name=""~/Views/Partials/NotesHtml.cshtml"" model=""Model.Notes"" />
-        </div> 
-        }
-");
+            this.Write("\n\n        <!-- Column 2 -->\n        @if (Model.");
+            
+            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write(" != default(Guid))\n        {\n        <div class=\"col-xl-4 col-md-4 col-sm-12 col-" +
+                    "12\">\n            <!-- Notes -->\n            <partial name=\"~/Views/Partials/Note" +
+                    "sHtml.cshtml\" model=\"Model.Notes\" />\n        </div> \n        }\n");
             
             #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  } 

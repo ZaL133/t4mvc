@@ -89,7 +89,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 <# if (hasNotes) { #>
 
         <!-- Column 2 -->
-        @if (Model.ContactId != default(Guid))
+        @if (Model.<#= this.Entity.KeyField.SchemaName #> != default(Guid))
         {
         <div class="col-xl-4 col-md-4 col-sm-12 col-12">
             <!-- Notes -->

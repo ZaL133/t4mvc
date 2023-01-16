@@ -28,7 +28,6 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(">");
             
             #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
