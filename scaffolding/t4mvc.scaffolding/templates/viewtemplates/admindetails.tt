@@ -6,6 +6,7 @@
 <#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
 <# var schemaName   = this.Entity.Name.ToSchemaName(); #><#
 var hasNotes        = this.Entity.HasNotes;
+var getAreaPrefix   = (string area) => area == null ? null : "~/Areas/" + area;
 var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 #>
 @model <#= schemaName #>ViewModel
@@ -68,10 +69,10 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
                                 <partial name="<#= areaPrefix #>/Views/<#= this.Entity.Name.ToSchemaName() #>/_DetailsPartial.cshtml" model="Model" fallback-name="<#= areaPrefix #>/Views/<#= this.Entity.Name.ToSchemaName() #>/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
-<# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); #>
+<# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); var ap = getAreaPrefix(tab.Area); #>
                             <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
                             <div id="border-top-<#= sn #>" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-<#= sn #>-tab">
-                                <partial name="<#= areaPrefix #>/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="<#= areaPrefix #>/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
+                                <partial name="<#= ap #>/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="<#= ap #>/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
                             </div>
 <# } if (Entity.EnableAuditing) { #>
 

@@ -33,7 +33,7 @@ $borderRadius: 5px;
     border-radius: 6px 6px 0 0;
     z-index: 5;
 
-    @include screen('small') {
+    @include screen('sm') {
         position: fixed;
     }
 }

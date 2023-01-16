@@ -12884,6 +12884,10 @@ main {
   float: right;
   margin-right: 27px;
 }
+
+.dataTables_filter input[type=search] {
+  margin-left: 8px;
+}
 .tab-content {
   padding: 6px;
   border-color: #dee2e6;
@@ -12915,6 +12919,11 @@ main {
   border-top: 1px solid #f1f2f3;
   border-radius: 6px 6px 0 0;
   z-index: 5;
+}
+@media screen and (max-width: 767px) {
+  .action-footer {
+    position: fixed;
+  }
 }
 
 .action-footer .action-footer-container {
@@ -12949,7 +12958,7 @@ a.dropdown-toggle {
 }
 
 .form-control[disabled] {
-  background-color: #ced4da;
+  background-color: #e9ecef;
   min-height: 34px;
 }
 .notes .tl-header {

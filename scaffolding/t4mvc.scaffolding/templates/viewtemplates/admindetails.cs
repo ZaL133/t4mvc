@@ -45,6 +45,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
 
 var hasNotes        = this.Entity.HasNotes;
+var getAreaPrefix   = (string area) => area == null ? null : "~/Areas/" + area;
 var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 
             
@@ -261,7 +262,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             this.Write("/CodeGen/_DetailsPartial.cshtml\" />\n                            </div>\n\n");
             
             #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
- foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); 
+ foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); var ap = getAreaPrefix(tab.Area); 
             
             #line default
             #line hidden
@@ -289,7 +290,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             this.Write("-tab\">\n                                <partial name=\"");
             
             #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ap));
             
             #line default
             #line hidden
@@ -310,7 +311,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             this.Write("\" fallback-name=\"");
             
             #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(areaPrefix));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ap));
             
             #line default
             #line hidden
