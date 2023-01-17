@@ -12784,6 +12784,8 @@ body {
 }
 html {
   font-size: 14px;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -12802,12 +12804,15 @@ html {
 
 body {
   background: linear-gradient(#fff, #efefef);
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 main {
   position: relative;
   min-height: calc(100vh - 48px);
   padding-bottom: 62px;
+  overflow: scroll;
 }
 
 .navbar .dropdown-toggle {
