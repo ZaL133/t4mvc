@@ -29,6 +29,8 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
+        private readonly IAuditService auditService;
+        
         public IQueryable<ProjectViewModel> GetAllProjects()
         {
 		    var query = (from project in projectService.GetAllProjects()
@@ -50,13 +52,15 @@ namespace t4mvc.web.core.ViewModelServices
         }
 
         public ProjectViewModelService(IProjectService projectService,IAccountService accountService,IContactService contactService,INoteViewModelService noteViewModelService, IUserService userService,
-                                            IContextHelper contextHelper)
+                                            IContextHelper contextHelper, IAuditService auditService )
         {
             this.projectService = projectService;
             this.contextHelper      = contextHelper;
             this.accountService = accountService;
             this.contactService = contactService;
             this.noteViewModelService = noteViewModelService;
+            this.auditService = auditService;
+
         }
 
         public void CreateProject(ProjectViewModel projectViewModel)
@@ -121,7 +125,9 @@ namespace t4mvc.web.core.ViewModelServices
 
         public void Hydrate(ProjectViewModel projectViewModel)
         {
-            var id = projectViewModel.ProjectId;            projectViewModel.AccountIdName =     GetAccountIdName(projectViewModel.AccountId);
+            var id = projectViewModel.ProjectId;
+            projectViewModel.AuditHistory = GetAuditRecords(id);
+            projectViewModel.AccountIdName =     GetAccountIdName(projectViewModel.AccountId);
             projectViewModel.PrimaryContactIdEmailAddress =     GetPrimaryContactIdEmailAddress(projectViewModel.PrimaryContactId);
             projectViewModel.Notes=     GetNotes(id);
         }
@@ -132,5 +138,12 @@ namespace t4mvc.web.core.ViewModelServices
                         .Where(x => x.ProjectId == projectId)
                         .ToList();
         }
+        public List<AuditRecord> GetAuditRecords(Guid projectId)
+        {
+            return auditService.GetAuditRecords()
+                               .Where(x => x.RecordId == projectId && x.RecordType == "Project")
+                               .ToList();
+        }
+
     }
 }

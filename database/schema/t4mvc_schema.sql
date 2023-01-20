@@ -107,7 +107,6 @@ END
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Account' AND c.[name] = 'Active')	
 		ALTER TABLE Account ADD Active bit NULL
 
-
 -- Index: Account.Name
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Account' AND i.[name] = 'IX_Account_Name')
 		CREATE INDEX IX_Account_Name ON Account(Name)
@@ -229,7 +228,6 @@ END
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Contact' AND c.[name] = 'Active')	
 		ALTER TABLE Contact ADD Active bit NULL
 
-
 -- Index: Contact.FirstName
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Contact' AND i.[name] = 'IX_Contact_FirstName')
 		CREATE INDEX IX_Contact_FirstName ON Contact(FirstName)
@@ -313,7 +311,6 @@ END
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Project' AND c.[name] = 'EstimatedIncome')	
 		ALTER TABLE Project ADD EstimatedIncome decimal(10,2) NULL
 
-
 -- Index: Project.ProjectName
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Project' AND i.[name] = 'IX_Project_ProjectName')
 		CREATE INDEX IX_Project_ProjectName ON Project(ProjectName)
@@ -377,7 +374,6 @@ END
 -- Field: Note.ProjectId
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Note' AND c.[name] = 'ProjectId')	
 		ALTER TABLE Note ADD ProjectId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectId FOREIGN KEY REFERENCES Project(ProjectId)
-
 
 -- Index: Note.AccountId
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Note' AND i.[name] = 'IX_Note_AccountId')

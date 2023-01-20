@@ -5,7 +5,7 @@
         <span class="input-group-text">
             <i data-feather="dollar-sign"></i>
         </span>
-            @Html.TextBox("", Model, new { @class = "form-control" })
+        @Html.TextBox("", Model, new { @class = "form-control" })
     </div>
     
 }
@@ -17,9 +17,9 @@ else
             <span class="input-group-text">
                 <i data-feather="dollar-sign"></i>
             </span>
-                @Html.TextBox("", string.Format("{0:C}", Model.Value), new { @class = "form-control", disabled = "disabled" })
+                @Html.TextBox("", Model.Value, new { @class = "form-control", disabled = "disabled" })
         </div>
-        
+
     }
     else
     {

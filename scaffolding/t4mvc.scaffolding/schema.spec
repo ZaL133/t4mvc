@@ -70,7 +70,7 @@ Contact | Area:crm | Icon:feather-user | HasNotes
 	Zip? | GridExclude | Length:16
 	Active?(bool)
 
-Project | Area:consulting | Icon:feather-archive | HasNotes
+Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	Project Name | IsSearchable | Length:255 | IsNameField
 	Start Date?(DateTime?)
 	Due Date?(DateTime?)

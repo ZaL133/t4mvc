@@ -36,5 +36,6 @@ namespace t4mvc.web.core.ViewModels
         public decimal? EstimatedIncome { get; set; }
 
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
+		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
 	}
 }
