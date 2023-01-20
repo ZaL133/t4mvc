@@ -23,3 +23,10 @@ Lat | Lng
 # Contact Info | Icon:phone-call
 Phone | Fax
 Website
+
+Project
+Project Name
+Start Date | Due Date
+AccountId | PrimaryContactId
+EstimatedIncome
+Description
