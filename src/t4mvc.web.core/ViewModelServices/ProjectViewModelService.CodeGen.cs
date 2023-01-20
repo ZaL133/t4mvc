@@ -44,6 +44,7 @@ namespace t4mvc.web.core.ViewModelServices
 						 							AccountId = project.AccountId,
 						 							PrimaryContactId = project.PrimaryContactId,
 						 							Description = project.Description,
+						 							EstimatedIncome = project.EstimatedIncome,
 						  AccountIdName = left_account_AccountId.Name,  PrimaryContactIdEmailAddress = left_contact_PrimaryContactId.EmailAddress, });
             return query;
         }

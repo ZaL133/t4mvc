@@ -31,6 +31,9 @@ namespace t4mvc.web.core.ViewModels
         public string PrimaryContactIdEmailAddress { get; set; }
         [UIHint("t4mvcWysiwyg")]
         public string Description { get; set; }
+        [Display(Name = "Estimated Income")]
+        [UIHint("Money")]
+        public decimal? EstimatedIncome { get; set; }
 
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
 	}

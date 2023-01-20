@@ -19,15 +19,31 @@ BEGIN
 <# foreach(var field in entity.Fields) { #>
 		<#= field.SchemaName #> <#= field.SqlDataType
 #><#= 
-	field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)})"
+	field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)}{(field.Scale.HasValue ? $",{field.Scale.Value}" : "")})"
 #><#=
 	field.IsNullable ? " NULL" : " NOT NULL"
 #><#= field.IsKeyField ? " PRIMARY KEY " : "" #><#= field.References == null ? "" : $" CONSTRAINT FK_{entity.SchemaName}_{field.SchemaName} FOREIGN KEY REFERENCES {field.References.SchemaName}({field.References.KeyField.SchemaName})" #>,
 <# } #>	)
-
-<# foreach(var field in entity.Fields.Where(x => x.IsSearchable || x.References != null)) { #>
-	CREATE INDEX IX_<#= entity.SchemaName #>_<#= field.SchemaName #> ON <#= entity.SchemaName #>(<#= field.SchemaName #>)
-<# } #>
 END 
+
+<# // Check for new fields 
+#><# foreach(var field in entity.Fields) { #>
+-- Field: <#= entity.SchemaName #>.<#= field.SchemaName #>
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = '<#= entity.SchemaName #>' AND c.[name] = '<#= field.SchemaName #>')	
+		ALTER TABLE <#= entity.SchemaName #> ADD <#= field.SchemaName #> <#= field.SqlDataType
+#><#= 
+	field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)}{(field.Scale.HasValue ? $",{field.Scale.Value}" : "")})"
+#><#=
+	field.IsNullable ? " NULL" : " NOT NULL"
+#><#= field.IsKeyField ? " PRIMARY KEY " : "" #><#= field.References == null ? "" : $" CONSTRAINT FK_{entity.SchemaName}_{field.SchemaName} FOREIGN KEY REFERENCES {field.References.SchemaName}({field.References.KeyField.SchemaName})" #>
+
+<# } #>
+<# // Check indexes 
+#><# foreach(var field in entity.Fields.Where(x => x.IsSearchable || x.References != null)) { #>
+-- Index: <#= entity.SchemaName #>.<#= field.SchemaName #>
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = '<#= entity.SchemaName #>' AND i.[name] = 'IX_<#= entity.SchemaName #>_<#= field.SchemaName #>')
+		CREATE INDEX IX_<#= entity.SchemaName #>_<#= field.SchemaName #> ON <#= entity.SchemaName #>(<#= field.SchemaName #>)
+
+<# } #>
 <# } #>
 

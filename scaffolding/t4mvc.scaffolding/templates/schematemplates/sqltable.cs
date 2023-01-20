@@ -100,7 +100,7 @@ namespace t4mvc.scaffolding.templates.schematemplates
             #line hidden
             
             #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)})"));
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)}{(field.Scale.HasValue ? $",{field.Scale.Value}" : "")})"));
             
             #line default
             #line hidden
@@ -129,51 +129,187 @@ namespace t4mvc.scaffolding.templates.schematemplates
             
             #line default
             #line hidden
-            this.Write("\t)\r\n\r\n");
+            this.Write("\t)\r\nEND \r\n\r\n");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+ // Check for new fields 
+
+            
+            #line default
+            #line hidden
+            
+            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+ foreach(var field in entity.Fields) { 
+            
+            #line default
+            #line hidden
+            this.Write("-- Field: ");
+            
+            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\tIF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = " +
+                    "c.object_id AND t.[name] = \'");
+            
+            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\' AND c.[name] = \'");
+            
+            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\')\t\r\n\t\tALTER TABLE ");
+            
+            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write(" ADD ");
+            
+            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SqlDataType));
+            
+            #line default
+            #line hidden
+            
+            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Length == null ? "" : $"({(field.Length == -1 ? "MAX" : field.Length)}{(field.Scale.HasValue ? $",{field.Scale.Value}" : "")})"));
+            
+            #line default
+            #line hidden
+            
+            #line 36 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.IsNullable ? " NULL" : " NOT NULL"));
+            
+            #line default
+            #line hidden
+            
+            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.IsKeyField ? " PRIMARY KEY " : ""));
+            
+            #line default
+            #line hidden
+            
+            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.References == null ? "" : $" CONSTRAINT FK_{entity.SchemaName}_{field.SchemaName} FOREIGN KEY REFERENCES {field.References.SchemaName}({field.References.KeyField.SchemaName})"));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\n");
+            
+            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+ } 
+            
+            #line default
+            #line hidden
+            
+            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+ // Check indexes 
+
+            
+            #line default
+            #line hidden
+            
+            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
  foreach(var field in entity.Fields.Where(x => x.IsSearchable || x.References != null)) { 
             
             #line default
             #line hidden
-            this.Write("\tCREATE INDEX IX_");
+            this.Write("-- Index: ");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\tIF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = " +
+                    "i.object_id WHERE t.[Name] = \'");
+            
+            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\' AND i.[name] = \'IX_");
+            
+            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
             
             #line default
             #line hidden
             this.Write("_");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("\')\r\n\t\tCREATE INDEX IX_");
+            
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
+            
+            #line default
+            #line hidden
+            this.Write("_");
+            
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
             
             #line default
             #line hidden
             this.Write(" ON ");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.SchemaName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.SchemaName));
             
             #line default
             #line hidden
-            this.Write(")\r\n");
+            this.Write(")\r\n\r\n");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("END \r\n");
             
-            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
+            #line 48 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\schematemplates\sqltable.tt"
  } 
             
             #line default

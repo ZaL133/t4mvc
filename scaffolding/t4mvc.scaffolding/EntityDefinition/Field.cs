@@ -15,6 +15,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         public string SqlDataType => SqlTypeLookup[DataType.TrimEnd('?')];
         public string? ViewModelType { get; set; }
         public int? Length { get; set; }
+        public int? Scale{ get; set; }
         public bool IsNameField { get; set; }
         public bool IsNullable { get; set; }
         public bool IsKeyField { get; set; }
@@ -121,6 +122,7 @@ namespace t4mvc.scaffolding.EntityDefinition
             { "Email", "[UIHint(\"Email\")]" },
             { "Phone", "[UIHint(\"Phone\")]" },
             { "Website", "[UIHint(\"Website\")]" },
+            { "Money", "[UIHint(\"Money\")]" },
             { "ReadOnly", "[Editable(false)]" }
         };
 
@@ -193,7 +195,7 @@ namespace t4mvc.scaffolding.EntityDefinition
             { "bool", "bit" },
             { "int", "int" },
             { "long", "bigint" },
-            { "numeric", "decimal" }
+            { "decimal", "decimal" }
         };
     }
 }

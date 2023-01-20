@@ -28,5 +28,6 @@ namespace t4mvc.core
         public Guid? AccountId { get; set; }
         public Guid? PrimaryContactId { get; set; }
         public string Description { get; set; }
+        public decimal? EstimatedIncome { get; set; }
 	}
 }

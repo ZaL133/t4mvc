@@ -51,5 +51,13 @@
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                         </div>
                     </div>
+                    <!-- Estimated Income -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EstimatedIncome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.t4mvcEditorFor(model => model.EstimatedIncome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EstimatedIncome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
 

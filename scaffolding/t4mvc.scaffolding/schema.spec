@@ -77,6 +77,7 @@ Project | Area:consulting | Icon:feather-archive | HasNotes
 	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed
 	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
+	EstimatedIncome?(decimal?) | Description: Estimated Income | ViewModelAttributes(Money) | Length:10 | Scale:2
 
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
 	NoteText | ViewModelAttributes(TextArea, Wysiwyg) | Length:-1

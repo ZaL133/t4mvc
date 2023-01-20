@@ -100,6 +100,8 @@ namespace t4mvc.scaffolding.EntityDefinition
                             field.ViewModelType = fieldParts.GetVal("ViewModelType");
                         if (fieldParts.Has("Length"))
                             field.Length = fieldParts.GetVal("Length").ParseInt();
+                        if (fieldParts.Has("Scale"))
+                            field.Scale = fieldParts.GetVal("Scale").ParseInt();
                         if (e.KeyField == null && fieldParts.Contains("KeyField")) field.IsKeyField = true;
 
                         e.Fields.Add(field);
