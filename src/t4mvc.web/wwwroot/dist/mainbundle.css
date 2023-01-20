@@ -12812,7 +12812,7 @@ main {
   position: relative;
   min-height: calc(100vh - 48px);
   padding-bottom: 62px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .navbar .dropdown-toggle {
@@ -12881,13 +12881,40 @@ main {
   outline: none;
 }
 
-.dataTables_filter {
+.dataTables_wrapper .dataTables_filter {
   float: right;
 }
+@media screen and (max-width: 767px) {
+  .dataTables_wrapper .dataTables_filter {
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 991px) {
+  .dataTables_wrapper .dataTables_filter {
+    display: inline-block;
+  }
+}
 
-.dataTables_length {
+.dataTables_wrapper .dataTables_length {
   float: right;
   margin-right: 27px;
+}
+@media screen and (max-width: 767px) {
+  .dataTables_wrapper .dataTables_length {
+    display: inline-block;
+    padding-left: 12px;
+    margin-bottom: 12px;
+    float: none;
+  }
+}
+@media screen and (max-width: 991px) {
+  .dataTables_wrapper .dataTables_length {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 12px;
+    text-align: right;
+    float: none;
+  }
 }
 
 .dataTables_filter input[type=search] {

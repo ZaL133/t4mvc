@@ -29,7 +29,7 @@ main {
     position: relative;
     min-height: calc(100vh - 48px);
     padding-bottom: 62px;
-    overflow: scroll;
+    overflow: auto;
 }
 // Nav stuff
 .navbar {
