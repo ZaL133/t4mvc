@@ -1,0 +1,33 @@
+﻿@model decimal?
+@if (Current.EditMode)
+{
+    <div class="input-group">
+        <span class="input-group-text">
+            <i data-feather="dollar-sign"></i>
+        </span>
+            @Html.TextBox("", Model, new { @class = "form-control" })
+    </div>
+    
+}
+else
+{
+    if (Model.HasValue)
+    {
+        <div class="input-group">
+            <span class="input-group-text">
+                <i data-feather="dollar-sign"></i>
+            </span>
+                @Html.TextBox("", string.Format("{0:C}", Model.Value), new { @class = "form-control", disabled = "disabled" })
+        </div>
+        
+    }
+    else
+    {
+        <div class="input-group">
+            <span class="input-group-text">
+                <i data-feather="dollar-sign"></i>
+            </span>
+            @Html.TextBox("", Model, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    }
+}
