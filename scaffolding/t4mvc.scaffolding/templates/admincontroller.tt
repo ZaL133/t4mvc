@@ -81,6 +81,7 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
             if (ModelState.IsValid)
             {
                 <#= lViewModelName #>Service.Save<#= schemaName #>(<#= lViewModelName #>);
+                Current.Saved("<#= this.Entity.Name #> saved");
                 return Current.GetEditDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
                                                   () => Url.Action("Index"));
             }
@@ -107,6 +108,7 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
             if (ModelState.IsValid)
             {
                 <#= lViewModelName #>Service.Create<#= schemaName #>(<#= lViewModelName #>);
+                Current.Saved("<#= this.Entity.Name #> created");
                 return Current.GetCreateDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
                                                   () => Url.Action("Index"));
             }

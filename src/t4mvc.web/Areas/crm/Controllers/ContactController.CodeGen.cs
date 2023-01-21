@@ -70,6 +70,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             if (ModelState.IsValid)
             {
                 contactViewModelService.SaveContact(contactViewModel);
+                Current.Saved("Contact saved");
                 return Current.GetEditDestination(() => Url.Action("Details", new { id = contactViewModel.ContactId }),
                                                   () => Url.Action("Index"));
             }
@@ -96,6 +97,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             if (ModelState.IsValid)
             {
                 contactViewModelService.CreateContact(contactViewModel);
+                Current.Saved("Contact created");
                 return Current.GetCreateDestination(() => Url.Action("Details", new { id = contactViewModel.ContactId }),
                                                   () => Url.Action("Index"));
             }

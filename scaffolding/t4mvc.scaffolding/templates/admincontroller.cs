@@ -314,17 +314,24 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(");\r\n                return Current.GetEditDestination(() => Url.Action(\"Details\"," +
-                    " new { id = ");
+            this.Write(");\r\n                Current.Saved(\"");
             
             #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" saved\");\r\n                return Current.GetEditDestination(() => Url.Action(\"De" +
+                    "tails\", new { id = ");
+            
+            #line 85 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 84 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 85 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToSchemaName()));
             
             #line default
@@ -332,14 +339,14 @@ namespace t4mvc.scaffolding.templates
             this.Write(" }),\r\n                                                  () => Url.Action(\"Index\")" +
                     ");\r\n            }\r\n            else\r\n            {\r\n\t\t\t\t");
             
-            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 90 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
             this.Write("Service.Hydrate(");
             
-            #line 89 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 90 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
@@ -347,7 +354,7 @@ namespace t4mvc.scaffolding.templates
             this.Write(");\r\n                Current.EditMode = true;\r\n                return View(\"Detail" +
                     "s\", ");
             
-            #line 91 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 92 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
@@ -355,7 +362,7 @@ namespace t4mvc.scaffolding.templates
             this.Write(");\r\n            }\r\n        }\r\n\r\n        public virtual ActionResult Create()\r\n   " +
                     "     {\r\n            Current.EditMode = true;\r\n\t\t\tvar viewModel = new ");
             
-            #line 98 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 99 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(uViewModelName));
             
             #line default
@@ -363,14 +370,14 @@ namespace t4mvc.scaffolding.templates
             this.Write("();\r\n            return View(\"Details\", viewModel);\r\n        }\r\n\r\n        [HttpPo" +
                     "st]\r\n        public virtual ActionResult Create(");
             
-            #line 103 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 104 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(uViewModelName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 103 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 104 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
@@ -378,36 +385,43 @@ namespace t4mvc.scaffolding.templates
             this.Write(")\r\n        {\r\n            ValidateViewModel();\r\n\r\n            if (ModelState.IsVa" +
                     "lid)\r\n            {\r\n                ");
             
-            #line 109 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 110 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
             this.Write("Service.Create");
             
-            #line 109 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 110 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 109 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 110 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
-            this.Write(");\r\n                return Current.GetCreateDestination(() => Url.Action(\"Details" +
-                    "\", new { id = ");
+            this.Write(");\r\n                Current.Saved(\"");
             
-            #line 110 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 111 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" created\");\r\n                return Current.GetCreateDestination(() => Url.Action" +
+                    "(\"Details\", new { id = ");
+            
+            #line 112 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 110 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 112 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name.ToSchemaName()));
             
             #line default
@@ -415,14 +429,14 @@ namespace t4mvc.scaffolding.templates
             this.Write(" }),\r\n                                                  () => Url.Action(\"Index\")" +
                     ");\r\n            }\r\n            else\r\n            {\r\n\t\t\t\t");
             
-            #line 115 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 117 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
             #line hidden
             this.Write("Service.Hydrate(");
             
-            #line 115 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 117 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default
@@ -430,7 +444,7 @@ namespace t4mvc.scaffolding.templates
             this.Write(");\r\n                Current.EditMode = true;\r\n                return View(\"Detail" +
                     "s\", ");
             
-            #line 117 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            #line 119 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
             
             #line default

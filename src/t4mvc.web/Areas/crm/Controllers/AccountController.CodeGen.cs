@@ -71,6 +71,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             if (ModelState.IsValid)
             {
                 accountViewModelService.SaveAccount(accountViewModel);
+                Current.Saved("Account saved");
                 return Current.GetEditDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
                                                   () => Url.Action("Index"));
             }
@@ -97,6 +98,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             if (ModelState.IsValid)
             {
                 accountViewModelService.CreateAccount(accountViewModel);
+                Current.Saved("Account created");
                 return Current.GetCreateDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
                                                   () => Url.Action("Index"));
             }
