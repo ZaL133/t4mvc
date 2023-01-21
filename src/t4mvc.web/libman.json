@@ -43,6 +43,18 @@
         "plugin/specialchars/summernote-ext-specialchars.js",
         "plugin/specialchars/summernote-ext-specialchars.min.js"
       ]
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/",
+      "files": [
+        "toastr.min.js",
+        "toastr.css"
+      ]
+    },
+    {
+      "library": "js-cookie@3.0.0",
+      "destination": "wwwroot/lib/js-cookie/"
     }
   ]
 }

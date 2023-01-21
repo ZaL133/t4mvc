@@ -299,6 +299,33 @@
         //    return false;
         //});
     })();
+
+    // Prevent double save
+    // Prevent double-click
+    $("input[type='submit'], .save-options button").dblclick(function (e) {
+        e.preventDefault();
+    });
+
+    // check for messages
+    // saved
+    if (Cookies.get('saved')) {
+        var message = Cookies.get('saved');
+        toastr.success(message || 'Your changes have been saved');
+        Cookies.remove('saved');
+    }
+    // error
+    if (Cookies.get('error')) {
+        var message = Cookies.get('error');
+        toastr.error(message || 'An error occurred executing your request');
+        Cookies.remove('error');
+    }
+
+    // show validation errors
+    $(".validation-summary-errors ul li").each(function (ix, elem) {
+        toastr.error(elem.innerHTML, null, {
+            "positionClass": "toast-top-center"
+        });
+    })
 });
 
 t4mvc = (function () {

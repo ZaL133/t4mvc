@@ -1,4 +1,3 @@
-/// <binding />
 const { series, parallel, src, dest, watch } = require('gulp');
 const concat    = require('gulp-concat');
 const uglify    = require('gulp-uglify');
@@ -12,6 +11,8 @@ function js() {
                 'wwwroot/lib/select2/js/select2.js',
                 'wwwroot/lib/summernote/summernote-bs5.js',
                 'wwwroot/lib/keymaster/keymaster.js',
+                'wwwroot/lib/toastr.js/toastr.min.js',
+                'wwwroot/lib/js-cookie/js.cookie.js',
                 'wwwroot/js/site.js'])
             .pipe(concat('mainbundle.js'))
             // .pipe(uglify())
@@ -23,6 +24,7 @@ function buildStyles() {
                 'wwwroot/lib/select2/css/select2.css',
                 'wwwroot/lib/summernote/summernote-bs5.css',
                 'wwwroot/lib/datatables.net/jquery.dataTables.min.css',
+                'wwwroot/lib/toastr.js/toastr.css',
                 'wwwroot/css/dashboard.css',
                 // custom
                 'wwwroot/sass/**/*.scss'])

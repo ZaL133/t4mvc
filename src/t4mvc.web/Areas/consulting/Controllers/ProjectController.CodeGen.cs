@@ -70,6 +70,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             if (ModelState.IsValid)
             {
                 projectViewModelService.SaveProject(projectViewModel);
+                Current.Saved("Project saved");
                 return Current.GetEditDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId }),
                                                   () => Url.Action("Index"));
             }
@@ -96,6 +97,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             if (ModelState.IsValid)
             {
                 projectViewModelService.CreateProject(projectViewModel);
+                Current.Saved("Contact created");
                 return Current.GetCreateDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId }),
                                                   () => Url.Action("Index"));
             }

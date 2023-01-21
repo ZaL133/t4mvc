@@ -165,6 +165,18 @@ namespace t4mvc.web.core.Infrastructure
             throw new ArgumentException("Action not found");
         }
 
+        public static void Saved(string message = null)
+        {
+            var context = httpContextAccessor.HttpContext;
+            context.Response.Cookies.Append("saved", message ?? "Your changes have been saved");
+        }
+
+        public static void Error(string message = null)
+        {
+            var context = httpContextAccessor.HttpContext;
+            context.Response.Cookies.Append("error", message ?? "An error occurred executing your request");
+        }
+
         private static string GetDataTableParametersKey(string apiMethod, string cacheKey)
         {
             var userId = Current.UserId;
