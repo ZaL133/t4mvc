@@ -45,7 +45,7 @@ Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
 	Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber | Length:32
 	Fax? | Length:32
 	Website? | ViewModelAttributes(Website) | Length:255
-	ParentAccountId?(Guid?)
+	ParentAccountId?(Guid?) | Description:Parent Account
 	Lat?(double?)
 	Lng?(double?)
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
@@ -74,7 +74,7 @@ Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	Project Name | IsSearchable | Length:255 | IsNameField
 	Start Date?(DateTime?)
 	Due Date?(DateTime?)
-	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed
+	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed | IsSearchable | SearchOperator:Contains
 	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
 	EstimatedIncome?(decimal?) | Description: Estimated Income | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney

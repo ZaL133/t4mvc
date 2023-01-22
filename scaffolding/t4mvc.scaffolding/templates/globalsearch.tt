@@ -61,7 +61,9 @@ namespace t4mvc.web.core.ViewModelServices
             else
             {
 <# foreach (var entity in this.SearchEntities) { #>
-                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => <#= string.Join(" || ", entity.SearchableFields.Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)")) #>);
+                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => <#= string.Join(" || ", entity.SearchableFields
+                .Where(x => x.References == null /* Since this doesn't use the viewmodel, searching by linked entity isn't available  */)
+                .Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)")) #>);
 <# } #>
             }
 

@@ -134,7 +134,7 @@ namespace t4mvc.web.Controllers
             if (request.Search != null && request.Search.Value != null)
             {
                 var s = request.Search.Value;
-                queryBase = queryBase.Where(x => x.ProjectName.StartsWith(s));
+                queryBase = queryBase.Where(x => x.ProjectName.StartsWith(s) || x.AccountIdName.Contains(s));
             }
             var query = queryBase.Sort(request)
                                  .Filter(request);
