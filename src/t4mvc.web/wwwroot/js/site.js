@@ -343,6 +343,15 @@ t4mvc = (function () {
             navigateUpOneLevel();
     }
 
+    // Formats a string as $nn,nnn.nn
+    function formatMoney(money) {
+        if (money !== null && money !== "") {
+            return "$" + numberWithCommas(new Number(money).toFixed(2));
+        }
+
+        return null;
+    }
+
     // Formats a string as a phone number
     function formatPhoneNumber(phone) {
         // Null or empty
@@ -397,6 +406,10 @@ t4mvc = (function () {
         window.location.href = parts.join("/");
     }
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     // Register a custom key binding
     function setNonGlobalSearchKeyBinding(keyCombo, fn) {
         nonGlobalSearchKeyBindings.push(keyCombo);
@@ -430,9 +443,11 @@ t4mvc = (function () {
     publicApi.excelButtonDom            = 'frl<"excel-dt-button"><"preview-dt-button">tip';
 
     publicApi.escapeButtonPressed       = escapeButtonPressed;
+    publicApi.formatMoney               = formatMoney;
     publicApi.formatPhoneNumber         = formatPhoneNumber;
     publicApi.getUserRecord             = getUserRecord;
     publicApi.navigateUpOneLevel        = navigateUpOneLevel;
+    publicApi.numberWithCommas          = numberWithCommas;
     publicApi.setNonGlobalSearchKeyBinding = setNonGlobalSearchKeyBinding;
     publicApi.unbindNonGlobalSearch     = unbindNonGlobalSearch;
 
