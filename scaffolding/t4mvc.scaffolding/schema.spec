@@ -75,7 +75,7 @@ Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	Start Date?(DateTime?)
 	Due Date?(DateTime?)
 	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed | IsSearchable | SearchOperator:Contains
-	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed
+	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed | IsSearchable | SearchOperator:Contains
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
 	EstimatedIncome?(decimal?) | Description: Estimated Income | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
 

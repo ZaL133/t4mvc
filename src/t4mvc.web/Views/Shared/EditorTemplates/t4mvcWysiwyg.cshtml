@@ -6,7 +6,7 @@
 
 @if (Current.EditMode && !t4mvcControlAttributes.Disabled)
 {
-<div class="form-control">
+<div>
     @Html.TextArea("", Model, new { @class = "form-control text-box", data_t4mvc_wysiwyg = true })
 </div>
 }
