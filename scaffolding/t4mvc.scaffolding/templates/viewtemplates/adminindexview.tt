@@ -20,7 +20,7 @@
             <th></th>
 <#
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>
-            <th><#= field.Name #></th>
+            <th><#= (field.Description ?? field.Name) #></th>
 <# } #>
         </tr>
     </thead>
