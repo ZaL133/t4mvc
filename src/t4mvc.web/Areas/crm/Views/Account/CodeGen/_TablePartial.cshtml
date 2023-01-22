@@ -3,6 +3,7 @@
 <table class="table table-bordered table-hover" id="account-table">
     <thead>
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Address</th>
             <th>Address2</th>
@@ -20,23 +21,25 @@
         </tr>
     </thead>
     <tbody>
+        
         @foreach(var record in Model)
         {
             <tr>
-            <td>@record.Name</td>
-            <td>@record.Address</td>
-            <td>@record.Address2</td>
-            <td>@record.City</td>
-            <td>@record.State</td>
-            <td>@record.Zip</td>
-            <td>@record.Phone</td>
-            <td>@record.Fax</td>
-            <td>@record.Website</td>
-            <td>@record.ParentAccountId</td>
-            <td>@record.Lat</td>
-            <td>@record.Lng</td>
-            <td>@record.Description</td>
-            <td>@record.Active</td>
+                <td><a href="/crm/account/details/@record.AccountId">@Settings.Icon.DetailsIcon</a></td>
+                <td>@record.Name</td>
+                <td>@record.Address</td>
+                <td>@record.Address2</td>
+                <td>@record.City</td>
+                <td>@record.State</td>
+                <td>@record.Zip</td>
+                <td>@record.Phone</td>
+                <td>@record.Fax</td>
+                <td>@record.Website</td>
+                <td>@record.ParentAccountId</td>
+                <td>@record.Lat</td>
+                <td>@record.Lng</td>
+                <td>@record.Description</td>
+                <td>@record.Active</td>
             </tr>
         }
 	</tbody>

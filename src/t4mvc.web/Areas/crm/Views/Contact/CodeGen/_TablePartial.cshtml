@@ -3,6 +3,7 @@
 <table class="table table-bordered table-hover" id="contact-table">
     <thead>
         <tr>
+            <th></th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Account</th>
@@ -13,16 +14,18 @@
         </tr>
     </thead>
     <tbody>
+        
         @foreach(var record in Model)
         {
             <tr>
-            <td>@record.FirstName</td>
-            <td>@record.LastName</td>
-            <td>@record.AccountIdName</td>
-            <td>@record.EmailAddress</td>
-            <td>@record.JobTitle</td>
-            <td>@record.Phone</td>
-            <td>@record.Active</td>
+                <td><a href="/crm/contact/details/@record.ContactId">@Settings.Icon.DetailsIcon</a></td>
+                <td>@record.FirstName</td>
+                <td>@record.LastName</td>
+                <td>@record.AccountIdName</td>
+                <td>@record.EmailAddress</td>
+                <td>@record.JobTitle</td>
+                <td>@record.Phone</td>
+                <td>@record.Active</td>
             </tr>
         }
 	</tbody>
