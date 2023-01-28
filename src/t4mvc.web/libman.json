@@ -55,6 +55,13 @@
     {
       "library": "js-cookie@3.0.0",
       "destination": "wwwroot/lib/js-cookie/"
+    },
+    {
+      "library": "moment.js@2.29.4",
+      "destination": "wwwroot/lib/moment.js/",
+      "files": [
+        "moment.js"
+      ]
     }
   ]
 }

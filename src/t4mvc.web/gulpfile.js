@@ -6,6 +6,7 @@ const sass      = require('gulp-sass')(require('sass'))
 function js() {
     return src(['wwwroot/lib/jquery/dist/jquery.js',
                 'wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js',
+                'wwwroot/lib/moment.js/moment.js',
                 'wwwroot/lib/datatables.net/jquery.dataTables.js',
                 'wwwroot/lib/feather-icons/feather.js',
                 'wwwroot/lib/select2/js/select2.js',
