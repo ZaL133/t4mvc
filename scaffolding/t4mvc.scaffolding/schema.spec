@@ -36,6 +36,12 @@
 #	- Prefetch		= Only applicable to reference fields. Indicates whether the dropdown list should pre-load data vs using ajax api
 #	- ProcessFunction = Override the function which processes the data into Select2 data format. This is a gxi function with the gxi prefix.
 #	- NoReference	= NEEDS DOCUMENTATION
+#	- References	= Foreign Key definition in format References Entity(IdField):LookupText (Tabbed)
+#		- Entity is the entity this field references
+#		- IdField is the Primary Key in the referenced table
+#		- :LookupText is what shows up as text in the field on the form rather than the Guid
+#		- Tabbed is a switch
+
 Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
 	Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains | Length:255
 	Address? | Length:255
@@ -79,6 +85,12 @@ Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed | IsSearchable | SearchOperator:Contains
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
 	EstimatedIncome?(decimal?) | Description: Estimated Income | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
+
+Invoice | Area:consulting | Icon:file-text | EnableAuditing
+	Invoice Name | IsSearchable | Length:255 | IsNameField
+	Invoice Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
+	Invoice Amount(decimal) | Description: Invoice Amount | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
+	Status
 
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
 	NoteText | ViewModelAttributes(TextArea, Wysiwyg) | Length:-1
