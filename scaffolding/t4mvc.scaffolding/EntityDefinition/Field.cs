@@ -123,7 +123,8 @@ namespace t4mvc.scaffolding.EntityDefinition
             { "Phone", "[UIHint(\"Phone\")]" },
             { "Website", "[UIHint(\"Website\")]" },
             { "Money", "[UIHint(\"Money\")]" },
-            { "ReadOnly", "[Editable(false)]" }
+            { "ReadOnly", "[Editable(false)]" },
+            { "Date", "[DataType(DataType.Date)]" }
         };
 
         public override string ToString()

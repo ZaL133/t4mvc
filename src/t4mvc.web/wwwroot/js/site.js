@@ -343,6 +343,23 @@ t4mvc = (function () {
             navigateUpOneLevel();
     }
 
+    var DATEFORMAT = "MM/DD/YYYY", DATETIMEFORMAT = "MM/DD/YYYY h:mm:ss A";
+    function formatDate(date) {
+        if (date) {
+            var day = moment(date);
+            return day.format(DATEFORMAT);
+        }
+
+        return null;
+    }
+
+    function formatDateTime(date) {
+        if (date) {
+            return moment(date).format(DATETIMEFORMAT);
+        }
+        return null;
+    }
+
     // Formats a string as $nn,nnn.nn
     function formatMoney(money) {
         if (money !== null && money !== "") {
@@ -443,6 +460,8 @@ t4mvc = (function () {
     publicApi.excelButtonDom            = 'frl<"excel-dt-button"><"preview-dt-button">tip';
 
     publicApi.escapeButtonPressed       = escapeButtonPressed;
+    publicApi.formatDate                = formatDate;
+    publicApi.formatDateTime            = formatDateTime;
     publicApi.formatMoney               = formatMoney;
     publicApi.formatPhoneNumber         = formatPhoneNumber;
     publicApi.getUserRecord             = getUserRecord;

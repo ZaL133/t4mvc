@@ -22,6 +22,7 @@
 #	- Phone			= [UIHint("Phone")]
 #	- Email			= [UIHint("Email")]
 #	- Website		= [UIHint("Website")]
+#	- Date			= [DataType(DataType.Date)]
 #
 # Field attributes are
 #	- Description	= ViewModel Description Attribute
@@ -72,8 +73,8 @@ Contact | Area:crm | Icon:feather-user | HasNotes
 
 Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	Project Name | IsSearchable | Length:255 | IsNameField
-	Start Date?(DateTime?)
-	Due Date?(DateTime?)
+	Start Date?(DateTime?) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
+	Due Date?(DateTime?) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
 	AccountId?(Guid?) | Description: Account | References Account(AccountId):Name Tabbed | IsSearchable | SearchOperator:Contains
 	PrimaryContactId?(Guid?) | Description: Primary Contact | References Contact(ContactId):EmailAddress Tabbed | IsSearchable | SearchOperator:Contains
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1

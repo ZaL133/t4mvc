@@ -18,8 +18,10 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Project Name")]
         public string ProjectName { get; set; }
         [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
         [Display(Name = "Due Date")]
+        [DataType(DataType.Date)]
         public DateTime? DueDate { get; set; }
         [Display(Name = "Account")]
         [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "consulting")]

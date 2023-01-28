@@ -37,6 +37,8 @@
 		var renderFuncs = window.renderFuncs || {};
 
 		renderFuncs["project-table"] = [
+            { targets: 1, render: "t4mvc.formatDate" },
+            { targets: 2, render: "t4mvc.formatDate" },
             { targets: 6, render: "t4mvc.formatMoney" },
 		];
 
