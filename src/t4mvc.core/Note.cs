@@ -23,5 +23,6 @@ namespace t4mvc.core
         public Guid? AccountId { get; set; }
         public Guid? ContactId { get; set; }
         public Guid? ProjectId { get; set; }
+        public Guid? ProjectLogId { get; set; }
 	}
 }

@@ -41,6 +41,18 @@ namespace t4mvc.web.Controllers
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetProjects), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetProjects(request, cacheKey), $"Projects_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+        [Route("getProjectLogs")]
+        public IActionResult GetProjectLogs(string cacheKey)
+        {
+            var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetProjectLogs), cacheKey);
+            return ConvertToExcel(request, () => t4mvcApiController.GetProjectLogs(request, cacheKey), $"ProjectLogs_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
+        }
+        [Route("getInvoices")]
+        public IActionResult GetInvoices(string cacheKey)
+        {
+            var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetInvoices), cacheKey);
+            return ConvertToExcel(request, () => t4mvcApiController.GetInvoices(request, cacheKey), $"Invoices_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
+        }
         [Route("getNotes")]
         public IActionResult GetNotes(string cacheKey)
         {

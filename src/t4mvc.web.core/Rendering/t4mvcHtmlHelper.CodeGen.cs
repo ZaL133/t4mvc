@@ -32,6 +32,7 @@ namespace t4mvc.Web.Core.Rendering
 //				parent = new SidebarMenuLink { Url = "/consulting", Text = "consulting"};
 //				model.MenuLinks.Add(parent);
 //			}
+//            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "Invoice", new { Area = "consulting"}), Icon = Settings.Icon.GetIcon20("file-text"), Text = "Invoice"});
 //            parent.Children.Add(new SidebarMenuLink() { Url = url.Action("Index", "Project", new { Area = "consulting"}), Icon = Settings.Icon.GetIcon20("feather-archive"), Text = "Project"});
         }
     }

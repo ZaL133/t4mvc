@@ -26,6 +26,7 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly IAccountService accountService;
         private readonly IContactService contactService;
         private readonly IProjectService projectService;
+        private readonly IProjectLogService projectLogService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
         public IQueryable<NoteViewModel> GetAllNotes()
@@ -37,6 +38,8 @@ namespace t4mvc.web.core.ViewModelServices
 						 from left_contact_ContactId in left_tmp_contact_ContactId.DefaultIfEmpty()
 						 						 join project_ProjectId in projectService.GetAllProjects() on note.ProjectId equals project_ProjectId.ProjectId into left_tmp_project_ProjectId
 						 from left_project_ProjectId in left_tmp_project_ProjectId.DefaultIfEmpty()
+						 						 join projectLog_ProjectLogId in projectLogService.GetAllProjectLogs() on note.ProjectLogId equals projectLog_ProjectLogId.ProjectLogId into left_tmp_projectLog_ProjectLogId
+						 from left_projectLog_ProjectLogId in left_tmp_projectLog_ProjectLogId.DefaultIfEmpty()
 						 			             select new NoteViewModel
 						 {							NoteId = note.NoteId,
 						 							ModifyUserId = note.ModifyUserId,
@@ -45,11 +48,12 @@ namespace t4mvc.web.core.ViewModelServices
 						 							AccountId = note.AccountId,
 						 							ContactId = note.ContactId,
 						 							ProjectId = note.ProjectId,
-						  AccountIdName = left_account_AccountId.Name,  ContactIdEmailAddress = left_contact_ContactId.EmailAddress,  ProjectIdProjectName = left_project_ProjectId.ProjectName, });
+						 							ProjectLogId = note.ProjectLogId,
+						  AccountIdName = left_account_AccountId.Name,  ContactIdEmailAddress = left_contact_ContactId.EmailAddress,  ProjectIdProjectName = left_project_ProjectId.ProjectName,  ProjectLogIdEntryName = left_projectLog_ProjectLogId.EntryName, });
             return query;
         }
 
-        public NoteViewModelService(INoteService noteService,IAccountService accountService,IContactService contactService,IProjectService projectService, IUserService userService,
+        public NoteViewModelService(INoteService noteService,IAccountService accountService,IContactService contactService,IProjectService projectService,IProjectLogService projectLogService, IUserService userService,
                                             IContextHelper contextHelper)
         {
             this.noteService = noteService;
@@ -57,6 +61,7 @@ namespace t4mvc.web.core.ViewModelServices
             this.accountService = accountService;
             this.contactService = contactService;
             this.projectService = projectService;
+            this.projectLogService = projectLogService;
         }
 
         public void CreateNote(NoteViewModel noteViewModel)
@@ -87,6 +92,8 @@ namespace t4mvc.web.core.ViewModelServices
                 note.ContactIdEmailAddress = contactService.Find(note.ContactId)?.EmailAddress;
             if (note.ProjectId != null)
                 note.ProjectIdProjectName = projectService.Find(note.ProjectId)?.ProjectName;
+            if (note.ProjectLogId != null)
+                note.ProjectLogIdEntryName = projectLogService.Find(note.ProjectLogId)?.EntryName;
             Hydrate(note);
             return note;
         }
@@ -124,12 +131,17 @@ namespace t4mvc.web.core.ViewModelServices
         {
 			return projectService.Find(id)?.ProjectName;
         }
+        public string GetProjectLogIdEntryName(Guid? id)
+        {
+			return projectLogService.Find(id)?.EntryName;
+        }
 
         public void Hydrate(NoteViewModel noteViewModel)
         {
             var id = noteViewModel.NoteId;            noteViewModel.AccountIdName =     GetAccountIdName(noteViewModel.AccountId);
             noteViewModel.ContactIdEmailAddress =     GetContactIdEmailAddress(noteViewModel.ContactId);
             noteViewModel.ProjectIdProjectName =     GetProjectIdProjectName(noteViewModel.ProjectId);
+            noteViewModel.ProjectLogIdEntryName =     GetProjectLogIdEntryName(noteViewModel.ProjectLogId);
         }
 
     }

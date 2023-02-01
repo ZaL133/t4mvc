@@ -10,8 +10,10 @@ namespace t4mvc.web
         {
 		    cfg.CreateMap<Account, AccountViewModel>().ReverseMap();
 		    cfg.CreateMap<Contact, ContactViewModel>().ReverseMap();
+		    cfg.CreateMap<Invoice, InvoiceViewModel>().ReverseMap();
 		    cfg.CreateMap<Note, NoteViewModel>().ReverseMap();
 		    cfg.CreateMap<Project, ProjectViewModel>().ReverseMap();
+		    cfg.CreateMap<ProjectLog, ProjectLogViewModel>().ReverseMap();
         }
     }
 
@@ -21,8 +23,10 @@ namespace t4mvc.web
         {
 		    CreateMap<Account, AccountViewModel>().ReverseMap();
 		    CreateMap<Contact, ContactViewModel>().ReverseMap();
+		    CreateMap<Invoice, InvoiceViewModel>().ReverseMap();
 		    CreateMap<Note, NoteViewModel>().ReverseMap();
 		    CreateMap<Project, ProjectViewModel>().ReverseMap();
+		    CreateMap<ProjectLog, ProjectLogViewModel>().ReverseMap();
         }
     }
 }

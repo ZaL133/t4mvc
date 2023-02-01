@@ -37,6 +37,8 @@ namespace t4mvc.web.core.ViewModels
         [UIHint("Money")]
         public decimal? EstimatedIncome { get; set; }
 
+        public List<ProjectLogViewModel> ProjectLogs { get; set; } = new List<ProjectLogViewModel>();
+        public List<InvoiceViewModel> Invoices { get; set; } = new List<InvoiceViewModel>();
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
 	}

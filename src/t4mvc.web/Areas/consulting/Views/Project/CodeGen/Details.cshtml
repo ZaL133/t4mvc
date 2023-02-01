@@ -39,6 +39,20 @@
                                 </a>
                             </li>
 
+                            <!-- ProjectLogs -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-ProjectLog-tab" data-bs-toggle="tab" href="#border-top-ProjectLog" role="tab" aria-controls="border-top-ProjectLog" aria-selected="false">
+                                    ProjectLogs
+                                </a>
+                            </li>
+
+                            <!-- Invoices -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="border-top-Invoice-tab" data-bs-toggle="tab" href="#border-top-Invoice" role="tab" aria-controls="border-top-Invoice" aria-selected="false">
+                                    Invoices
+                                </a>
+                            </li>
+
                             <!-- Audit History -->
                             <li class="nav-item">
                                 <a class="nav-link" id="border-top-Audit-tab" data-bs-toggle="tab" href="#border-top-Audit" role="tab" aria-controls="border-top-Audit" aria-selected="false">
@@ -56,6 +70,16 @@
                                 <partial name="~/Areas/consulting/Views/Project/_DetailsPartial.cshtml" model="Model" fallback-name="~/Areas/consulting/Views/Project/CodeGen/_DetailsPartial.cshtml" />
                             </div>
 
+
+                            <!-- ProjectLogs -->
+                            <div id="border-top-ProjectLog" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-ProjectLog-tab">
+                                <partial name="~/Areas/consulting/Views/ProjectLog/_TablePartial.cshtml" model="Model.ProjectLogs" fallback-name="~/Areas/consulting/Views/ProjectLog/CodeGen/_TablePartial.cshtml" />
+                            </div>
+
+                            <!-- Invoices -->
+                            <div id="border-top-Invoice" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Invoice-tab">
+                                <partial name="~/Areas/consulting/Views/Invoice/_TablePartial.cshtml" model="Model.Invoices" fallback-name="~/Areas/consulting/Views/Invoice/CodeGen/_TablePartial.cshtml" />
+                            </div>
 
                             <!-- Audit -->
                             <div id="border-top-Audit" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Audit-tab">

@@ -29,6 +29,9 @@ namespace t4mvc.web.core.ViewModels
         [Select2("/api/select2/getprojects", "ProjectId", "ProjectName", "Project", area : "")]
         public Guid? ProjectId { get; set; }
         public string ProjectIdProjectName { get; set; }
+        [Select2("/api/select2/getprojectlogs", "ProjectLogId", "EntryName", "ProjectLog", area : "")]
+        public Guid? ProjectLogId { get; set; }
+        public string ProjectLogIdEntryName { get; set; }
 
 	}
 }

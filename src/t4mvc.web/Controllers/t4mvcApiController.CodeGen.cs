@@ -14,6 +14,8 @@ namespace t4mvc.web.Controllers
         DataTablesResultsBase GetAccounts(DataTablesRequestBase request, string cacheKey);
         DataTablesResultsBase GetContacts(DataTablesRequestBase request, string cacheKey);
         DataTablesResultsBase GetProjects(DataTablesRequestBase request, string cacheKey);
+        DataTablesResultsBase GetProjectLogs(DataTablesRequestBase request, string cacheKey);
+        DataTablesResultsBase GetInvoices(DataTablesRequestBase request, string cacheKey);
         DataTablesResultsBase GetNotes(DataTablesRequestBase request, string cacheKey);
     }
 
@@ -24,13 +26,17 @@ namespace t4mvc.web.Controllers
         IAccountViewModelService accountViewModelService;
         IContactViewModelService contactViewModelService;
         IProjectViewModelService projectViewModelService;
+        IProjectLogViewModelService projectLogViewModelService;
+        IInvoiceViewModelService invoiceViewModelService;
         INoteViewModelService noteViewModelService;
 
-	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService,IContactViewModelService contactViewModelService,IProjectViewModelService projectViewModelService,INoteViewModelService noteViewModelService)
+	public t4mvcApiController(IServiceProvider serviceProvider, IAccountViewModelService accountViewModelService,IContactViewModelService contactViewModelService,IProjectViewModelService projectViewModelService,IProjectLogViewModelService projectLogViewModelService,IInvoiceViewModelService invoiceViewModelService,INoteViewModelService noteViewModelService)
     {
         this.serviceProvider = serviceProvider;        this.accountViewModelService = accountViewModelService;
         this.contactViewModelService = contactViewModelService;
         this.projectViewModelService = projectViewModelService;
+        this.projectLogViewModelService = projectLogViewModelService;
+        this.invoiceViewModelService = invoiceViewModelService;
         this.noteViewModelService = noteViewModelService;
     }
 
@@ -162,6 +168,94 @@ namespace t4mvc.web.Controllers
             if (searchParameter != null && searchParameter.Query != null)
             {
                 records = records.Where(x => x.ProjectName.StartsWith(searchParameter.Query));
+            }
+
+            return records.ToList();
+        }
+        [Route("getprojectlogs")]
+        public DataTablesResultsBase GetProjectLogs(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(GetProjectLogs), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = projectLogViewModelService.GetAllProjectLogs();
+
+            if (request.Search != null && request.Search.Value != null)
+            {
+                var s = request.Search.Value;
+                queryBase = queryBase.Where(x => x.ProjectIdProjectName.Contains(s) || x.EntryName.StartsWith(s));
+            }
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
+        // Select2 field
+        [HttpGet]
+        [Route("select2/getprojectlogs")]
+        public IEnumerable<ProjectLogViewModel> Select2ProjectLogs(Select2SearchParameter searchParameter)
+        {
+            var records = projectLogViewModelService.GetAllProjectLogs();
+
+            if (searchParameter != null && searchParameter.Query != null)
+            {
+                records = records.Where(x => x.EntryName.StartsWith(searchParameter.Query));
+            }
+
+            return records.ToList();
+        }
+        [Route("getinvoices")]
+        public DataTablesResultsBase GetInvoices(DataTablesRequestBase request, string cacheKey)
+        {
+            Current.SetDataTablesParameters(nameof(GetInvoices), cacheKey, request);
+
+            var response = new DataTablesResultsBase() { draw = request.Draw };
+
+            var queryBase = invoiceViewModelService.GetAllInvoices();
+
+            if (request.Search != null && request.Search.Value != null)
+            {
+                var s = request.Search.Value;
+                queryBase = queryBase.Where(x => x.ProjectIdProjectName.Contains(s) || x.InvoiceName.StartsWith(s));
+            }
+            var query = queryBase.Sort(request)
+                                 .Filter(request);
+
+            var data = query.Skip(request.Start)
+                            .Take(request.Length)
+                            .ToList();
+
+            var totalRecords            = queryBase.Count();
+            response.recordsTotal       = totalRecords;
+            response.recordsFiltered    = totalRecords;
+            response.data               = data;
+
+            return response;
+
+        }
+
+        // Select2 field
+        [HttpGet]
+        [Route("select2/getinvoices")]
+        public IEnumerable<InvoiceViewModel> Select2Invoices(Select2SearchParameter searchParameter)
+        {
+            var records = invoiceViewModelService.GetAllInvoices();
+
+            if (searchParameter != null && searchParameter.Query != null)
+            {
+                records = records.Where(x => x.InvoiceName.StartsWith(searchParameter.Query));
             }
 
             return records.ToList();

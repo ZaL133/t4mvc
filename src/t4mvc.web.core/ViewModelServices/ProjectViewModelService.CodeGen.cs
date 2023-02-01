@@ -18,6 +18,8 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveProject(ProjectViewModel projectViewModel);
 		void DeleteProject(ProjectViewModel projectViewModel);
 		void Hydrate(ProjectViewModel projectViewModel);
+        List<ProjectLogViewModel> GetProjectLogs(Guid projectId);
+        List<InvoiceViewModel> GetInvoices(Guid projectId);
         List<NoteViewModel> GetNotes(Guid projectId);
 
     }
@@ -26,6 +28,8 @@ namespace t4mvc.web.core.ViewModelServices
         private readonly IProjectService projectService;
         private readonly IAccountService accountService;
         private readonly IContactService contactService;
+        private readonly IProjectLogViewModelService projectLogViewModelService;
+        private readonly IInvoiceViewModelService invoiceViewModelService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
@@ -51,13 +55,15 @@ namespace t4mvc.web.core.ViewModelServices
             return query;
         }
 
-        public ProjectViewModelService(IProjectService projectService,IAccountService accountService,IContactService contactService,INoteViewModelService noteViewModelService, IUserService userService,
+        public ProjectViewModelService(IProjectService projectService,IAccountService accountService,IContactService contactService,IProjectLogViewModelService projectLogViewModelService,IInvoiceViewModelService invoiceViewModelService,INoteViewModelService noteViewModelService, IUserService userService,
                                             IContextHelper contextHelper, IAuditService auditService )
         {
             this.projectService = projectService;
             this.contextHelper      = contextHelper;
             this.accountService = accountService;
             this.contactService = contactService;
+            this.projectLogViewModelService = projectLogViewModelService;
+            this.invoiceViewModelService = invoiceViewModelService;
             this.noteViewModelService = noteViewModelService;
             this.auditService = auditService;
 
@@ -129,9 +135,23 @@ namespace t4mvc.web.core.ViewModelServices
             projectViewModel.AuditHistory = GetAuditRecords(id);
             projectViewModel.AccountIdName =     GetAccountIdName(projectViewModel.AccountId);
             projectViewModel.PrimaryContactIdEmailAddress =     GetPrimaryContactIdEmailAddress(projectViewModel.PrimaryContactId);
+            projectViewModel.ProjectLogs=     GetProjectLogs(id);
+            projectViewModel.Invoices=     GetInvoices(id);
             projectViewModel.Notes=     GetNotes(id);
         }
 
+        public List<ProjectLogViewModel> GetProjectLogs(Guid projectId)
+        {
+            return projectLogViewModelService.GetAllProjectLogs()
+                        .Where(x => x.ProjectId == projectId)
+                        .ToList();
+        }
+        public List<InvoiceViewModel> GetInvoices(Guid projectId)
+        {
+            return invoiceViewModelService.GetAllInvoices()
+                        .Where(x => x.ProjectId == projectId)
+                        .ToList();
+        }
         public List<NoteViewModel> GetNotes(Guid projectId)
         {
             return noteViewModelService.GetAllNotes()

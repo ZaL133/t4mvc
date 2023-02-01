@@ -16,10 +16,14 @@ namespace t4mvc.web
 		    services.AddScoped<IAccountViewModelService, AccountViewModelService>();
 		    services.AddScoped<IContactService, ContactService>();
 		    services.AddScoped<IContactViewModelService, ContactViewModelService>();
+		    services.AddScoped<IInvoiceService, InvoiceService>();
+		    services.AddScoped<IInvoiceViewModelService, InvoiceViewModelService>();
 		    services.AddScoped<INoteService, NoteService>();
 		    services.AddScoped<INoteViewModelService, NoteViewModelService>();
 		    services.AddScoped<IProjectService, ProjectService>();
 		    services.AddScoped<IProjectViewModelService, ProjectViewModelService>();
+		    services.AddScoped<IProjectLogService, ProjectLogService>();
+		    services.AddScoped<IProjectLogViewModelService, ProjectLogViewModelService>();
         }
     }
 }
