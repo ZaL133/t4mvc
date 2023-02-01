@@ -1,0 +1,91 @@
+
+
+
+
+
+@{
+    ViewBag.Title = "ProjectLogs";
+	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("fa-building") + " ProjectLogs";
+}
+
+<div class="widget-content widget-content-area br-6">
+<!-- Create New -->
+<div style="float:left; margin-top: 8px; margin-right: 16px;">
+    @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default", @data_key_combo = "alt+c", title = "alt + c"  })
+</div>
+
+<table class="table dataTable" role="grid" id="projectLog-table">
+    <thead>
+        <tr>
+            <th></th>
+
+            <th>Project</th>
+
+            <th>Entry Name</th>
+
+            <th>Entry Date</th>
+
+            <th>Hours</th>
+
+        </tr>
+    </thead>
+</table>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+			var detailsUrl = "/consulting/projectlog/details/";
+            var dTable = $("#projectLog-table").DataTable({
+                "serverSide": true,
+                "ordering": true,
+				stateSave: true,
+                dom: t4mvc.excelButtonDom,
+                "ajax": {
+                    "url": "/api/getprojectLogs?cacheKey=" + new Date().getTime()
+                },
+                columns: [
+                    { data: "ProjectLogId" },
+                    { data: "ProjectIdProjectName" },
+                    { data: "EntryName" },
+                    { data: "EntryDate" },
+                    { data: "Hours" },
+
+                ],
+                columnDefs: [
+                    {
+                        targets: 0, render: function (a) {
+                            return '<a href="' + detailsUrl + a + '">@Settings.Icon.DetailsIcon</a>';
+                        }
+                    },
+                    { targets: 3, render: t4mvc.formatDate },
+
+                ],
+                order: [
+                    [1, "asc"]
+                ],
+                drawCallback: function() { feather.replace(); }
+            });
+
+            $("#projectLog-table tbody").on("dblclick", "tr", function () {
+                var data = dTable.row(this).data();
+                window.location.href = detailsUrl + data.ProjectLogId;
+            });
+
+            key("esc", t4mvc.navigateUpOneLevel);
+            key("ctrl+enter", function () {
+                $(dTable.context[0].nTable).find("tbody tr:first a")[0].click();
+            });
+
+            $("#export-excel").click(function () {
+                var params = dTable.ajax.params();
+                var urlParams = $.param(params);
+
+                // The last data table parameters get cached on the server and so they don't need to be sent here
+                window.open("/api/export/projectlog");
+            });
+
+        })
+    </script>
+    <script src="/api/js/ProjectLog.index"></script>
+}
