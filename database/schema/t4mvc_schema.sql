@@ -1,5 +1,7 @@
 /*
 	DROP TABLE [Note];
+	DROP TABLE [Invoice];
+	DROP TABLE [ProjectLog];
 	DROP TABLE [Project];
 	DROP TABLE [Contact];
 	DROP TABLE [Account];
@@ -324,6 +326,131 @@ END
 		CREATE INDEX IX_Project_PrimaryContactId ON Project(PrimaryContactId)
 
 IF NOT EXISTS (
+	SELECT * FROM sys.Tables WHERE [Name] = 'ProjectLog')
+BEGIN 
+	CREATE TABLE ProjectLog ( 
+		ProjectLogId uniqueidentifier NOT NULL PRIMARY KEY ,
+		CreateUserId uniqueidentifier NOT NULL,
+		CreateDate datetime NOT NULL,
+		ModifyUserId uniqueidentifier NOT NULL,
+		ModifyDate datetime NOT NULL,
+		ProjectId uniqueidentifier NOT NULL CONSTRAINT FK_ProjectLog_ProjectId FOREIGN KEY REFERENCES Project(ProjectId),
+		EntryName varchar(255) NOT NULL,
+		EntryDate datetime NOT NULL,
+		Hours decimal(10,2) NOT NULL,
+	)
+END 
+
+-- Field: ProjectLog.ProjectLogId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'ProjectLogId')	
+		ALTER TABLE ProjectLog ADD ProjectLogId uniqueidentifier NOT NULL PRIMARY KEY 
+
+-- Field: ProjectLog.CreateUserId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'CreateUserId')	
+		ALTER TABLE ProjectLog ADD CreateUserId uniqueidentifier NOT NULL
+
+-- Field: ProjectLog.CreateDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'CreateDate')	
+		ALTER TABLE ProjectLog ADD CreateDate datetime NOT NULL
+
+-- Field: ProjectLog.ModifyUserId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'ModifyUserId')	
+		ALTER TABLE ProjectLog ADD ModifyUserId uniqueidentifier NOT NULL
+
+-- Field: ProjectLog.ModifyDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'ModifyDate')	
+		ALTER TABLE ProjectLog ADD ModifyDate datetime NOT NULL
+
+-- Field: ProjectLog.ProjectId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'ProjectId')	
+		ALTER TABLE ProjectLog ADD ProjectId uniqueidentifier NOT NULL CONSTRAINT FK_ProjectLog_ProjectId FOREIGN KEY REFERENCES Project(ProjectId)
+
+-- Field: ProjectLog.EntryName
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'EntryName')	
+		ALTER TABLE ProjectLog ADD EntryName varchar(255) NOT NULL
+
+-- Field: ProjectLog.EntryDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'EntryDate')	
+		ALTER TABLE ProjectLog ADD EntryDate datetime NOT NULL
+
+-- Field: ProjectLog.Hours
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'ProjectLog' AND c.[name] = 'Hours')	
+		ALTER TABLE ProjectLog ADD Hours decimal(10,2) NOT NULL
+
+-- Index: ProjectLog.ProjectId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'ProjectLog' AND i.[name] = 'IX_ProjectLog_ProjectId')
+		CREATE INDEX IX_ProjectLog_ProjectId ON ProjectLog(ProjectId)
+
+-- Index: ProjectLog.EntryName
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'ProjectLog' AND i.[name] = 'IX_ProjectLog_EntryName')
+		CREATE INDEX IX_ProjectLog_EntryName ON ProjectLog(EntryName)
+
+IF NOT EXISTS (
+	SELECT * FROM sys.Tables WHERE [Name] = 'Invoice')
+BEGIN 
+	CREATE TABLE Invoice ( 
+		InvoiceId uniqueidentifier NOT NULL PRIMARY KEY ,
+		CreateUserId uniqueidentifier NOT NULL,
+		CreateDate datetime NOT NULL,
+		ModifyUserId uniqueidentifier NOT NULL,
+		ModifyDate datetime NOT NULL,
+		ProjectId uniqueidentifier NOT NULL CONSTRAINT FK_Invoice_ProjectId FOREIGN KEY REFERENCES Project(ProjectId),
+		InvoiceName varchar(255) NOT NULL,
+		InvoiceDate datetime NOT NULL,
+		InvoiceAmount decimal(10,2) NOT NULL,
+		Status varchar NOT NULL,
+	)
+END 
+
+-- Field: Invoice.InvoiceId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'InvoiceId')	
+		ALTER TABLE Invoice ADD InvoiceId uniqueidentifier NOT NULL PRIMARY KEY 
+
+-- Field: Invoice.CreateUserId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'CreateUserId')	
+		ALTER TABLE Invoice ADD CreateUserId uniqueidentifier NOT NULL
+
+-- Field: Invoice.CreateDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'CreateDate')	
+		ALTER TABLE Invoice ADD CreateDate datetime NOT NULL
+
+-- Field: Invoice.ModifyUserId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'ModifyUserId')	
+		ALTER TABLE Invoice ADD ModifyUserId uniqueidentifier NOT NULL
+
+-- Field: Invoice.ModifyDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'ModifyDate')	
+		ALTER TABLE Invoice ADD ModifyDate datetime NOT NULL
+
+-- Field: Invoice.ProjectId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'ProjectId')	
+		ALTER TABLE Invoice ADD ProjectId uniqueidentifier NOT NULL CONSTRAINT FK_Invoice_ProjectId FOREIGN KEY REFERENCES Project(ProjectId)
+
+-- Field: Invoice.InvoiceName
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'InvoiceName')	
+		ALTER TABLE Invoice ADD InvoiceName varchar(255) NOT NULL
+
+-- Field: Invoice.InvoiceDate
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'InvoiceDate')	
+		ALTER TABLE Invoice ADD InvoiceDate datetime NOT NULL
+
+-- Field: Invoice.InvoiceAmount
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'InvoiceAmount')	
+		ALTER TABLE Invoice ADD InvoiceAmount decimal(10,2) NOT NULL
+
+-- Field: Invoice.Status
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'Status')	
+		ALTER TABLE Invoice ADD Status varchar NOT NULL
+
+-- Index: Invoice.ProjectId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Invoice' AND i.[name] = 'IX_Invoice_ProjectId')
+		CREATE INDEX IX_Invoice_ProjectId ON Invoice(ProjectId)
+
+-- Index: Invoice.InvoiceName
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Invoice' AND i.[name] = 'IX_Invoice_InvoiceName')
+		CREATE INDEX IX_Invoice_InvoiceName ON Invoice(InvoiceName)
+
+IF NOT EXISTS (
 	SELECT * FROM sys.Tables WHERE [Name] = 'Note')
 BEGIN 
 	CREATE TABLE Note ( 
@@ -336,6 +463,7 @@ BEGIN
 		AccountId uniqueidentifier NULL CONSTRAINT FK_Note_AccountId FOREIGN KEY REFERENCES Account(AccountId),
 		ContactId uniqueidentifier NULL CONSTRAINT FK_Note_ContactId FOREIGN KEY REFERENCES Contact(ContactId),
 		ProjectId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectId FOREIGN KEY REFERENCES Project(ProjectId),
+		ProjectLogId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectLogId FOREIGN KEY REFERENCES ProjectLog(ProjectLogId),
 	)
 END 
 
@@ -375,6 +503,10 @@ END
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Note' AND c.[name] = 'ProjectId')	
 		ALTER TABLE Note ADD ProjectId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectId FOREIGN KEY REFERENCES Project(ProjectId)
 
+-- Field: Note.ProjectLogId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Note' AND c.[name] = 'ProjectLogId')	
+		ALTER TABLE Note ADD ProjectLogId uniqueidentifier NULL CONSTRAINT FK_Note_ProjectLogId FOREIGN KEY REFERENCES ProjectLog(ProjectLogId)
+
 -- Index: Note.AccountId
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Note' AND i.[name] = 'IX_Note_AccountId')
 		CREATE INDEX IX_Note_AccountId ON Note(AccountId)
@@ -386,5 +518,9 @@ END
 -- Index: Note.ProjectId
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Note' AND i.[name] = 'IX_Note_ProjectId')
 		CREATE INDEX IX_Note_ProjectId ON Note(ProjectId)
+
+-- Index: Note.ProjectLogId
+	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Note' AND i.[name] = 'IX_Note_ProjectLogId')
+		CREATE INDEX IX_Note_ProjectLogId ON Note(ProjectLogId)
 
 
