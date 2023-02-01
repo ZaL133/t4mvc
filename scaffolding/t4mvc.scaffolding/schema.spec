@@ -86,7 +86,14 @@ Project | Area:consulting | Icon:feather-archive | HasNotes | EnableAuditing
 	Description? | ViewModelAttributes(Wysiwyg) | Length:-1
 	EstimatedIncome?(decimal?) | Description: Estimated Income | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
 
+ProjectLog | Area:consulting | Icon-feather-watch | EnableAuditing | HasNotes | NoNav
+	ProjectId(Guid) | Description: Project | References Project(ProjectId):ProjectName Tabbed | IsSearchable | SearchOperator:Contains
+	Entry Name | IsSearchable | Length:255 | IsNameField
+	Entry Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
+	Hours(decimal) | Length:10 | Scale:2
+
 Invoice | Area:consulting | Icon:file-text | EnableAuditing
+	ProjectId(Guid) | Description: Project | References Project(ProjectId):ProjectName Tabbed | IsSearchable | SearchOperator:Contains
 	Invoice Name | IsSearchable | Length:255 | IsNameField
 	Invoice Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
 	Invoice Amount(decimal) | Description: Invoice Amount | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
@@ -97,3 +104,4 @@ Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
 	AccountId?(Guid?) | References Account(AccountId)
 	ContactId?(Guid?) | References Contact(ContactId)
 	ProjectId?(Guid?) | References Project(ProjectId)
+	ProjectLogId?(Guid?) | References ProjectLog(ProjectLogId)
