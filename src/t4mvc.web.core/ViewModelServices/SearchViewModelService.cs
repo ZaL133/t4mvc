@@ -16,7 +16,7 @@ namespace t4mvc.web.core.ViewModelServices
     /// </summary>
     public class SearchViewModelService : SearchViewModelServiceBase
     {
-        public SearchViewModelService(IAccountService accountService, IContactService contactService, IProjectService projectService) : base(accountService, contactService, projectService)
+        public SearchViewModelService(IAccountService accountService, IContactService contactService, IProjectService projectService, IProjectLogService projectLogService, IInvoiceService invoiceService) : base(accountService, contactService, projectService, projectLogService, invoiceService)
         {
 
         }
