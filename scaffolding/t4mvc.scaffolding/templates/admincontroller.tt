@@ -1,14 +1,9 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #><#@ import namespace="t4mvc.scaffolding.EntityDefinition" #><#
+﻿<#@ template language="C#" #><#@ assembly name="System.Core" #><#@ import namespace="System.Linq" #><#@ import namespace="System.Text" #><#@ import namespace="System.Collections.Generic" #><#@ import namespace="t4mvc.scaffolding.EntityDefinition" #><#
     var schemaName = this.Entity.Name.ToSchemaName();
     var uViewModelName= schemaName + "ViewModel";
     var lViewModelName= uViewModelName.ToCamelCase();
     var areaName        = this.Entity.Area;
-#>
-using System;
+#>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -82,7 +77,7 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
             {
                 <#= lViewModelName #>Service.Save<#= schemaName #>(<#= lViewModelName #>);
                 Current.Saved("<#= this.Entity.Name #> saved");
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #>, returnUrl = Current.ReturnUrl  }),
                                                   () => Url.Action("Index"));
             }
             else
@@ -115,7 +110,7 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
             {
                 <#= lViewModelName #>Service.Create<#= schemaName #>(<#= lViewModelName #>);
                 Current.Saved("<#= this.Entity.Name #> created");
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #> }),
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = <#= lViewModelName #>.<#= this.Entity.KeyField.Name.ToSchemaName() #>, returnUrl = Current.ReturnUrl }),
                                                   () => Url.Action("Index"));
             }
             else

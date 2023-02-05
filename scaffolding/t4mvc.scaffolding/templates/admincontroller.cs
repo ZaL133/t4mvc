@@ -29,10 +29,6 @@ namespace t4mvc.scaffolding.templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
 
@@ -44,9 +40,9 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write("\nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System." +
-                    "Web;\nusing Microsoft.AspNetCore.Authorization;\nusing Microsoft.AspNetCore.Mvc;\nu" +
-                    "sing ");
+            this.Write("using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.W" +
+                    "eb;\nusing Microsoft.AspNetCore.Authorization;\nusing Microsoft.AspNetCore.Mvc;\nus" +
+                    "ing ");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
@@ -338,8 +334,9 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(" }),\n                                                  () => Url.Action(\"Index\"))" +
-                    ";\n            }\n            else\n            {\n\t\t\t\t");
+            this.Write(", returnUrl = Current.ReturnUrl  }),\n                                            " +
+                    "      () => Url.Action(\"Index\"));\n            }\n            else\n            {\n\t" +
+                    "\t\t\t");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
@@ -465,8 +462,9 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(" }),\n                                                  () => Url.Action(\"Index\"))" +
-                    ";\n            }\n            else\n            {\n\t\t\t\t");
+            this.Write(", returnUrl = Current.ReturnUrl }),\n                                             " +
+                    "     () => Url.Action(\"Index\"));\n            }\n            else\n            {\n\t\t" +
+                    "\t\t");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));

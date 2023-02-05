@@ -1,8 +1,3 @@
-
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,7 +72,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             {
                 accountViewModelService.SaveAccount(accountViewModel);
                 Current.Saved("Account saved");
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId, returnUrl = Current.ReturnUrl  }),
                                                   () => Url.Action("Index"));
             }
             else
@@ -105,7 +100,7 @@ namespace t4mvc.web.Areas.crm.Controllers
             {
                 accountViewModelService.CreateAccount(accountViewModel);
                 Current.Saved("Account created");
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId }),
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = accountViewModel.AccountId, returnUrl = Current.ReturnUrl }),
                                                   () => Url.Action("Index"));
             }
             else

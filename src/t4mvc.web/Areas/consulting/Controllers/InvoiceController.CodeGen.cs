@@ -1,8 +1,3 @@
-
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +71,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 invoiceViewModelService.SaveInvoice(invoiceViewModel);
                 Current.Saved("Invoice saved");
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = invoiceViewModel.InvoiceId }),
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = invoiceViewModel.InvoiceId, returnUrl = Current.ReturnUrl  }),
                                                   () => Url.Action("Index"));
             }
             else
@@ -104,7 +99,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 invoiceViewModelService.CreateInvoice(invoiceViewModel);
                 Current.Saved("Invoice created");
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = invoiceViewModel.InvoiceId }),
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = invoiceViewModel.InvoiceId, returnUrl = Current.ReturnUrl }),
                                                   () => Url.Action("Index"));
             }
             else

@@ -1,8 +1,3 @@
-
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +71,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 projectViewModelService.SaveProject(projectViewModel);
                 Current.Saved("Project saved");
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId }),
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId, returnUrl = Current.ReturnUrl  }),
                                                   () => Url.Action("Index"));
             }
             else
@@ -104,7 +99,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 projectViewModelService.CreateProject(projectViewModel);
                 Current.Saved("Project created");
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId }),
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = projectViewModel.ProjectId, returnUrl = Current.ReturnUrl }),
                                                   () => Url.Action("Index"));
             }
             else

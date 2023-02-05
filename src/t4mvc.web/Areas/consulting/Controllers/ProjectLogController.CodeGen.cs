@@ -1,8 +1,3 @@
-
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +71,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 projectLogViewModelService.SaveProjectLog(projectLogViewModel);
                 Current.Saved("ProjectLog saved");
-                return Current.GetEditDestination(() => Url.Action("Details", new { id = projectLogViewModel.ProjectLogId }),
+                return Current.GetEditDestination(() => Url.Action("Details", new { id = projectLogViewModel.ProjectLogId, returnUrl = Current.ReturnUrl  }),
                                                   () => Url.Action("Index"));
             }
             else
@@ -104,7 +99,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
             {
                 projectLogViewModelService.CreateProjectLog(projectLogViewModel);
                 Current.Saved("ProjectLog created");
-                return Current.GetCreateDestination(() => Url.Action("Details", new { id = projectLogViewModel.ProjectLogId }),
+                return Current.GetCreateDestination(() => Url.Action("Details", new { id = projectLogViewModel.ProjectLogId, returnUrl = Current.ReturnUrl }),
                                                   () => Url.Action("Index"));
             }
             else
