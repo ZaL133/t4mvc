@@ -288,7 +288,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("-tab\">\n                                <a class=\"btn btn-default\" href=\"/");
+            this.Write("-tab\">\n                                <a class=\"btn btn-info\" href=\"/");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tab.Area));
@@ -316,7 +316,8 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("\">Create</a>\n                                <partial name=\"");
+            this.Write("&returnUrl=@Current.PathAndQuery\">Create</a>\n                                <par" +
+                    "tial name=\"");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ap));

@@ -74,13 +74,13 @@
 
                             <!-- ProjectLogs -->
                             <div id="border-top-ProjectLog" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-ProjectLog-tab">
-                                <a class="btn btn-default" href="/consulting/ProjectLog/Create?projectId=@Model.ProjectId">Create</a>
+                                <a class="btn btn-info" href="/consulting/ProjectLog/Create?projectId=@Model.ProjectId&returnUrl=@Current.PathAndQuery">Create</a>
                                 <partial name="~/Areas/consulting/Views/ProjectLog/_TablePartial.cshtml" model="Model.ProjectLogs" fallback-name="~/Areas/consulting/Views/ProjectLog/CodeGen/_TablePartial.cshtml" />
                             </div>
 
                             <!-- Invoices -->
                             <div id="border-top-Invoice" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Invoice-tab">
-                                <a class="btn btn-default" href="/consulting/Invoice/Create?projectId=@Model.ProjectId">Create</a>
+                                <a class="btn btn-info" href="/consulting/Invoice/Create?projectId=@Model.ProjectId&returnUrl=@Current.PathAndQuery">Create</a>
                                 <partial name="~/Areas/consulting/Views/Invoice/_TablePartial.cshtml" model="Model.Invoices" fallback-name="~/Areas/consulting/Views/Invoice/CodeGen/_TablePartial.cshtml" />
                             </div>
 
