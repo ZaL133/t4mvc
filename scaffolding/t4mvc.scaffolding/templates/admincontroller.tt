@@ -93,10 +93,15 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
             }
         }
 
-        public virtual ActionResult Create()
+        public virtual ActionResult Create(<#= 
+            string.Join(", ", this.Entity.ForeignKeys
+                                         .Select(x => $"{x.DataType} {x.CamelCaseName}"))
+        #>)
         {
             Current.EditMode = true;
-			var viewModel = new <#= uViewModelName #>();
+			var viewModel = new <#= uViewModelName #>()<# if (this.Entity.HasForeignKeys) {
+            #>{ <#= string.Join(", ", this.Entity.ForeignKeys
+                                                 .Select(x => $"{x.SchemaName} = {x.CamelCaseName}")) #> }<# } #>;
             return View("Details", viewModel);
         }
 

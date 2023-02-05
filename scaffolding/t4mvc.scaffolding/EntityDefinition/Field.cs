@@ -10,6 +10,7 @@ namespace t4mvc.scaffolding.EntityDefinition
     {
         public string? Name { get; set; }
         public string SchemaName => Name.ToSchemaName();
+        public string CamelCaseName => Name.ToCamelCase();  
         public List<string> Attributes { get; set; } = new List<string>();
         public string DataType { get; set; } = "string"; // default
         public string SqlDataType => SqlTypeLookup[DataType.TrimEnd('?')];

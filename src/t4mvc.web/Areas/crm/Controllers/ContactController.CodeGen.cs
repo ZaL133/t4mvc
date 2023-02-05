@@ -1,3 +1,8 @@
+
+
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,10 +87,10 @@ namespace t4mvc.web.Areas.crm.Controllers
             }
         }
 
-        public virtual ActionResult Create()
+        public virtual ActionResult Create(Guid? accountId)
         {
             Current.EditMode = true;
-			var viewModel = new ContactViewModel();
+			var viewModel = new ContactViewModel(){ AccountId = accountId };
             return View("Details", viewModel);
         }
 

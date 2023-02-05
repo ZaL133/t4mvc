@@ -1,3 +1,8 @@
+
+
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,10 +87,10 @@ namespace t4mvc.web.Areas.consulting.Controllers
             }
         }
 
-        public virtual ActionResult Create()
+        public virtual ActionResult Create(Guid projectId)
         {
             Current.EditMode = true;
-			var viewModel = new ProjectLogViewModel();
+			var viewModel = new ProjectLogViewModel(){ ProjectId = projectId };
             return View("Details", viewModel);
         }
 

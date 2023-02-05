@@ -1,3 +1,8 @@
+
+
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,10 +87,11 @@ namespace t4mvc.web.Areas.consulting.Controllers
             }
         }
 
-        public virtual ActionResult Create()
+        public virtual ActionResult Create(Guid? accountId, Guid? primaryContactId)
         {
             Current.EditMode = true;
-			var viewModel = new ProjectViewModel();
+			var viewModel = new ProjectViewModel(){ AccountId = accountId, PrimaryContactId = primaryContactId };
+            projectViewModelService.Hydrate(viewModel);
             return View("Details", viewModel);
         }
 

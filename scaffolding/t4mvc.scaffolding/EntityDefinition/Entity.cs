@@ -69,6 +69,8 @@ namespace t4mvc.scaffolding.EntityDefinition
         public Layout? Layout { get; set; }
         // A list of the entities which have a foreign key field for this table
         public List<ChildReferenceEntity> ChildReferences { get; set; } = new List<ChildReferenceEntity>();
+        public IEnumerable<Field> ForeignKeys => Fields.Where(x => x.References != null);
+        public bool HasForeignKeys => ForeignKeys.Count() > 0;
         public Field? KeyField
         {
             get
