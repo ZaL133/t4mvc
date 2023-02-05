@@ -399,8 +399,15 @@ namespace t4mvc.scaffolding.templates
             
             #line default
             #line hidden
-            this.Write(";\n            return View(\"Details\", viewModel);\n        }\n\n        [HttpPost]\n  " +
-                    "      public virtual ActionResult Create(");
+            this.Write(";\n            ");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(lViewModelName));
+            
+            #line default
+            #line hidden
+            this.Write("Service.Hydrate(viewModel);\n            return View(\"Details\", viewModel);\n      " +
+                    "  }\n\n        [HttpPost]\n        public virtual ActionResult Create(");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\admincontroller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(uViewModelName));

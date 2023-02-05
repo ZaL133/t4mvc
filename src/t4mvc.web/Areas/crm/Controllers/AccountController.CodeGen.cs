@@ -92,6 +92,7 @@ namespace t4mvc.web.Areas.crm.Controllers
         {
             Current.EditMode = true;
 			var viewModel = new AccountViewModel();
+            accountViewModelService.Hydrate(viewModel);
             return View("Details", viewModel);
         }
 

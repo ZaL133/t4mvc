@@ -102,6 +102,7 @@ namespace <#= Settings.ApplicationName #>.web.Areas.<#= this.Entity.Area ?? "Adm
 			var viewModel = new <#= uViewModelName #>()<# if (this.Entity.HasForeignKeys) {
             #>{ <#= string.Join(", ", this.Entity.ForeignKeys
                                                  .Select(x => $"{x.SchemaName} = {x.CamelCaseName}")) #> }<# } #>;
+            <#= lViewModelName #>Service.Hydrate(viewModel);
             return View("Details", viewModel);
         }
 

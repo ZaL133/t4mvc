@@ -91,6 +91,7 @@ namespace t4mvc.web.Areas.consulting.Controllers
         {
             Current.EditMode = true;
 			var viewModel = new InvoiceViewModel(){ ProjectId = projectId };
+            invoiceViewModelService.Hydrate(viewModel);
             return View("Details", viewModel);
         }
 
