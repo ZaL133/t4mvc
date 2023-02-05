@@ -91,7 +91,6 @@ namespace t4mvc.web.Areas.consulting.Controllers
         {
             Current.EditMode = true;
 			var viewModel = new ProjectViewModel(){ AccountId = accountId, PrimaryContactId = primaryContactId };
-            projectViewModelService.Hydrate(viewModel);
             return View("Details", viewModel);
         }
 

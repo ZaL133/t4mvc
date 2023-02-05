@@ -59,6 +59,7 @@
 
                             <!-- Projects -->
                             <div id="border-top-Project" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Project-tab">
+                                <a class="btn btn-default" href="/consulting/Project/Create?primaryContactId=@Model.ContactId">Create</a>
                                 <partial name="~/Areas/consulting/Views/Project/_TablePartial.cshtml" model="Model.Projects" fallback-name="~/Areas/consulting/Views/Project/CodeGen/_TablePartial.cshtml" />
                             </div>
 

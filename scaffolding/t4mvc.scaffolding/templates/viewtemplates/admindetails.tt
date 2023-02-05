@@ -72,6 +72,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 <# foreach(var tab in tabs) { var sn = tab.Name.ToSchemaName(); var ap = getAreaPrefix(tab.Area); #>
                             <!-- <#= (tab.TabText ?? tab.ParentFieldName) #> -->
                             <div id="border-top-<#= sn #>" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-<#= sn #>-tab">
+                                <a class="btn btn-default" href="/<#= tab.Area #>/<#= tab.SchemaName #>/Create?<#= tab.Field.CamelCaseName #>=@Model.<#= this.Entity.KeyField.SchemaName #>">Create</a>
                                 <partial name="<#= ap #>/Views/<#= sn #>/_TablePartial.cshtml" model="Model.<#= tab.ParentFieldName #>" fallback-name="<#= ap #>/Views/<#= sn #>/CodeGen/_TablePartial.cshtml" />
                             </div>
 <# } if (Entity.EnableAuditing) { #>

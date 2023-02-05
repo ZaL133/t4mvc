@@ -53,6 +53,7 @@
                                 </a>
                             </li>
 
+
                             <!-- Audit History -->
                             <li class="nav-item">
                                 <a class="nav-link" id="border-top-Audit-tab" data-bs-toggle="tab" href="#border-top-Audit" role="tab" aria-controls="border-top-Audit" aria-selected="false">
@@ -73,13 +74,16 @@
 
                             <!-- Contacts -->
                             <div id="border-top-Contact" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Contact-tab">
+                                <a class="btn btn-default" href="/crm/Contact/Create?accountId=@Model.AccountId">Create</a>
                                 <partial name="~/Areas/crm/Views/Contact/_TablePartial.cshtml" model="Model.Contacts" fallback-name="~/Areas/crm/Views/Contact/CodeGen/_TablePartial.cshtml" />
                             </div>
 
                             <!-- Projects -->
                             <div id="border-top-Project" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Project-tab">
+                                <a class="btn btn-default" href="/consulting/Project/Create?accountId=@Model.AccountId">Create</a>
                                 <partial name="~/Areas/consulting/Views/Project/_TablePartial.cshtml" model="Model.Projects" fallback-name="~/Areas/consulting/Views/Project/CodeGen/_TablePartial.cshtml" />
                             </div>
+
 
                             <!-- Audit -->
                             <div id="border-top-Audit" class="tab-pane fade show" role="tabpanel" aria-labelledby="border-top-Audit-tab">
