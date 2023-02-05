@@ -124,7 +124,7 @@ namespace t4mvc.web.core.ViewModelServices
                 rv.Categories.Add(new SearchResultCategory
                 {
                     Name    = "Invoice",
-                    Icon    = "<i class=\"file-text\"></i>",
+                    Icon    = "<i data-feather=\"file-text\"></i>",
                     Results = invoices.AsEnumerable().Select(x => new SearchResultItem { Title = $"{x.InvoiceName}", Url = "/consulting/invoice/details/" + x.InvoiceId }).ToList()
                 });
             }

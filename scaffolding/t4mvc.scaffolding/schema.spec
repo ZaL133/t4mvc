@@ -92,7 +92,7 @@ ProjectLog | Area:consulting | Icon-feather-watch | EnableAuditing | HasNotes | 
 	Entry Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
 	Hours(decimal) | Length:10 | Scale:2
 
-Invoice | Area:consulting | Icon:file-text | EnableAuditing
+Invoice | Area:consulting | Icon:feather-file-text | EnableAuditing
 	ProjectId(Guid) | Description: Project | References Project(ProjectId):ProjectName Tabbed | IsSearchable | SearchOperator:Contains
 	Invoice Name | IsSearchable | Length:255 | IsNameField
 	Invoice Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
