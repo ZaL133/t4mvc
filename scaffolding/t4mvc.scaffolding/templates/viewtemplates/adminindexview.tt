@@ -1,14 +1,18 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); #>
-@{
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); 
+#>@{
     ViewBag.Title = "<#= this.Entity.PluralFullName ?? (this.Entity.Description + "s") #>";
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.PluralName ?? (this.Entity.Description + "s") #>";
 }
 
 <div class="widget-content widget-content-area br-6">
+
+<!-- Icon -->
+<div><span class="icon-badge"><#= this.Entity.Name #> @Settings.Icon.GetIcon26("<#= this.Entity.Icon #>")</span></div>
+
 <!-- Create New -->
 <div style="float:left; margin-top: 8px; margin-right: 16px;">
     @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default", @data_key_combo = "alt+c", title = "alt + c"  })

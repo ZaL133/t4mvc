@@ -28,17 +28,14 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
+
             
             #line default
             #line hidden
-            this.Write("\n@{\n    ViewBag.Title = \"");
+            this.Write("@{\n    ViewBag.Title = \"");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralFullName ?? (this.Entity.Description + "s")));
@@ -59,10 +56,23 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write(@""";
-}
+            this.Write("\";\n}\n\n<div class=\"widget-content widget-content-area br-6\">\n\n<!-- Icon -->\n<div><" +
+                    "span class=\"icon-badge\">");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" @Settings.Icon.GetIcon26(\"");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\adminindexview.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
+            
+            #line default
+            #line hidden
+            this.Write(@""")</span></div>
 
-<div class=""widget-content widget-content-area br-6"">
 <!-- Create New -->
 <div style=""float:left; margin-top: 8px; margin-right: 16px;"">
     @Html.ActionLink(""Create"", ""Create"", new { }, new { @class = ""btn btn-default"", @data_key_combo = ""alt+c"", title = ""alt + c""  })

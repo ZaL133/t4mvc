@@ -5,10 +5,6 @@
     var text                = ViewData["text"] as string;
 }
 <div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon5">
-            <a href="@((select2Attribute.Area == null) ? "" : "/" + select2Attribute.Area)/@select2Attribute.Entity/details/@Model?returnUrl=@Current.PathAndQuery"><i data-feather="external-link"></i></a>
-        </span>
-    </div>
+    <a class="input-group-text" href="@((select2Attribute.Area == null) ? "" : "/" + select2Attribute.Area)/@select2Attribute.Entity/details/@Model?returnUrl=@Current.PathAndQuery"><i data-feather="external-link"></i></a>
     <input class="form-control" value="@text" disabled="disabled" />
 </div>

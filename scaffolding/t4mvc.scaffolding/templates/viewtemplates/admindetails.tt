@@ -1,15 +1,14 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
-<# var schemaName   = this.Entity.Name.ToSchemaName(); #><#
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" 
+#><#@ import namespace="t4mvc.scaffolding.EntityDefinition" 
+#><# var schemaName   = this.Entity.Name.ToSchemaName(); #><#
 var hasNotes        = this.Entity.HasNotes;
 var getAreaPrefix   = (string area) => area == null ? null : "~/Areas/" + area;
 var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
-#>
-@model <#= schemaName #>ViewModel
+#>@model <#= schemaName #>ViewModel
 @{
     ViewBag.Title = "<#= this.Entity.Description #> Details";<# if (this.Entity.NameField != null) { #>
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.Name #> / " + Model.<#= this.Entity.NameField.Name.ToSchemaName() #>;<# } else { #>
@@ -25,6 +24,9 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 
         <!-- Column 1 -->
         <div class="<#= (hasNotes) ? "col-xl-8 col-md-8 col-sm-12 col-12" : "col-xl-12 col-md-12 col-sm-12 col-12" #>">
+
+            <!-- Icon -->
+            <div><span class="icon-badge"><#= this.Entity.Name #> @Settings.Icon.GetIcon26("<#= this.Entity.Icon #>")</span></div>
 
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.<#= this.Entity.KeyField.Name #>)

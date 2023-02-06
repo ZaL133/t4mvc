@@ -1,14 +1,13 @@
-
-
-
-
-
 @{
     ViewBag.Title = "Accounts";
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Accounts";
 }
 
 <div class="widget-content widget-content-area br-6">
+
+<!-- Icon -->
+<div><span class="icon-badge">Account @Settings.Icon.GetIcon26("feather-home")</span></div>
+
 <!-- Create New -->
 <div style="float:left; margin-top: 8px; margin-right: 16px;">
     @Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default", @data_key_combo = "alt+c", title = "alt + c"  })

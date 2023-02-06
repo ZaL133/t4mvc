@@ -29,12 +29,6 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  var schemaName   = this.Entity.Name.ToSchemaName(); 
@@ -51,7 +45,7 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("\n@model ");
+            this.Write("@model ");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
@@ -136,7 +130,22 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write("\">\n\n            @Html.AntiForgeryToken()\n            @Html.HiddenFor(x => x.");
+            this.Write("\">\n\n            <!-- Icon -->\n            <div><span class=\"icon-badge\">");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" @Settings.Icon.GetIcon26(\"");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Icon));
+            
+            #line default
+            #line hidden
+            this.Write("\")</span></div>\n\n            @Html.AntiForgeryToken()\n            @Html.HiddenFor" +
+                    "(x => x.");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
