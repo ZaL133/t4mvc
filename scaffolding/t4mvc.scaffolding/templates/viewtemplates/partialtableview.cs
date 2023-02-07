@@ -28,17 +28,14 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
+
             
             #line default
             #line hidden
-            this.Write("\n@model List<");
+            this.Write("@model List<");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
@@ -52,7 +49,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("-table\">\n    <thead>\n        <tr>\n            <th></th>\n");
+            this.Write("-table\">\n    <thead>\n        <tr>\n            <th></th>");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
 
@@ -67,15 +64,15 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
             
             #line default
             #line hidden
-            this.Write("</th>\n");
+            this.Write("</th>");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n        </tr>\n    </thead>\n    <tbody>\n        \n        @foreach(var record in M" +
-                    "odel)\n        {\n            <tr>\n                <td><a href=\"");
+            this.Write("\n        </tr>\n    </thead>\n    <tbody>\n        @foreach(var record in Model)\n   " +
+                    "     {\n            <tr>\n                <td><a href=\"");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.DetailsUrl));
@@ -89,15 +86,16 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
             
             #line default
             #line hidden
-            this.Write("?returnUrl=@Current.PathAndQuery\">@Settings.Icon.DetailsIcon</a></td>\n");
+            this.Write("?returnUrl=@Current.PathAndQuery\">@Settings.Icon.DetailsIcon</a></td>");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
+
             
             #line default
             #line hidden
-            this.Write("\n                <td>");
+            this.Write("                <td>");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  if (field.References == null) { 

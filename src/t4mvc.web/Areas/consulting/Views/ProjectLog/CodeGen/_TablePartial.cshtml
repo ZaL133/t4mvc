@@ -1,38 +1,22 @@
-
-
-
-
-
 @model List<ProjectLogViewModel>
 
 <table class="table table-bordered table-hover" id="projectLog-table">
     <thead>
         <tr>
             <th></th>
-
             <th>Project</th>
-
             <th>Entry Name</th>
-
             <th>Entry Date</th>
-
             <th>Hours</th>
-
         </tr>
     </thead>
     <tbody>
-        
         @foreach(var record in Model)
         {
             <tr>
-                <td><a href="/consulting/projectlog/details/@record.ProjectLogId?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>
-
-                <td>@record.ProjectIdProjectName</td>
-
+                <td><a href="/consulting/projectlog/details/@record.ProjectLogId?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>                <td>@record.ProjectIdProjectName</td>
                 <td>@record.EntryName</td>
-
                 <td>@record.EntryDate</td>
-
                 <td>@record.Hours</td>
             </tr>
         }

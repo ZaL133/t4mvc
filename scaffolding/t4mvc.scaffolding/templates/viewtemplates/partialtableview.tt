@@ -1,29 +1,25 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); #>
-@model List<<#= this.Entity.Name.ToSchemaName() #>ViewModel>
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); 
+#>@model List<<#= this.Entity.Name.ToSchemaName() #>ViewModel>
 
 <table class="table table-bordered table-hover" id="<#= this.Entity.Name.ToCamelCase() #>-table">
     <thead>
         <tr>
-            <th></th>
-<#
+            <th></th><#
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>
-            <th><#= (field.Description ?? field.Name) #></th>
-<# } #>
+            <th><#= (field.Description ?? field.Name) #></th><# } #>
         </tr>
     </thead>
     <tbody>
-        
         @foreach(var record in Model)
         {
             <tr>
-                <td><a href="<#= this.Entity.DetailsUrl #>@record.<#= this.Entity.KeyField.SchemaName #>?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>
-<#
-foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>
-                <td><# if (field.References == null) { #>@record.<#= field.Name.ToSchemaName() #><# } else { #>@record.<#= field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #><# } #></td>
+                <td><a href="<#= this.Entity.DetailsUrl #>@record.<#= this.Entity.KeyField.SchemaName #>?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td><#
+foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
+#>                <td><# if (field.References == null) { #>@record.<#= field.Name.ToSchemaName() #><# } else { #>@record.<#= field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #><# } #></td>
 <# } #>            </tr>
         }
 	</tbody>
