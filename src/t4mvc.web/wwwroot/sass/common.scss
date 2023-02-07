@@ -61,7 +61,9 @@ main {
 
 .icon-badge { 
     padding: 4px 48px; 
-    float: right;
+    position: absolute;
+    top: 3px; 
+    right: 3px; 
     border: solid 3px green;
     border-radius: 48px;
 }
