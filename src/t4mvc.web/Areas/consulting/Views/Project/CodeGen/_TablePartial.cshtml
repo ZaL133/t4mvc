@@ -1,16 +1,29 @@
+
+
+
+
+
 @model List<ProjectViewModel>
 
 <table class="table table-bordered table-hover" id="project-table">
     <thead>
         <tr>
             <th></th>
+
             <th>Project Name</th>
+
             <th>Start Date</th>
+
             <th>Due Date</th>
+
             <th>Account</th>
+
             <th>Primary Contact</th>
+
             <th>Description</th>
+
             <th>Estimated Income</th>
+
         </tr>
     </thead>
     <tbody>
@@ -18,18 +31,26 @@
         @foreach(var record in Model)
         {
             <tr>
-                <td><a href="/consulting/project/details/@record.ProjectId">@Settings.Icon.DetailsIcon</a></td>
+                <td><a href="/consulting/project/details/@record.ProjectId?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>
+
                 <td>@record.ProjectName</td>
+
                 <td>@record.StartDate</td>
+
                 <td>@record.DueDate</td>
+
                 <td>@record.AccountIdName</td>
+
                 <td>@record.PrimaryContactIdEmailAddress</td>
+
                 <td>@record.Description</td>
+
                 <td>@record.EstimatedIncome</td>
             </tr>
         }
 	</tbody>
 </table>
+
 
 <script>
 	(function() {
@@ -39,6 +60,7 @@
             { targets: 1, render: "t4mvc.formatDate" },
             { targets: 2, render: "t4mvc.formatDate" },
             { targets: 6, render: "t4mvc.formatMoney" },
+
 		];
 
 		window.renderFuncs = renderFuncs;

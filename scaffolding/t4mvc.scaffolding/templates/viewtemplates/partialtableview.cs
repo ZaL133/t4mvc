@@ -28,129 +28,133 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
             
             #line default
             #line hidden
-            this.Write("@model List<");
+            this.Write("\n@model List<");
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("ViewModel>\r\n\r\n<table class=\"table table-bordered table-hover\" id=\"");
+            this.Write("ViewModel>\n\n<table class=\"table table-bordered table-hover\" id=\"");
             
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("-table\">\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n");
+            this.Write("-table\">\n    <thead>\n        <tr>\n            <th></th>\n");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
             
             #line default
             #line hidden
-            this.Write("            <th>");
+            this.Write("\n            <th>");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.Description ?? field.Name)));
             
             #line default
             #line hidden
-            this.Write("</th>\r\n");
+            this.Write("</th>\n");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        </tr>\r\n    </thead>\r\n    <tbody>\r\n        \r\n        @foreach(var record i" +
-                    "n Model)\r\n        {\r\n            <tr>\r\n                <td><a href=\"");
+            this.Write("\n        </tr>\n    </thead>\n    <tbody>\n        \n        @foreach(var record in M" +
+                    "odel)\n        {\n            <tr>\n                <td><a href=\"");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.DetailsUrl));
             
             #line default
             #line hidden
             this.Write("@record.");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.SchemaName));
             
             #line default
             #line hidden
-            this.Write("\">@Settings.Icon.DetailsIcon</a></td>\r\n");
+            this.Write("?returnUrl=@Current.PathAndQuery\">@Settings.Icon.DetailsIcon</a></td>\n");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
             
             #line default
             #line hidden
-            this.Write("                <td>");
+            this.Write("\n                <td>");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  if (field.References == null) { 
             
             #line default
             #line hidden
             this.Write("@record.");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write("@record.");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("</td>\r\n");
+            this.Write("</td>\n");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            </tr>\r\n        }\r\n\t</tbody>\r\n</table>\r\n\r\n");
+            this.Write("            </tr>\n        }\n\t</tbody>\n</table>\n\n");
             
-            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  if (this.Entity.Fields.Count(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude && x.RenderFunction != null) > 0) { 
             
             #line default
             #line hidden
-            this.Write("<script>\r\n\t(function() {\r\n\t\tvar renderFuncs = window.renderFuncs || {};\r\n\r\n\t\trend" +
-                    "erFuncs[\"");
+            this.Write("\n<script>\n\t(function() {\n\t\tvar renderFuncs = window.renderFuncs || {};\n\n\t\trenderF" +
+                    "uncs[\"");
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("-table\"] = [\r\n");
+            this.Write("-table\"] = [\n");
             
-            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude).Select((field, ix) => new { field, ix }).Where(x => x.field.RenderFunction != null)) { 
             
@@ -158,28 +162,28 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
             #line hidden
             this.Write("            { targets: ");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.ix));
             
             #line default
             #line hidden
             this.Write(", render: \"");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.field.RenderFunction));
             
             #line default
             #line hidden
-            this.Write("\" },\r\n");
+            this.Write("\" },\n");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t\t];\r\n\r\n\t\twindow.renderFuncs = renderFuncs;\r\n\t})();\r\n</script>\r\n");
+            this.Write("\n\t\t];\n\n\t\twindow.renderFuncs = renderFuncs;\n\t})();\n</script>\n");
             
-            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialtableview.tt"
  } 
             
             #line default

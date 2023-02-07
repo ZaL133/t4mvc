@@ -20,7 +20,7 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
         @foreach(var record in Model)
         {
             <tr>
-                <td><a href="<#= this.Entity.DetailsUrl #>@record.<#= this.Entity.KeyField.SchemaName #>">@Settings.Icon.DetailsIcon</a></td>
+                <td><a href="<#= this.Entity.DetailsUrl #>@record.<#= this.Entity.KeyField.SchemaName #>?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>
 <#
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { #>
                 <td><# if (field.References == null) { #>@record.<#= field.Name.ToSchemaName() #><# } else { #>@record.<#= field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName() #><# } #></td>

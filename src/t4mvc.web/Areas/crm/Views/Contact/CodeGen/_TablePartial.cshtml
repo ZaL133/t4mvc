@@ -1,16 +1,29 @@
+
+
+
+
+
 @model List<ContactViewModel>
 
 <table class="table table-bordered table-hover" id="contact-table">
     <thead>
         <tr>
             <th></th>
+
             <th>First Name</th>
+
             <th>Last Name</th>
+
             <th>Account</th>
+
             <th>Email Address</th>
+
             <th>Job Title</th>
+
             <th>Phone</th>
+
             <th>Active</th>
+
         </tr>
     </thead>
     <tbody>
@@ -18,18 +31,26 @@
         @foreach(var record in Model)
         {
             <tr>
-                <td><a href="/crm/contact/details/@record.ContactId">@Settings.Icon.DetailsIcon</a></td>
+                <td><a href="/crm/contact/details/@record.ContactId?returnUrl=@Current.PathAndQuery">@Settings.Icon.DetailsIcon</a></td>
+
                 <td>@record.FirstName</td>
+
                 <td>@record.LastName</td>
+
                 <td>@record.AccountIdName</td>
+
                 <td>@record.EmailAddress</td>
+
                 <td>@record.JobTitle</td>
+
                 <td>@record.Phone</td>
+
                 <td>@record.Active</td>
             </tr>
         }
 	</tbody>
 </table>
+
 
 <script>
 	(function() {
@@ -37,6 +58,7 @@
 
 		renderFuncs["contact-table"] = [
             { targets: 5, render: "t4mvc.formatPhoneNumber" },
+
 		];
 
 		window.renderFuncs = renderFuncs;
