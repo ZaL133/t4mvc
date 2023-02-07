@@ -72,3 +72,7 @@ a.dropdown-toggle {
     background-color: $disabled-background-color;
     min-height: 34px;
 }
+
+.audit-card { display: flex; flex-direction: row; border-top: none; border-bottom: none; }
+.audit-card > img { flex: 1; max-height: 100px; }
+.tl-header > img { max-height: 48px; }

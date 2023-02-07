@@ -61,13 +61,13 @@ namespace t4mvc.web.core.Rendering
                     <a href=""#"" class=""dropdown-toggle"" data-bs-toggle=""dropdown"" aria-expanded=""false"" style=""color:white;"" >
                         <i data-feather=""info""></i>
                     </a>
-                    <div class=""dropdown-menu"" style=""width:100%;"">
-                        <div class=""card"">
+                    <div class=""dropdown-menu"" style=""width:auto;"">
+                        <div class=""audit-card"">
                             <img data-user-thumbnail='{moduser}' />
                             <div class=""card-body"">
                                 <div class=""user-info"">
-                                    <h5 class=""card-user_bold"">Modified By: <span data-user-fullname='{moduser}'></span></h5>
-                                    <h5 class=""card-user_bold"">Modified On: {modstamp.Value.ToShortDateString()}</h5>
+                                    <span class=""card-user_bold""><b>Modified By</b>: <span data-user-fullname='{moduser}'></span></span>
+                                    <span class=""card-user_bold""><b>Modified On</b>: {modstamp.Value.ToShortDateString()}</span>
                                 </div>
                             </div>
                         </div>
