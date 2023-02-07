@@ -7,6 +7,8 @@ $borderRadius: 5px;
     border-color: #dee2e6;
     border: solid 1px #dee2e6;
     border-top: none;
+    background-color: white;
+    overflow-y: auto;
     border-end-end-radius: $borderRadius;
     border-end-start-radius: $borderRadius;
 

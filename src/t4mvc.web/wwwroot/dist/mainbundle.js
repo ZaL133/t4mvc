@@ -57871,6 +57871,25 @@ $(function () {
         }
     }
 
+    // Javascript to enable link to tab
+    var hash = location.hash.replace(/^#/, '');  // ^ means starting, meaning only match the first hash
+    if (hash) {
+        $('.nav-tabs a[href="#' + hash + '"]').tab('show');
+    }
+
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
+    });
+
+    // Select the active nav in the nav menu;
+    $(".nav li.nav-item .nav-link").filter((i, x) => {
+        var href = $(x).attr("href");
+        if (!href) return false;
+        var rv = new RegExp(href, "i").test(window.location.pathname);
+        return rv;
+    }).addClass("active");
+
     // datatables config
     $.extend(true, $.fn.dataTable.defaults, {
         initComplete: function () {

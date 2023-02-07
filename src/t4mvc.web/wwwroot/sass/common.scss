@@ -71,3 +71,7 @@ main {
 #border-top-Audit { 
     overflow-y: auto;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: unset;
+}

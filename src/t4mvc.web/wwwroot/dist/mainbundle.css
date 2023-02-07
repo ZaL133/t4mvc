@@ -13110,6 +13110,10 @@ main {
 #border-top-Audit {
   overflow-y: auto;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: unset;
+}
 .index-table {
   cursor: pointer;
   user-select: none;
@@ -13199,6 +13203,8 @@ main {
   border-color: #dee2e6;
   border: solid 1px #dee2e6;
   border-top: none;
+  background-color: white;
+  overflow-y: auto;
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;
 }
