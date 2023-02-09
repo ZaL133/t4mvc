@@ -40,5 +40,6 @@ namespace t4mvc.core
         public string State { get; set; }
         public string Zip { get; set; }
         public bool Active { get; set; }
+
 	}
 }

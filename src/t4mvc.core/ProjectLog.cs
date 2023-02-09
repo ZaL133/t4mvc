@@ -28,5 +28,6 @@ namespace t4mvc.core
         public DateTime EntryDate { get; set; }
         [Required]
         public decimal Hours { get; set; }
+
 	}
 }

@@ -29,117 +29,118 @@ namespace t4mvc.scaffolding.templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\nusing System.Compone" +
-                    "ntModel.DataAnnotations.Schema;\r\n\r\nnamespace ");
+            this.Write("using System;\nusing System.ComponentModel.DataAnnotations;\nusing System.Component" +
+                    "Model.DataAnnotations.Schema;\n\nnamespace ");
             
-            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core\r\n{\r\n\t[Table(name: \"");
+            this.Write(".core\n{\n\t[Table(name: \"");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("\")]\r\n\tpublic partial class ");
+            this.Write("\")]\n\tpublic partial class ");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n\t{\r\n");
+            this.Write("\n\t{\n");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  foreach(var field in this.Entity.Fields) {
 
             
             #line default
             #line hidden
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  if (field.IsKeyField){ /* use 4 spaces instead of tabs */
 
             
             #line default
             #line hidden
-            this.Write("        [Key]\r\n");
+            this.Write("        [Key]\n");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
 }
             
             #line default
             #line hidden
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  if (field.Identity){
             
             #line default
             #line hidden
-            this.Write("        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]\r\n");
+            this.Write("        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]\n");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
 }
             
             #line default
             #line hidden
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  if (!field.IsNullable) {
             
             #line default
             #line hidden
-            this.Write("        [Required]\r\n");
+            this.Write("        [Required]\n");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
 }
             
             #line default
             #line hidden
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  if (field.Name != field.Name.ToSchemaName()){
             
             #line default
             #line hidden
+            this.Write("        [Display(Description = \"");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture("        [Display(Description = \"" + field.Name + "\")]"));
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("\")]\n");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
 }
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.DataType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n");
+            this.Write(" { get; set; }\n");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityclass.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("\n\t}\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

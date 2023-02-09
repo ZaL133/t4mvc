@@ -1,10 +1,10 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="t4mvc.scaffolding.EntityDefinition" #>
-using System;
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" 
+#><#@ import namespace="t4mvc.scaffolding.EntityDefinition" 
+#>using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,7 +18,7 @@ namespace <#= Settings.ApplicationName #>.core
 #>        [Key]
 <#}#><# if (field.Identity){#>        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 <#}#><# if (!field.IsNullable) {#>        [Required]
-<#}#><# if (field.Name != field.Name.ToSchemaName()){#><#="        [Display(Description = \"" + field.Name + "\")]"#>
+<#}#><# if (field.Name != field.Name.ToSchemaName()){#>        [Display(Description = "<#= field.Name #>")]
 <#}#>        public <#= field.DataType #> <#= field.Name.ToSchemaName() #> { get; set; }
 <# } #>
 	}

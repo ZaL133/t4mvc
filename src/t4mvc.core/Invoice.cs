@@ -31,5 +31,6 @@ namespace t4mvc.core
         public decimal InvoiceAmount { get; set; }
         [Required]
         public string Status { get; set; }
+
 	}
 }

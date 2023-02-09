@@ -21,6 +21,7 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Account")]
         [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "crm")]
         public Guid? AccountId { get; set; }
+
         public string AccountIdName { get; set; }
         [Display(Name = "Middle")]
         public string MiddleName { get; set; }
@@ -44,6 +45,8 @@ namespace t4mvc.web.core.ViewModels
         public bool Active { get; set; }
 
         public List<ProjectViewModel> Projects { get; set; } = new List<ProjectViewModel>();
+
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
+
 	}
 }

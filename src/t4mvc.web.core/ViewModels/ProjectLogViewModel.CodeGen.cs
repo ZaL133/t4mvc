@@ -18,6 +18,7 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Project")]
         [Select2("/api/select2/getprojects", "ProjectId", "ProjectName", "Project", area : "consulting")]
         public Guid ProjectId { get; set; }
+
         public string ProjectIdProjectName { get; set; }
         [Required]
         [Display(Name = "Entry Name")]
@@ -30,6 +31,8 @@ namespace t4mvc.web.core.ViewModels
         public decimal Hours { get; set; }
 
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
+
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
+
 	}
 }

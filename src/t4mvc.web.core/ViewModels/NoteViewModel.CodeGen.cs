@@ -22,15 +22,19 @@ namespace t4mvc.web.core.ViewModels
         public string NoteText { get; set; }
         [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "")]
         public Guid? AccountId { get; set; }
+
         public string AccountIdName { get; set; }
         [Select2("/api/select2/getcontacts", "ContactId", "EmailAddress", "Contact", area : "")]
         public Guid? ContactId { get; set; }
+
         public string ContactIdEmailAddress { get; set; }
         [Select2("/api/select2/getprojects", "ProjectId", "ProjectName", "Project", area : "")]
         public Guid? ProjectId { get; set; }
+
         public string ProjectIdProjectName { get; set; }
         [Select2("/api/select2/getprojectlogs", "ProjectLogId", "EntryName", "ProjectLog", area : "")]
         public Guid? ProjectLogId { get; set; }
+
         public string ProjectLogIdEntryName { get; set; }
 
 	}

@@ -26,10 +26,12 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Account")]
         [Select2("/api/select2/getaccounts", "AccountId", "Name", "Account", area : "consulting")]
         public Guid? AccountId { get; set; }
+
         public string AccountIdName { get; set; }
         [Display(Name = "Primary Contact")]
         [Select2("/api/select2/getcontacts", "ContactId", "EmailAddress", "Contact", area : "consulting")]
         public Guid? PrimaryContactId { get; set; }
+
         public string PrimaryContactIdEmailAddress { get; set; }
         [UIHint("t4mvcWysiwyg")]
         public string Description { get; set; }
@@ -38,8 +40,12 @@ namespace t4mvc.web.core.ViewModels
         public decimal? EstimatedIncome { get; set; }
 
         public List<ProjectLogViewModel> ProjectLogs { get; set; } = new List<ProjectLogViewModel>();
+
         public List<InvoiceViewModel> Invoices { get; set; } = new List<InvoiceViewModel>();
+
         public List<NoteViewModel> Notes { get; set; } = new List<NoteViewModel>();
+
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
+
 	}
 }

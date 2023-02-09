@@ -30,77 +30,77 @@ namespace t4mvc.scaffolding.templates
         {
             this.Write("using ");
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core;\r\nusing ");
+            this.Write(".core;\nusing ");
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".data.Services;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.C" +
-                    "omponentModel.DataAnnotations;\r\nusing System.Linq;\r\nusing ");
+            this.Write(".data.Services;\nusing System;\nusing System.Collections.Generic;\nusing System.Comp" +
+                    "onentModel.DataAnnotations;\nusing System.Linq;\nusing ");
             
-            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.Annotation;\r\n\r\nnamespace ");
+            this.Write(".web.core.Annotation;\n\nnamespace ");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModels\r\n{\r\n\tpublic partial class ");
+            this.Write(".web.core.ViewModels\n{\n\tpublic partial class ");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("ViewModel\r\n\t{\r\n");
+            this.Write("ViewModel\n\t{\n");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  foreach(var field in this.Entity.Fields.Where(x => !x.IgnoreOnUpdate && !x.Secure)) {
 
             
             #line default
             #line hidden
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  if (!field.IsNullable && !field.IsAudit) {
             
             #line default
             #line hidden
-            this.Write("        [Required]\r\n");
+            this.Write("        [Required]\n");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 }
             
             #line default
             #line hidden
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  if (field.Description != null || field.Name != field.Name.ToSchemaName()){
 
             
             #line default
             #line hidden
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture("        [Display(Name = \"" + (field.Description ?? field.Name) + "\")]"));
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("\n");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 } if (field.References != null) {
 
             
@@ -108,14 +108,14 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("        [Select2(\"/api/select2/get");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.Name.ToLowerCase()));
             
             #line default
             #line hidden
             this.Write("s\"");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 
 				  
             
@@ -123,14 +123,14 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write(", \"");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.KeyField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 
 				  
             
@@ -138,14 +138,14 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write(", \"");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 
 				  
             
@@ -153,33 +153,33 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write(", \"");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.References.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.Prefetch ? " , prefetch : true" : "" )));
             
             #line default
             #line hidden
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((this.Entity.AreaText == null ? "" : ", area : \"" + this.Entity.AreaText + "\"" )));
             
             #line default
             #line hidden
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.ProcessFunction == null ? "" : $" , processFunction : \"{field.ProcessFunction}\"" )));
             
             #line default
             #line hidden
-            this.Write(")]\r\n");
+            this.Write(")]\n");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  } if (field.ViewModelAttributes.Count > 0) { foreach(var attrib in field.ViewModelAttributes) {
 
             
@@ -187,111 +187,110 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("        ");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attrib));
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("\n");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  } } 
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.ViewModelType ?? field.DataType)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n");
+            this.Write(" { get; set; }\n");
             
-            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 
 if (field.References != null && field.References.NameField != null) {  
             
             #line default
             #line hidden
-            this.Write("        public string ");
+            this.Write("\n        public string ");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n");
+            this.Write(" { get; set; }\n");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
 
 } 
             
             #line default
             #line hidden
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  foreach(var childTable in this.Entity.ChildReferences) { 
             
             #line default
             #line hidden
-            this.Write("        public List<");
+            this.Write("\n        public List<");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Name));
             
             #line default
             #line hidden
             this.Write("ViewModel> ");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.ParentFieldName));
             
             #line default
             #line hidden
             this.Write(" { get; set; } = new List<");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(childTable.Name));
             
             #line default
             #line hidden
-            this.Write("ViewModel>();\r\n");
+            this.Write("ViewModel>();\n");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  } 
             
             #line default
             #line hidden
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  if (this.Entity.EnableAuditing) { 
             
             #line default
             #line hidden
-            this.Write("\t\tpublic List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();\r" +
+            this.Write("\n\t\tpublic List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();" +
                     "\n");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
  }
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("\n\t}\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

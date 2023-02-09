@@ -33,5 +33,6 @@ namespace t4mvc.core
         public double? Lng { get; set; }
         public string Description { get; set; }
         public bool? Active { get; set; }
+
 	}
 }
