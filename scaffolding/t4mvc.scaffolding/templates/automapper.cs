@@ -28,31 +28,31 @@ namespace t4mvc.scaffolding.templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using AutoMapper;\r\nusing ");
+            this.Write("using AutoMapper;\nusing ");
             
-            #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core;\r\nusing ");
+            this.Write(".core;\nusing ");
             
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModels;\r\n\r\nnamespace ");
+            this.Write(".web.core.ViewModels;\n\nnamespace ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web\r\n{\r\n    public static partial class AutoMapperConfig\r\n    {\r\n\t    public sta" +
-                    "tic void AddCodeGen(IMapperConfigurationExpression cfg)\r\n        {\r\n");
+            this.Write(".web\n{\n    public static partial class AutoMapperConfig\n    {\n\t    public static " +
+                    "void AddCodeGen(IMapperConfigurationExpression cfg)\n        {\n");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
  foreach(var entity in this.Entities.OrderBy(x=> x.Name))
 { 
             
@@ -60,42 +60,42 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("\t\t    cfg.CreateMap<");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("ViewModel>().ReverseMap();\r\n");
+            this.Write("ViewModel>().ReverseMap();\n");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n\r\n    public class ");
+            this.Write("\n        }\n    }\n\n    public class ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write("MappingProfile : Profile\r\n    {\r\n        public ");
+            this.Write("MappingProfile : Profile\n    {\n        public ");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write("MappingProfile()\r\n        {\r\n");
+            this.Write("MappingProfile()\n        {\n");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
  foreach(var entity in this.Entities.OrderBy(x=> x.Name))
 { 
             
@@ -103,26 +103,26 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("\t\t    CreateMap<");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("ViewModel>().ReverseMap();\r\n");
+            this.Write("ViewModel>().ReverseMap();\n");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\automapper.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}");
+            this.Write("\n        }\n    }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

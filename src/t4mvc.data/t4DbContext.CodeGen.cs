@@ -17,5 +17,6 @@ namespace t4mvc.data
         public DbSet<Note> Notes { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectLog> ProjectLogs { get; set; }
+
     }
 }

@@ -14,6 +14,7 @@ namespace t4mvc.web
 		    cfg.CreateMap<Note, NoteViewModel>().ReverseMap();
 		    cfg.CreateMap<Project, ProjectViewModel>().ReverseMap();
 		    cfg.CreateMap<ProjectLog, ProjectLogViewModel>().ReverseMap();
+
         }
     }
 
@@ -27,6 +28,7 @@ namespace t4mvc.web
 		    CreateMap<Note, NoteViewModel>().ReverseMap();
 		    CreateMap<Project, ProjectViewModel>().ReverseMap();
 		    CreateMap<ProjectLog, ProjectLogViewModel>().ReverseMap();
+
         }
     }
 }

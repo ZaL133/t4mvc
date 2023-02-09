@@ -30,450 +30,450 @@ namespace t4mvc.scaffolding.templates
         {
             this.Write("using ");
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing System.Collections.Generic;\r\n" +
-                    "using System.Linq;\r\n\r\nnamespace ");
+            this.Write(".core;\nusing Microsoft.EntityFrameworkCore;\nusing System.Collections.Generic;\nusi" +
+                    "ng System.Linq;\n\nnamespace ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".data.Services\r\n{\r\n    public partial interface I");
+            this.Write(".data.Services\n{\n    public partial interface I");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("Service\r\n    {\r\n        ");
+            this.Write("Service\n    {\n        ");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write(" Find(params object[] keyValues);\r\n        IQueryable<");
+            this.Write(" Find(params object[] keyValues);\n        IQueryable<");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("> GetAll");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("();\r\n        void Create");
+            this.Write("();\n        void Create");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n        void Update");
+            this.Write(");\n        void Update");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(", IEnumerable<string> ignore);\r\n\t\tvoid Delete");
+            this.Write(", IEnumerable<string> ignore);\n\t\tvoid Delete");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n    }\r\n\r\n    public partial class ");
+            this.Write(");\n    }\n\n    public partial class ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("Service : I");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("Service\r\n    {\r\n        private readonly ");
+            this.Write("Service\n    {\n        private readonly ");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));
             
             #line default
             #line hidden
-            this.Write(" context;\r\n        public ");
+            this.Write(" context;\n        public ");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("Service(");
             
-            #line 24 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));
             
             #line default
             #line hidden
-            this.Write(" dbContext)\r\n        {\r\n            this.context = dbContext;\r\n        }\r\n\r\n     " +
-                    "   public void Create");
+            this.Write(" dbContext)\n        {\n            this.context = dbContext;\n        }\n\n        pu" +
+                    "blic void Create");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n");
+            this.Write(")\n        {\n");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  if (this.Entity.EnableAuditing) { 
             
             #line default
             #line hidden
-            this.Write("            // Auditing \r\n            var auditRecord     = ");
+            this.Write("            // Auditing \n            var auditRecord     = ");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".GetCreateAuditRecord(");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(".CreateUserId);\r\n            this.context.AuditRecord.Add(auditRecord); \r\n\r\n");
+            this.Write(".CreateUserId);\n            this.context.AuditRecord.Add(auditRecord); ");
             
-            #line 36 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            this.context.");
+            this.Write("\n            this.context.");
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("s.Add(");
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n        }\r\n\r\n        public ");
+            this.Write(");\n        }\n\n        public ");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write(" Find(params object[] keyValues)\r\n        {\r\n            return this.context.");
+            this.Write(" Find(params object[] keyValues)\n        {\n            return this.context.");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("s.Find(keyValues);\r\n        }\r\n\r\n        public IQueryable<");
+            this.Write("s.Find(keyValues);\n        }\n\n        public IQueryable<");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("> GetAll");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("()\r\n        {\r\n            return this.context.");
+            this.Write("()\n        {\n            return this.context.");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
-            this.Write("s.AsQueryable();\r\n        }\r\n\r\n        public void Update");
+            this.Write("s.AsQueryable();\n        }\n\n        public void Update");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(", IEnumerable<string> ignore)\r\n        {\r\n");
+            this.Write(", IEnumerable<string> ignore)\n        {\n");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  if (this.Entity.EnableAuditing) { 
             
             #line default
             #line hidden
-            this.Write("            // Auditing \r\n            var oldRecord       = this.context.");
+            this.Write("            // Auditing \n            var oldRecord       = this.context.");
             
-            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("s.AsNoTracking().Single(x => x.");
             
-            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(" == ");
             
-            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 54 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n            var auditRecord     = oldRecord.GetUpdateAuditRecord(");
+            this.Write(");\n            var auditRecord     = oldRecord.GetUpdateAuditRecord(");
             
-            #line 55 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(", ignore);\r\n            this.context.AuditRecord.Add(auditRecord); \r\n\r\n");
+            this.Write(", ignore);\n            this.context.AuditRecord.Add(auditRecord); \n\n");
             
-            #line 58 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            this.context.");
+            this.Write("\n            this.context.");
             
-            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("s.Attach(");
             
-            #line 59 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n\r\n            var entry       = this.context.Entry(");
+            this.Write(");\n\n            var entry       = this.context.Entry(");
             
-            #line 61 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n            entry.State     = EntityState.Modified;\r\n\r\n            foreach(va" +
-                    "r prop in ignore)\r\n            {\r\n                entry.Property(prop).IsModifie" +
-                    "d = false;\r\n            }\r\n        }\r\n\r\n\t\tpublic void Delete");
+            this.Write(");\n            entry.State     = EntityState.Modified;\n\n            foreach(var p" +
+                    "rop in ignore)\n            {\n                entry.Property(prop).IsModified = f" +
+                    "alse;\n            }\n        }\n\n\t\tpublic void Delete");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n");
+            this.Write(")\n        {\n");
             
-            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  if (this.Entity.EnableAuditing) { 
             
             #line default
             #line hidden
-            this.Write("            // Auditing \r\n            var oldRecord       = this.context.");
+            this.Write("            // Auditing \n            var oldRecord       = this.context.");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("s.AsNoTracking().Single(x => x.");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(" == ");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n            var auditRecord     = oldRecord.GetDeleteAuditRecord(");
+            this.Write(");\n            var auditRecord     = oldRecord.GetDeleteAuditRecord(");
             
-            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.KeyField.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 75 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(".ModifyUserId);\r\n            this.context.AuditRecord.Add(auditRecord); \r\n\r\n");
+            this.Write(".ModifyUserId);\n            this.context.AuditRecord.Add(auditRecord); ");
             
-            #line 78 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            this.context.");
+            this.Write("\n            this.context.");
             
-            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name));
             
             #line default
             #line hidden
             this.Write("s.Remove(");
             
-            #line 79 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dataservice.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write(");\r\n        }\r\n    }\r\n\r\n}");
+            this.Write(");\n        }\n    }\n\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

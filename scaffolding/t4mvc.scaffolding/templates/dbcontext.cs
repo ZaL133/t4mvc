@@ -29,64 +29,64 @@ namespace t4mvc.scaffolding.templates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
  var applicationName = Settings.ApplicationName.ToSchemaName(); 
             
             #line default
             #line hidden
-            this.Write("using Microsoft.AspNetCore.Identity;\r\nusing Microsoft.AspNetCore.Identity.EntityF" +
-                    "rameworkCore;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing ");
+            this.Write("using Microsoft.AspNetCore.Identity;\nusing Microsoft.AspNetCore.Identity.EntityFr" +
+                    "ameworkCore;\nusing Microsoft.EntityFrameworkCore;\nusing ");
             
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core;\r\n\r\nnamespace ");
+            this.Write(".core;\n\nnamespace ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".data\r\n{\r\n    public partial class ");
+            this.Write(".data\n{\n    public partial class ");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));
             
             #line default
             #line hidden
             this.Write(" : IdentityDbContext<");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationUserTypeName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationRoleTypeName));
             
             #line default
             #line hidden
-            this.Write(", Guid>\r\n    {\r\n        public ");
+            this.Write(", Guid>\n    {\n        public ");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));
             
             #line default
             #line hidden
             this.Write(" (DbContextOptions<");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.DbContextName));
             
             #line default
             #line hidden
-            this.Write("> options) : base(options)\r\n        {\r\n        }\r\n\r\n");
+            this.Write("> options) : base(options)\n        {\n        }\n\n");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
  foreach(var entity in this.Entities.OrderBy(x=> x.Name))
 { 
             
@@ -94,26 +94,26 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("        public DbSet<");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("s { get; set; }\r\n");
+            this.Write("s { get; set; }\n");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\dbcontext.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("    }\r\n}");
+            this.Write("\n    }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

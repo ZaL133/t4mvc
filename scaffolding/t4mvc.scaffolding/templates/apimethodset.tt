@@ -1,9 +1,9 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
-using System;
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" 
+#>using System;
 using System.Collections.Generic;
 using System.Linq;
 using <#= Settings.ApplicationName.ToSchemaName() #>.web.core;
@@ -25,16 +25,14 @@ namespace <#= Settings.ApplicationName #>.web.Controllers
     [Route("api")]
 	public partial class <#= Settings.ApplicationName #>ApiController : t4mvcController, I<#= Settings.ApplicationName #>ApiController
 	{
-        IServiceProvider serviceProvider;
-<# foreach(var entity in this.Entities) { #>
-        I<#= entity.Name #>ViewModelService <#= entity.Name.ToCamelCase() #>ViewModelService;
-<# } #>
+        IServiceProvider serviceProvider;<# foreach(var entity in this.Entities) { #>
+        I<#= entity.Name #>ViewModelService <#= entity.Name.ToCamelCase() #>ViewModelService; <# } #>
 
 	public <#= Settings.ApplicationName #>ApiController(IServiceProvider serviceProvider, <#= constructorParams #>)
     {
         this.serviceProvider = serviceProvider;<# foreach(var entity in this.Entities) { #>
-        this.<#= entity.Name.ToCamelCase() #>ViewModelService = <#= entity.Name.ToCamelCase() #>ViewModelService;
-<# } #>    }
+        this.<#= entity.Name.ToCamelCase() #>ViewModelService = <#= entity.Name.ToCamelCase() #>ViewModelService; <# } #>
+    }
 
 <# foreach(var entity in this.Entities)
 		{
@@ -44,9 +42,7 @@ namespace <#= Settings.ApplicationName #>.web.Controllers
         public DataTablesResultsBase Get<#= entityName #>s(DataTablesRequestBase request, string cacheKey)
         {
             Current.SetDataTablesParameters(nameof(Get<#= entityName #>s), cacheKey, request);
-
             var response = new DataTablesResultsBase() { draw = request.Draw };
-
             var queryBase = <#= entityCamelCase #>ViewModelService.GetAll<#= entity.PluralName.ToSchemaName() #>();
 
 <#
@@ -56,8 +52,7 @@ if (searchableFields.Count() > 0)
  #>
             if (request.Search != null && request.Search.Value != null)
             {
-                var s = request.Search.Value;
-<# if (entity.HasIntSearchableFields) { #>
+                var s = request.Search.Value; <# if (entity.HasIntSearchableFields) { #>
                 int i;
                 if (int.TryParse(s, out i))
                 {

@@ -23,41 +23,48 @@ namespace t4mvc.web.Controllers
             this.t4mvcApiController = t4mvcApiController;
         }
 
+
         [Route("getAccounts")]
         public IActionResult GetAccounts(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetAccounts), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetAccounts(request, cacheKey), $"Accounts_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
         [Route("getContacts")]
         public IActionResult GetContacts(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetContacts), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetContacts(request, cacheKey), $"Contacts_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
         [Route("getProjects")]
         public IActionResult GetProjects(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetProjects), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetProjects(request, cacheKey), $"Projects_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
         [Route("getProjectLogs")]
         public IActionResult GetProjectLogs(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetProjectLogs), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetProjectLogs(request, cacheKey), $"ProjectLogs_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
         [Route("getInvoices")]
         public IActionResult GetInvoices(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetInvoices), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetInvoices(request, cacheKey), $"Invoices_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
         [Route("getNotes")]
         public IActionResult GetNotes(string cacheKey)
         {
             var request = Current.GetDataTablesParameters(nameof(t4mvcApiController.GetNotes), cacheKey);
             return ConvertToExcel(request, () => t4mvcApiController.GetNotes(request, cacheKey), $"Notes_{DateTime.Now.ToString("yyyyMMdd")}.xlsx");
         }
+
     }
 }

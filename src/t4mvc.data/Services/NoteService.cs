@@ -24,6 +24,7 @@ namespace t4mvc.data.Services
 
         public void CreateNote(Note note)
         {
+
             this.context.Notes.Add(note);
         }
 
@@ -39,6 +40,7 @@ namespace t4mvc.data.Services
 
         public void UpdateNote(Note note, IEnumerable<string> ignore)
         {
+
             this.context.Notes.Attach(note);
 
             var entry       = this.context.Entry(note);
@@ -52,6 +54,7 @@ namespace t4mvc.data.Services
 
 		public void DeleteNote(Note note)
         {
+
             this.context.Notes.Remove(note);
         }
     }

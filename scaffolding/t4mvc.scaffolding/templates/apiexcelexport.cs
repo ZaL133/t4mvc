@@ -29,84 +29,82 @@ namespace t4mvc.scaffolding.templates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
-
-    var schemaName = Settings.ApplicationName;
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+ var schemaName = Settings.ApplicationName;
     var apiController = schemaName + "ApiController";
 
             
             #line default
             #line hidden
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing System." +
-                    "Linq;\r\nusing System.Web;\r\nusing System.Net.Http;\r\nusing Microsoft.AspNetCore.Mvc" +
-                    ";\r\nusing ");
+            this.Write("using System;\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Lin" +
+                    "q;\nusing System.Web;\nusing System.Net.Http;\nusing Microsoft.AspNetCore.Mvc;\nusin" +
+                    "g ");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.Infrastructure;\r\nusing ");
+            this.Write(".web.core.Infrastructure;\nusing ");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.Models;\r\nusing Newtonsoft.Json.Linq;\r\nusing OfficeOpenXml;\r\n\r\nnamespace" +
-                    " ");
+            this.Write(".web.core.Models;\nusing Newtonsoft.Json.Linq;\nusing OfficeOpenXml;\n\nnamespace ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
-            this.Write(".web.Controllers\r\n{\r\n    [ApiController]\r\n    [Route(\"api/export\")]\r\n    public p" +
-                    "artial class ExportExcelController\r\n    {\r\n        readonly I");
+            this.Write(".web.Controllers\n{\n    [ApiController]\n    [Route(\"api/export\")]\n    public parti" +
+                    "al class ExportExcelController\n    {\n        readonly I");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
-            this.Write(";\r\n\r\n        public ExportExcelController(I");
+            this.Write(";\n\n        public ExportExcelController(I");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n            this.");
+            this.Write(")\n        {\n            this.");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
-            this.Write(";\r\n        }\r\n\r\n");
+            this.Write(";\n        }\n\n");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
 
 foreach(var entity in Settings.Entities)
 {
@@ -115,64 +113,64 @@ foreach(var entity in Settings.Entities)
             
             #line default
             #line hidden
-            this.Write("        [Route(\"");
+            this.Write("\n        [Route(\"");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodName.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("\")]\r\n        public IActionResult ");
+            this.Write("\")]\n        public IActionResult ");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodName));
             
             #line default
             #line hidden
-            this.Write("(string cacheKey)\r\n        {\r\n            var request = Current.GetDataTablesPara" +
-                    "meters(nameof(");
+            this.Write("(string cacheKey)\n        {\n            var request = Current.GetDataTablesParame" +
+                    "ters(nameof(");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 42 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodName));
             
             #line default
             #line hidden
-            this.Write("), cacheKey);\r\n            return ConvertToExcel(request, () => ");
+            this.Write("), cacheKey);\n            return ConvertToExcel(request, () => ");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiController));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodName));
             
             #line default
             #line hidden
             this.Write("(request, cacheKey), $\"");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("s_{DateTime.Now.ToString(\"yyyyMMdd\")}.xlsx\");\r\n        }\r\n");
+            this.Write("s_{DateTime.Now.ToString(\"yyyyMMdd\")}.xlsx\");\n        }\n");
             
-            #line 45 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apiexcelexport.tt"
     } 
             
             #line default
             #line hidden
-            this.Write("    }\r\n}");
+            this.Write("\n    }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

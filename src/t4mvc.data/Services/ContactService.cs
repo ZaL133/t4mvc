@@ -24,6 +24,7 @@ namespace t4mvc.data.Services
 
         public void CreateContact(Contact contact)
         {
+
             this.context.Contacts.Add(contact);
         }
 
@@ -39,6 +40,7 @@ namespace t4mvc.data.Services
 
         public void UpdateContact(Contact contact, IEnumerable<string> ignore)
         {
+
             this.context.Contacts.Attach(contact);
 
             var entry       = this.context.Entry(contact);
@@ -52,6 +54,7 @@ namespace t4mvc.data.Services
 
 		public void DeleteContact(Contact contact)
         {
+
             this.context.Contacts.Remove(contact);
         }
     }

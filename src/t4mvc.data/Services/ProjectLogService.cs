@@ -27,7 +27,6 @@ namespace t4mvc.data.Services
             // Auditing 
             var auditRecord     = projectLog.GetCreateAuditRecord(projectLog.ProjectLogId, projectLog.CreateUserId);
             this.context.AuditRecord.Add(auditRecord); 
-
             this.context.ProjectLogs.Add(projectLog);
         }
 
@@ -48,6 +47,7 @@ namespace t4mvc.data.Services
             var auditRecord     = oldRecord.GetUpdateAuditRecord(projectLog, ignore);
             this.context.AuditRecord.Add(auditRecord); 
 
+
             this.context.ProjectLogs.Attach(projectLog);
 
             var entry       = this.context.Entry(projectLog);
@@ -65,7 +65,6 @@ namespace t4mvc.data.Services
             var oldRecord       = this.context.ProjectLogs.AsNoTracking().Single(x => x.ProjectLogId == projectLog.ProjectLogId);
             var auditRecord     = oldRecord.GetDeleteAuditRecord(projectLog.ProjectLogId, projectLog.ModifyUserId);
             this.context.AuditRecord.Add(auditRecord); 
-
             this.context.ProjectLogs.Remove(projectLog);
         }
     }

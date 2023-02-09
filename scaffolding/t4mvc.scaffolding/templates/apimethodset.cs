@@ -28,171 +28,171 @@ namespace t4mvc.scaffolding.templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing ");
+            this.Write("using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing ");
             
-            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core;\r\nusing ");
+            this.Write(".web.core;\nusing ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core.Infrastructure;\r\nusing ");
+            this.Write(".web.core.Infrastructure;\nusing ");
             
-            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core.Models;\r\nusing ");
+            this.Write(".web.core.Models;\nusing ");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModels;\r\nusing ");
+            this.Write(".web.core.ViewModels;\nusing ");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModelServices;\r\nusing Microsoft.AspNetCore.Mvc;");
+            this.Write(".web.core.ViewModelServices;\nusing Microsoft.AspNetCore.Mvc;");
             
-            #line 14 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
 
 var constructorParams = string.Join(",", this.Entities.Select(x => "I" + x.Name + "ViewModelService " + x.Name.ToCamelCase() +"ViewModelService"));
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace ");
+            this.Write("\n\nnamespace ");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.Controllers\r\n{\r\n    public partial interface I");
+            this.Write(".web.Controllers\n{\n    public partial interface I");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write("ApiController\r\n    {\r\n");
+            this.Write("ApiController\n    {\n");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  foreach(var entity in this.Entities) { 
             
             #line default
             #line hidden
             this.Write("        DataTablesResultsBase Get");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("s(DataTablesRequestBase request, string cacheKey);\r\n");
+            this.Write("s(DataTablesRequestBase request, string cacheKey);\n");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("    }\r\n\r\n    [Route(\"api\")]\r\n\tpublic partial class ");
+            this.Write("\n    }\n\n    [Route(\"api\")]\n\tpublic partial class ");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
             this.Write("ApiController : t4mvcController, I");
             
-            #line 26 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write("ApiController\r\n\t{\r\n        IServiceProvider serviceProvider;\r\n");
+            this.Write("ApiController\n\t{\n        IServiceProvider serviceProvider;");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  foreach(var entity in this.Entities) { 
             
             #line default
             #line hidden
-            this.Write("        I");
+            this.Write("\n        I");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModelService ");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("ViewModelService;\r\n");
+            this.Write("ViewModelService; ");
             
-            #line 31 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n\tpublic ");
+            this.Write("\n\n\tpublic ");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
             this.Write("ApiController(IServiceProvider serviceProvider, ");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(constructorParams));
             
             #line default
             #line hidden
-            this.Write(")\r\n    {\r\n        this.serviceProvider = serviceProvider;");
+            this.Write(")\n    {\n        this.serviceProvider = serviceProvider;");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  foreach(var entity in this.Entities) { 
             
             #line default
             #line hidden
-            this.Write("        this.");
+            this.Write("\n        this.");
             
-            #line 36 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModelService = ");
             
-            #line 36 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("ViewModelService;\r\n");
+            this.Write("ViewModelService; ");
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("    }\r\n\r\n");
+            this.Write("\n    }\n\n");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  foreach(var entity in this.Entities)
 		{
 		var entityName = entity.Name.ToSchemaName();
@@ -200,46 +200,46 @@ var constructorParams = string.Join(",", this.Entities.Select(x => "I" + x.Name 
             
             #line default
             #line hidden
-            this.Write("        [Route(\"get");
+            this.Write("\n        [Route(\"get");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName.ToLowerCase()));
             
             #line default
             #line hidden
-            this.Write("s\")]\r\n        public DataTablesResultsBase Get");
+            this.Write("s\")]\n        public DataTablesResultsBase Get");
             
-            #line 44 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName));
             
             #line default
             #line hidden
-            this.Write("s(DataTablesRequestBase request, string cacheKey)\r\n        {\r\n            Current" +
-                    ".SetDataTablesParameters(nameof(Get");
+            this.Write("s(DataTablesRequestBase request, string cacheKey)\n        {\n            Current.S" +
+                    "etDataTablesParameters(nameof(Get");
             
-            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName));
             
             #line default
             #line hidden
-            this.Write("s), cacheKey, request);\r\n\r\n            var response = new DataTablesResultsBase()" +
-                    " { draw = request.Draw };\r\n\r\n            var queryBase = ");
+            this.Write("s), cacheKey, request);\n            var response = new DataTablesResultsBase() { " +
+                    "draw = request.Draw };\n            var queryBase = ");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityCamelCase));
             
             #line default
             #line hidden
             this.Write("ViewModelService.GetAll");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("();\r\n\r\n");
+            this.Write("();\n\n");
             
-            #line 52 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
 
 var searchableFields = entity.Fields.Where(x=> x.IsSearchable);
 if (searchableFields.Count() > 0)
@@ -248,59 +248,60 @@ if (searchableFields.Count() > 0)
             
             #line default
             #line hidden
-            this.Write("            if (request.Search != null && request.Search.Value != null)\r\n        " +
-                    "    {\r\n                var s = request.Search.Value;\r\n");
+            this.Write("\n            if (request.Search != null && request.Search.Value != null)\n        " +
+                    "    {\n                var s = request.Search.Value; ");
             
-            #line 60 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  if (entity.HasIntSearchableFields) { 
             
             #line default
             #line hidden
-            this.Write("                int i;\r\n                if (int.TryParse(s, out i))\r\n            " +
-                    "    {\r\n                    queryBase = queryBase.Where(x => ");
+            this.Write("\n                int i;\n                if (int.TryParse(s, out i))\n             " +
+                    "   {\n                    queryBase = queryBase.Where(x => ");
             
-            #line 64 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" || ", searchableFields.Select(x => $"x.{(x.References == null ? (x.IsNumber ? x.Name.ToSchemaName() + " == i" : x.Name.ToSchemaName() + $".{x.SearchOperator}(s)") : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() + $".{x.SearchOperator}(s)" )}"))));
             
             #line default
             #line hidden
-            this.Write(");\r\n                }\r\n                else\r\n                {\r\n                 " +
-                    "   queryBase = queryBase.Where(x => ");
+            this.Write(");\n                }\n                else\n                {\n                    q" +
+                    "ueryBase = queryBase.Where(x => ");
             
-            #line 68 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" || ", searchableFields.Where(x => !x.IsNumber).Select(x => $"x.{(x.References == null ? x.Name.ToSchemaName() : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(s)"))));
             
             #line default
             #line hidden
-            this.Write(");\r\n                }\r\n");
+            this.Write(");\n                }\n");
             
-            #line 70 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } else { 
             
             #line default
             #line hidden
-            this.Write("                queryBase = queryBase.Where(x => ");
+            this.Write("\n                queryBase = queryBase.Where(x => ");
             
-            #line 71 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" || ", searchableFields.Select(x => $"x.{(x.References == null ? x.Name.ToSchemaName() : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(s)"))));
             
             #line default
             #line hidden
-            this.Write(");\r\n");
+            this.Write(");\n");
             
-            #line 72 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            }\r\n");
+            this.Write("\n            }\n");
             
-            #line 74 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
-            this.Write(@"            var query = queryBase.Sort(request)
+            this.Write(@"
+            var query = queryBase.Sort(request)
                                  .Filter(request);
 
             var data = query.Skip(request.Start)
@@ -318,69 +319,70 @@ if (searchableFields.Count() > 0)
 
 ");
             
-            #line 91 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  if (entity.NameField != null) { 
             
             #line default
             #line hidden
-            this.Write("        // Select2 field\r\n        [HttpGet]\r\n        [Route(\"select2/get");
+            this.Write("\n        // Select2 field\n        [HttpGet]\n        [Route(\"select2/get");
             
-            #line 94 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName.ToLowerCase()));
             
             #line default
             #line hidden
-            this.Write("s\")]\r\n        public IEnumerable<");
+            this.Write("s\")]\n        public IEnumerable<");
             
-            #line 95 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName));
             
             #line default
             #line hidden
             this.Write("ViewModel> Select2");
             
-            #line 95 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName));
             
             #line default
             #line hidden
-            this.Write("s(Select2SearchParameter searchParameter)\r\n        {\r\n            var records = ");
+            this.Write("s(Select2SearchParameter searchParameter)\n        {\n            var records = ");
             
-            #line 97 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityName.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("ViewModelService.GetAll");
             
-            #line 97 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.PluralName.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("();\r\n\r\n            if (searchParameter != null && searchParameter.Query != null)\r" +
-                    "\n            {\r\n                records = records.Where(x => x.");
+            this.Write("();\n\n            if (searchParameter != null && searchParameter.Query != null)\n  " +
+                    "          {\n                records = records.Where(x => x.");
             
-            #line 101 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(".StartsWith(searchParameter.Query));\r\n            }\r\n\r\n            return records" +
-                    ".ToList();\r\n        }\r\n");
+            this.Write(".StartsWith(searchParameter.Query));\n            }\n\n            return records.To" +
+                    "List();\n        }\n");
             
-            #line 106 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
  } 
             
             #line default
             #line hidden
+            this.Write("\n");
             
-            #line 107 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\apimethodset.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\r\n\t}\r\n}\r\n");
+            this.Write("\n\n\t}\n}\n");
             return this.GenerationEnvironment.ToString();
         }
     }
