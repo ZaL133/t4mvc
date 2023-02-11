@@ -19,27 +19,34 @@ namespace t4mvc.web.core.ViewModelServices
 		void DeleteInvoice(InvoiceViewModel invoiceViewModel);
 		void Hydrate(InvoiceViewModel invoiceViewModel);
 
+
     }
     public partial class InvoiceViewModelService : IInvoiceViewModelService
     {
+
         private readonly IInvoiceService invoiceService;
         private readonly IProjectService projectService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
+
         private readonly IAuditService auditService;
         
+
         public IQueryable<InvoiceViewModel> GetAllInvoices()
         {
 		    var query = (from invoice in invoiceService.GetAllInvoices()
-                                                  join project_ProjectId in projectService.GetAllProjects() on invoice.ProjectId equals project_ProjectId.ProjectId
-                         			             select new InvoiceViewModel
-						 {							InvoiceId = invoice.InvoiceId,
-						 							ProjectId = invoice.ProjectId,
-						 							InvoiceName = invoice.InvoiceName,
-						 							InvoiceDate = invoice.InvoiceDate,
-						 							InvoiceAmount = invoice.InvoiceAmount,
-						 							Status = invoice.Status,
-						  ProjectIdProjectName = project_ProjectId.ProjectName, });
+                         
+                         join project_ProjectId in projectService.GetAllProjects() on invoice.ProjectId equals project_ProjectId.ProjectId
+                         
+			             select new InvoiceViewModel
+						 {
+							InvoiceId = invoice.InvoiceId,						 
+							ProjectId = invoice.ProjectId,						 
+							InvoiceName = invoice.InvoiceName,						 
+							InvoiceDate = invoice.InvoiceDate,						 
+							InvoiceAmount = invoice.InvoiceAmount,						 
+							Status = invoice.Status,						 
+                            ProjectIdProjectName = project_ProjectId.ProjectName, });
             return query;
         }
 
@@ -48,7 +55,9 @@ namespace t4mvc.web.core.ViewModelServices
         {
             this.invoiceService = invoiceService;
             this.contextHelper      = contextHelper;
+
             this.projectService = projectService;
+
             this.auditService = auditService;
 
         }
@@ -74,6 +83,7 @@ namespace t4mvc.web.core.ViewModelServices
         {
             var invoice = invoiceService.Find(invoiceId)
                                                   .Map<InvoiceViewModel>();
+
 
             if (invoice.ProjectId != null)
                 invoice.ProjectIdProjectName = projectService.Find(invoice.ProjectId)?.ProjectName;
@@ -102,6 +112,7 @@ namespace t4mvc.web.core.ViewModelServices
 
             contextHelper.SaveChanges();
         }
+
         public string GetProjectIdProjectName(Guid? id)
         {
 			return projectService.Find(id)?.ProjectName;
@@ -110,9 +121,13 @@ namespace t4mvc.web.core.ViewModelServices
         public void Hydrate(InvoiceViewModel invoiceViewModel)
         {
             var id = invoiceViewModel.InvoiceId;
+
             invoiceViewModel.AuditHistory = GetAuditRecords(id);
+
             invoiceViewModel.ProjectIdProjectName =     GetProjectIdProjectName(invoiceViewModel.ProjectId);
+        
         }
+
 
         public List<AuditRecord> GetAuditRecords(Guid invoiceId)
         {
@@ -120,6 +135,7 @@ namespace t4mvc.web.core.ViewModelServices
                                .Where(x => x.RecordId == invoiceId && x.RecordType == "Invoice")
                                .ToList();
         }
+
 
     }
 }

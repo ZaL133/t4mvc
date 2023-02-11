@@ -1,8 +1,8 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>using Microsoft.AspNetCore.Mvc;
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" #>using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using <#= Settings.ApplicationName #>.core;
 using <#= Settings.ApplicationName #>.data;
@@ -18,8 +18,7 @@ namespace <#= Settings.ApplicationName #>.web
         {
 <# foreach(var entity in this.Entities.OrderBy(x=> x.Name))
 { #>		    services.AddScoped<I<#= entity.Name #>Service, <#= entity.Name #>Service>();
-		    services.AddScoped<I<#= entity.Name #>ViewModelService, <#= entity.Name #>ViewModelService>();
-<# } #>
+		    services.AddScoped<I<#= entity.Name #>ViewModelService, <#= entity.Name #>ViewModelService>();<# } #>
         }
     }
 }

@@ -28,53 +28,53 @@ namespace t4mvc.scaffolding.templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.Extensions.DependencyInjection;\r" +
-                    "\nusing ");
+            this.Write("using Microsoft.AspNetCore.Mvc;\nusing Microsoft.Extensions.DependencyInjection;\nu" +
+                    "sing ");
             
-            #line 7 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".core;\r\nusing ");
+            this.Write(".core;\nusing ");
             
-            #line 8 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".data;\r\nusing ");
+            this.Write(".data;\nusing ");
             
-            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".data.Services;\r\nusing ");
+            this.Write(".data.Services;\nusing ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModels;\r\nusing ");
+            this.Write(".web.core.ViewModels;\nusing ");
             
-            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web.core.ViewModelServices;\r\n\r\nnamespace ");
+            this.Write(".web.core.ViewModelServices;\n\nnamespace ");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
             
             #line default
             #line hidden
-            this.Write(".web\r\n{\r\n    public static partial class ServiceConfig\r\n    {\r\n\t    public static" +
-                    " void AddCodeGen(IServiceCollection services)\r\n        {\r\n");
+            this.Write(".web\n{\n    public static partial class ServiceConfig\n    {\n\t    public static voi" +
+                    "d AddCodeGen(IServiceCollection services)\n        {\n");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
  foreach(var entity in this.Entities.OrderBy(x=> x.Name))
 { 
             
@@ -82,40 +82,40 @@ namespace t4mvc.scaffolding.templates
             #line hidden
             this.Write("\t\t    services.AddScoped<I");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
             this.Write("Service, ");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("Service>();\r\n\t\t    services.AddScoped<I");
+            this.Write("Service>();\n\t\t    services.AddScoped<I");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
             this.Write("ViewModelService, ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("ViewModelService>();\r\n");
+            this.Write("ViewModelService>();");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\unity.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}\r\n");
+            this.Write("\n        }\n    }\n}\n");
             return this.GenerationEnvironment.ToString();
         }
     }

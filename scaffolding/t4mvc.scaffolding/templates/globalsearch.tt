@@ -1,9 +1,9 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
-using <#= Settings.ApplicationName #>.core;
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" 
+#>using <#= Settings.ApplicationName #>.core;
 using <#= Settings.ApplicationName #>.data.Services;
 using <#= Settings.ApplicationName #>.web.core.Infrastructure;
 using <#= Settings.ApplicationName #>.web.core.ViewModels;
@@ -18,16 +18,12 @@ namespace t4mvc.web.core.ViewModelServices
     }
 
     public class SearchViewModelServiceBase : ISearchViewModelService
-    {
-<# foreach (var entity in this.SearchEntities) { #>
-        private readonly <#= entity.ServiceInterfaceTypeName #> <#= entity.ServiceInterfaceInstanceName #>;
-<# } #>
+    {<# foreach (var entity in this.SearchEntities) { #>
+        private readonly <#= entity.ServiceInterfaceTypeName #> <#= entity.ServiceInterfaceInstanceName #>;<# } #>
 
         public SearchViewModelServiceBase(<#= string.Join(", ", this.SearchEntities.Select(x => $"{x.ServiceInterfaceTypeName} {x.ServiceInterfaceInstanceName}")) #>)
-        {
-<# foreach (var entity in this.SearchEntities) { #>
-            this.<#= entity.ServiceInterfaceInstanceName #> = <#= entity.ServiceInterfaceInstanceName #>;
-<# } #>
+        {<# foreach (var entity in this.SearchEntities) { #>
+            this.<#= entity.ServiceInterfaceInstanceName #> = <#= entity.ServiceInterfaceInstanceName #>;<# } #>
         }
 
         public virtual GlobalSearchResult Search(string searchTerm)
@@ -49,29 +45,25 @@ namespace t4mvc.web.core.ViewModelServices
             bool isPossibleId   = Guid.TryParse(searchTerm, out Guid searchId);
 
 <# foreach (var entity in this.SearchEntities) { #>
-            IQueryable<<#= entity.SchemaName #>> <#= entity.PluralCamelCaseName #>;
-<# } #>
+            IQueryable<<#= entity.SchemaName #>> <#= entity.PluralCamelCaseName #>;<# } #>
 
             if (isPossibleId)
             {
 <# foreach (var entity in this.SearchEntities) { #>
-                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => x.<#= entity.KeyField.Name #> == searchId);
-<# } #>
+                <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => x.<#= entity.KeyField.Name #> == searchId);<# } #>
             }
             else
             {
 <# foreach (var entity in this.SearchEntities) { #>
                 <#= entity.PluralCamelCaseName #>   = <#= entity.ServiceInterfaceInstanceName #>.GetAll<#= entity.PluralName #>().Where(x => <#= string.Join(" || ", entity.SearchableFields
                 .Where(x => x.References == null /* Since this doesn't use the viewmodel, searching by linked entity isn't available  */)
-                .Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)")) #>);
-<# } #>
+                .Select(x => $"x.{(x.References == null ? x.SchemaName : x.Name.ToSchemaName() + x.References.NameField.Name.ToSchemaName() )}.{x.SearchOperator}(searchTerm)")) #>);<# } #>
             }
 
             if (take.HasValue)
             {
 <# foreach (var entity in this.SearchEntities) { #>
-                <#= entity.PluralCamelCaseName #> = <#= entity.PluralCamelCaseName #>.Take(take.Value);
-<# } #>
+                <#= entity.PluralCamelCaseName #> = <#= entity.PluralCamelCaseName #>.Take(take.Value);<# } #>
             }
 
 <# foreach (var entity in this.SearchEntities) { #>
@@ -84,7 +76,6 @@ namespace t4mvc.web.core.ViewModelServices
                     Results = <#= entity.PluralCamelCaseName #>.AsEnumerable().Select(x => new SearchResultItem { Title = $"{x.<#= entity.NameField.SchemaName #>}", Url = "<#= entity.DetailsUrl #>" + x.<#= entity.KeyField.Name #> }).ToList()
                 });
             }
-
 <# } #>
             return rv;
         }

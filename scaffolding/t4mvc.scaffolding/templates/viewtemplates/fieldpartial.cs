@@ -29,45 +29,45 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         public virtual string TransformText()
         {
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
  if (Field.References == null)
         {
 
             
             #line default
             #line hidden
-            this.Write("                    <!-- ");
+            this.Write("\n                    <!-- ");
             
-            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((Field.Description ?? Field.Name)));
             
             #line default
             #line hidden
-            this.Write(" -->\r\n                    @Html.LabelFor(model => model.");
+            this.Write(" -->\n                    @Html.LabelFor(model => model.");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(")\r\n                    @Html.t4mvcEditorFor(model => model.");
+            this.Write(")\n                    @Html.t4mvcEditorFor(model => model.");
             
-            #line 11 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", new { htmlAttributes = new { @class = \"form-control\" } })\r\n                    " +
-                    "@Html.ValidationMessageFor(model => model.");
+            this.Write(", new { htmlAttributes = new { @class = \"form-control\" } })\n                    @" +
+                    "Html.ValidationMessageFor(model => model.");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", \"\", new { @class = \"text-danger\" })\r\n");
+            this.Write(", \"\", new { @class = \"text-danger\" })\n");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
 
 
         }
@@ -77,51 +77,51 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("                    <!-- ");
+            this.Write("\n                    <!-- ");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((Field.Description ?? Field.Name)));
             
             #line default
             #line hidden
-            this.Write(" -->\r\n                    @Html.LabelFor(model => model.");
+            this.Write(" -->\n                    @Html.LabelFor(model => model.");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(")\r\n                    @Html.Select2EditorFor(x => x.");
+            this.Write(")\n                    @Html.Select2EditorFor(x => x.");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
-            
-            #line default
-            #line hidden
-            this.Write(", x => x.");
-            
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(", x => x.");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", x => x.");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName() + Field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(")\r\n                    @Html.ValidationMessageFor(model => model.");
+            this.Write(")\n                    @Html.ValidationMessageFor(model => model.");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", \"\", new { @class = \"text-danger\" })\r\n");
+            this.Write(", \"\", new { @class = \"text-danger\" })\n");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\fieldpartial.tt"
 
 
         }

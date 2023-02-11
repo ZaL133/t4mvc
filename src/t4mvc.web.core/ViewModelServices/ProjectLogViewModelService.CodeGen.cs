@@ -18,29 +18,36 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveProjectLog(ProjectLogViewModel projectLogViewModel);
 		void DeleteProjectLog(ProjectLogViewModel projectLogViewModel);
 		void Hydrate(ProjectLogViewModel projectLogViewModel);
+
         List<NoteViewModel> GetNotes(Guid projectLogId);
 
     }
     public partial class ProjectLogViewModelService : IProjectLogViewModelService
     {
+
         private readonly IProjectLogService projectLogService;
         private readonly IProjectService projectService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
+
         private readonly IAuditService auditService;
         
+
         public IQueryable<ProjectLogViewModel> GetAllProjectLogs()
         {
 		    var query = (from projectLog in projectLogService.GetAllProjectLogs()
-                                                  join project_ProjectId in projectService.GetAllProjects() on projectLog.ProjectId equals project_ProjectId.ProjectId
-                         			             select new ProjectLogViewModel
-						 {							ProjectLogId = projectLog.ProjectLogId,
-						 							ProjectId = projectLog.ProjectId,
-						 							EntryName = projectLog.EntryName,
-						 							EntryDate = projectLog.EntryDate,
-						 							Hours = projectLog.Hours,
-						  ProjectIdProjectName = project_ProjectId.ProjectName, });
+                         
+                         join project_ProjectId in projectService.GetAllProjects() on projectLog.ProjectId equals project_ProjectId.ProjectId
+                         
+			             select new ProjectLogViewModel
+						 {
+							ProjectLogId = projectLog.ProjectLogId,						 
+							ProjectId = projectLog.ProjectId,						 
+							EntryName = projectLog.EntryName,						 
+							EntryDate = projectLog.EntryDate,						 
+							Hours = projectLog.Hours,						 
+                            ProjectIdProjectName = project_ProjectId.ProjectName, });
             return query;
         }
 
@@ -49,7 +56,9 @@ namespace t4mvc.web.core.ViewModelServices
         {
             this.projectLogService = projectLogService;
             this.contextHelper      = contextHelper;
+
             this.projectService = projectService;
+
             this.noteViewModelService = noteViewModelService;
             this.auditService = auditService;
 
@@ -76,6 +85,7 @@ namespace t4mvc.web.core.ViewModelServices
         {
             var projectLog = projectLogService.Find(projectLogId)
                                                   .Map<ProjectLogViewModel>();
+
 
             if (projectLog.ProjectId != null)
                 projectLog.ProjectIdProjectName = projectService.Find(projectLog.ProjectId)?.ProjectName;
@@ -104,6 +114,7 @@ namespace t4mvc.web.core.ViewModelServices
 
             contextHelper.SaveChanges();
         }
+
         public string GetProjectIdProjectName(Guid? id)
         {
 			return projectService.Find(id)?.ProjectName;
@@ -112,10 +123,14 @@ namespace t4mvc.web.core.ViewModelServices
         public void Hydrate(ProjectLogViewModel projectLogViewModel)
         {
             var id = projectLogViewModel.ProjectLogId;
+
             projectLogViewModel.AuditHistory = GetAuditRecords(id);
+
             projectLogViewModel.ProjectIdProjectName =     GetProjectIdProjectName(projectLogViewModel.ProjectId);
             projectLogViewModel.Notes=     GetNotes(id);
+        
         }
+
 
         public List<NoteViewModel> GetNotes(Guid projectLogId)
         {
@@ -123,12 +138,14 @@ namespace t4mvc.web.core.ViewModelServices
                         .Where(x => x.ProjectLogId == projectLogId)
                         .ToList();
         }
+
         public List<AuditRecord> GetAuditRecords(Guid projectLogId)
         {
             return auditService.GetAuditRecords()
                                .Where(x => x.RecordId == projectLogId && x.RecordType == "ProjectLog")
                                .ToList();
         }
+
 
     }
 }

@@ -2,160 +2,219 @@
 
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="row">                        <div class="form-group col-6">
-                                <!-- Account -->
+
+                    <div class="row">
+                        <div class="form-group col-6">
+            
+                    <!-- Account -->
                     @Html.LabelFor(model => model.AccountId)
                     @Html.Select2EditorFor(x => x.AccountId, x => x.AccountId, x => x.AccountIdName)
                     @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
 
                         </div>
-                                    <div class="form-group col-6">
-                                <!-- Email Address -->
+            
+                        <div class="form-group col-6">
+            
+                    <!-- Email Address -->
                     @Html.LabelFor(model => model.EmailAddress)
                     @Html.t4mvcEditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
 
                         </div>
-                                </div>                    <div class="row">                        <div class="form-group col-5">
-                                <!-- First Name -->
+            
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-5">
+            
+                    <!-- First Name -->
                     @Html.LabelFor(model => model.FirstName)
                     @Html.t4mvcEditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
 
                         </div>
-                                    <div class="form-group col-2">
-                                <!-- Middle -->
+            
+                        <div class="form-group col-2">
+            
+                    <!-- Middle -->
                     @Html.LabelFor(model => model.MiddleName)
                     @Html.t4mvcEditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
 
                         </div>
-                                    <div class="form-group col-5">
-                                <!-- Last Name -->
+            
+                        <div class="form-group col-5">
+            
+                    <!-- Last Name -->
                     @Html.LabelFor(model => model.LastName)
                     @Html.t4mvcEditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
 
                         </div>
-                                </div>                    <div class="row">                        <div class="form-group col-6">
-                                <!-- Prefix -->
+            
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+            
+                    <!-- Prefix -->
                     @Html.LabelFor(model => model.Prefix)
                     @Html.t4mvcEditorFor(model => model.Prefix, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Prefix, "", new { @class = "text-danger" })
 
                         </div>
-                                    <div class="form-group col-6">
-                                <!-- Suffix -->
+            
+                        <div class="form-group col-6">
+            
+                    <!-- Suffix -->
                     @Html.LabelFor(model => model.Suffix)
                     @Html.t4mvcEditorFor(model => model.Suffix, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Suffix, "", new { @class = "text-danger" })
 
                         </div>
-                                </div>
+            
+                    </div>
+
 <div class="sections-accordion accordion" id="sections-accordion">
+
     <div class="card accordion-item">
         <div class="card-header accordion-header" id="accordion-label-0">
             <section class="mb-0 mt-0">
                 <div role="menu" class="collapsed" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#accordion-0" aria-controls="accordion-0">
-                    <i data-feather="map-pin"></i>                    Address
+                    <i data-feather="map-pin"></i>
+                    Address
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
         <div id="accordion-0" class="collapse accordion-collapse" aria-labelledby="accordion-label-0">
             <div class="card-body">
-                <div class="row">                        <div class="form-group col-12">
-                                <!-- Address -->
+
+                <div class="row">
+                        <div class="form-group col-12">
+            
+                    <!-- Address -->
                     @Html.LabelFor(model => model.Address)
                     @Html.t4mvcEditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
                         </div>
-                </div>                <div class="row">                        <div class="form-group col-12">
-                                <!-- Address2 -->
+
+                </div>
+                <div class="row">
+                        <div class="form-group col-12">
+            
+                    <!-- Address2 -->
                     @Html.LabelFor(model => model.Address2)
                     @Html.t4mvcEditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
 
                         </div>
-                </div>                <div class="row">                        <div class="form-group col-4">
-                                <!-- City -->
+
+                </div>
+                <div class="row">
+                        <div class="form-group col-4">
+            
+                    <!-- City -->
                     @Html.LabelFor(model => model.City)
                     @Html.t4mvcEditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
 
                         </div>
+
                         <div class="form-group col-4">
-                                <!-- State -->
+            
+                    <!-- State -->
                     @Html.LabelFor(model => model.State)
                     @Html.t4mvcEditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
 
                         </div>
+
                         <div class="form-group col-4">
-                                <!-- Zip -->
+            
+                    <!-- Zip -->
                     @Html.LabelFor(model => model.Zip)
                     @Html.t4mvcEditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
 
                         </div>
-                </div>            </div>
+
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="card accordion-item">
         <div class="card-header accordion-header" id="accordion-label-1">
             <section class="mb-0 mt-0">
                 <div role="menu" class="collapsed" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#accordion-1" aria-controls="accordion-1">
-                    <i data-feather="phone-call"></i>                    Contact Info
+                    <i data-feather="phone-call"></i>
+                    Contact Info
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
         <div id="accordion-1" class="collapse accordion-collapse" aria-labelledby="accordion-label-1">
             <div class="card-body">
-                <div class="row">                        <div class="form-group col-4">
-                                <!-- Phone -->
+
+                <div class="row">
+                        <div class="form-group col-4">
+            
+                    <!-- Phone -->
                     @Html.LabelFor(model => model.Phone)
                     @Html.t4mvcEditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
 
                         </div>
+
                         <div class="form-group col-4">
-                                <!-- Mobile -->
+            
+                    <!-- Mobile -->
                     @Html.LabelFor(model => model.Mobile)
                     @Html.t4mvcEditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
 
                         </div>
+
                         <div class="form-group col-4">
-                                <!-- Fax -->
+            
+                    <!-- Fax -->
                     @Html.LabelFor(model => model.Fax)
                     @Html.t4mvcEditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
 
                         </div>
-                </div>            </div>
+
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="card accordion-item">
         <div class="card-header accordion-header" id="accordion-label-2">
             <section class="mb-0 mt-0">
                 <div role="menu" class="collapsed" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#accordion-2" aria-controls="accordion-2">
-                    <i data-feather="settings"></i>                    System
+                    <i data-feather="settings"></i>
+                    System
                     <div class="icons"><i data-feather="chevron-down"></i></div>
                 </div>
             </section>
         </div>
         <div id="accordion-2" class="collapse accordion-collapse" aria-labelledby="accordion-label-2">
             <div class="card-body">
-                <div class="row">                        <div class="form-group col-12">
-                                <!-- Active -->
+
+                <div class="row">
+                        <div class="form-group col-12">
+            
+                    <!-- Active -->
                     @Html.LabelFor(model => model.Active)
                     @Html.t4mvcEditorFor(model => model.Active, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
 
                         </div>
-                </div>            </div>
+
+                </div>
+            </div>
         </div>
     </div>
+
 </div>

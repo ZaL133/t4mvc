@@ -47,6 +47,7 @@ namespace t4mvc.web.core.ViewModelServices
             var requestor       = Current.UserId;
             bool isPossibleId   = Guid.TryParse(searchTerm, out Guid searchId);
 
+
             IQueryable<Account> accounts;
             IQueryable<Contact> contacts;
             IQueryable<Project> projects;
@@ -55,6 +56,7 @@ namespace t4mvc.web.core.ViewModelServices
 
             if (isPossibleId)
             {
+
                 accounts   = accountService.GetAllAccounts().Where(x => x.AccountId == searchId);
                 contacts   = contactService.GetAllContacts().Where(x => x.ContactId == searchId);
                 projects   = projectService.GetAllProjects().Where(x => x.ProjectId == searchId);
@@ -63,6 +65,7 @@ namespace t4mvc.web.core.ViewModelServices
             }
             else
             {
+
                 accounts   = accountService.GetAllAccounts().Where(x => x.Name.Contains(searchTerm));
                 contacts   = contactService.GetAllContacts().Where(x => x.FirstName.StartsWith(searchTerm) || x.LastName.StartsWith(searchTerm) || x.EmailAddress.StartsWith(searchTerm));
                 projects   = projectService.GetAllProjects().Where(x => x.ProjectName.StartsWith(searchTerm));
@@ -72,12 +75,14 @@ namespace t4mvc.web.core.ViewModelServices
 
             if (take.HasValue)
             {
+
                 accounts = accounts.Take(take.Value);
                 contacts = contacts.Take(take.Value);
                 projects = projects.Take(take.Value);
                 projectLogs = projectLogs.Take(take.Value);
                 invoices = invoices.Take(take.Value);
             }
+
 
             if (accounts.Any())
             {

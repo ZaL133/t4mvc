@@ -18,6 +18,7 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveAccount(AccountViewModel accountViewModel);
 		void DeleteAccount(AccountViewModel accountViewModel);
 		void Hydrate(AccountViewModel accountViewModel);
+
         List<ContactViewModel> GetContacts(Guid accountId);
         List<ProjectViewModel> GetProjects(Guid accountId);
         List<NoteViewModel> GetNotes(Guid accountId);
@@ -25,34 +26,39 @@ namespace t4mvc.web.core.ViewModelServices
     }
     public partial class AccountViewModelService : IAccountViewModelService
     {
+
         private readonly IAccountService accountService;
         private readonly IContactViewModelService contactViewModelService;
         private readonly IProjectViewModelService projectViewModelService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
+
         private readonly IAuditService auditService;
         
+
         public IQueryable<AccountViewModel> GetAllAccounts()
         {
 		    var query = (from account in accountService.GetAllAccounts()
-                         			             select new AccountViewModel
-						 {							AccountId = account.AccountId,
-						 							Name = account.Name,
-						 							Address = account.Address,
-						 							Address2 = account.Address2,
-						 							City = account.City,
-						 							State = account.State,
-						 							Zip = account.Zip,
-						 							Phone = account.Phone,
-						 							Fax = account.Fax,
-						 							Website = account.Website,
-						 							ParentAccountId = account.ParentAccountId,
-						 							Lat = account.Lat,
-						 							Lng = account.Lng,
-						 							Description = account.Description,
-						 							Active = account.Active,
-						 });
+                         
+			             select new AccountViewModel
+						 {
+							AccountId = account.AccountId,						 
+							Name = account.Name,						 
+							Address = account.Address,						 
+							Address2 = account.Address2,						 
+							City = account.City,						 
+							State = account.State,						 
+							Zip = account.Zip,						 
+							Phone = account.Phone,						 
+							Fax = account.Fax,						 
+							Website = account.Website,						 
+							ParentAccountId = account.ParentAccountId,						 
+							Lat = account.Lat,						 
+							Lng = account.Lng,						 
+							Description = account.Description,						 
+							Active = account.Active,						 
+                            });
             return query;
         }
 
@@ -61,6 +67,8 @@ namespace t4mvc.web.core.ViewModelServices
         {
             this.accountService = accountService;
             this.contextHelper      = contextHelper;
+
+
             this.contactViewModelService = contactViewModelService;
             this.projectViewModelService = projectViewModelService;
             this.noteViewModelService = noteViewModelService;
@@ -90,6 +98,7 @@ namespace t4mvc.web.core.ViewModelServices
             var account = accountService.Find(accountId)
                                                   .Map<AccountViewModel>();
 
+
             Hydrate(account);
             return account;
         }
@@ -116,14 +125,20 @@ namespace t4mvc.web.core.ViewModelServices
             contextHelper.SaveChanges();
         }
 
+
+
         public void Hydrate(AccountViewModel accountViewModel)
         {
             var id = accountViewModel.AccountId;
+
             accountViewModel.AuditHistory = GetAuditRecords(id);
+
             accountViewModel.Contacts=     GetContacts(id);
             accountViewModel.Projects=     GetProjects(id);
             accountViewModel.Notes=     GetNotes(id);
+        
         }
+
 
         public List<ContactViewModel> GetContacts(Guid accountId)
         {
@@ -131,24 +146,28 @@ namespace t4mvc.web.core.ViewModelServices
                         .Where(x => x.AccountId == accountId)
                         .ToList();
         }
+
         public List<ProjectViewModel> GetProjects(Guid accountId)
         {
             return projectViewModelService.GetAllProjects()
                         .Where(x => x.AccountId == accountId)
                         .ToList();
         }
+
         public List<NoteViewModel> GetNotes(Guid accountId)
         {
             return noteViewModelService.GetAllNotes()
                         .Where(x => x.AccountId == accountId)
                         .ToList();
         }
+
         public List<AuditRecord> GetAuditRecords(Guid accountId)
         {
             return auditService.GetAuditRecords()
                                .Where(x => x.RecordId == accountId && x.RecordType == "Account")
                                .ToList();
         }
+
 
     }
 }

@@ -29,31 +29,31 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
+
             
             #line default
             #line hidden
             this.Write("@model ");
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
-            this.Write("ViewModel\r\n\r\n@Html.ValidationSummary(true, \"\", new { @class = \"text-danger\" })\r\n\r" +
-                    "\n");
+            this.Write("ViewModel\n\n@Html.ValidationSummary(true, \"\", new { @class = \"text-danger\" })\n\n");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  foreach(var row in this.Entity.Layout.Rows)
     {
 
             
             #line default
             #line hidden
-            this.Write("                    <div class=\"row\">");
+            this.Write("\n                    <div class=\"row\">");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
         foreach(var layoutField in row.Fields)
         {
@@ -61,153 +61,153 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("                        <div class=\"form-group col-");
+            this.Write("\n                        <div class=\"form-group col-");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(layoutField.Columns));
             
             #line default
             #line hidden
-            this.Write("\">\r\n            ");
+            this.Write("\">\n            ");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new fieldpartial(layoutField.Field, layoutField.Columns).TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n                        </div>\r\n            ");
+            this.Write("\n                        </div>\n            ");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
         }
 
             
             #line default
             #line hidden
-            this.Write("                    </div>");
+            this.Write("\n                    </div>");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
     }
 
             
             #line default
             #line hidden
-            this.Write("\r\n<div class=\"sections-accordion accordion\" id=\"sections-accordion\">\r\n");
+            this.Write("\n\n<div class=\"sections-accordion accordion\" id=\"sections-accordion\">\n");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  int i = 0; foreach(var section in this.Entity.Layout.Sections)
     {
 
             
             #line default
             #line hidden
-            this.Write("    <div class=\"card accordion-item\">\r\n        <div class=\"card-header accordion-" +
+            this.Write("\n    <div class=\"card accordion-item\">\n        <div class=\"card-header accordion-" +
                     "header\" id=\"accordion-label-");
             
-            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
-            this.Write("\">\r\n            <section class=\"mb-0 mt-0\">\r\n                <div role=\"menu\" ");
+            this.Write("\">\n            <section class=\"mb-0 mt-0\">\n                <div role=\"menu\" ");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  if (!section.Expanded) { 
             
             #line default
             #line hidden
             this.Write("class=\"collapsed\" aria-expanded=\"false\"");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  }
             
             #line default
             #line hidden
             this.Write(" data-bs-toggle=\"collapse\" data-bs-target=\"#accordion-");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("\" aria-controls=\"accordion-");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
-            this.Write("\">\r\n                    ");
+            this.Write("\">\n                    ");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  if (section.Icon != null) { 
             
             #line default
             #line hidden
             this.Write("<i data-feather=\"");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(section.Icon));
             
             #line default
             #line hidden
             this.Write("\"></i>");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("                    ");
+            this.Write("\n                    ");
             
-            #line 36 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(section.Title));
             
             #line default
             #line hidden
-            this.Write("\r\n                    <div class=\"icons\"><i data-feather=\"chevron-down\"></i></div" +
-                    ">\r\n                </div>\r\n            </section>\r\n        </div>\r\n        <div " +
-                    "id=\"accordion-");
+            this.Write("\n                    <div class=\"icons\"><i data-feather=\"chevron-down\"></i></div>" +
+                    "\n                </div>\n            </section>\n        </div>\n        <div id=\"a" +
+                    "ccordion-");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("\" class=\"collapse accordion-collapse");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  if (section.Expanded) { 
             
             #line default
             #line hidden
             this.Write(" show");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\" aria-labelledby=\"accordion-label-");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
-            this.Write("\">\r\n            <div class=\"card-body\">\r\n");
+            this.Write("\">\n            <div class=\"card-body\">\n");
             
-            #line 43 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
     foreach(var row in section.Rows) {
 
             
             #line default
             #line hidden
-            this.Write("                <div class=\"row\">");
+            this.Write("\n                <div class=\"row\">");
             
-            #line 46 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
         foreach(var layoutField in row.Fields)
         {
@@ -215,48 +215,48 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("                        <div class=\"form-group col-");
+            this.Write("\n                        <div class=\"form-group col-");
             
-            #line 50 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(layoutField.Columns));
             
             #line default
             #line hidden
-            this.Write("\">\r\n            ");
+            this.Write("\">\n            ");
             
-            #line 51 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new fieldpartial(layoutField.Field, layoutField.Columns).TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n                        </div>\r\n");
+            this.Write("\n                        </div>\n");
             
-            #line 53 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
         }
 
             
             #line default
             #line hidden
-            this.Write("                </div>");
+            this.Write("\n                </div>");
             
-            #line 56 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
 
     }
 
             
             #line default
             #line hidden
-            this.Write("            </div>\r\n        </div>\r\n    </div>\r\n");
+            this.Write("\n            </div>\n        </div>\n    </div>\n");
             
-            #line 62 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_layout.tt"
  i++;
     }
 
             
             #line default
             #line hidden
-            this.Write("</div>\r\n");
+            this.Write("\n</div>\n");
             return this.GenerationEnvironment.ToString();
         }
     }

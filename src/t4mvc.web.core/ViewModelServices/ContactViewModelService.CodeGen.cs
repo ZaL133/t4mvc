@@ -18,43 +18,49 @@ namespace t4mvc.web.core.ViewModelServices
         void SaveContact(ContactViewModel contactViewModel);
 		void DeleteContact(ContactViewModel contactViewModel);
 		void Hydrate(ContactViewModel contactViewModel);
+
         List<ProjectViewModel> GetProjects(Guid contactId);
         List<NoteViewModel> GetNotes(Guid contactId);
 
     }
     public partial class ContactViewModelService : IContactViewModelService
     {
+
         private readonly IContactService contactService;
         private readonly IAccountService accountService;
         private readonly IProjectViewModelService projectViewModelService;
         private readonly INoteViewModelService noteViewModelService;
         private readonly IContextHelper contextHelper;
         private readonly IUserService userService;
+
         public IQueryable<ContactViewModel> GetAllContacts()
         {
 		    var query = (from contact in contactService.GetAllContacts()
-                         						 join account_AccountId in accountService.GetAllAccounts() on contact.AccountId equals account_AccountId.AccountId into left_tmp_account_AccountId
+                         
+						 join account_AccountId in accountService.GetAllAccounts() on contact.AccountId equals account_AccountId.AccountId into left_tmp_account_AccountId
 						 from left_account_AccountId in left_tmp_account_AccountId.DefaultIfEmpty()
-						 			             select new ContactViewModel
-						 {							ContactId = contact.ContactId,
-						 							FirstName = contact.FirstName,
-						 							LastName = contact.LastName,
-						 							AccountId = contact.AccountId,
-						 							MiddleName = contact.MiddleName,
-						 							Prefix = contact.Prefix,
-						 							Suffix = contact.Suffix,
-						 							EmailAddress = contact.EmailAddress,
-						 							JobTitle = contact.JobTitle,
-						 							Phone = contact.Phone,
-						 							Fax = contact.Fax,
-						 							Mobile = contact.Mobile,
-						 							Address = contact.Address,
-						 							Address2 = contact.Address2,
-						 							City = contact.City,
-						 							State = contact.State,
-						 							Zip = contact.Zip,
-						 							Active = contact.Active,
-						  AccountIdName = left_account_AccountId.Name, });
+						 
+			             select new ContactViewModel
+						 {
+							ContactId = contact.ContactId,						 
+							FirstName = contact.FirstName,						 
+							LastName = contact.LastName,						 
+							AccountId = contact.AccountId,						 
+							MiddleName = contact.MiddleName,						 
+							Prefix = contact.Prefix,						 
+							Suffix = contact.Suffix,						 
+							EmailAddress = contact.EmailAddress,						 
+							JobTitle = contact.JobTitle,						 
+							Phone = contact.Phone,						 
+							Fax = contact.Fax,						 
+							Mobile = contact.Mobile,						 
+							Address = contact.Address,						 
+							Address2 = contact.Address2,						 
+							City = contact.City,						 
+							State = contact.State,						 
+							Zip = contact.Zip,						 
+							Active = contact.Active,						 
+                            AccountIdName = left_account_AccountId.Name, });
             return query;
         }
 
@@ -63,7 +69,9 @@ namespace t4mvc.web.core.ViewModelServices
         {
             this.contactService = contactService;
             this.contextHelper      = contextHelper;
+
             this.accountService = accountService;
+
             this.projectViewModelService = projectViewModelService;
             this.noteViewModelService = noteViewModelService;
         }
@@ -89,6 +97,7 @@ namespace t4mvc.web.core.ViewModelServices
         {
             var contact = contactService.Find(contactId)
                                                   .Map<ContactViewModel>();
+
 
             if (contact.AccountId != null)
                 contact.AccountIdName = accountService.Find(contact.AccountId)?.Name;
@@ -117,6 +126,7 @@ namespace t4mvc.web.core.ViewModelServices
 
             contextHelper.SaveChanges();
         }
+
         public string GetAccountIdName(Guid? id)
         {
 			return accountService.Find(id)?.Name;
@@ -124,10 +134,13 @@ namespace t4mvc.web.core.ViewModelServices
 
         public void Hydrate(ContactViewModel contactViewModel)
         {
-            var id = contactViewModel.ContactId;            contactViewModel.AccountIdName =     GetAccountIdName(contactViewModel.AccountId);
+            var id = contactViewModel.ContactId;
+            contactViewModel.AccountIdName =     GetAccountIdName(contactViewModel.AccountId);
             contactViewModel.Projects=     GetProjects(id);
             contactViewModel.Notes=     GetNotes(id);
+        
         }
+
 
         public List<ProjectViewModel> GetProjects(Guid contactId)
         {
@@ -135,11 +148,13 @@ namespace t4mvc.web.core.ViewModelServices
                         .Where(x => x.PrimaryContactId == contactId)
                         .ToList();
         }
+
         public List<NoteViewModel> GetNotes(Guid contactId)
         {
             return noteViewModelService.GetAllNotes()
                         .Where(x => x.ContactId == contactId)
                         .ToList();
         }
+
     }
 }

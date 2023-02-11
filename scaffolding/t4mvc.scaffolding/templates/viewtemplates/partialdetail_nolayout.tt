@@ -1,9 +1,9 @@
-﻿<#@ template language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); #>
-@model <#= schemaName #>ViewModel
+﻿<#@ template language="C#" 
+#><#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><#@ import namespace="System.Text" 
+#><#@ import namespace="System.Collections.Generic" #><# var schemaName = this.Entity.Name.ToSchemaName(); 
+#>@model <#= schemaName #>ViewModel
 
                 <div class="form-horizontal" style="background-color: white;">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -12,7 +12,6 @@
         if (field.References == null)
         {
 #>
-
                     <!-- <#= (field.Description ?? field.Name) #> -->
                     <div class="form-group"<#= field.RenderFunction == null ? "" : " data-render-function='" + field.RenderFunction + "'"#>>
                         @Html.LabelFor(model => model.<#=                field.Name.ToSchemaName() #>, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,7 +25,6 @@
         else
         {
 #>
-
                     <!-- <#= (field.Description ?? field.Name) #> -->
                     <div class="form-group">
                         @Html.LabelFor(model => model.<#=                field.Name.ToSchemaName() #>, htmlAttributes: new { @class = "control-label col-md-2" })

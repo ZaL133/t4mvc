@@ -29,145 +29,145 @@ namespace t4mvc.scaffolding.templates
         public virtual string TransformText()
         {
             this.Write("<nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collap" +
-                    "se\" style=\"\">\r\n    <div class=\"position-sticky pt-3 p-3\">\r\n        <ul class=\"na" +
-                    "v nav-pills flex-column mb-auto\">\r\n        ");
+                    "se\" style=\"\">\n    <div class=\"position-sticky pt-3 p-3\">\n        <ul class=\"nav " +
+                    "nav-pills flex-column mb-auto\">\n        ");
             
-            #line 9 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  foreach(var area in Settings.Entities.Where(x => !x.DontScaffold && !x.NoNav).GroupBy(x => new { x.Area, x.AreaText })) { var areaDefinition = (area.Key.AreaText == null || !Settings.AreaDictionary.ContainsKey(area.Key.AreaText)) ? (Area)null : Settings.AreaDictionary[area.Key.AreaText]; 
             
             #line default
             #line hidden
-            this.Write("            <!-- Area: ");
+            this.Write("\n            <!-- Area: ");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText));
             
             #line default
             #line hidden
-            this.Write(" -->\r\n            <li class=\"mb-1 nav-item\">\r\n                <button class=\"btn " +
-                    "btn-toggle align-items-center rounded collapsed nav-link sb-area\" data-bs-toggle" +
-                    "=\"collapse\" data-bs-target=\"#");
+            this.Write(" -->\n            <li class=\"mb-1 nav-item\">\n                <button class=\"btn bt" +
+                    "n-toggle align-items-center rounded collapsed nav-link sb-area\" data-bs-toggle=\"" +
+                    "collapse\" data-bs-target=\"#");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("-collapse\" aria-expanded=\"true\">\r\n                    ");
+            this.Write("-collapse\" aria-expanded=\"true\">\n                    ");
             
-            #line 13 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText));
             
             #line default
             #line hidden
-            this.Write("\r\n                </button>\r\n                <div class=\"collapse show\" id=\"");
+            this.Write("\n                </button>\n                <div class=\"collapse show\" id=\"");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("-collapse\">\r\n                    <ul class=\"btn-toggle-nav list-unstyled fw-norma" +
-                    "l pb-1\">\r\n        ");
+            this.Write("-collapse\">\n                    <ul class=\"btn-toggle-nav list-unstyled fw-normal" +
+                    " pb-1\">\n        ");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  foreach(var entity in area.Where(x => !x.NoNav).OrderBy(x=> x.Name)) { 
 
             
             #line default
             #line hidden
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  if (entity.Security != null) { 
             
             #line default
             #line hidden
             this.Write("                @if (User.IsInRole(\"");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Security));
             
             #line default
             #line hidden
-            this.Write("\")) {\r\n        ");
+            this.Write("\")) { ");
             
-            #line 19 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("                <li class=\"nav-item\">\r\n                            <a ");
+            this.Write("\n                        <li class=\"nav-item\">\n                            <a ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  if (area.Key.AreaText != null && area.Key.AreaText != "") { 
             
             #line default
             #line hidden
             this.Write("asp-area=\"");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(area.Key.AreaText));
             
             #line default
             #line hidden
             this.Write("\" ");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 
             
             #line default
             #line hidden
             this.Write("asp-controller=\"");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("\" asp-action=\"index\" class=\"nav-link\">\r\n                                ");
+            this.Write("\" asp-action=\"index\" class=\"nav-link\">\n                                ");
             
-            #line 22 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.HtmlIcon));
             
             #line default
             #line hidden
-            this.Write("\r\n                                ");
+            this.Write("\n                                ");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entity.Name));
             
             #line default
             #line hidden
-            this.Write("\r\n                            </a>\r\n                        </li>");
+            this.Write("\n                            </a>\n                        </li>");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  if (entity.Security != null) { 
 
             
             #line default
             #line hidden
-            this.Write("\r\n                        } \r\n");
+            this.Write("\n                        } ");
             
-            #line 29 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        ");
+            this.Write("\n        ");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n                    </ul>\r\n                </div>\r\n            </li>\r\n");
+            this.Write("\n                    </ul>\n                </div>\n            </li>\n");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\sidebar_nav.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        </ul>\r\n    </div>\r\n</nav>");
+            this.Write("\n        </ul>\n    </div>\n</nav>");
             return this.GenerationEnvironment.ToString();
         }
     }

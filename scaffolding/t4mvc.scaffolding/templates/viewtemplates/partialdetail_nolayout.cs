@@ -29,23 +29,24 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
+
             
             #line default
             #line hidden
             this.Write("@model ");
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(schemaName));
             
             #line default
             #line hidden
-            this.Write("ViewModel\r\n\r\n                <div class=\"form-horizontal\" style=\"background-color" +
-                    ": white;\">\r\n                    @Html.ValidationSummary(true, \"\", new { @class =" +
-                    " \"text-danger\" })\r\n");
+            this.Write("ViewModel\n\n                <div class=\"form-horizontal\" style=\"background-color: " +
+                    "white;\">\n                    @Html.ValidationSummary(true, \"\", new { @class = \"t" +
+                    "ext-danger\" })\n");
             
-            #line 10 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
  foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure))
     {
         if (field.References == null)
@@ -54,48 +55,48 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("\r\n                    <!-- ");
+            this.Write("\n                    <!-- ");
             
-            #line 16 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.Description ?? field.Name)));
             
             #line default
             #line hidden
-            this.Write(" -->\r\n                    <div class=\"form-group\"");
+            this.Write(" -->\n                    <div class=\"form-group\"");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.RenderFunction == null ? "" : " data-render-function='" + field.RenderFunction + "'"));
             
             #line default
             #line hidden
-            this.Write(">\r\n                        @Html.LabelFor(model => model.");
+            this.Write(">\n                        @Html.LabelFor(model => model.");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", htmlAttributes: new { @class = \"control-label col-md-2\" })\r\n                   " +
-                    "     <div class=\"col-md-10\">\r\n                            @Html.t4mvcEditorFor(m" +
-                    "odel => model.");
+            this.Write(", htmlAttributes: new { @class = \"control-label col-md-2\" })\n                    " +
+                    "    <div class=\"col-md-10\">\n                            @Html.t4mvcEditorFor(mod" +
+                    "el => model.");
             
-            #line 20 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", new { htmlAttributes = new { @class = \"form-control\" } })\r\n                    " +
-                    "        @Html.ValidationMessageFor(model => model.");
+            this.Write(", new { htmlAttributes = new { @class = \"form-control\" } })\n                     " +
+                    "       @Html.ValidationMessageFor(model => model.");
             
-            #line 21 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", \"\", new { @class = \"text-danger\" })\r\n                        </div>\r\n          " +
-                    "          </div>");
+            this.Write(", \"\", new { @class = \"text-danger\" })\n                        </div>\n            " +
+                    "        </div>");
             
-            #line 23 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
 
 
         }
@@ -105,55 +106,55 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("\r\n                    <!-- ");
+            this.Write("\n                    <!-- ");
             
-            #line 30 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((field.Description ?? field.Name)));
             
             #line default
             #line hidden
-            this.Write(" -->\r\n                    <div class=\"form-group\">\r\n                        @Html" +
-                    ".LabelFor(model => model.");
+            this.Write(" -->\n                    <div class=\"form-group\">\n                        @Html.L" +
+                    "abelFor(model => model.");
             
-            #line 32 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", htmlAttributes: new { @class = \"control-label col-md-2\" })\r\n                   " +
-                    "     <div class=\"col-md-10\">\r\n                            @Html.Select2EditorFor" +
-                    "(x => x.");
+            this.Write(", htmlAttributes: new { @class = \"control-label col-md-2\" })\n                    " +
+                    "    <div class=\"col-md-10\">\n                            @Html.Select2EditorFor(x" +
+                    " => x.");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
-            
-            #line default
-            #line hidden
-            this.Write(", x => x.");
-            
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
             this.Write(", x => x.");
             
-            #line 34 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            this.Write(", x => x.");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName() + field.References.NameField.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(")\r\n                            @Html.ValidationMessageFor(model => model.");
+            this.Write(")\n                            @Html.ValidationMessageFor(model => model.");
             
-            #line 35 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write(", \"\", new { @class = \"text-danger\" })\r\n                        </div>\r\n          " +
-                    "          </div>");
+            this.Write(", \"\", new { @class = \"text-danger\" })\n                        </div>\n            " +
+                    "        </div>");
             
-            #line 37 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialdetail_nolayout.tt"
 
 
         }
@@ -162,7 +163,7 @@ namespace t4mvc.scaffolding.templates.viewtemplates
             
             #line default
             #line hidden
-            this.Write("\r\n                </div>\r\n\r\n");
+            this.Write("\n\n                </div>\n\n");
             return this.GenerationEnvironment.ToString();
         }
     }

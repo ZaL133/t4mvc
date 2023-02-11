@@ -29,91 +29,91 @@ namespace t4mvc.scaffolding.templates.viewtemplates
         public virtual string TransformText()
         {
             
-            #line 5 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  var schemaName = this.Entity.Name.ToSchemaName(); 
+
             
             #line default
             #line hidden
             this.Write("@model List<");
             
-            #line 6 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("ViewModel>\r\n<!-- Create New -->\r\n<div>\r\n    @Html.ActionLink(\"Create\", \"Create\", " +
-                    "new { }, new { @class = \"btn btn-default\" })\r\n</div>\r\n\r\n<table class=\"tabletable" +
-                    "-bordered table-hover dataTable clientSideExcelButtonDataTable\" role=\"grid\" id=\"" +
-                    "");
+            this.Write("ViewModel>\n<!-- Create New -->\n<div>\n    @Html.ActionLink(\"Create\", \"Create\", new" +
+                    " { }, new { @class = \"btn btn-default\" })\n</div>\n\n<table class=\"tabletable-borde" +
+                    "red table-hover dataTable clientSideExcelButtonDataTable\" role=\"grid\" id=\"");
             
-            #line 12 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("-table\">\r\n    <thead>\r\n        <tr>\r\n");
+            this.Write("-table\">\n    <thead>\n        <tr>\n");
             
-            #line 15 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
             
             #line default
             #line hidden
-            this.Write("            <th>");
+            this.Write("\n            <th>");
             
-            #line 17 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
-            this.Write("</th>\r\n");
+            this.Write("</th>\n");
             
-            #line 18 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("        </tr>\r\n    </thead>\r\n    <tbody>\r\n        @foreach(var record in Model)\r\n" +
-                    "        {\r\n            <tr>\r\n");
+            this.Write("\n        </tr>\n    </thead>\n    <tbody>\n        @foreach(var record in Model)\n   " +
+                    "     {\n            <tr>\n");
             
-            #line 25 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude)) { 
             
             #line default
             #line hidden
-            this.Write("            <td>@record.");
+            this.Write("\n            <td>@record.");
             
-            #line 27 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToSchemaName()));
             
             #line default
             #line hidden
-            this.Write("</td>\r\n");
+            this.Write("</td>\n");
             
-            #line 28 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("            </tr>\r\n        }\r\n\t</tbody>\r\n</table>\r\n\r\n");
+            this.Write("            </tr>\n        }\n\t</tbody>\n</table>\n\n");
             
-            #line 33 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  if (this.Entity.Fields.Count(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude && x.RenderFunction != null) > 0) { 
             
             #line default
             #line hidden
-            this.Write("<script>\r\n\t(function() {\r\n\t\tvar renderFuncs = window.renderFuncs || {};\r\n\r\n\t\trend" +
-                    "erFuncs[\"");
+            this.Write("\n<script>\n\t(function() {\n\t\tvar renderFuncs = window.renderFuncs || {};\n\n\t\trenderF" +
+                    "uncs[\"");
             
-            #line 38 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.Name.ToCamelCase()));
             
             #line default
             #line hidden
-            this.Write("-table\"] = [\r\n");
+            this.Write("-table\"] = [\n");
             
-            #line 39 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
 
 foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit && !x.Secure && !x.GridExclude).Select((field, ix) => new { field, ix }).Where(x => x.field.RenderFunction != null)) { 
             
@@ -121,32 +121,33 @@ foreach(var field in this.Entity.Fields.Where(x => !x.IsKeyField && !x.IsAudit &
             #line hidden
             this.Write("            { targets: ");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.ix));
             
             #line default
             #line hidden
             this.Write(", render: \"");
             
-            #line 40 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.field.RenderFunction));
             
             #line default
             #line hidden
-            this.Write("\" },\r\n");
+            this.Write("\" },\n");
             
-            #line 41 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t\t];\r\n\r\n\t\twindow.renderFuncs = renderFuncs;\r\n\t})();\r\n</script>\r\n");
+            this.Write("\n\t\t];\n\n\t\twindow.renderFuncs = renderFuncs;\n\t})();\n</script>\n");
             
-            #line 47 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\partialindexview.tt"
  } 
             
             #line default
             #line hidden
+            this.Write("\n");
             return this.GenerationEnvironment.ToString();
         }
     }
