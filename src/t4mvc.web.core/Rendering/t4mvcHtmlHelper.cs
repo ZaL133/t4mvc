@@ -39,7 +39,11 @@ namespace t4mvc.web.core.Rendering
         }
         private static HtmlString EditButton(string editButtonLink)
         {
-            return new HtmlString("<a class=\"btn btn-warning\" id=\"edit-button\" href=\"" + editButtonLink + "\">Edit</a>");
+            if (Current.ReturnUrl != null) { editButtonLink = editButtonLink + "?returnUrl=" + Current.ReturnUrlEncoded; }
+            return new HtmlString("<a class=\"btn btn-warning\" id=\"edit-button\" href=\"" + 
+                
+                
+                editButtonLink + "\">Edit</a>");
         }
 
         public static HtmlString BackCancelButton(this IHtmlHelper helper, string defaultUrl)

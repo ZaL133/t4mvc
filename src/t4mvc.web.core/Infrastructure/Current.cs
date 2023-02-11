@@ -145,7 +145,7 @@ namespace t4mvc.web.core.Infrastructure
             }
             if (Current.Action == "Save and close")
             {
-                return new RedirectResult(saveAndCloseDestination());
+                return new RedirectResult(Current.ReturnUrl ?? saveAndCloseDestination());
             }
 
             throw new ArgumentException("Action not found");
