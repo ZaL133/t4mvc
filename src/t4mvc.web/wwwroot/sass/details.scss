@@ -15,6 +15,11 @@ $borderRadius: 5px;
     @include screen('sm') {
         overflow-x: scroll;
     }
+
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 
 .card-header {
@@ -51,6 +56,11 @@ $borderRadius: 5px;
 
 a.dropdown-toggle {
     text-decoration: none;
+}
+
+.sections-accordion.accordion {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
 }
 
 .accordion .icons {

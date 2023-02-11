@@ -13105,6 +13105,7 @@ main {
   right: 3px;
   border: solid 3px green;
   border-radius: 48px;
+  user-select: none;
 }
 
 #border-top-Audit {
@@ -13213,6 +13214,10 @@ main {
     overflow-x: scroll;
   }
 }
+.tab-content .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 .card-header {
   cursor: pointer;
@@ -13249,6 +13254,11 @@ main {
 
 a.dropdown-toggle {
   text-decoration: none;
+}
+
+.sections-accordion.accordion {
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
 }
 
 .accordion .icons {
