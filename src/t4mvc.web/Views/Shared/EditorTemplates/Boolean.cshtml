@@ -2,9 +2,9 @@
 
 @if (Current.EditMode)
 {
-    @Html.CheckBox("", Model.GetValueOrDefault(), new { @class = "form-control" })
+    @Html.CheckBox("", Model.GetValueOrDefault())
 }
 else
 {
-    @Html.CheckBox("", Model.GetValueOrDefault(), new { @class = "form-control" , disabled = "disabled" })
+    @Html.CheckBox("", Model.GetValueOrDefault(), new { disabled = "disabled" })
 }
