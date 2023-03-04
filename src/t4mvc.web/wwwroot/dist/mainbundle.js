@@ -57880,6 +57880,9 @@ $(function () {
     // Change hash for page-reload
     $('.nav-tabs a').on('shown.bs.tab', function (e) {
         window.location.hash = e.target.hash;
+        var editLink = $("#edit-button").attr("href");
+        var newEditLink = editLink.replace(/#(S*)/g, "") + window.location.hash
+        $("#edit-button").attr("href", newEditLink);
     });
 
     // Select the active nav in the nav menu;
