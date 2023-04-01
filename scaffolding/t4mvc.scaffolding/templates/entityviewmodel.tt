@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using <#= Settings.ApplicationName #>.web.core.Annotation;
 
 namespace <#= Settings.ApplicationName.ToSchemaName()#>.web.core.ViewModels
@@ -16,7 +17,8 @@ namespace <#= Settings.ApplicationName.ToSchemaName()#>.web.core.ViewModels
 	{
 <# foreach(var field in this.Entity.Fields.Where(x => !x.IgnoreOnUpdate && !x.Secure)) {
 #><# if (!field.IsNullable && !field.IsAudit) {#>        [Required]
-<#}#><# if (field.Description != null || field.Name != field.Name.ToSchemaName()){
+<#} if (field.IsEnum) { #>        [JsonConverter(typeof(JsonStringEnumConverter))]
+<# } #><# if (field.Description != null || field.Name != field.Name.ToSchemaName()){
 #><#="        [Display(Name = \"" + (field.Description ?? field.Name) + "\")]"#>
 <#} if (field.References != null) {
 #>        [Select2("/api/select2/get<#= field.References.Name.ToLowerCase() #>s"<#

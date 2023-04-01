@@ -43,7 +43,8 @@ namespace t4mvc.scaffolding.templates
             #line default
             #line hidden
             this.Write(".data.Services;\nusing System;\nusing System.Collections.Generic;\nusing System.Comp" +
-                    "onentModel.DataAnnotations;\nusing System.Linq;\nusing ");
+                    "onentModel.DataAnnotations;\nusing System.Linq;\nusing System.Text.Json.Serializat" +
+                    "ion;\nusing ");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Settings.ApplicationName));
@@ -81,7 +82,14 @@ namespace t4mvc.scaffolding.templates
             this.Write("        [Required]\n");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
-}
+} if (field.IsEnum) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [JsonConverter(typeof(JsonStringEnumConverter))]\n");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\entityviewmodel.tt"
+ } 
             
             #line default
             #line hidden

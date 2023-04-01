@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using t4mvc.web.core.Annotation;
 
 namespace t4mvc.web.core.ViewModels

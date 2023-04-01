@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using t4mvc.web.core.Annotation;
 
 namespace t4mvc.web.core.ViewModels
@@ -31,6 +32,7 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Invoice Amount")]
         [UIHint("Money")]
         public decimal InvoiceAmount { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public InvoiceStatus? Status { get; set; }
 
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
