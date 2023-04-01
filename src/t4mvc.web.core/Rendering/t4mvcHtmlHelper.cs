@@ -137,6 +137,10 @@ namespace t4mvc.web.core.Rendering
             var select2Attribute = customAttributes.OfType<Select2>().FirstOrDefault();
             var editableAttribute = customAttributes.OfType<EditableAttribute>().FirstOrDefault();
             var key = modelMetadata.CreateModelExpression(html.ViewData, keyExpression).Model?.ToString();
+            
+            // for checking if an option is selected, treat nulls and empty guids the same
+            if (key == Guid.Empty.ToString()) key = null;
+            
             var value = modelMetadata.CreateModelExpression(html.ViewData, valueExpression).Model?.ToString();
 
             if (select2Attribute == null) throw new InvalidOperationException();
