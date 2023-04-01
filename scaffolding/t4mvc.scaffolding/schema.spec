@@ -97,7 +97,7 @@ Invoice | Area:consulting | Icon:feather-file-text | EnableAuditing
 	Invoice Name | IsSearchable | Length:255 | IsNameField
 	Invoice Date(DateTime) | ViewModelAttributes(Date) | RenderFunction:t4mvc.formatDate
 	Invoice Amount(decimal) | Description: Invoice Amount | ViewModelAttributes(Money) | Length:10 | Scale:2 | RenderFunction:t4mvc.formatMoney
-	Status
+	Status?(InvoiceStatus?) | IsEnum
 
 Note | DontScaffold | Declassify(ModifyDate, ModifyUserId)
 	NoteText | ViewModelAttributes(TextArea, Wysiwyg) | Length:-1

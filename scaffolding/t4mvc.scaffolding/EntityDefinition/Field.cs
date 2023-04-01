@@ -13,7 +13,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         public string CamelCaseName => Name.ToCamelCase();  
         public List<string> Attributes { get; set; } = new List<string>();
         public string DataType { get; set; } = "string"; // default
-        public string SqlDataType => SqlTypeLookup[DataType.TrimEnd('?')];
+        public string SqlDataType => IsEnum ? "int" : SqlTypeLookup[DataType.TrimEnd('?')];
         public string? ViewModelType { get; set; }
         public int? Length { get; set; }
         public int? Scale{ get; set; }
@@ -24,6 +24,7 @@ namespace t4mvc.scaffolding.EntityDefinition
         public string SearchOperator { get; set; } = "StartsWith";
         public bool IsIndexed { get; set; }
         public bool IsAudit { get; set; }
+        public bool IsEnum => Attributes.Any(x => x == "IsEnum");
         public bool IgnoreOnUpdate { get; set; }
         public bool Secure { get; set; }
         public bool Identity { get { return Attributes.Any(x => x == "Identity"); } }

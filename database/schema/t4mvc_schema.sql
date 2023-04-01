@@ -398,7 +398,7 @@ BEGIN
 		InvoiceName varchar(255) NOT NULL,
 		InvoiceDate datetime NOT NULL,
 		InvoiceAmount decimal(10,2) NOT NULL,
-		Status varchar NOT NULL,
+		Status int NULL,
 	)
 END 
 
@@ -440,7 +440,7 @@ END
 
 -- Field: Invoice.Status
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.columns c ON t.object_id = c.object_id AND t.[name] = 'Invoice' AND c.[name] = 'Status')	
-		ALTER TABLE Invoice ADD Status varchar NOT NULL
+		ALTER TABLE Invoice ADD Status int NULL
 
 -- Index: Invoice.ProjectId
 	IF NOT EXISTS (SELECT * FROM sys.tables t JOIN sys.indexes i ON t.object_id = i.object_id WHERE t.[Name] = 'Invoice' AND i.[name] = 'IX_Invoice_ProjectId')

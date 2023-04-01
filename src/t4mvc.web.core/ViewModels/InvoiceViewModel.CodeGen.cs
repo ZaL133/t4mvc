@@ -31,8 +31,7 @@ namespace t4mvc.web.core.ViewModels
         [Display(Name = "Invoice Amount")]
         [UIHint("Money")]
         public decimal InvoiceAmount { get; set; }
-        [Required]
-        public string Status { get; set; }
+        public InvoiceStatus? Status { get; set; }
 
 		public List<AuditRecord> AuditHistory { get; set; } = new List<AuditRecord>();
 

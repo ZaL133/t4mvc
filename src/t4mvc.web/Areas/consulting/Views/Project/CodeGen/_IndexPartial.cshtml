@@ -7,30 +7,46 @@
 <table class="tabletable-bordered table-hover dataTable clientSideExcelButtonDataTable" role="grid" id="project-table">
     <thead>
         <tr>
+
             <th>Project Name</th>
+
             <th>Start Date</th>
+
             <th>Due Date</th>
+
             <th>AccountId</th>
+
             <th>PrimaryContactId</th>
+
             <th>Description</th>
+
             <th>EstimatedIncome</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach(var record in Model)
         {
             <tr>
+
             <td>@record.ProjectName</td>
+
             <td>@record.StartDate</td>
+
             <td>@record.DueDate</td>
+
             <td>@record.AccountId</td>
+
             <td>@record.PrimaryContactId</td>
+
             <td>@record.Description</td>
+
             <td>@record.EstimatedIncome</td>
             </tr>
         }
 	</tbody>
 </table>
+
 
 <script>
 	(function() {
@@ -40,8 +56,10 @@
             { targets: 1, render: "t4mvc.formatDate" },
             { targets: 2, render: "t4mvc.formatDate" },
             { targets: 6, render: "t4mvc.formatMoney" },
+
 		];
 
 		window.renderFuncs = renderFuncs;
 	})();
 </script>
+

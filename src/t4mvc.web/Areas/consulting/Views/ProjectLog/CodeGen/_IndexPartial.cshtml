@@ -7,24 +7,34 @@
 <table class="tabletable-bordered table-hover dataTable clientSideExcelButtonDataTable" role="grid" id="projectLog-table">
     <thead>
         <tr>
+
             <th>ProjectId</th>
+
             <th>Entry Name</th>
+
             <th>Entry Date</th>
+
             <th>Hours</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach(var record in Model)
         {
             <tr>
+
             <td>@record.ProjectId</td>
+
             <td>@record.EntryName</td>
+
             <td>@record.EntryDate</td>
+
             <td>@record.Hours</td>
             </tr>
         }
 	</tbody>
 </table>
+
 
 <script>
 	(function() {
@@ -32,8 +42,10 @@
 
 		renderFuncs["projectLog-table"] = [
             { targets: 2, render: "t4mvc.formatDate" },
+
 		];
 
 		window.renderFuncs = renderFuncs;
 	})();
 </script>
+

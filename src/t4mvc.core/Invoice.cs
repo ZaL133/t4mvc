@@ -29,8 +29,7 @@ namespace t4mvc.core
         [Required]
         [Display(Description = "Invoice Amount")]
         public decimal InvoiceAmount { get; set; }
-        [Required]
-        public string Status { get; set; }
+        public InvoiceStatus? Status { get; set; }
 
 	}
 }

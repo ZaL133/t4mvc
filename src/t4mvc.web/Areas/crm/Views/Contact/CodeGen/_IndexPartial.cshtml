@@ -7,30 +7,46 @@
 <table class="tabletable-bordered table-hover dataTable clientSideExcelButtonDataTable" role="grid" id="contact-table">
     <thead>
         <tr>
+
             <th>First Name</th>
+
             <th>Last Name</th>
+
             <th>AccountId</th>
+
             <th>Email Address</th>
+
             <th>Job Title</th>
+
             <th>Phone</th>
+
             <th>Active</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach(var record in Model)
         {
             <tr>
+
             <td>@record.FirstName</td>
+
             <td>@record.LastName</td>
+
             <td>@record.AccountId</td>
+
             <td>@record.EmailAddress</td>
+
             <td>@record.JobTitle</td>
+
             <td>@record.Phone</td>
+
             <td>@record.Active</td>
             </tr>
         }
 	</tbody>
 </table>
+
 
 <script>
 	(function() {
@@ -38,8 +54,10 @@
 
 		renderFuncs["contact-table"] = [
             { targets: 5, render: "t4mvc.formatPhoneNumber" },
+
 		];
 
 		window.renderFuncs = renderFuncs;
 	})();
 </script>
+
