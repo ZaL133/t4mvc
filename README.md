@@ -1,6 +1,25 @@
 # t4mvc
 Scaffolding an .net core MVC application using a spec file and T4 templates
 
+See active schema https://github.com/ZaL133/t4mvc/blob/main/scaffolding/t4mvc.scaffolding/schema.spec
+```
+	Account | Area:crm| Icon:feather-home | Security(crm) | EnableAuditing
+		Name | IsIndexed | IsSearchable | KeyField | IsNameField | SearchOperator:Contains | Length:255
+		Address? | Length:255
+		Address2? | Length:255
+		City? | Length:64
+		State? | Length:64
+		Zip? | Length:16
+		Phone? | ViewModelAttributes(Phone) | RenderFunction:t4mvc.formatPhoneNumber | Length:32
+		Fax? | Length:32
+		Website? | ViewModelAttributes(Website) | Length:255
+		ParentAccountId?(Guid?) | Description:Parent Account
+		Lat?(double?)
+		Lng?(double?)
+		Description? | ViewModelAttributes(Wysiwyg) | Length:-1
+		Active?(bool?)
+```
+
 See here for a functional example! 
 
 <a href="https://t4mvc.azurewebsites.net/">t4mvc</a>
