@@ -1,6 +1,6 @@
 @model InvoiceViewModel
 @{
-    ViewBag.Title = "Invoice Details";
+    ViewBag.Title = "Invoice Details | " + Model.InvoiceName;
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-file-text") + " Invoice / " + Model.InvoiceName;
 }
 @section css {

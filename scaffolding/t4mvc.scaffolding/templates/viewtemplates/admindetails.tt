@@ -10,7 +10,7 @@ var getAreaPrefix   = (string area) => area == null ? null : "~/Areas/" + area;
 var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
 #>@model <#= schemaName #>ViewModel
 @{
-    ViewBag.Title = "<#= this.Entity.Description #> Details";<# if (this.Entity.NameField != null) { #>
+    ViewBag.Title = "<#= this.Entity.Description #> Details | "<# if (this.Entity.NameField != null) { #> + Model.<#= this.Entity.NameField.Name.ToSchemaName() #><# } #>;<# if (this.Entity.NameField != null) { #>
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.Name #> / " + Model.<#= this.Entity.NameField.Name.ToSchemaName() #>;<# } else { #>
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("<#= this.Entity.Icon #>") + " <#= this.Entity.Name #>";<# } #>
 }

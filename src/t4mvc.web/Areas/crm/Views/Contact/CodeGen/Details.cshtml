@@ -1,6 +1,6 @@
 @model ContactViewModel
 @{
-    ViewBag.Title = "Contact Details";
+    ViewBag.Title = "Contact Details | " + Model.EmailAddress;
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-user") + " Contact / " + Model.EmailAddress;
 }
 @section css {

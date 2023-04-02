@@ -1,6 +1,6 @@
 @model ProjectViewModel
 @{
-    ViewBag.Title = "Project Details";
+    ViewBag.Title = "Project Details | " + Model.ProjectName;
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-archive") + " Project / " + Model.ProjectName;
 }
 @section css {

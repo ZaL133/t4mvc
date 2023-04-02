@@ -1,6 +1,6 @@
 @model AccountViewModel
 @{
-    ViewBag.Title = "Account Details";
+    ViewBag.Title = "Account Details | " + Model.Name;
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("feather-home") + " Account / " + Model.Name;
 }
 @section css {

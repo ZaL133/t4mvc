@@ -59,7 +59,27 @@ var areaPrefix      =  this.Area == null ? null : "~/Areas/" + this.Area;
             
             #line default
             #line hidden
-            this.Write(" Details\";");
+            this.Write(" Details | \"");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+ if (this.Entity.NameField != null) { 
+            
+            #line default
+            #line hidden
+            this.Write(" + Model.");
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Entity.NameField.Name.ToSchemaName()));
+            
+            #line default
+            #line hidden
+            
+            #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(";");
             
             #line 1 "C:\dev\git\t4mvc\scaffolding\t4mvc.scaffolding\templates\viewtemplates\admindetails.tt"
  if (this.Entity.NameField != null) { 

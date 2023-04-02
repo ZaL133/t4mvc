@@ -27,7 +27,7 @@ namespace t4mvc.web.core.ViewModels
         [Required]
         [Display(Name = "Invoice Date")]
         [DataType(DataType.Date)]
-        public DateTime InvoiceDate { get; set; } = DateTime.Now;
+        public DateTime InvoiceDate { get; set; }
         [Required]
         [Display(Name = "Invoice Amount")]
         [UIHint("Money")]

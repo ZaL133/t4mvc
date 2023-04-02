@@ -1,6 +1,6 @@
 @model ProjectLogViewModel
 @{
-    ViewBag.Title = "ProjectLog Details";
+    ViewBag.Title = "ProjectLog Details | " + Model.EntryName;
 	ViewBag.HtmlTitle = Settings.Icon.GetIcon26("fa-building") + " ProjectLog / " + Model.EntryName;
 }
 @section css {
