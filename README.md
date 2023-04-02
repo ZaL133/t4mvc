@@ -22,7 +22,7 @@ See active schema https://github.com/ZaL133/t4mvc/blob/main/scaffolding/t4mvc.sc
 
 See here for a functional example! 
 
-<a href="https://t4mvc.azurewebsites.net/">t4mvc</a>
+<a href="https://rapidmvc.com/">https://rapidmvc.com</a>
 <pre>
 User: admin@gmail.com
 Pass: t4mvcP@$$word
