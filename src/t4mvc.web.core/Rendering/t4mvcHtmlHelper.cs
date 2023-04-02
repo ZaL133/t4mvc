@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using AutoMapper.Internal;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -130,12 +131,13 @@ namespace t4mvc.web.core.Rendering
                                                                                      Expression<Func<TModel, TValue3>> valueExpression)
         {
 
-            var modelMetadata = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
-            var memberExpression = fieldExpression.Body as MemberExpression;
-            var propertyInfo = memberExpression.Member as PropertyInfo;
-            var customAttributes = propertyInfo.GetCustomAttributes();
-            var select2Attribute = customAttributes.OfType<Select2>().FirstOrDefault();
-            var editableAttribute = customAttributes.OfType<EditableAttribute>().FirstOrDefault();
+            var modelMetadata       = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
+            var memberExpression    = fieldExpression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var customAttributes    = propertyInfo.GetCustomAttributes();
+            var select2Attribute    = customAttributes.OfType<Select2>().FirstOrDefault();
+            var editableAttribute   = customAttributes.OfType<EditableAttribute>().FirstOrDefault();
+
             var key = modelMetadata.CreateModelExpression(html.ViewData, keyExpression).Model?.ToString();
             
             // for checking if an option is selected, treat nulls and empty guids the same
@@ -185,11 +187,11 @@ namespace t4mvc.web.core.Rendering
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
         private static IHtmlContent t4mvcEditorForDispatch<TModel, TValue>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string templateName, object additionalViewData, int columnWidth)
         {
-            var memberExpression = expression.Body as MemberExpression;
-            var propertyInfo = memberExpression.Member as PropertyInfo;
-            var customAttributes = propertyInfo.GetCustomAttributes();
+            var memberExpression    = expression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var customAttributes    = propertyInfo.GetCustomAttributes();
             // var select2Attribute    = customAttributes.OfType<Select2>().FirstOrDefault();
-            var editableAttribute = customAttributes.OfType<EditableAttribute>().FirstOrDefault();
+            var editableAttribute   = customAttributes.OfType<EditableAttribute>().FirstOrDefault();
 
             // EditMode is true, and either there is no editable attribute, or the editable attribute is true
             if (Current.EditMode && (editableAttribute == null || editableAttribute.AllowEdit))
@@ -236,9 +238,10 @@ namespace t4mvc.web.core.Rendering
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
         private static IHtmlContent ReadOnlyt4mvcEditorForDispatch<TModel, TValue>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string templateName, object additionalViewData, int columnWidth)
         {
-            var memberExpression = expression.Body as MemberExpression;
-            var propertyInfo = memberExpression.Member as PropertyInfo;
-            var select2Attribute = propertyInfo.GetCustomAttributes().OfType<Select2>().FirstOrDefault();
+            var memberExpression    = expression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var select2Attribute    = propertyInfo.GetCustomAttributes().OfType<Select2>().FirstOrDefault();
+
             Settings.SetReadonlyProperty(propertyInfo.Name);
 
             if (select2Attribute != null)
@@ -256,10 +259,10 @@ namespace t4mvc.web.core.Rendering
 
         public static HtmlString RadioButtonListFor<TModel, TValue>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression) where TValue : struct, IConvertible
         {
-            var modelMetadata = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
-            var memberExpression = expression.Body as MemberExpression;
-            var propertyInfo = memberExpression.Member as PropertyInfo;
-            var value = modelMetadata.CreateModelExpression(html.ViewData, expression).Model;
+            var modelMetadata       = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
+            var memberExpression    = expression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var value               = modelMetadata.CreateModelExpression(html.ViewData, expression).Model;
 
             var tValueType = typeof(TValue);
             if (tValueType.IsEnum)
@@ -285,11 +288,11 @@ namespace t4mvc.web.core.Rendering
 
         public static HtmlString RadioButtonListFor<TModel, TValue>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, params SelectListItem[] items)
         {
-            var modelMetadata = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
-            var memberExpression = expression.Body as MemberExpression;
-            var propertyInfo = memberExpression.Member as PropertyInfo;
-            var value = modelMetadata.CreateModelExpression(html.ViewData, expression).Model;
-            var disabled = Current.EditMode ? "" : "disabled";
+            var modelMetadata       = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
+            var memberExpression    = expression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var value               = modelMetadata.CreateModelExpression(html.ViewData, expression).Model;
+            var disabled            = Current.EditMode ? "" : "disabled";
 
             StringBuilder result = new StringBuilder();
             foreach (var val in items)
@@ -304,6 +307,40 @@ namespace t4mvc.web.core.Rendering
                 }
             }
             return new HtmlString(result.ToString());
+        }
+
+        public static HtmlString SelectListFor<TModel, TValue>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
+        {
+            var modelMetadata       = html.ViewContext.HttpContext.RequestServices.GetRequiredService<IModelExpressionProvider>();
+            var memberExpression    = expression.Body as MemberExpression;
+            var propertyInfo        = memberExpression.Member as PropertyInfo;
+            var value               = modelMetadata.CreateModelExpression(html.ViewData, expression).Model;
+            var disabled            = Current.EditMode ? "" : "disabled";
+            var tValueType          = typeof(TValue);
+
+            if (tValueType.IsNullableType()) tValueType = tValueType.GenericTypeArguments[0];
+            if (tValueType.IsEnum)
+            {
+                StringBuilder result = new StringBuilder($"<select name='{propertyInfo.Name}' class='form-control' {disabled}>");
+                var values = Enum.GetValues(tValueType);
+
+                if (value == null) result.Append("<option>(please select)</option>");
+                foreach (var val in values)
+                {
+                    var description = ((TValue)val).ToString();
+                    if (val.ToString() == value?.ToString())
+                    {
+                        result.AppendLine($"<option value='{val}' selected>{description}</option>");
+                    }
+                    else
+                    {
+                        result.AppendLine($"<option value='{val}'>{description}</option>");
+                    }
+                }
+                result.Append("</select>");
+                return new HtmlString(result.ToString());
+            }
+            return new HtmlString(tValueType.Name + " is not an enum");
         }
 
         public static Action<IUrlHelper, SidebarMenuModel> AddCodeGenFunc { get; set; }
